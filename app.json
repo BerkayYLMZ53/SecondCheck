@@ -2,6 +2,10 @@
   "expo": {
     "name": "SecondCheck",
     "slug": "secondcheck",
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
     "android": { "softwareKeyboardLayoutMode": "resize" },
     "plugins": [
       [

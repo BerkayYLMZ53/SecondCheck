@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "SecondCheck",
+    "slug": "secondcheck",
+    "android": { "softwareKeyboardLayoutMode": "resize" },
+    "plugins": [
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "SecondCheck, 3 saniyelik yerinde mikrofon testi için mikrofonunuza erişir.",
+          "recordAudioAndroid": true,
+          "enableBackgroundPlayback": false,
+          "enableBackgroundRecording": false
+        }
+      ]
+    ]
+  }
+}

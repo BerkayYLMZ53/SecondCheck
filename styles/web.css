@@ -1,0 +1,63 @@
+html,
+body,
+#root {
+  background-color: var(--page-bg, #0b0f19);
+  color-scheme: var(--color-scheme, dark);
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+[data-testid='touch-grid-surface'] {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#root {
+  display: flex;
+  height: var(--app-height, 100dvh);
+  min-height: 0;
+}
+
+#root [dir='auto'],
+[aria-modal='true'] [dir='auto'] {
+  overflow-wrap: anywhere;
+}
+
+[aria-modal='true'] {
+  max-height: var(--app-height, 100dvh);
+}
+
+[data-testid='category-list'],
+[data-testid='comparison-picker-categories'],
+[data-testid='product-carousel'] {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+[data-testid='category-list']::-webkit-scrollbar,
+[data-testid='comparison-picker-categories']::-webkit-scrollbar,
+[data-testid='product-carousel']::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+[data-testid='alternative-inspect']:not([aria-disabled='true']):hover {
+  background-color: var(--action-hover, #214573);
+  border-color: var(--focus-color, #38bdf8);
+}
+
+[data-testid='alternative-inspect']:not([aria-disabled='true']):active {
+  background-color: var(--action-pressed, #1d4ed8);
+  border-color: var(--focus-color, #60a5fa);
+}
+
+[data-testid='alternative-inspect']:focus-visible {
+  outline: 2px solid var(--focus-color, #38bdf8);
+  outline-offset: 3px;
+}

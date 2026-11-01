@@ -4,7 +4,13 @@
     "slug": "secondcheck",
     "web": {
       "favicon": "./assets/favicon.png",
-      "bundler": "metro"
+      "bundler": "metro",
+      "display": "standalone",
+      "backgroundColor": "#0b0f19",
+      "themeColor": "#2563eb",
+      "shortName": "SecondCheck",
+      "description": "İkinci el donanım ekspertiz ve değerleme platformu",
+      "preferRelatedApplications": false
     },
     "android": { "softwareKeyboardLayoutMode": "resize" },
     "plugins": [

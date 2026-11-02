@@ -1,87 +1,110 @@
-# SecondCheck — İkinci El Donanım Değerleme ve Ekspertiz Platformu
+<div align="center">
+  <h1>SecondCheck</h1>
+  <p><strong>İkinci el donanımda güvenli kararın ikinci kontrolü.</strong></p>
+  <p>Donanımını incele, fiyatını değerlendir, güvenle karar ver.</p>
+  <p>
+    <img src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&amp;logo=react&amp;logoColor=61DAFB" alt="React Native" />
+    <img src="https://img.shields.io/badge/Expo-000020?style=for-the-badge&amp;logo=expo&amp;logoColor=white" alt="Expo" />
+    <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&amp;logo=typescript&amp;logoColor=white" alt="TypeScript" />
+    <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&amp;logo=vercel&amp;logoColor=white" alt="Vercel" />
+    <img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&amp;logo=pwa&amp;logoColor=white" alt="PWA" />
+  </p>
+</div>
 
-Türkiye ikinci el elektronik pazarındaki (Sahibinden, Letgo vb.) donanımlar için adil piyasa değeri referansları, kronik sorun bilgileri ve yerinde donanım kontrol araçları sunan React Native / Expo tabanlı web ve mobil platformu.
+<div align="center">
+  <img src="./docs/screenshots/app-showcase.gif" width="320" alt="SecondCheck Mobil Deneyim Demo" />
+  <p><i>SecondCheck: İkinci el donanım ekspertiz, test ve değerleme akışı</i></p>
+</div>
 
-**Expo SDK 58 · TypeScript · Web / Android / iOS · Açık / Koyu Tema**
+SecondCheck, ikinci el elektronik alışverişlerinde donanım kontrolünü, fiyat değerlendirmesini ve cihaz karşılaştırmasını tek bir akışta birleştiren React Native / Expo tabanlı web ve mobil platformudur. Ürünü bulun, kontrol listesini tamamlayın ve ekspertiz özetinizi paylaşın.
 
-> **Veri hakkında:** Mevcut sürüm, dokuz kategoride **1.594 ürün varyantı** içeren yerel ve deterministik bir örnek katalog kullanır. Fiyatlar canlı ilanlardan çekilmez; trend grafiği gerçek satış geçmişi yerine tekrarlanabilir bir simülasyon gösterir. Sahibinden veya Letgo ile resmî bir entegrasyon ya da ortaklık bulunmaz.
+## Ekran Görüntüleri & Modüller
 
-## 🚀 Öne Çıkan Özellikler
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <h3>Donanım Kontrol &amp; Teşhis</h3>
+      <img src="./docs/screenshots/SecondCheck-diagnostics-desktop.png" width="480" alt="SecondCheck masaüstü donanım kontrol ve teşhis araçları" />
+      <p>Ekran, dokunmatik, hoparlör ve mikrofon testleriyle yerinde kontrol.</p>
+    </td>
+    <td align="center" width="50%">
+      <h3>Fiyat Analizi &amp; Trend</h3>
+      <img src="./docs/screenshots/SecondCheck-price-trend-desktop.png" width="480" alt="SecondCheck masaüstü fiyat analizi ve simüle fiyat trendi" />
+      <p>Kondisyona göre değerleme ve altı aylık simüle fiyat değişimi.</p>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <h3>Doğrulama &amp; Ekspertiz Raporu</h3>
+      <img src="./docs/screenshots/SecondCheck-report-dark.png" width="320" alt="SecondCheck koyu temalı ekspertiz raporu" />
+      <p>Tamamlanan kontrolleri, riskleri ve değerleme sonucunu bir araya getiren özet.</p>
+    </td>
+    <td align="center" width="50%">
+      <h3>Parça Karşılaştırma Modülü</h3>
+      <img src="./docs/screenshots/SecondCheck-vs-desktop.png" width="480" alt="SecondCheck masaüstü donanım karşılaştırma modülü" />
+      <p>İki cihazın fiyat aralığını, risklerini ve kontrol gereksinimlerini karşılaştırın.</p>
+    </td>
+  </tr>
+</table>
 
-| Özellik | Açıklama |
+## ✨ Temel Özellikler
+
+| Özellik | Deneyim |
 | --- | --- |
-| **1.000+ Ürünlük Katalog ve Değerleme Motoru** | GPU, CPU, telefon, laptop, konsol, el konsolu, RAM, anakart ve monitör kategorilerinde girilen fiyatı anında **Fırsat**, **Piyasa Değerinde** veya **Pahalı** olarak değerlendirir. |
-| **6 Aylık Değer Değişim Trendi** | Cihazın adil değeri, yaşı ve kategorisine göre simüle edilen altı aylık fiyat değişimini; seçilebilir aylar, fiyat etiketleri ve dönem açıklamalarıyla gösterir. |
-| **Donanım Kıyaslama — VS Modu** | İki cihazın piyasa aralıklarını, risk puanlarını, kronik sorunlarını ve kontrol gereksinimlerini karşılaştırır. Kayıtlı ilanlar seçildiğinde gerçek istenen fiyatlar ve kullanıcı notları da gösterilir. |
-| **Kronik Sorunlar ve Kontrol Listesi** | Açılır sorun kartları, önem dereceleri, bakım/onarım notları ve ilerleme çubuklu fiziksel inceleme listesi sunar. |
-| **Yerinde Test Kiti** | Beş renkli ölü piksel testi, 6×10 dokunmatik grid, hoparlör frekans taraması ve üç saniyelik mikrofon kaydı/geri dinleme araçlarını içerir. |
-| **Akıllı İlan Metni Ayrıştırıcı** | Yapıştırılan başlık veya açıklamadan model, fiyat, kozmetik kusur, kutu/fatura bilgisi, pil sağlığı ve parça değişimi ifadelerini çıkarır. Eşleşen ürünü ve değerleme alanlarını doldurur. |
-| **Kayıtlı İlanlar Sepeti** | İlan başlığı/notu, fiyatı, kondisyonu ve kayıt tarihini cihazda saklar. İlanı yeniden yükleme, kaldırma, listeyi temizleme ve aynı kategoriden iki ilanı kıyaslama desteği vardır. |
-| **Ekspertiz Özeti ve Paylaşım** | İlan fiyatı, değerleme sonucu, tamamlanan kontroller ve risklerden bir özet rapor üretir; metin olarak kopyalanabilir. |
-| **Param Güvende ve Kargo Dolandırıcılık Kalkanı** | Sahte bağlantı, ödeme, paket açılışı, kayıt/tutanak, seri numarası ve onay öncesi test konularını üç aşama ve altı etkileşimli güvenlik kuralıyla ele alır. |
-| **Tema ve Responsive Arayüz** | Açık/koyu tema, merkezlenmiş içerik, dar ekranlarda uyarlanan kıyaslama düzeni, güvenli alanlar ve en az 44×44 px dokunma hedefleri sunar. |
+| 📱 **PWA Desteği** | Mobil uyumlu web arayüzü, ana ekrana ekleme için simge ve bağımsız pencere görünümü ayarları. |
+| 🌙 **Koyu Tema** | `#0b0f19` zemin üzerinde okunaklı kartlar; açık tema seçeneği. |
+| ✅ **Test Checklist'i** | Cihaza özel fiziksel kontrol adımları, ilerleme takibi ve yerinde donanım testleri. |
+| 💸 **Piyasa Değerleme** | Yerel örnek katalog ve kondisyon katsayılarıyla fiyat değerlendirmesi; simüle trend görünümü. |
+| ⚖️ **Donanım Karşılaştırma** | İki cihazı veya aynı kategorideki kayıtlı ilanları yan yana inceleme. |
+| 🧾 **Ekspertiz Özeti** | Kontrol sonuçlarını ve riskleri bir raporda toplama, metin olarak kopyalama. |
+| 🔎 **İlan Ayrıştırma & Kayıt** | İlan metninden ürün ve fiyat bilgilerini çıkarma, ilanları cihazda saklama. |
+
+**Veri modeli:** Mevcut sürüm yerel ve deterministik bir örnek katalog kullanır. Fiyatlar canlı ilanlardan çekilmez; trend grafiği simülasyondur. Sahibinden veya Letgo ile resmî entegrasyon ya da ortaklık bulunmaz.
 
 ## 🛠️ Teknoloji Yığını
 
-Sürümler depodaki `package.json` tanımlarını yansıtır.
-
-| Katman | Teknoloji |
+| Teknoloji | Kullanım |
 | --- | --- |
-| Framework | Expo `~58.0.22`, React Native `0.88.1`, React Native for Web `~0.21.4` |
-| Arayüz | React `19.3.0`, TypeScript `~6.0.3`, React Native `StyleSheet` |
-| Durum yönetimi | React Context API: tema ve kayıtlı ilanlar |
-| Kalıcı kayıt | Web: `localStorage`; mobil: AsyncStorage |
-| Grafik ve ikonlar | `react-native-svg`, `lucide-react-native` |
-| Ses ve mikrofon | Web Audio API, MediaRecorder ve mobilde `expo-audio` |
-| Diğer platform araçları | `expo-clipboard`, `expo-status-bar`, `react-native-safe-area-context` |
-| Kod kalitesi | Strict TypeScript, ESLint ve Node.js test çalıştırıcısı |
+| **React Native + Expo** | Web, Android ve iOS için ortak uygulama altyapısı. |
+| **TypeScript** | Tip güvenliği ve sürdürülebilir geliştirme. |
+| **React Context API** | Tema ve kayıtlı ilanların durum yönetimi. |
+| **AsyncStorage / localStorage** | Cihaz üzerinde kalıcı ilan kaydı. |
+| **React Native SVG + Lucide** | Trend grafikleri ve arayüz ikonları. |
+| **Vercel** | Statik Expo web çıktısını yayınlama hedefi; SPA yönlendirme yapılandırması. |
 
-## 💻 Yerel Geliştirme — Local Setup
+## 👨‍💻 Geliştirici & İletişim
 
-### Gereksinimler
+**Berkay Yılmaz** · Kurucu & Geliştirici
 
-- **Node.js 24.x** kullanın; kurulu Expo sürümü 24.x dalında en az `24.3.0` gerektirir. Node.js 22.x kullanılıyorsa en az `22.13.0` gerekir.
-- npm veya pnpm kurulu olmalıdır.
-- Web için güncel bir tarayıcı yeterlidir. Mevcut özellikler için API anahtarı, `.env` dosyası veya ayrı bir backend gerekmez.
-- Mobil geliştirme için uyumlu fiziksel cihaz veya emülatör gerekir. iOS Simulator, macOS ve Xcode gerektirir.
+- **GitHub:** [@BerkayYLMZ53](https://github.com/BerkayYLMZ53)
+- **LinkedIn:** [Berkay Yılmaz](https://www.linkedin.com/in/berkay-yilmaz-253ab0292/)
+- **Web:** [berkayylmz.com.tr](https://berkayylmz.com.tr)
 
-Proje dizininde aşağıdaki komutları çalıştırın:
+## 🚀 Kurulum Adımları
+
+Node.js ve npm kurulu olmalıdır. Proje dizininde:
 
 ```bash
-# Bağımlılıkları yükleyin
 npm install
-
-# Web arayüzünü başlatın
-npx expo start --web
+npx expo start
 ```
 
-Terminalde gösterilen yerel adresi tarayıcıda açın. `npm run web` aynı geliştirme sunucusunu başlatır.
-
-### pnpm ile kilit dosyasına uygun kurulum
-
-Depoda `pnpm-lock.yaml` bulunur. Kilitlenmiş bağımlılık sürümlerini korumak için ekip ve CI kurulumlarında pnpm kullanabilirsiniz:
+Expo terminalinde **w** ile web arayüzünü açabilirsiniz. Android veya iOS için uyumlu bir cihaz ya da emülatör kullanın; iOS Simulator için macOS ve Xcode gerekir.
 
 ```bash
-pnpm install --frozen-lockfile
-pnpm web
+# Doğrudan web arayüzünü başlatın
+npm run web
+
+# Yayına hazır web çıktısını üretin
+npm run build:web
 ```
 
-npm kurulumuna kalıcı olarak geçilecekse kilit dosyası stratejisini de buna göre güncelleyin; farklı paket yöneticilerinin kilit dosyalarını gelişigüzel birlikte yönetmeyin.
+Web derlemesi `dist/` dizinine yazılır. Depodaki `pnpm-lock.yaml` ile kilitli kurulum tercih ediliyorsa `pnpm install --frozen-lockfile` ve ardından `pnpm start` kullanılabilir.
 
-### Mobil geliştirme
+## 📚 Teknik Belgeler
 
-```bash
-# Expo geliştirme sunucusu
-npm start
-
-# Android hedefi
-npm run android
-
-# iOS hedefi
-npm run ios
-```
-
-Bu komutlar geliştirme sunucusunu başlatır; mağazaya gönderilecek Android/iOS paketlerini üretmez. Mikrofon izni ve ses eklentisi `app.json` içinde tanımlıdır. Native eklenti veya izin yapılandırması değiştiğinde kullanılan geliştirme uygulamasının yeniden derlenmesi gerekebilir.
+<details>
+<summary><strong>Kullanım akışı, veri modeli, testler ve yayınlama rehberi</strong></summary>
 
 ## 🎯 Temel Kullanım Akışı
 
@@ -275,3 +298,5 @@ Fiyatlar, kronik sorun kayıtları, risk puanları ve üretilen raporlar karar d
 ## 📄 Lisans
 
 Bu depoda henüz bir `LICENSE` dosyası tanımlanmamıştır. Yeniden kullanım ve dağıtım koşulları için proje sahibinden bilgi alın. Bağımlılıkların lisansları kendi paketlerinde ayrıca yer alır.
+
+</details>

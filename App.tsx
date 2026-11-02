@@ -13,6 +13,7 @@ import {
 } from 'react-native-safe-area-context';
 import HomeScreen from './screens/HomeScreen';
 import CompareScreen from './screens/CompareScreen';
+import ProfileScreen from './screens/ProfileScreen';
 import type { Product } from './types/product';
 import type { ComparisonPair } from './utils/comparison';
 import WebPageStyles from './components/WebPageStyles';
@@ -33,7 +34,7 @@ export default function App() {
 function Application() {
   const { theme } = useTheme();
   const styles = useThemedStyles(createStyles);
-  const [tab, setTab] = useState<'home' | 'compare'>('home');
+  const [tab, setTab] = useState<'home' | 'compare' | 'profile'>('home');
   const [products, setProducts] = useState<ComparisonPair>([null, null]);
   const [comparedListings, setComparedListings] =
     useState<SavedComparisonPair | null>(null);
@@ -59,6 +60,7 @@ function Application() {
         [
           ['home', 'Değerleme & Ekspertiz'],
           ['compare', 'Donanım Kıyasla (VS)'],
+          ['profile', 'Profil & Hakkında'],
         ] as const
       ).map(([id, label]) => (
         <Pressable
@@ -86,7 +88,7 @@ function Application() {
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <WebPageStyles />
       <View style={styles.root}>
-        <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
+        <StatusBar style={tab === 'profile' || theme === 'dark' ? 'light' : 'dark'} />
         <View
           style={[styles.screen, tab !== 'home' && styles.hidden]}
           aria-hidden={tab !== 'home'}
@@ -118,6 +120,11 @@ function Application() {
                 );
               }}
             />
+          </View>
+        )}
+        {tab === 'profile' && (
+          <View style={styles.screen}>
+            <ProfileScreen navigation={navigation} />
           </View>
         )}
       </View>

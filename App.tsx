@@ -17,7 +17,11 @@ import ProfileScreen from './screens/ProfileScreen';
 import type { Product } from './types/product';
 import type { ComparisonPair } from './utils/comparison';
 import WebPageStyles from './components/WebPageStyles';
-import { SavedListingsProvider } from './context/SavedListingsContext';
+import {
+  SavedListingsProvider,
+  useSavedListings,
+} from './context/SavedListingsContext';
+import InAppSplash from './components/InAppSplash';
 import type { SavedComparisonPair, SavedItem } from './types/savedListing';
 import { getProductById } from './data/mockProducts';
 
@@ -33,6 +37,9 @@ export default function App() {
 
 function Application() {
   const { theme } = useTheme();
+  const { isReady } = useSavedListings();
+  const [showSplash, setShowSplash] = useState(true);
+  const finishSplash = useCallback(() => setShowSplash(false), []);
   const styles = useThemedStyles(createStyles);
   const [tab, setTab] = useState<'home' | 'compare' | 'profile'>('home');
   const [products, setProducts] = useState<ComparisonPair>([null, null]);
@@ -88,45 +95,56 @@ function Application() {
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <WebPageStyles />
       <View style={styles.root}>
-        <StatusBar style={tab === 'profile' || theme === 'dark' ? 'light' : 'dark'} />
+        <StatusBar
+          style={showSplash || tab === 'profile' || theme === 'dark' ? 'light' : 'dark'}
+        />
         <View
-          style={[styles.screen, tab !== 'home' && styles.hidden]}
-          aria-hidden={tab !== 'home'}
-          accessibilityElementsHidden={tab !== 'home'}
-          importantForAccessibility={
-            tab === 'home' ? 'auto' : 'no-hide-descendants'
-          }
+          style={styles.screen}
+          pointerEvents={showSplash ? 'none' : 'auto'}
+          aria-hidden={showSplash}
+          accessibilityElementsHidden={showSplash}
+          importantForAccessibility={showSplash ? 'no-hide-descendants' : 'auto'}
         >
-          <HomeScreen
-            navigation={navigation}
-            onCompareProducts={openComparison}
-            onCompareSavedListings={openSavedComparison}
-          />
-        </View>
-        {tab === 'compare' && (
-          <View style={styles.screen}>
-            <CompareScreen
+          <View
+            style={[styles.screen, tab !== 'home' && styles.hidden]}
+            aria-hidden={tab !== 'home'}
+            accessibilityElementsHidden={tab !== 'home'}
+            importantForAccessibility={
+              tab === 'home' ? 'auto' : 'no-hide-descendants'
+            }
+          >
+            <HomeScreen
               navigation={navigation}
-              products={products}
-              listings={comparedListings}
-              onChange={(next) => {
-                setProducts(next);
-                setComparedListings(null);
-              }}
-              onSwap={() => {
-                setProducts(([a, b]) => [b, a]);
-                setComparedListings((pair) =>
-                  pair ? [pair[1], pair[0]] : null,
-                );
-              }}
+              onCompareProducts={openComparison}
+              onCompareSavedListings={openSavedComparison}
             />
           </View>
-        )}
-        {tab === 'profile' && (
-          <View style={styles.screen}>
-            <ProfileScreen navigation={navigation} />
-          </View>
-        )}
+          {tab === 'compare' && (
+            <View style={styles.screen}>
+              <CompareScreen
+                navigation={navigation}
+                products={products}
+                listings={comparedListings}
+                onChange={(next) => {
+                  setProducts(next);
+                  setComparedListings(null);
+                }}
+                onSwap={() => {
+                  setProducts(([a, b]) => [b, a]);
+                  setComparedListings((pair) =>
+                    pair ? [pair[1], pair[0]] : null,
+                  );
+                }}
+              />
+            </View>
+          )}
+          {tab === 'profile' && (
+            <View style={styles.screen}>
+              <ProfileScreen navigation={navigation} />
+            </View>
+          )}
+        </View>
+        {showSplash && <InAppSplash ready={isReady} onFinish={finishSplash} />}
       </View>
     </SafeAreaProvider>
   );

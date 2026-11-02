@@ -13,7 +13,7 @@
       "bundler": "metro",
       "display": "standalone",
       "backgroundColor": "#0b0f19",
-      "themeColor": "#2563eb",
+      "themeColor": "#0b0f19",
       "shortName": "SecondCheck",
       "description": "İkinci el donanım ekspertiz ve değerleme platformu",
       "preferRelatedApplications": false,

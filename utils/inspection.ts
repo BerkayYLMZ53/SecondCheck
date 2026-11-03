@@ -11,7 +11,7 @@ export function initialInspectionFacts(result: ParsedListingResult, text = ''): 
   return {
     screenReplaced: result.flags.hasChanges && /ekran/i.test(result.flags.changeNotes.join(' ')),
     missingDocuments: /(?:kutu\s*(?:ve|&)\s*fatura\s*(?:yok|yoktur)|kutusuz\s*(?:ve\s*)?faturasız)/i.test(text),
-    cosmeticDamage: false,
+    cosmeticDamage: false, caseCondition: 'pending',
     trueTone: 'pending', biometrics: 'pending', cameras: 'pending', liquid: 'pending',
   };
 }

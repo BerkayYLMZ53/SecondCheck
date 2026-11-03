@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { ComponentRef } from 'react';
 import { Modal, PanResponder, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import type { GestureResponderEvent } from 'react-native';
@@ -70,6 +70,9 @@ export default function DiagnosticsLabModal({ initialResults, onComplete, onClos
   const [pixelControls, setPixelControls] = useState(true);
   const [touchCount, setTouchCount] = useState<number | null>(null);
   const [vibrationReady, setVibrationReady] = useState(false);
+  const [vibrationBusy, setVibrationBusy] = useState(false);
+  const mounted = useRef(true);
+  useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
   const signals = useLabSignals();
   const setResult = (id: LabTestId, status: TestStatus, note: string) => setResults((current) => ({ ...current, [id]: { status, note, completedAt: new Date().toISOString() } }));
   const close = () => { signals.stop(); onClose(); };
@@ -99,22 +102,29 @@ export default function DiagnosticsLabModal({ initialResults, onComplete, onClos
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.caption}>Bu testler uygulamanın açık olduğu cihazda çalışır. Sonuçlar sizin gözleminizdir; başka bir ilandaki telefonu uzaktan ölçmez.</Text>
         <View style={styles.panel}><Text style={styles.title}>1 · Ekran / ölü piksel & iz</Text><Text style={styles.text}>Siyah, beyaz, kırmızı, yeşil ve mavi zeminde sabit leke, gölge, ölü piksel ve ışık sızması arayın. Üstteki bilgi kutusunun örttüğü alanı da kutuyu gizleyerek inceleyebilirsiniz.</Text>
-          <Pressable testID="lab-start-pixels" accessibilityRole="button" onPress={() => { signals.stop(); setPixel(0); setPixelReady(false); setMode('pixels'); }} style={styles.button}><Text style={styles.buttonText}>Tam ekran renk testi</Text></Pressable>
+          <Pressable testID="lab-start-pixels" accessibilityRole="button" onPress={() => { signals.stop(); setResult('pixels', 'pending', 'Renk testi yeniden başlatıldı.'); setPixel(0); setPixelControls(true); setPixelReady(false); setMode('pixels'); }} style={styles.button}><Text style={styles.buttonText}>Tam ekran renk testi</Text></Pressable>
           {confirmation('pixels', pixelReady, 'Beş renk görüntülendi; ölü piksel, iz ve sızma kullanıcı tarafından gözlemlendi.')}
         </View>
         <View style={styles.panel}><Text style={styles.title}>2 · Dokunmatik alan</Text><Text style={styles.text}>Izgara test alanının bütün hücrelerini yeşile boyayın. Eksik hücre doğrudan arıza sayılmaz; tekrar deneyin.</Text>
-          <Pressable testID="lab-start-touch" accessibilityRole="button" onPress={() => { signals.stop(); setTouchCount(null); setMode('touch'); }} style={styles.button}><Text style={styles.buttonText}>Dokunmatik ızgarayı aç</Text></Pressable>
+          <Pressable testID="lab-start-touch" accessibilityRole="button" onPress={() => { signals.stop(); setResult('touch', 'pending', 'Izgara testi yeniden başlatıldı.'); setTouchCount(null); setMode('touch'); }} style={styles.button}><Text style={styles.buttonText}>Dokunmatik ızgarayı aç</Text></Pressable>
           <Text style={styles.caption}>{touchCount === null ? 'Henüz çizim yapılmadı.' : `${touchCount}/${GRID_TOTAL} hücreye temas algılandı.`}</Text>
           {confirmation('touch', touchCount === GRID_TOTAL, `${touchCount ?? 0}/${GRID_TOTAL} hücreye temas algılandı.`)}
           {touchCount !== null && touchCount < GRID_TOTAL && <Pressable accessibilityRole="button" onPress={() => setResult('touch', 'fail', `${touchCount}/${GRID_TOTAL} hücre; kullanıcı kör nokta bildirdi.`)} style={styles.outline}><Text style={styles.text}>Tekrar denedim, kör nokta var</Text></Pressable>}
         </View>
         <View style={styles.panel}><Text style={styles.title}>3 · Hoparlör / ahize</Text><Text style={styles.text}>200 Hz ve 2000 Hz düşük seviyeli sinüs tonları sırayla çalar. Tarayıcı üst ahize ve alt hoparlörü ayrı yönlendiremez. Mevcut çıkışı dinleyin; ahizeyi ayrıca bir telefon görüşmesiyle doğrulayın. Sesi kulağınıza yakınken artırmayın.</Text>
-          <Pressable testID="lab-start-audio" accessibilityRole="button" disabled={signals.busy} onPress={() => { void signals.startAudio(); }} style={styles.button}><Text style={styles.buttonText}>{signals.busy ? 'Tonlar çalıyor…' : '200 Hz → 2000 Hz çal'}</Text></Pressable>
+          <Pressable testID="lab-start-audio" accessibilityRole="button" disabled={signals.busy} onPress={() => { setResult('audio', 'pending', 'Ses testi başlatıldı.'); void signals.startAudio(); }} style={styles.button}><Text style={styles.buttonText}>{signals.busy ? 'Tonlar çalıyor…' : '200 Hz → 2000 Hz çal'}</Text></Pressable>
           <Pressable accessibilityRole="button" onPress={signals.stop} style={styles.outline}><Text style={styles.text}>Sesi durdur</Text></Pressable>
           {confirmation('audio', signals.audioReady, 'Mevcut ses çıkışı 200/2000 Hz ile dinlendi; üst ahize bağımsız ölçülmedi.')}
         </View>
         <View style={styles.panel}><Text style={styles.title}>4 · Titreşim / haptik</Text><Text style={styles.text}>Üç farklı ritim/şiddette komut gönderilir. Sistem ayarları ve tarayıcı titreşimi engelleyebilir; tepki olmaması tek başına donanım arızası değildir.</Text>
-          <Pressable testID="lab-start-vibration" accessibilityRole="button" onPress={() => { void signals.vibrate().then((supported) => { setVibrationReady(supported); if (!supported) setResult('vibration', 'unsupported', 'Titreşim API’si kullanılamadı.'); }); }} style={styles.button}><Text style={styles.buttonText}>Titreşimi dene</Text></Pressable>
+          <Pressable testID="lab-start-vibration" accessibilityRole="button" disabled={vibrationBusy} accessibilityState={{ disabled: vibrationBusy, busy: vibrationBusy }} onPress={() => {
+            setVibrationBusy(true); setVibrationReady(false); setResult('vibration', 'pending', 'Titreşim testi başlatıldı.');
+            void signals.vibrate().then((supported) => {
+              if (!mounted.current || supported === null) return;
+              setVibrationReady(supported);
+              if (!supported) setResult('vibration', 'unsupported', 'Titreşim API’si kullanılamadı.');
+            }).finally(() => { if (mounted.current) setVibrationBusy(false); });
+          }} style={styles.button}><Text style={styles.buttonText}>{vibrationBusy ? 'Titreşim gönderiliyor…' : 'Titreşimi dene'}</Text></Pressable>
           {confirmation('vibration', vibrationReady, 'Titreşim komutu gönderildi; fiziksel tepki kullanıcı tarafından değerlendirildi.')}
         </View>
         <Text style={styles.caption} accessibilityLiveRegion="polite">{signals.message}</Text>

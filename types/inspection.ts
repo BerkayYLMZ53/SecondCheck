@@ -6,6 +6,7 @@ export interface InspectionFacts {
   screenReplaced: boolean;
   missingDocuments: boolean;
   cosmeticDamage: boolean;
+  caseCondition: TestStatus;
   trueTone: TestStatus;
   biometrics: TestStatus;
   cameras: TestStatus;

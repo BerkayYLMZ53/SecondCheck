@@ -32,7 +32,7 @@ export function calculateTrustScore(result: ParsedListingResult, checked: Readon
   if (!batteryKnown) add('battery-unknown', -5, 'Pil sağlığı belirtilmedi');
   else if (battery < 80) add('battery-low', -5, 'Pil sağlığı <%80');
   else if (battery >= 90) add('battery-good', 2, 'Pil sağlığı ≥%90');
-  if (result.flags.hasBox && result.flags.hasInvoice) add('documents', 5, 'Kutulu & faturalı');
+  if (result.flags.hasBox && result.flags.hasInvoice && !facts?.missingDocuments) add('documents', 5, 'Kutulu & faturalı');
   if (result.flags.hasWarranty) add('warranty', 3, 'Garanti beyanı');
   if (completed > 0 && total > 0) add('checks', Math.round(completed / total * 20), `${completed}/${total} kritik kontrol`);
   let observedFailure = false;

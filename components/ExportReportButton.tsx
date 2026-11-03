@@ -15,7 +15,7 @@ export default function ExportReportButton({ result, checked, lab, facts, onFact
   const [busy, setBusy] = useState(false);
   const [feedback, setFeedback] = useState('');
   const [error, setError] = useState(false);
-  const checks = [{ key: 'trueTone', label: 'True Tone' }, { key: 'biometrics', label: 'Face ID / parmak izi' }, { key: 'cameras', label: 'Kameralar' }, { key: 'liquid', label: 'Sıvı teması' }] as const;
+  const checks = [{ key: 'trueTone', label: 'True Tone' }, { key: 'biometrics', label: 'Face ID / parmak izi' }, { key: 'cameras', label: 'Kameralar' }, { key: 'liquid', label: 'Sıvı teması' }, { key: 'caseCondition', label: 'Kasa durumu' }] as const;
   const exportReport = async () => {
     if (busy) return;
     setBusy(true); setFeedback(''); setError(false);
@@ -34,9 +34,9 @@ export default function ExportReportButton({ result, checked, lab, facts, onFact
     <TextInput testID="report-imei" accessibilityLabel="IMEI son dört hanesi" inputMode="numeric" maxLength={4} value={details.imeiLast4} onChangeText={(value) => setDetails((current) => ({ ...current, imeiLast4: value.replace(/\D/g, '').slice(0, 4) }))} placeholder="1234" style={styles.input} placeholderTextColor={styles.caption.color} />
     {details.imeiLast4.length > 0 && details.imeiLast4.length !== 4 && <Text style={styles.caption}>Rapor için tam 4 hane girin; eksik giriş rapora alınmaz.</Text>}
     {checks.map(({ key, label }) => <View key={key} style={styles.check}>
-      <Text style={styles.text}>{label}</Text><View style={styles.row}>
+      <Text style={styles.text}>{label}</Text><View accessibilityRole="radiogroup" accessibilityLabel={label} style={styles.row}>
         {(['pending', 'pass', 'fail', 'unsupported'] as TestStatus[]).map((status) => <Pressable key={status} testID={`physical-${key}-${status}`} accessibilityRole="radio" accessibilityLabel={`${label}: ${STATUS_LABELS[status]}`} accessibilityState={{ checked: facts[key] === status }}
-          onPress={() => onFactsChange({ ...facts, [key]: status })} style={[styles.option, facts[key] === status && styles.selected]}><Text style={styles.text}>{status === 'unsupported' ? 'Uygulanamaz' : STATUS_LABELS[status]}</Text></Pressable>)}
+          onPress={() => onFactsChange({ ...facts, [key]: status, ...(key === 'caseCondition' ? { cosmeticDamage: status === 'fail' } : {}) })} style={[styles.option, facts[key] === status && styles.selected]}><Text style={styles.text}>{status === 'unsupported' ? 'Uygulanamaz' : STATUS_LABELS[status]}</Text></Pressable>)}
       </View></View>)}
     <Pressable testID="listing-export-pdf" accessibilityRole="button" disabled={busy || !result.matchedDevice || result.matchedDevice.releaseYear === 0} accessibilityState={{ disabled: busy || !result.matchedDevice || result.matchedDevice.releaseYear === 0, busy }}
       onPress={() => { void exportReport(); }} style={[styles.button, busy && { opacity: 0.5 }]}><Text style={styles.buttonText}>{busy ? 'Rapor hazırlanıyor…' : '📄 PDF Ekspertiz Raporunu İndir'}</Text></Pressable>

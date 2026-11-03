@@ -23,7 +23,7 @@ export default function BargainingAssistant({ result, facts, onChange }: {
     <Text accessibilityRole="header" style={styles.heading}>Akıllı pazarlık & karşı teklif</Text>
     <Text style={styles.caption}>Yalnızca doğruladığınız kusurları seçin. İlanda kutu/faturadan söz edilmemesi eksik olduklarını kanıtlamaz. Tutarlar sizin belirlediğiniz sabit pazarlık varsayımlarıdır; güncel yetkili servis tarifesi değildir.</Text>
     {fields.map((field) => <Pressable key={field.key} testID={`bargain-${field.key}`} accessibilityRole="checkbox" accessibilityLabel={field.label} accessibilityState={{ checked: field.value }} aria-checked={field.value}
-      onPress={() => { onChange({ ...facts, [field.key]: !field.value }); setCopied(''); }} style={styles.option}><Text style={styles.text}>{field.value ? '☑' : '☐'} {field.label}</Text></Pressable>)}
+      onPress={() => { onChange({ ...facts, [field.key]: !field.value, ...(field.key === 'cosmeticDamage' ? { caseCondition: field.value ? 'pending' : 'fail' } as const : {}) }); setCopied(''); }} style={styles.option}><Text style={styles.text}>{field.value ? '☑' : '☐'} {field.label}</Text></Pressable>)}
     <Text style={styles.caption}>True Tone eksikliğini aşağıdaki fiziksel kontrollerden “Sorun var” olarak kaydedebilirsiniz. Ekran değişimiyle birlikte seçilse de tek ekran indirimi uygulanır.</Text>
     {bargain.deductions.map((entry) => <View key={entry.id} style={styles.row}><Text style={[styles.text, styles.grow]}>{entry.label}</Text><Text style={styles.text}>−{listingMoney(entry.amount)}</Text></View>)}
     {!bargain.deductions.length && <Text style={styles.caption}>Henüz indirim gerektiren bir kusur kaydı yok.</Text>}

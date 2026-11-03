@@ -15,7 +15,8 @@
     "test:catalog": "node --test tests/catalog.test.cjs",
     "test:listing-analysis": "node --test tests/listingAnalysisReport.test.cjs",
     "test:trust-share": "node --test tests/trustAndShare.test.cjs",
-    "test:saved-listings": "node --test tests/savedListings.test.cjs"
+    "test:saved-listings": "node --test tests/savedListings.test.cjs",
+    "test:inspection": "node --test tests/inspectionModules.test.cjs"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",

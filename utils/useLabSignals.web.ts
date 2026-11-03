@@ -12,7 +12,7 @@ export function useLabSignals() {
     epoch.current++;
     const current = context.current; context.current = null;
     if (current && current.state !== 'closed') void current.close().catch(() => {});
-    navigator.vibrate?.(0);
+    try { navigator.vibrate?.(0); } catch { /* Cancellation is best effort on unsupported browsers. */ }
   }, []);
   const stop = useCallback(() => { cleanup(); if (mounted.current) { setBusy(false); setAudioReady(false); } }, [cleanup]);
   useEffect(() => {

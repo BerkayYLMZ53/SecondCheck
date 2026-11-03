@@ -15,6 +15,7 @@ export const escapeHtml = (value: string): string => value.replace(/&/g, '&amp;'
 export function buildPdfReport(input: PdfReportInput, uniqueId: string, date = new Date()): PdfReportSnapshot {
   const { result, checked, lab, facts, details } = input;
   if (!result.matchedDevice || result.matchedDevice.releaseYear === 0) throw new Error('Rapor için gerçek bir cihaz seçin.');
+  if (!Number.isFinite(date.getTime())) throw new Error('Geçerli bir rapor tarihi gerekli.');
   if (!/^[a-z0-9-]{8,80}$/i.test(uniqueId)) throw new Error('Geçerli bir benzersiz rapor kimliği gerekli.');
   const code = `SC-${date.getUTCFullYear()}-${uniqueId.toUpperCase()}`;
   const trust: TrustAssessment = calculateTrustScore(result, checked, lab, facts);
@@ -31,7 +32,7 @@ export function buildPdfReport(input: PdfReportInput, uniqueId: string, date = n
     { name: 'Kameralar', status: facts.cameras, source: 'Kullanıcı fiziksel kontrolü' },
     { name: 'Hoparlör / ahize', status: lab.audio.status, source: lab.audio.note || 'Bağımsız ahize testi yapılmadı' },
     { name: 'Sıvı teması', status: facts.liquid, source: 'Kullanıcı fiziksel kontrolü' },
-    { name: 'Kasa durumu', status: facts.cosmeticDamage ? 'fail' : 'pending', source: facts.cosmeticDamage ? 'Kullanıcı kozmetik kusur bildirdi' : 'Kozmetik kusur bildirilmedi; sağlamlık onayı yok' },
+    { name: 'Kasa durumu', status: facts.caseCondition, source: 'Kullanıcı fiziksel kontrolü' },
   ];
   const critical = result.matchedDevice.criticalChecks.map((check, index) => `<li><b>${checked.has(index) ? '✓ Kontrol edildi' : '— Bekliyor'}</b> ${e(check)}</li>`).join('');
   const html = `<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${e(code)} | SecondCheck</title>

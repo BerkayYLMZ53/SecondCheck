@@ -50,6 +50,7 @@ const money = (amount: number): string =>
 
 interface Props {
   slotLabel: string;
+  searchLabel?: string;
   selectedProduct: Product | null;
   onSelect: (product: Product) => void;
   onClose: () => void;
@@ -93,6 +94,7 @@ const ProductRow = memo(function ProductRow({
 
 export default function ProductPickerModal({
   slotLabel,
+  searchLabel = 'Kıyaslama ürünü ara',
   selectedProduct,
   onSelect,
   onClose,
@@ -158,7 +160,7 @@ export default function ProductPickerModal({
               onChangeText={setQuery}
               placeholder="Model veya marka ara…"
               placeholderTextColor={colors.muted}
-              accessibilityLabel="Kıyaslama ürünü ara"
+              accessibilityLabel={searchLabel}
               autoCorrect={false}
               style={styles.input}
             />

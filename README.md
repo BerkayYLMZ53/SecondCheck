@@ -305,6 +305,23 @@ fiyat/TL farkını, ilan beyanlarını ve modele özel kontrol listesini göster
 İşaretlediğiniz testlerden tek bir seçilebilir/kopyalanabilir ekspertiz raporu
 oluşturabilirsiniz. Rapor kontrolleri: `npm run test:listing-analysis`.
 
+## Yüzen Cam Navigasyon
+
+`components/FloatingTabBar.tsx`, Ana Sayfa, Teşhis / Checklist, Karşılaştırma ve
+Profil sekmelerini ortak bir yüzen dock içinde sunar. Dock 68px yüksekliğinde,
+36px köşe yarıçapında ve güvenli alana ek 20px alt boşlukla konumlanır. Mobilde
+yan boşluklar 16px; geniş ekranlarda dock en fazla 520px genişliğinde ortalanır.
+Web'de `blur(24px) saturate(180%)`, iki temaya uygun yarı saydam zemin/gölge,
+kayan aktif gösterge ve dokunma animasyonu kullanılır. Azaltılmış hareket
+tercihine uyulur; native klavye açıldığında dock gizlenir.
+
+`screens/DiagnosticsScreen.tsx`, mevcut cihaz seçici, kontrol listesi ve donanım
+testlerini dördüncü sekmede yeniden kullanır. Ana Sayfa ve Teşhis sekmeleri
+gezinti sırasında bağlı kalır; girilen ilanlar ve kontrol işaretleri korunur.
+Ekranların kaydırma içeriklerinde en az 100px ve alt güvenli alan kadar ek boşluk
+bulunur. Karşılaştırma ve kaydedilmiş ilan yönlendirmeleri mevcut durum yönetimiyle
+çalışmaya devam eder.
+
 ## 🤝 Katkıda Bulunma
 
 Değişiklik öncesinde mevcut davranışı inceleyin; küçük ve anlaşılır değişikliklerle ilerleyin. Yeni ürün eklerken kontrol adımlarını uygulanabilir tutun, kronik sorunları kesin arıza iddiası olarak sunmayın ve örnek fiyatların kaynak/tarih varsayımlarını belirtin.

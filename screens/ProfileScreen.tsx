@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ChevronRight, Globe, ShieldCheck, createLucideIcon } from 'lucide-react-native';
 import type { LucideIcon } from 'lucide-react-native';
 import profileImage from '../assets/profile.png';
@@ -46,6 +46,7 @@ interface Props {
 
 export default function ProfileScreen({ navigation }: Props) {
   const { colors } = useTheme();
+  const insets = useSafeAreaInsets();
   const styles = useThemedStyles(createStyles);
   const [linkError, setLinkError] = useState<string | null>(null);
 
@@ -59,12 +60,12 @@ export default function ProfileScreen({ navigation }: Props) {
   };
 
   return (
-    <SafeAreaView edges={['top', 'left', 'right', 'bottom']} style={styles.safeArea}>
+    <SafeAreaView edges={['top', 'left', 'right']} style={styles.safeArea}>
       {navigation}
       <ScrollView
         testID="profile-screen"
         style={styles.scroll}
-        contentContainerStyle={styles.content}
+        contentContainerStyle={[styles.content, { paddingBottom: 100 + insets.bottom }]}
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.heading}>
@@ -150,7 +151,7 @@ const createStyles = (colors: ThemeColors) => {
     scroll: { flex: 1 },
     content: {
       width: '100%', maxWidth: 680, alignSelf: 'center',
-      paddingHorizontal: 20, paddingTop: 20, paddingBottom: 32, gap: 24,
+      paddingHorizontal: 20, paddingTop: 20, paddingBottom: 100, gap: 24,
     },
     heading: { gap: 8 },
     titleRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },

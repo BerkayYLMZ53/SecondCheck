@@ -584,7 +584,7 @@ export default function HomeScreen({
           ref={scrollRef}
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode={Platform.OS === 'web' ? 'none' : 'on-drag'}
-          contentContainerStyle={[styles.page, compact && styles.compactPage]}
+          contentContainerStyle={[styles.page, compact && styles.compactPage, { paddingBottom: 100 + insets.bottom }]}
         >
           <View style={styles.header}>
             <View
@@ -1140,7 +1140,7 @@ const createStyles = (COLORS: ThemeColors) =>
     page: {
       flexGrow: 1,
       padding: 20,
-      paddingBottom: 60,
+      paddingBottom: 100,
       gap: 20,
       width: '100%',
       maxWidth: 680,

@@ -326,6 +326,7 @@ export default function CompareScreen({
           contentContainerStyle={[
             styles.page,
             availableWidth < 375 && styles.compactPage,
+            { paddingBottom: 100 + insets.bottom },
           ]}
         >
           <View style={styles.header}>
@@ -575,7 +576,7 @@ const createStyles = (colors: ThemeColors) =>
     page: {
       flexGrow: 1,
       padding: 20,
-      paddingBottom: 60,
+      paddingBottom: 100,
       gap: 20,
       width: '100%',
       maxWidth: 680,

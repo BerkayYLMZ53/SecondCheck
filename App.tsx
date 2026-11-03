@@ -6,7 +6,7 @@ import {
 import type { ThemeColors } from './context/ThemeContext';
 import { StatusBar } from 'expo-status-bar';
 import { useCallback, useState } from 'react';
-import { Keyboard, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Keyboard, StyleSheet, View } from 'react-native';
 import {
   SafeAreaProvider,
   initialWindowMetrics,
@@ -14,6 +14,9 @@ import {
 import HomeScreen from './screens/HomeScreen';
 import CompareScreen from './screens/CompareScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import DiagnosticsScreen from './screens/DiagnosticsScreen';
+import FloatingTabBar from './components/FloatingTabBar';
+import type { AppTab } from './components/FloatingTabBar';
 import type { Product } from './types/product';
 import type { ComparisonPair } from './utils/comparison';
 import WebPageStyles from './components/WebPageStyles';
@@ -41,7 +44,7 @@ function Application() {
   const [showSplash, setShowSplash] = useState(true);
   const finishSplash = useCallback(() => setShowSplash(false), []);
   const styles = useThemedStyles(createStyles);
-  const [tab, setTab] = useState<'home' | 'compare' | 'profile'>('home');
+  const [tab, setTab] = useState<AppTab>('home');
   const [products, setProducts] = useState<ComparisonPair>([null, null]);
   const [comparedListings, setComparedListings] =
     useState<SavedComparisonPair | null>(null);
@@ -61,36 +64,6 @@ function Application() {
     setComparedListings([a, b]);
     setTab('compare');
   }, []);
-  const navigation = (
-    <View accessibilityRole="tablist" style={styles.tabs}>
-      {(
-        [
-          ['home', 'Değerleme & Ekspertiz'],
-          ['compare', 'Donanım Kıyasla (VS)'],
-          ['profile', 'Profil & Hakkında'],
-        ] as const
-      ).map(([id, label]) => (
-        <Pressable
-          key={id}
-          accessibilityRole="tab"
-          accessibilityLabel={label}
-          accessibilityState={{ selected: tab === id }}
-          aria-selected={tab === id}
-          onPress={() => {
-            Keyboard.dismiss();
-            setTab(id);
-          }}
-          style={({ pressed }) => [
-            styles.tab,
-            tab === id && styles.activeTab,
-            pressed && styles.pressed,
-          ]}
-        >
-          <Text style={styles.tabText}>{label}</Text>
-        </Pressable>
-      ))}
-    </View>
-  );
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <WebPageStyles />
@@ -114,15 +87,21 @@ function Application() {
             }
           >
             <HomeScreen
-              navigation={navigation}
               onCompareProducts={openComparison}
               onCompareSavedListings={openSavedComparison}
             />
           </View>
+          <View
+            style={[styles.screen, tab !== 'diagnostics' && styles.hidden]}
+            aria-hidden={tab !== 'diagnostics'}
+            accessibilityElementsHidden={tab !== 'diagnostics'}
+            importantForAccessibility={tab === 'diagnostics' ? 'auto' : 'no-hide-descendants'}
+          >
+            <DiagnosticsScreen />
+          </View>
           {tab === 'compare' && (
             <View style={styles.screen}>
               <CompareScreen
-                navigation={navigation}
                 products={products}
                 listings={comparedListings}
                 onChange={(next) => {
@@ -140,9 +119,10 @@ function Application() {
           )}
           {tab === 'profile' && (
             <View style={styles.screen}>
-              <ProfileScreen navigation={navigation} />
+              <ProfileScreen />
             </View>
           )}
+          {!showSplash && <FloatingTabBar activeTab={tab} onTabPress={(next) => { Keyboard.dismiss(); setTab(next); }} />}
         </View>
         {showSplash && <InAppSplash ready={isReady} onFinish={finishSplash} />}
       </View>
@@ -153,41 +133,6 @@ function Application() {
 const createStyles = (colors: ThemeColors) =>
   StyleSheet.create({
     root: { flex: 1, backgroundColor: colors.bg },
-    tabs: {
-      width: '100%',
-      maxWidth: 680,
-      alignSelf: 'center',
-      flexDirection: 'row',
-      gap: 8,
-      paddingHorizontal: 20,
-      paddingVertical: 12,
-    },
-    tab: {
-      flex: 1,
-      minWidth: 0,
-      minHeight: 48,
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingHorizontal: 10,
-      paddingVertical: 10,
-      borderRadius: 12,
-      backgroundColor: colors.cardBg,
-      borderWidth: 1,
-      borderColor: colors.cardBorder,
-    },
-    activeTab: {
-      backgroundColor: colors.accentSoft,
-      borderColor: colors.accent,
-    },
-    tabText: {
-      color: colors.textPrimary,
-      fontSize: 13,
-      lineHeight: 19,
-      fontWeight: '700',
-      textAlign: 'center',
-      flexShrink: 1,
-    },
     screen: { flex: 1, minWidth: 0 },
     hidden: { display: 'none' },
-    pressed: { opacity: 0.75 },
   });

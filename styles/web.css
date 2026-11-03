@@ -61,3 +61,12 @@ body {
   outline: 2px solid var(--focus-color, #38bdf8);
   outline-offset: 3px;
 }
+
+[data-testid^='dock-tab-']:focus-visible {
+  outline: 2px solid var(--focus-color, #38bdf8);
+  outline-offset: -4px;
+}
+
+[data-testid^='dock-tab-'] {
+  touch-action: manipulation;
+}

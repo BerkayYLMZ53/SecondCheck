@@ -5,6 +5,7 @@ import type { TrustAssessment } from '../types/trust';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
 import { useReducedMotion } from '../utils/useReducedMotion';
+import HolographicCard from './HolographicCard';
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 const SIZE = 196;
@@ -26,7 +27,7 @@ export default memo(function TrustScoreGauge({ assessment, active = true }: { as
   }, [assessment.score, progress, reduced, active]);
   const bandText = assessment.grade === 'A+' ? colors.successText : assessment.grade === 'B' ? colors.amber : colors.dangerText;
   return (
-    <View style={styles.panel} testID="trust-score-gauge">
+    <HolographicCard active={active}><View style={styles.panel} testID="trust-score-gauge">
       <Text style={styles.eyebrow}>GÜVENİLİRLİK & RİSK ÖZETİ</Text>
       <View style={styles.ring} accessibilityRole="progressbar" accessibilityLabel="İlan güven skoru"
         accessibilityValue={{ min: 0, max: 100, now: assessment.score, text: `${assessment.score} / 100, ${assessment.label}` }}>
@@ -48,7 +49,7 @@ export default memo(function TrustScoreGauge({ assessment, active = true }: { as
       </View>
       <Text style={styles.note}>Başlangıç 70 puan. İlan beyanı ve işaretli kontrollerden hesaplanan ön değerlendirmedir; ölçülmüş arıza olasılığı veya teknik garanti değildir.</Text>
       {assessment.provisional && <Text style={styles.note}>A+ için bütün kritik kontroller ve pil/parça bilgileri tamamlanmalıdır.</Text>}
-    </View>
+    </View></HolographicCard>
   );
 });
 

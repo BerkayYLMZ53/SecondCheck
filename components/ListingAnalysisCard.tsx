@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
-import { CheckSquare, Copy, FileCheck, Mic, RotateCcw, ScanLine, Share2, ShieldCheck, Square } from 'lucide-react-native';
+import { CheckSquare, ClipboardCheck, Copy, FileCheck, Mic, RotateCcw, ScanLine, Share2, ShieldCheck, Square, TriangleAlert } from 'lucide-react-native';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
 import type { ParsedListingResult } from '../types/listing';
@@ -21,6 +21,16 @@ import ExportReportButton from './ExportReportButton';
 import { emptyLabResults, initialInspectionFacts, LAB_IDS, LAB_LABELS, STATUS_LABELS } from '../utils/inspection';
 import type { InspectionFacts, LabResults } from '../types/inspection';
 import { applyVisualInspection, visualScoreLabel } from '../utils/visualInspection';
+import LiquidSegmentedControl from './LiquidSegmentedControl';
+import type { LiquidSegment } from './LiquidSegmentedControl';
+
+type AnalysisSection = 'overview' | 'issues' | 'tests' | 'report';
+const SECTIONS: readonly LiquidSegment<AnalysisSection>[] = [
+  { value: 'overview', label: 'Genel Bakış', icon: ShieldCheck },
+  { value: 'issues', label: 'Kronik Sorunlar', icon: TriangleAlert },
+  { value: 'tests', label: 'Testler', icon: ClipboardCheck },
+  { value: 'report', label: 'Rapor', icon: FileCheck },
+];
 
 const VisualDefectScannerModal = lazy(() => import('./VisualDefectScannerModal'));
 const VoiceFieldAssistantModal = lazy(() => import('./VoiceFieldAssistantModal'));
@@ -47,6 +57,7 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
   const [bargainingOpen, setBargainingOpen] = useState(false);
   const [visualOpen, setVisualOpen] = useState(false);
   const [fieldOpen, setFieldOpen] = useState(false);
+  const [section, setSection] = useState<AnalysisSection>('overview');
   const [lab, setLab] = useState<LabResults>(emptyLabResults);
   const [facts, setFacts] = useState<InspectionFacts>(() => initialInspectionFacts(result, title));
   const assessment = useMemo(() => calculateTrustScore(result, checked, lab, facts), [result, checked, lab, facts]);
@@ -109,7 +120,10 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
         {device.releaseYear === 0 && <Text style={[styles.chip, styles.warningChip]}>Konsept kaydı</Text>}
       </View>
 
-      <TrustScoreGauge assessment={assessment} active={active && !shareSnapshot && !labOpen && !visualOpen && !fieldOpen} />
+      <LiquidSegmentedControl options={SECTIONS} value={section} onChange={setSection} active={active && !shareSnapshot && !labOpen && !visualOpen && !fieldOpen} testID="analysis-segments" />
+
+      <View testID="analysis-panel-overview" style={[styles.panelContent, section !== 'overview' && styles.hiddenPanel]} aria-hidden={section !== 'overview'} accessibilityElementsHidden={section !== 'overview'} importantForAccessibility={section === 'overview' ? 'auto' : 'no-hide-descendants'}>
+      <TrustScoreGauge assessment={assessment} active={active && section === 'overview' && !shareSnapshot && !labOpen && !visualOpen && !fieldOpen} />
 
       <View style={styles.pricePanel}>
         <View style={styles.metrics}>
@@ -149,7 +163,24 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
         <Text style={styles.caption}>Bilgi yokluğu, kutunun veya garantinin kesin olarak bulunmadığı anlamına gelmez. İlan beyanlarını satıcıyla doğrulayın.</Text>
       </View>
 
-      {device.releaseYear > 0 && <DeviceTeardownView device={device} active={active && !shareSnapshot && !labOpen && !visualOpen && !fieldOpen} />}
+      </View>
+
+      <View testID="analysis-panel-issues" style={[styles.panelContent, section !== 'issues' && styles.hiddenPanel]} aria-hidden={section !== 'issues'} accessibilityElementsHidden={section !== 'issues'} importantForAccessibility={section === 'issues' ? 'auto' : 'no-hide-descendants'}>
+      <View style={styles.section}>
+        <Text accessibilityRole="header" style={styles.sectionTitle}>Modele özel kronik sorunlar</Text>
+        <Text style={styles.caption}>Üretici kayıtları ve satın alırken kontrol edilmesi gereken riskler.</Text>
+        {device.chronicIssues.map((issue, index) => (
+          <View key={`${index}:${issue}`} style={styles.bulletRow}>
+            <Text style={styles.bullet}>•</Text><Text style={[styles.body, styles.grow]}>{issue}</Text>
+          </View>
+        ))}
+        {device.chronicIssues.length === 0 && <Text style={styles.body}>Bu modele ait kayıt bulunmuyor.</Text>}
+      </View>
+
+      </View>
+
+      <View testID="analysis-panel-tests" style={[styles.panelContent, section !== 'tests' && styles.hiddenPanel]} aria-hidden={section !== 'tests'} accessibilityElementsHidden={section !== 'tests'} importantForAccessibility={section === 'tests' ? 'auto' : 'no-hide-descendants'}>
+      {device.releaseYear > 0 && <DeviceTeardownView device={device} active={active && section === 'tests' && !shareSnapshot && !labOpen && !visualOpen && !fieldOpen} />}
 
       {device.releaseYear > 0 && <View style={styles.section}>
         <Pressable testID="listing-open-field-assistant" accessibilityRole="button" onPress={() => setFieldOpen(true)} style={styles.shareButton}>
@@ -196,17 +227,6 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
       </View>}
 
       <View style={styles.section}>
-        <Text accessibilityRole="header" style={styles.sectionTitle}>Modele özel kronik sorunlar</Text>
-        <Text style={styles.caption}>Üretici kayıtları ve satın alırken kontrol edilmesi gereken riskler.</Text>
-        {device.chronicIssues.map((issue, index) => (
-          <View key={`${index}:${issue}`} style={styles.bulletRow}>
-            <Text style={styles.bullet}>•</Text><Text style={[styles.body, styles.grow]}>{issue}</Text>
-          </View>
-        ))}
-        {device.chronicIssues.length === 0 && <Text style={styles.body}>Bu modele ait kayıt bulunmuyor.</Text>}
-      </View>
-
-      <View style={styles.section}>
         <View style={styles.sectionHeader}>
           <Text accessibilityRole="header" style={[styles.sectionTitle, styles.grow]}>Kritik kontrol listesi</Text>
           <Pressable accessibilityRole="button" accessibilityLabel="İlan kontrol listesini sıfırla" disabled={completed === 0}
@@ -233,6 +253,9 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
         <Text style={styles.caption}>Yalnızca yerinde kontrol ettiğiniz maddeleri işaretleyin. İşaretsiz maddeler arıza olarak değerlendirilmez.</Text>
       </View>
 
+      </View>
+
+      <View testID="analysis-panel-report" style={[styles.panelContent, section !== 'report' && styles.hiddenPanel]} aria-hidden={section !== 'report'} accessibilityElementsHidden={section !== 'report'} importantForAccessibility={section === 'report' ? 'auto' : 'no-hide-descendants'}>
       {device.releaseYear > 0 && <ExportReportButton result={result} checked={checked} lab={lab} facts={facts} onFactsChange={(value) => { setFacts(value); setReport(null); }} />}
 
       <Pressable testID="listing-create-report" accessibilityRole="button" onPress={() => { setReport(buildListingAnalysisReport(result, checked, title, new Date(), lab, facts)); setCopyState('idle'); }}
@@ -246,14 +269,6 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
         <Share2 size={20} color={colors.cyan} /><Text style={styles.linkText}>Ekspertiz Kartı Paylaş</Text>
       </Pressable>
       {completed !== total && <Text style={styles.caption}>Story veya kare paylaşım kartı için {total - completed} kritik kontrol daha tamamlayın.</Text>}
-      {shareSnapshot && <ShareableReportModal snapshot={shareSnapshot} onClose={() => setShareSnapshot(null)} />}
-      {labOpen && active && <DiagnosticsLabModal initialResults={lab} onClose={() => setLabOpen(false)} onComplete={(value) => { setLab(value); setLabOpen(false); setReport(null); setCopyState('idle'); }} />}
-      {visualOpen && active && <Suspense fallback={<Text style={styles.caption}>Kamera modülü hazırlanıyor…</Text>}><VisualDefectScannerModal deviceName={catalogDeviceName(result)} onClose={() => setVisualOpen(false)} onComplete={(value) => {
-        setFacts((current) => applyVisualInspection(current, value)); setVisualOpen(false); setReport(null); setCopyState('idle');
-      }} /></Suspense>}
-      {fieldOpen && active && <Suspense fallback={<Text style={styles.caption}>Sesli saha asistanı hazırlanıyor…</Text>}><VoiceFieldAssistantModal device={device} onClose={() => setFieldOpen(false)} onComplete={(value) => {
-        setFacts((current) => ({ ...current, fieldInspection: value })); setFieldOpen(false); setReport(null); setCopyState('idle');
-      }} /></Suspense>}
       {report && (
         <View style={styles.report} testID="listing-analysis-report">
           <View style={styles.sectionHeader}>
@@ -267,12 +282,24 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
           <Text selectable style={styles.body}>{report.plainText}</Text>
           {copyState === 'error' && <Text style={styles.warningText} accessibilityRole="alert">Kopyalama tamamlanamadı. Rapor metnini seçerek kopyalayabilirsiniz.</Text>}
         </View>
-      )}
+      )}      </View>
+
+      {shareSnapshot && <ShareableReportModal snapshot={shareSnapshot} onClose={() => setShareSnapshot(null)} />}
+      {labOpen && active && <DiagnosticsLabModal initialResults={lab} onClose={() => setLabOpen(false)} onComplete={(value) => { setLab(value); setLabOpen(false); setReport(null); setCopyState('idle'); }} />}
+      {visualOpen && active && <Suspense fallback={<Text style={styles.caption}>Kamera modülü hazırlanıyor…</Text>}><VisualDefectScannerModal deviceName={catalogDeviceName(result)} onClose={() => setVisualOpen(false)} onComplete={(value) => {
+        setFacts((current) => applyVisualInspection(current, value)); setVisualOpen(false); setReport(null); setCopyState('idle');
+      }} /></Suspense>}
+      {fieldOpen && active && <Suspense fallback={<Text style={styles.caption}>Sesli saha asistanı hazırlanıyor…</Text>}><VoiceFieldAssistantModal device={device} onClose={() => setFieldOpen(false)} onComplete={(value) => {
+        setFacts((current) => ({ ...current, fieldInspection: value })); setFieldOpen(false); setReport(null); setCopyState('idle');
+      }} /></Suspense>}
+
     </View>
   );
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
+  panelContent: { gap: 22, minWidth: 0 },
+  hiddenPanel: { display: 'none' },
   card: { width: '100%', minWidth: 0, gap: 22, padding: 20, borderRadius: 22, borderWidth: 1, borderColor: colors.cardBorder, backgroundColor: colors.cardBg },
   headingRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   headingIcon: { width: 48, height: 48, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.accentSoft },

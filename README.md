@@ -367,3 +367,7 @@ Altı cihaz kontrolünü Türkçe sesli yönerge ve büyük geçti/kaldı butonl
 ### Yaylanan ekspertiz çekmecesi
 
 İlan analizi, sürüklenebilir buzlu cam alt çekmecede açılır. Durum hapı yükleme ve hazır bilgisini gösterir; kapatıp açınca kontrol sonuçları korunur. [Yerleşim ve etkileşim kuralları](docs/sheet-presentation.md).
+
+### Holografik skor ve sıvı bölüm seçimi
+
+Güven paneli dokunmayla hafifçe eğilir ve çapraz ışık yansıması gösterir. Ekspertiz bölümleri yaylanan aktif kapsülle seçilir; kontrol ve rapor bilgileri geçişlerde korunur. [Etkileşim ve performans yaklaşımı](docs/visual-microinteractions.md).

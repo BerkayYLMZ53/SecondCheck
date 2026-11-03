@@ -18,7 +18,7 @@ const BASE_PALETTES = {
     accent: '#3B82F6',
   },
   light: {
-    bg: '#F1F5F9',
+    bg: '#FFFFFF',
     cardBg: '#FFFFFF',
     cardBorder: '#E2E8F0',
     textPrimary: '#0F172A',

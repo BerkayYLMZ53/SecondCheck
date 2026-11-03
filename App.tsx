@@ -87,6 +87,7 @@ function Application() {
             }
           >
             <HomeScreen
+              active={tab === 'home'}
               onCompareProducts={openComparison}
               onCompareSavedListings={openSavedComparison}
             />
@@ -97,7 +98,7 @@ function Application() {
             accessibilityElementsHidden={tab !== 'diagnostics'}
             importantForAccessibility={tab === 'diagnostics' ? 'auto' : 'no-hide-descendants'}
           >
-            <DiagnosticsScreen />
+            <DiagnosticsScreen active={tab === 'diagnostics'} />
           </View>
           {tab === 'compare' && (
             <View style={styles.screen}>

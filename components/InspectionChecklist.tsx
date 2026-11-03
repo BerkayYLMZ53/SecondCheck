@@ -5,6 +5,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { CheckSquare, RotateCcw, Square } from 'lucide-react-native';
 import type { Product } from '../types/product';
 import { useDetailStyles } from './detailStyles';
+import { playHaptic } from '../utils/haptics';
 
 interface Props {
   product: Product;
@@ -33,6 +34,7 @@ export default function InspectionChecklist({
   }, [product.id, checkedIds, onProgressChange]);
 
   function toggle(id: string) {
+    if (!checkedIds.has(id)) void playHaptic('light');
     setCheckedIds((previous) => {
       const next = new Set(previous);
       if (next.has(id)) next.delete(id);

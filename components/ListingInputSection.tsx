@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Keyboard, Pressable, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
+import { Animated, Keyboard, Platform, Pressable, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
 import { ClipboardPaste, SearchCheck } from 'lucide-react-native';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
@@ -7,14 +7,17 @@ import { parseListingInput } from '../utils/listingInput';
 import type { ListingInputResult } from '../utils/listingInput';
 import type { ParsedListing } from '../utils/listingParser';
 import ListingAnalysisCard from './ListingAnalysisCard';
+import ListingSkeleton from './ListingSkeleton';
+import { useReducedMotion } from '../utils/useReducedMotion';
 
 interface Props {
   onParsed?: (listing: ParsedListing, title: string) => void;
   /** Full HTTPS address for native; same-origin /api/parse-listing on web. */
   apiEndpoint?: string;
+  active?: boolean;
 }
 
-export default function ListingInputSection({ onParsed, apiEndpoint }: Props) {
+export default function ListingInputSection({ onParsed, apiEndpoint, active = true }: Props) {
   const { colors } = useTheme();
   const styles = useThemedStyles(createStyles);
   const { width } = useWindowDimensions();
@@ -39,7 +42,10 @@ export default function ListingInputSection({ onParsed, apiEndpoint }: Props) {
     setAnalysis(null);
     Keyboard.dismiss();
     try {
-      const result = await parseListingInput(text, apiEndpoint, activeController.signal);
+      const [result] = await Promise.all([
+        parseListingInput(text, apiEndpoint, activeController.signal),
+        new Promise<void>((resolve) => setTimeout(resolve, 350)),
+      ]);
       if (id !== requestId.current) return;
       setAnalysis(result);
       setVersion((previous) => previous + 1);
@@ -80,7 +86,7 @@ export default function ListingInputSection({ onParsed, apiEndpoint }: Props) {
           <Pressable testID="parse-listing" accessibilityRole="button" accessibilityLabel="İlanı analiz et ve doğrula"
             accessibilityState={{ disabled, busy: loading }} disabled={disabled} onPress={() => { void analyze(); }}
             style={({ pressed }) => [styles.analyzeButton, width < 560 && styles.fullButton, disabled && styles.disabled, pressed && styles.pressed]}>
-            {loading ? <ActivityIndicator size="small" color={colors.onAccent} /> : <SearchCheck size={20} color={colors.onAccent} />}
+            <SearchCheck size={20} color={colors.onAccent} />
             <Text style={styles.buttonText}>{loading ? 'Analiz ediliyor…' : 'Analiz Et / Doğrula'}</Text>
           </Pressable>
         </View>
@@ -89,9 +95,10 @@ export default function ListingInputSection({ onParsed, apiEndpoint }: Props) {
         {error && <View style={styles.errorBox}><Text accessibilityRole="alert" style={styles.errorText}>{error}</Text></View>}
       </View>
 
+      {loading && <ListingSkeleton active={active} />}
       {analysis && listing && (
         listing.matchedDevice
-          ? <ListingAnalysisCard key={version} result={listing} title={analysis.title} />
+          ? <AnalysisReveal key={version}><ListingAnalysisCard result={listing} title={analysis.title} active={active} /></AnalysisReveal>
           : <View style={styles.inputCard} testID="listing-unmatched-result" accessibilityLiveRegion="polite">
               <Text style={styles.resultHeading}>{listing.product ? listing.product.name : 'Cihaz eşleştirilemedi'}</Text>
               {listing.price !== null && <Text style={styles.body}>İlan fiyatı: {listing.price.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} TL</Text>}
@@ -102,6 +109,17 @@ export default function ListingInputSection({ onParsed, apiEndpoint }: Props) {
       )}
     </View>
   );
+}
+
+function AnalysisReveal({ children }: { children: React.ReactNode }) {
+  const reduced = useReducedMotion();
+  const [opacity] = useState(() => new Animated.Value(0));
+  useEffect(() => {
+    const animation = Animated.timing(opacity, { toValue: 1, duration: reduced ? 0 : 280, useNativeDriver: Platform.OS !== 'web' });
+    animation.start();
+    return () => animation.stop();
+  }, [opacity, reduced]);
+  return <Animated.View style={{ opacity, transform: [{ translateY: opacity.interpolate({ inputRange: [0, 1], outputRange: [8, 0] }) }] }}>{children}</Animated.View>;
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({

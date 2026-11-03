@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { CheckSquare, Copy, FileCheck, RotateCcw, ShieldCheck, Square } from 'lucide-react-native';
+import { CheckSquare, Copy, FileCheck, RotateCcw, Share2, ShieldCheck, Square } from 'lucide-react-native';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
 import type { ParsedListingResult } from '../types/listing';
@@ -8,10 +8,18 @@ import { compareDevicePrice } from '../utils/deviceListingParser';
 import { buildListingAnalysisReport, catalogDeviceName, listingMoney } from '../utils/listingAnalysisReport';
 import type { ListingAnalysisReport } from '../utils/listingAnalysisReport';
 import { copyReportText } from '../utils/clipboard';
+import { calculateTrustScore } from '../utils/trustScore';
+import { playHaptic } from '../utils/haptics';
+import { createShareableReport } from '../utils/shareableReport';
+import type { ShareableReportSnapshot } from '../utils/shareableReport';
+import TrustScoreGauge from './TrustScoreGauge';
+import DeviceTeardownView from './DeviceTeardownView';
+import ShareableReportModal from './ShareableReportModal';
 
 interface Props {
   result: ParsedListingResult;
   title?: string;
+  active?: boolean;
 }
 
 export default function ListingAnalysisCard(props: Props) {
@@ -19,15 +27,25 @@ export default function ListingAnalysisCard(props: Props) {
   return <AnalysisDetails key={JSON.stringify([props.result, props.title])} {...props} />;
 }
 
-function AnalysisDetails({ result, title = '' }: Props) {
+function AnalysisDetails({ result, title = '', active = true }: Props) {
   const { colors } = useTheme();
   const styles = useThemedStyles(createStyles);
   const [checked, setChecked] = useState<ReadonlySet<number>>(() => new Set());
   const [report, setReport] = useState<ListingAnalysisReport | null>(null);
   const [copyState, setCopyState] = useState<'idle' | 'copying' | 'copied' | 'error'>('idle');
+  const [shareSnapshot, setShareSnapshot] = useState<ShareableReportSnapshot | null>(null);
+  const assessment = useMemo(() => calculateTrustScore(result, checked), [result, checked]);
+  const lastFeedback = useRef('neutral');
   const device = result.matchedDevice;
-  if (!device) return null;
   const comparison = compareDevicePrice(device, result.detectedPrice);
+  const feedback = comparison?.status === 'PAHALI' || (assessment.available && (assessment.score < 65 || result.flags.hasChanges || (result.detectedBattery !== undefined && result.detectedBattery < 80)))
+    ? 'warning' : assessment.available && assessment.score >= 85 ? 'success' : 'neutral';
+  useEffect(() => {
+    if (!active) return;
+    if (feedback !== lastFeedback.current && feedback !== 'neutral') void playHaptic(feedback);
+    lastFeedback.current = feedback;
+  }, [feedback, active]);
+  if (!device) return null;
   const total = device.criticalChecks.length;
   const completed = device.criticalChecks.filter((_, index) => checked.has(index)).length;
   const average = device.estimatedPriceBand.avgTry;
@@ -40,6 +58,7 @@ function AnalysisDetails({ result, title = '' }: Props) {
   const batteryWarning = result.detectedBattery !== undefined && result.detectedBattery < 80;
 
   function toggle(index: number) {
+    if (!checked.has(index)) void playHaptic('light');
     setChecked((previous) => {
       const next = new Set(previous);
       if (next.has(index)) next.delete(index); else next.add(index);
@@ -73,6 +92,8 @@ function AnalysisDetails({ result, title = '' }: Props) {
         )}
         {device.releaseYear === 0 && <Text style={[styles.chip, styles.warningChip]}>Konsept kaydı</Text>}
       </View>
+
+      <TrustScoreGauge assessment={assessment} active={active && !shareSnapshot} />
 
       <View style={styles.pricePanel}>
         <View style={styles.metrics}>
@@ -111,6 +132,8 @@ function AnalysisDetails({ result, title = '' }: Props) {
         {result.flags.changeNotes.map((note) => <Text key={note} style={styles.warningText}>• {note}</Text>)}
         <Text style={styles.caption}>Bilgi yokluğu, kutunun veya garantinin kesin olarak bulunmadığı anlamına gelmez. İlan beyanlarını satıcıyla doğrulayın.</Text>
       </View>
+
+      {device.releaseYear > 0 && <DeviceTeardownView device={device} active={active && !shareSnapshot} />}
 
       <View style={styles.section}>
         <Text accessibilityRole="header" style={styles.sectionTitle}>Modele özel kronik sorunlar</Text>
@@ -154,6 +177,14 @@ function AnalysisDetails({ result, title = '' }: Props) {
         style={({ pressed }) => [styles.reportButton, pressed && styles.pressed]}>
         <FileCheck size={20} color={colors.onAccent} /><Text style={styles.buttonText}>Ekspertiz Raporu Oluştur</Text>
       </Pressable>
+      <Pressable testID="listing-share-card" accessibilityRole="button" accessibilityState={{ disabled: completed !== total || total === 0 || !assessment.available }}
+        disabled={completed !== total || total === 0 || !assessment.available}
+        onPress={() => setShareSnapshot(createShareableReport(result, checked, title))}
+        style={({ pressed }) => [styles.shareButton, (completed !== total || total === 0 || !assessment.available) && styles.disabled, pressed && styles.pressed]}>
+        <Share2 size={20} color={colors.cyan} /><Text style={styles.linkText}>Ekspertiz Kartı Paylaş</Text>
+      </Pressable>
+      {completed !== total && <Text style={styles.caption}>Story veya kare paylaşım kartı için {total - completed} kritik kontrol daha tamamlayın.</Text>}
+      {shareSnapshot && <ShareableReportModal snapshot={shareSnapshot} onClose={() => setShareSnapshot(null)} />}
       {report && (
         <View style={styles.report} testID="listing-analysis-report">
           <View style={styles.sectionHeader}>
@@ -207,6 +238,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   linkText: { color: colors.cyan, fontSize: 12, lineHeight: 18, fontWeight: '700' },
   reportButton: { flexDirection: 'row', flexWrap: 'wrap', minHeight: 50, justifyContent: 'center', alignItems: 'center', gap: 9, paddingHorizontal: 14, paddingVertical: 13, borderRadius: 13, backgroundColor: colors.accent },
   buttonText: { color: colors.onAccent, fontSize: 14, lineHeight: 21, fontWeight: '700', flexShrink: 1 },
+  shareButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 9, padding: 14, minHeight: 50, borderRadius: 13, backgroundColor: colors.accentSoft },
   report: { gap: 12, padding: 16, borderRadius: 14, borderWidth: 1, borderColor: colors.cardBorder, backgroundColor: colors.inset },
   disabled: { opacity: 0.45 },
   pressed: { opacity: 0.75 },

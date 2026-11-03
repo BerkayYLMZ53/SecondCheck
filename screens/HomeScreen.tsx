@@ -271,11 +271,13 @@ function PriceGauge({ valuation }: { valuation: Valuation }) {
 }
 
 interface HomeScreenProps {
+  active?: boolean;
   navigation?: ReactNode;
   onCompareProducts?: (a: Product, b: Product) => void;
   onCompareSavedListings?: (a: SavedItem, b: SavedItem) => void;
 }
 export default function HomeScreen({
+  active = true,
   navigation,
   onCompareProducts,
   onCompareSavedListings,
@@ -636,6 +638,7 @@ export default function HomeScreen({
           </View>
 
           <ListingInputSection
+            active={active}
             key={parserVersion}
             onParsed={applyParsedListing}
           />

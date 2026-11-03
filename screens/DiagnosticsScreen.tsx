@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ChevronDown, ClipboardCheck, Stethoscope } from 'lucide-react-native';
@@ -9,15 +9,18 @@ import ThemeToggle from '../components/ThemeToggle';
 import ProductPickerModal from '../components/ProductPickerModal';
 import InspectionChecklist from '../components/InspectionChecklist';
 import HardwareDiagnosticsModal from '../components/HardwareDiagnosticsModal';
+import DeviceTeardownView from '../components/DeviceTeardownView';
+import { parseDeviceListing } from '../utils/deviceListingParser';
 
 /** Reuse the existing picker, inspection and hardware tests in the fourth tab. */
-export default function DiagnosticsScreen() {
+export default function DiagnosticsScreen({ active = true }: { active?: boolean }) {
   const { colors } = useTheme();
   const styles = useThemedStyles(createStyles);
   const insets = useSafeAreaInsets();
   const [product, setProduct] = useState<Product | null>(null);
   const [pickerOpen, setPickerOpen] = useState(false);
   const [diagnosticsOpen, setDiagnosticsOpen] = useState(false);
+  const device = useMemo(() => product?.category === 'phone' ? parseDeviceListing(product.name).matchedDevice : null, [product]);
 
   return (
     <SafeAreaView edges={['top', 'left', 'right']} style={styles.root}>
@@ -40,6 +43,7 @@ export default function DiagnosticsScreen() {
           style={({ pressed }) => [styles.testButton, pressed && styles.pressed]}>
           <Stethoscope size={22} color={colors.onAccent} /><Text style={styles.buttonText}>Donanımı Yerinde Test Et</Text>
         </Pressable>
+        {device && <View style={styles.card}><DeviceTeardownView device={device} active={active && !diagnosticsOpen && !pickerOpen} /></View>}
         {product ? <InspectionChecklist key={product.id} product={product} /> : (
           <View style={styles.card}><Text style={styles.productName}>Kontrol listeniz burada görünecek</Text>
             <Text style={styles.body}>Modele özel kontroller için yukarıdan bir cihaz seçin. İlanınıza özel telefon ekspertizini Ana Sayfa’daki ilan analiziyle hazırlayabilirsiniz.</Text></View>

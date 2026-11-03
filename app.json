@@ -25,7 +25,9 @@
         }
       ]
     },
-    "android": { "softwareKeyboardLayoutMode": "resize" },
+    "android": {
+      "softwareKeyboardLayoutMode": "resize"
+    },
     "plugins": [
       [
         "expo-audio",
@@ -34,6 +36,18 @@
           "recordAudioAndroid": true,
           "enableBackgroundPlayback": false,
           "enableBackgroundRecording": false
+        }
+      ],
+      "expo-sharing",
+      [
+        "expo-media-library",
+        {
+          "photosPermission": false,
+          "savePhotosPermission": "SecondCheck ekspertiz kartlarını galerinize kaydetmenize izin verin.",
+          "granularPermissions": [
+            "photo"
+          ],
+          "isAccessMediaLocationEnabled": false
         }
       ]
     ]

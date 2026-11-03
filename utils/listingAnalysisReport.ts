@@ -1,5 +1,6 @@
 import type { ParsedListingResult } from '../types/listing';
 import { compareDevicePrice } from './deviceListingParser';
+import { calculateTrustScore } from './trustScore';
 
 export interface ListingAnalysisReport {
   createdAt: string;
@@ -37,6 +38,7 @@ export function buildListingAnalysisReport(
   const dateLabel = createdAt.toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul' });
   const average = device.estimatedPriceBand.avgTry;
   const { flags } = result;
+  const trust = calculateTrustScore(result, checkedIndices);
   const comparison = compareDevicePrice(device, result.detectedPrice);
   const status = comparison?.status;
   const verdict = status === 'FIRSAT' ? 'Fırsat Fiyat' : status === 'PAHALI' ? 'Piyasa Üstü'
@@ -52,6 +54,8 @@ export function buildListingAnalysisReport(
     `Piyasa Ortalaması (tahmini katalog referansı): ${average > 0 ? listingMoney(average) : 'Referans yok'}`,
     `Durum: ${verdict}`,
     ...(comparison ? [`Referans farkı: %${comparison.differencePercentage.toLocaleString('tr-TR', { maximumFractionDigits: 2 })}`] : []),
+    '', `GÜVEN SKORU: ${trust.available ? `${trust.score}/100 • ${trust.grade}` : 'Veri yetersiz'}`,
+    ...trust.adjustments.map((item) => `${item.points > 0 ? '+' : ''}${item.points} ${item.label}`),
     '', 'İLAN BEYANLARI',
     `Kutu: ${flags.hasBox ? 'Var' : 'Yok / belirtilmedi'}`,
     `Fatura: ${flags.hasInvoice ? 'Var' : 'Yok / belirtilmedi'}`,

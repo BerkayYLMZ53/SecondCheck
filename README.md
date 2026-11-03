@@ -305,6 +305,18 @@ fiyat/TL farkını, ilan beyanlarını ve modele özel kontrol listesini göster
 İşaretlediğiniz testlerden tek bir seçilebilir/kopyalanabilir ekspertiz raporu
 oluşturabilirsiniz. Rapor kontrolleri: `npm run test:listing-analysis`.
 
+## Güven Skoru & Paylaşılabilir Ekspertiz
+
+İlan analizinde animasyonlu güven halkası, modele uyarlanan dört noktalı test
+haritası ve shimmer yükleme görünümü bulunur. Kritik kontrolleri tamamladıktan
+sonra 9:16 Story veya 1:1 kare ekspertiz kartını PNG olarak kaydedebilir ya da
+desteklenen platformlarda paylaşabilirsiniz. Açık/koyu tema, azaltılmış hareket
+ve desteklenen donanımda haptik geri bildirim uygulanır.
+
+Puanın açıklanabilir hesaplaması, paylaşım koşulları, native izinler ve performans
+ayrıntıları için [SaaS UX belgesine](docs/saas-ux.md) bakın.
+Ek kontroller: `npm run test:trust-share`.
+
 ## Yüzen Cam Navigasyon
 
 `components/FloatingTabBar.tsx`, Ana Sayfa, Teşhis / Checklist, Karşılaştırma ve

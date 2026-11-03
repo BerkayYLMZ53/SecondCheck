@@ -355,3 +355,7 @@ Bu depoda henüz bir `LICENSE` dosyası tanımlanmamıştır. Yeniden kullanım 
 ### Canlı laboratuvar, pazarlık ve PDF
 
 İlan analiz kartından ekran, dokunmatik, ses ve titreşim laboratuvarını açabilir; sonuçları kontrol listesine aktarabilir; kusur bazlı karşı teklif ve kopyalanabilir satıcı mesajı oluşturabilirsiniz. PDF raporu web üzerinde A4 yazdırma/PDF kaydetme, iOS ve Android üzerinde PDF üretimi ve sistem paylaşımı sağlar. Kurallar ve platform sınırları için [modül belgelerine](docs/inspection-lab.md) bakın.
+
+### Fotoğraflı şasi ve kasa incelemesi
+
+Kamera ile Şasi & Kasa Analizi; ayarlanabilir neon hizalama kılavuzu, yerel fotoğraf yükleme, dört kondisyon puanı ve ekspertiz/rapor entegrasyonu sunar. Değerlendirme kullanıcı gözlemidir; otomatik AI kusur tespiti yapılmaz. [Akış, puanlama ve fotoğraf kuralları](docs/visual-inspection.md).

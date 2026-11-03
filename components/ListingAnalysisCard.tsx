@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { CheckSquare, Copy, FileCheck, RotateCcw, Share2, ShieldCheck, Square } from 'lucide-react-native';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { CheckSquare, Copy, FileCheck, RotateCcw, ScanLine, Share2, ShieldCheck, Square } from 'lucide-react-native';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
 import type { ParsedListingResult } from '../types/listing';
@@ -20,6 +20,9 @@ import BargainingAssistant from './BargainingAssistant';
 import ExportReportButton from './ExportReportButton';
 import { emptyLabResults, initialInspectionFacts, LAB_IDS, LAB_LABELS, STATUS_LABELS } from '../utils/inspection';
 import type { InspectionFacts, LabResults } from '../types/inspection';
+import { applyVisualInspection, visualScoreLabel } from '../utils/visualInspection';
+
+const VisualDefectScannerModal = lazy(() => import('./VisualDefectScannerModal'));
 
 interface Props {
   result: ParsedListingResult;
@@ -41,6 +44,7 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
   const [shareSnapshot, setShareSnapshot] = useState<ShareableReportSnapshot | null>(null);
   const [labOpen, setLabOpen] = useState(false);
   const [bargainingOpen, setBargainingOpen] = useState(false);
+  const [visualOpen, setVisualOpen] = useState(false);
   const [lab, setLab] = useState<LabResults>(emptyLabResults);
   const [facts, setFacts] = useState<InspectionFacts>(() => initialInspectionFacts(result, title));
   const assessment = useMemo(() => calculateTrustScore(result, checked, lab, facts), [result, checked, lab, facts]);
@@ -48,7 +52,7 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
   const device = result.matchedDevice;
   const comparison = compareDevicePrice(device, result.detectedPrice);
   const feedback = comparison?.status === 'PAHALI' || (assessment.available && (assessment.score < 65 || result.flags.hasChanges || (result.detectedBattery !== undefined && result.detectedBattery < 80)))
-    || LAB_IDS.some((id) => lab[id].status === 'fail') || [facts.trueTone, facts.biometrics, facts.cameras, facts.liquid].includes('fail')
+    || facts.cosmeticDamage || LAB_IDS.some((id) => lab[id].status === 'fail') || [facts.trueTone, facts.biometrics, facts.cameras, facts.liquid].includes('fail')
     ? 'warning' : assessment.available && assessment.score >= 85 ? 'success' : 'neutral';
   useEffect(() => {
     if (!active) return;
@@ -103,7 +107,7 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
         {device.releaseYear === 0 && <Text style={[styles.chip, styles.warningChip]}>Konsept kaydı</Text>}
       </View>
 
-      <TrustScoreGauge assessment={assessment} active={active && !shareSnapshot && !labOpen} />
+      <TrustScoreGauge assessment={assessment} active={active && !shareSnapshot && !labOpen && !visualOpen} />
 
       <View style={styles.pricePanel}>
         <View style={styles.metrics}>
@@ -143,7 +147,23 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
         <Text style={styles.caption}>Bilgi yokluğu, kutunun veya garantinin kesin olarak bulunmadığı anlamına gelmez. İlan beyanlarını satıcıyla doğrulayın.</Text>
       </View>
 
-      {device.releaseYear > 0 && <DeviceTeardownView device={device} active={active && !shareSnapshot && !labOpen} />}
+      {device.releaseYear > 0 && <DeviceTeardownView device={device} active={active && !shareSnapshot && !labOpen && !visualOpen} />}
+
+      {device.releaseYear > 0 && <View style={styles.section}>
+        <Pressable testID="listing-open-visual-scanner" accessibilityRole="button" onPress={() => setVisualOpen(true)} style={styles.shareButton}>
+          <ScanLine size={21} color={colors.cyan} /><Text style={[styles.linkText, styles.grow]}>📐 Kamera ile Şasi & Kasa Analizi</Text>
+        </Pressable>
+        {facts.visualInspection && <View style={styles.report} testID="visual-inspection-summary">
+          <Text accessibilityRole="header" style={styles.sectionTitle}>Kasa Kondisyonu: {visualScoreLabel(facts.visualInspection)}</Text>
+          <Text style={styles.body}>{facts.visualInspection.chassis === 'bent' ? 'Şaside eğrilik / kasa açıklığı bildirildi.' : 'Şasi düz olarak onaylandı.'}</Text>
+          <View style={styles.visualPhotos}>{(['chassis', 'corners'] as const).map((target) => <View key={target} style={styles.grow}>
+            <Image source={{ uri: facts.visualInspection!.photos[target].dataUri }} accessibilityLabel={target === 'chassis' ? 'Şasi tespit fotoğrafı' : 'Köşe tespit fotoğrafı'} resizeMode="contain" style={styles.visualPhoto} />
+            <Text style={styles.caption}>{target === 'chassis' ? 'Şasi' : 'Köşe / çizik'} · {facts.visualInspection!.photos[target].source === 'camera' ? 'Kamera' : 'Yükleme'}</Text>
+          </View>)}</View>
+          <Text style={styles.caption}>Fotoğraflı kullanıcı gözlemi; otomatik AI teşhisi değildir. Fotoğraflar bu oturumda tutulur ve PDF raporuna eklenir.</Text>
+          <Pressable accessibilityRole="button" onPress={() => { setFacts((current) => ({ ...current, visualInspection: undefined, caseCondition: 'pending', cosmeticDamage: false })); setReport(null); }} style={styles.reset}><Text style={styles.linkText}>Görsel kaydı kaldır</Text></Pressable>
+        </View>}
+      </View>}
 
       {device.releaseYear > 0 && <View style={styles.section}>
         <Pressable testID="listing-start-lab" accessibilityRole="button" onPress={() => setLabOpen(true)} style={styles.reportButton}><Text style={styles.buttonText}>🛠️ Canlı Donanım Testi Başlat</Text></Pressable>
@@ -211,6 +231,9 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
       {completed !== total && <Text style={styles.caption}>Story veya kare paylaşım kartı için {total - completed} kritik kontrol daha tamamlayın.</Text>}
       {shareSnapshot && <ShareableReportModal snapshot={shareSnapshot} onClose={() => setShareSnapshot(null)} />}
       {labOpen && active && <DiagnosticsLabModal initialResults={lab} onClose={() => setLabOpen(false)} onComplete={(value) => { setLab(value); setLabOpen(false); setReport(null); setCopyState('idle'); }} />}
+      {visualOpen && active && <Suspense fallback={<Text style={styles.caption}>Kamera modülü hazırlanıyor…</Text>}><VisualDefectScannerModal deviceName={catalogDeviceName(result)} onClose={() => setVisualOpen(false)} onComplete={(value) => {
+        setFacts((current) => applyVisualInspection(current, value)); setVisualOpen(false); setReport(null); setCopyState('idle');
+      }} /></Suspense>}
       {report && (
         <View style={styles.report} testID="listing-analysis-report">
           <View style={styles.sectionHeader}>
@@ -266,6 +289,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   buttonText: { color: colors.onAccent, fontSize: 14, lineHeight: 21, fontWeight: '700', flexShrink: 1 },
   shareButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 9, padding: 14, minHeight: 50, borderRadius: 13, backgroundColor: colors.accentSoft },
   report: { gap: 12, padding: 16, borderRadius: 14, borderWidth: 1, borderColor: colors.cardBorder, backgroundColor: colors.inset },
+  visualPhotos: { flexDirection: 'row', gap: 12 },
+  visualPhoto: { width: '100%', height: 140, borderRadius: 10, backgroundColor: colors.inset },
   disabled: { opacity: 0.45 },
   pressed: { opacity: 0.75 },
 });

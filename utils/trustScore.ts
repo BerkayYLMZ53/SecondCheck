@@ -2,6 +2,7 @@ import type { ParsedListingResult } from '../types/listing';
 import type { TrustAdjustment, TrustAssessment } from '../types/trust';
 import type { InspectionFacts, LabResults } from '../types/inspection';
 import { LAB_IDS, LAB_LABELS } from './inspection';
+import { VISUAL_CONDITIONS } from './visualInspection';
 
 export function trustBand(score: number): Pick<TrustAssessment, 'grade' | 'color' | 'label'> {
   if (score >= 85) return { grade: 'A+', color: '#10b981', label: 'A+ Kusursuz Kondisyon / Tavsiye Edilir' };
@@ -44,12 +45,20 @@ export function calculateTrustScore(result: ParsedListingResult, checked: Readon
       if (facts[key] === 'fail') { observedFailure = true; add(`physical-${key}`, key === 'liquid' ? -20 : -10, `${({ trueTone: 'True Tone', biometrics: 'Biyometri', cameras: 'Kameralar', liquid: 'Sıvı teması' })[key]}: sorun bildirildi`); }
     }
     if (facts.screenReplaced && !adjustments.some((entry) => entry.id === 'screen')) { observedFailure = true; add('observed-screen', -10, 'Ekran değişimi doğrulandı'); }
-    if (facts.cosmeticDamage) { observedFailure = true; add('cosmetic', -5, 'Kozmetik kusur bildirildi'); }
+    if (facts.visualInspection && facts.visualInspection.condition !== 'pristine') {
+      observedFailure = true;
+      const visual = VISUAL_CONDITIONS[facts.visualInspection.condition];
+      add('visual-condition', -visual.deduction, `Kasa ${facts.visualInspection.score.toLocaleString('tr-TR')}/10: ${visual.label}`);
+    } else if (facts.cosmeticDamage) { observedFailure = true; add('cosmetic', -5, 'Kozmetik kusur bildirildi'); }
   }
   const readyForTopGrade = total > 0 && completed === total && !result.flags.hasChanges && !observedFailure && batteryKnown && battery >= 80;
   let score = 70 + adjustments.reduce((sum, item) => sum + item.points, 0);
+  if (facts?.visualInspection?.condition === 'bent' && score > 64) {
+    add('structure-risk-cap', 64 - score, 'Ciddi şasi hasarı: yüksek risk sınırı');
+    score = 64;
+  }
   if (!readyForTopGrade && score >= 85) {
-    add('verification-cap', 84 - score, completed < total ? 'Bekleyen kritik kontroller' : 'Parça / pil doğrulaması gerekli');
+    add('verification-cap', 84 - score, completed < total ? 'Bekleyen kritik kontroller' : observedFailure ? 'Bildirilen fiziksel kusurlar: üst not sınırı' : 'Parça / pil doğrulaması gerekli');
     score = 84;
   }
   score = Math.min(100, Math.max(0, Math.round(score)));

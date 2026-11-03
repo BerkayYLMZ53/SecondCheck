@@ -49,6 +49,23 @@
           ],
           "isAccessMediaLocationEnabled": false
         }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "SecondCheck, şasi ve kasa incelemesinde fotoğraf çekmek için kameranıza erişir.",
+          "recordAudioAndroid": false,
+          "barcodeScannerEnabled": false,
+          "microphonePermission": "SecondCheck, 3 saniyelik yerinde mikrofon testi için mikrofonunuza erişir."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "SecondCheck, kasa incelemesine yalnızca seçtiğiniz fotoğrafı ekler.",
+          "cameraPermission": "SecondCheck, şasi ve kasa incelemesinde fotoğraf çekmek için kameranıza erişir.",
+          "microphonePermission": "SecondCheck, 3 saniyelik yerinde mikrofon testi için mikrofonunuza erişir."
+        }
       ]
     ]
   }

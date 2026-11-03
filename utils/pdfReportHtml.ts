@@ -6,6 +6,7 @@ import { calculateBargain } from './bargaining';
 import { LAB_IDS, LAB_LABELS, STATUS_LABELS } from './inspection';
 import { catalogDeviceName, listingMoney } from './listingAnalysisReport';
 import { compareDevicePrice } from './deviceListingParser';
+import { isSafeEvidencePhoto, visualScoreLabel } from './visualInspection';
 
 export interface PdfReportInput {
   result: ParsedListingResult; checked: ReadonlySet<number>; lab: LabResults; facts: InspectionFacts; details: ReportDetails;
@@ -32,7 +33,7 @@ export function buildPdfReport(input: PdfReportInput, uniqueId: string, date = n
     { name: 'Kameralar', status: facts.cameras, source: 'Kullanıcı fiziksel kontrolü' },
     { name: 'Hoparlör / ahize', status: lab.audio.status, source: lab.audio.note || 'Bağımsız ahize testi yapılmadı' },
     { name: 'Sıvı teması', status: facts.liquid, source: 'Kullanıcı fiziksel kontrolü' },
-    { name: 'Kasa durumu', status: facts.caseCondition, source: 'Kullanıcı fiziksel kontrolü' },
+    { name: 'Kasa durumu', status: facts.caseCondition, source: facts.visualInspection ? `Kılavuzlu kullanıcı gözlemi: ${visualScoreLabel(facts.visualInspection)}` : 'Kullanıcı fiziksel kontrolü' },
   ];
   const critical = result.matchedDevice.criticalChecks.map((check, index) => `<li><b>${checked.has(index) ? '✓ Kontrol edildi' : '— Bekliyor'}</b> ${e(check)}</li>`).join('');
   const html = `<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${e(code)} | SecondCheck</title>
@@ -45,6 +46,10 @@ export function buildPdfReport(input: PdfReportInput, uniqueId: string, date = n
   <h2>Donanım kontrol tablosu</h2><table><thead><tr><th>Kontrol</th><th>Durum</th><th>Kaynak / kapsam</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${e(row.name)}</td><td>${status(row.status)}</td><td>${e(row.source)}</td></tr>`).join('')}</tbody></table>
   <h2>Canlı laboratuvar sonuçları</h2><table><thead><tr><th>Test</th><th>Sonuç</th><th>Not</th></tr></thead><tbody>${LAB_IDS.map((id) => `<tr><td>${LAB_LABELS[id]}</td><td>${status(lab[id].status)}</td><td>${e(lab[id].note || 'Test yapılmadı')}${lab[id].completedAt ? `<br><span class="meta">${e(lab[id].completedAt!)}</span>` : ''}</td></tr>`).join('')}</tbody></table>
   <h2>Modele özel kritik kontroller · ${trust.completed}/${trust.total}</h2><ul>${critical}</ul>
+  ${facts.visualInspection ? `<section style="break-inside:avoid"><h2>Fotoğraflı şasi ve kasa incelemesi · ${e(visualScoreLabel(facts.visualInspection))}</h2><p>Şasi: ${facts.visualInspection.chassis === 'bent' ? 'Eğrilik / kasa açıklığı bildirildi' : 'Düz olarak onaylandı'}</p><p class="note">Kılavuzla kullanıcı gözlemi; otomatik AI tespiti veya hassas ölçüm değildir. Fotoğraflar kullanıcı tarafından kaydedilmiştir.</p><table><tr>${(['chassis', 'corners'] as const).map((target) => {
+    const photo = facts.visualInspection!.photos[target];
+    return `<td style="width:50%">${isSafeEvidencePhoto(photo) ? `<img alt="${target === 'chassis' ? 'Şasi' : 'Köşe'} tespit fotoğrafı" src="${e(photo.dataUri)}" style="display:block;max-width:100%;height:180px;object-fit:contain"/>` : 'Geçerli fotoğraf yok'}<p class="meta">${target === 'chassis' ? 'Şasi' : 'Köşe / çizik'} · ${photo.source === 'camera' ? 'Kamera çekimi' : 'Cihazdan yükleme'} · ${e(photo.recordedAt)}</p></td>`;
+  }).join('')}</tr></table></section>` : ''}
   <h2>Güven skoru gerekçeleri</h2><ul>${trust.adjustments.map((item) => `<li>${item.points > 0 ? '+' : ''}${item.points} · ${e(item.label)}</li>`).join('') || '<li>Ek düzeltme yok.</li>'}</ul>
   <h2>Pazarlık özeti</h2><p>Önerilen teklif: <b>${e(money(bargain.offer))}</b> · Gerekçeli tasarruf: <b>${e(money(bargain.saving))}</b></p><p class="note">Sabit pazarlık varsayımları kullanılır; resmi servis ücret teklifi değildir.</p>
   <footer><div class="seal">✓ SecondCheck<br>Doğrulandı</div><div><b>secondcheck.gen.tr</b><p class="note">Bu damga, uygulamada kaydedilen kullanıcı kontrol beyanını belirtir. Resmi servis belgesi, dijital imza veya cihazın arızasız olduğuna ilişkin garanti değildir. Rapor kimliği çevrimiçi doğrulama hizmetine bağlı değildir.</p></div></footer>

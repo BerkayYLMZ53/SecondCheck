@@ -3,6 +3,7 @@ import { compareDevicePrice } from './deviceListingParser';
 import { calculateTrustScore } from './trustScore';
 import type { InspectionFacts, LabResults } from '../types/inspection';
 import { LAB_IDS, LAB_LABELS, STATUS_LABELS } from './inspection';
+import { visualScoreLabel } from './visualInspection';
 
 export interface ListingAnalysisReport {
   createdAt: string;
@@ -69,6 +70,9 @@ export function buildListingAnalysisReport(
     '', `KRİTİK KONTROLLER • ${completed.length} / ${device.criticalChecks.length} işaretlendi`,
     ...device.criticalChecks.map((check, index) => `${checkedIndices.has(index) ? '[x] İşaretlendi' : '[ ] Henüz kontrol edilmedi'}: ${check}`),
     ...(lab ? ['', 'CANLI LABORATUVAR', ...LAB_IDS.map((id) => `${LAB_LABELS[id]}: ${STATUS_LABELS[lab[id].status]} • ${lab[id].note}`)] : []),
+    ...(facts?.visualInspection ? ['', `KASA KONDİSYONU: ${visualScoreLabel(facts.visualInspection)}`,
+      `Şasi: ${facts.visualInspection.chassis === 'bent' ? 'Eğrilik / kasa açıklığı bildirildi' : 'Düz olarak onaylandı'}`,
+      'Şasi ve köşe fotoğrafları yerel analizde / PDF raporunda bulunur. Sonuç kılavuzla yapılan kullanıcı gözlemidir; otomatik AI tespiti değildir.'] : []),
     '', 'MODELE ÖZEL SORUNLAR VE KONTROL RİSKLERİ',
     ...device.chronicIssues.map((issue) => `- ${issue}`),
     '', 'İşaretler kullanıcı beyanıdır; teknik doğrulama veya arızasızlık belgesi değildir. İşaretlenmeyen testler arıza anlamına gelmez. İlan beyanları yerinde doğrulanmalıdır. Fiyatlar canlı piyasa ortalaması değil, tahmini katalog referansıdır.',

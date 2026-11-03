@@ -3,6 +3,7 @@ import type { TrustAssessment } from '../types/trust';
 import { calculateTrustScore } from './trustScore';
 import { buildListingAnalysisReport, catalogDeviceName } from './listingAnalysisReport';
 import type { InspectionFacts, LabResults } from '../types/inspection';
+import { visualScoreLabel } from './visualInspection';
 
 export type ReportCardFormat = 'story' | 'square';
 export interface ShareableReportSnapshot {
@@ -10,6 +11,7 @@ export interface ShareableReportSnapshot {
   deviceName: string;
   storage: string;
   battery: string;
+  cosmetic?: string;
   trust: TrustAssessment;
   confirmedChecks: string[];
   completed: number;
@@ -46,6 +48,7 @@ export function createShareableReport(
     deviceId: device.id, deviceName: catalogDeviceName(result),
     storage: result.detectedStorage?.replace(/(\d)(GB|TB)$/, '$1 $2') ?? 'Depolama belirtilmedi',
     battery: result.detectedBattery === undefined ? 'Pil bilgisi yok' : `Pil %${result.detectedBattery}`,
+    cosmetic: facts?.visualInspection ? `Kasa ${visualScoreLabel(facts.visualInspection)}` : undefined,
     trust, confirmedChecks: [...new Set(report.completed.map(checkLabel))], completed: trust.completed, total: trust.total,
     dateLabel: date.toLocaleDateString('tr-TR', { timeZone: 'Europe/Istanbul' }), createdAt: report.createdAt,
     plainText: `${report.plainText}\n\nGüven skoru: ${trust.score}/100 • ${trust.grade}\nsecondcheck.gen.tr`,
@@ -105,6 +108,7 @@ export function buildReportCardSvg(snapshot: ShareableReportSnapshot, format: Re
     ${text(story ? 540 : 440, story ? 885 : 420, `${snapshot.trust.grade}  GÜVEN SKORU`, story ? 44 : 36, accent, 800, story ? 'middle' : 'start')}
     ${text(story ? 540 : 440, story ? 940 : 470, `${snapshot.completed}/${snapshot.total} kritik kontrol`, 28, '#cbd5e1', 600, story ? 'middle' : 'start')}
     ${!story ? text(440, 515, 'Kullanıcı beyanına dayalı', 23, '#94a3b8') : ''}
+    ${snapshot.cosmetic ? text(story ? 540 : 440, story ? 990 : 560, snapshot.cosmetic, story ? 25 : 22, '#67e8f9', 600, story ? 'middle' : 'start') : ''}
     ${text(80, checksY - 32, 'TAMAMLANAN KONTROLLER', 23, '#94a3b8', 700)}
     ${shown.map((check, index) => {
       const y = checksY + 35 + index * (story ? 72 : 54);

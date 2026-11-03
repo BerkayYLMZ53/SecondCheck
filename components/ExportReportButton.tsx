@@ -36,7 +36,7 @@ export default function ExportReportButton({ result, checked, lab, facts, onFact
     {checks.map(({ key, label }) => <View key={key} style={styles.check}>
       <Text style={styles.text}>{label}</Text><View accessibilityRole="radiogroup" accessibilityLabel={label} style={styles.row}>
         {(['pending', 'pass', 'fail', 'unsupported'] as TestStatus[]).map((status) => <Pressable key={status} testID={`physical-${key}-${status}`} accessibilityRole="radio" accessibilityLabel={`${label}: ${STATUS_LABELS[status]}`} accessibilityState={{ checked: facts[key] === status }}
-          onPress={() => onFactsChange({ ...facts, [key]: status, ...(key === 'caseCondition' ? { cosmeticDamage: status === 'fail' } : {}) })} style={[styles.option, facts[key] === status && styles.selected]}><Text style={styles.text}>{status === 'unsupported' ? 'Uygulanamaz' : STATUS_LABELS[status]}</Text></Pressable>)}
+          onPress={() => onFactsChange({ ...facts, [key]: status, ...(key === 'caseCondition' ? { cosmeticDamage: status === 'fail', visualInspection: undefined } : {}) })} style={[styles.option, facts[key] === status && styles.selected]}><Text style={styles.text}>{status === 'unsupported' ? 'Uygulanamaz' : STATUS_LABELS[status]}</Text></Pressable>)}
       </View></View>)}
     <Pressable testID="listing-export-pdf" accessibilityRole="button" disabled={busy || !result.matchedDevice || result.matchedDevice.releaseYear === 0} accessibilityState={{ disabled: busy || !result.matchedDevice || result.matchedDevice.releaseYear === 0, busy }}
       onPress={() => { void exportReport(); }} style={[styles.button, busy && { opacity: 0.5 }]}><Text style={styles.buttonText}>{busy ? 'Rapor hazırlanıyor…' : '📄 PDF Ekspertiz Raporunu İndir'}</Text></Pressable>

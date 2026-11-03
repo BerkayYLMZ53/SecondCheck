@@ -50,9 +50,24 @@ export function calculateTrustScore(result: ParsedListingResult, checked: Readon
       const visual = VISUAL_CONDITIONS[facts.visualInspection.condition];
       add('visual-condition', -visual.deduction, `Kasa ${facts.visualInspection.score.toLocaleString('tr-TR')}/10: ${visual.label}`);
     } else if (facts.cosmeticDamage) { observedFailure = true; add('cosmetic', -5, 'Kozmetik kusur bildirildi'); }
+    if (facts.fieldInspection) for (const step of facts.fieldInspection.results) {
+      if (step.status !== 'fail') continue;
+      observedFailure = true;
+      // A composite field question does not identify the faulty part. Avoid charging an already recorded risk twice.
+      const covered = step.id === 'buttons' ? lab?.vibration.status === 'fail'
+        : step.id === 'screen' ? lab?.pixels.status === 'fail' || lab?.touch.status === 'fail' || facts.trueTone === 'fail'
+          : step.id === 'audio' ? lab?.audio.status === 'fail'
+            : step.id === 'camera' ? facts.cameras === 'fail'
+              : step.id === 'port' ? facts.caseCondition === 'fail' || facts.cosmeticDamage : false;
+      if (!covered) add(`field-${step.id}`, step.id === 'account' ? -25 : step.id === 'buttons' ? -8 : -10, `Saha: ${step.title} — sorun bildirildi`);
+    }
   }
   const readyForTopGrade = total > 0 && completed === total && !result.flags.hasChanges && !observedFailure && batteryKnown && battery >= 80;
   let score = 70 + adjustments.reduce((sum, item) => sum + item.points, 0);
+  if (facts?.fieldInspection?.results.some((step) => step.id === 'account' && step.status === 'fail') && score > 64) {
+    add('account-risk-cap', 64 - score, 'Hesap / aktivasyon kilidi: yüksek risk sınırı');
+    score = 64;
+  }
   if (facts?.visualInspection?.condition === 'bent' && score > 64) {
     add('structure-risk-cap', 64 - score, 'Ciddi şasi hasarı: yüksek risk sınırı');
     score = 64;

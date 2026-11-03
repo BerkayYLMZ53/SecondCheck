@@ -73,6 +73,7 @@ export function buildListingAnalysisReport(
     ...(facts?.visualInspection ? ['', `KASA KONDİSYONU: ${visualScoreLabel(facts.visualInspection)}`,
       `Şasi: ${facts.visualInspection.chassis === 'bent' ? 'Eğrilik / kasa açıklığı bildirildi' : 'Düz olarak onaylandı'}`,
       'Şasi ve köşe fotoğrafları yerel analizde / PDF raporunda bulunur. Sonuç kılavuzla yapılan kullanıcı gözlemidir; otomatik AI tespiti değildir.'] : []),
+    ...(facts?.fieldInspection ? ['', 'SESLİ SAHA TESTİ • 6/6 tamamlandı', ...facts.fieldInspection.results.map((step) => `${step.status === 'pass' ? '[✓] Geçti' : '[✕] Sorun var'}: ${step.title}`), 'Sonuçlar kullanıcı gözlemidir; otomatik donanım ölçümü değildir.'] : []),
     '', 'MODELE ÖZEL SORUNLAR VE KONTROL RİSKLERİ',
     ...device.chronicIssues.map((issue) => `- ${issue}`),
     '', 'İşaretler kullanıcı beyanıdır; teknik doğrulama veya arızasızlık belgesi değildir. İşaretlenmeyen testler arıza anlamına gelmez. İlan beyanları yerinde doğrulanmalıdır. Fiyatlar canlı piyasa ortalaması değil, tahmini katalog referansıdır.',

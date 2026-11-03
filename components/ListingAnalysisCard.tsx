@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
-import { CheckSquare, Copy, FileCheck, RotateCcw, ScanLine, Share2, ShieldCheck, Square } from 'lucide-react-native';
+import { CheckSquare, Copy, FileCheck, Mic, RotateCcw, ScanLine, Share2, ShieldCheck, Square } from 'lucide-react-native';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
 import type { ParsedListingResult } from '../types/listing';
@@ -23,6 +23,7 @@ import type { InspectionFacts, LabResults } from '../types/inspection';
 import { applyVisualInspection, visualScoreLabel } from '../utils/visualInspection';
 
 const VisualDefectScannerModal = lazy(() => import('./VisualDefectScannerModal'));
+const VoiceFieldAssistantModal = lazy(() => import('./VoiceFieldAssistantModal'));
 
 interface Props {
   result: ParsedListingResult;
@@ -45,6 +46,7 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
   const [labOpen, setLabOpen] = useState(false);
   const [bargainingOpen, setBargainingOpen] = useState(false);
   const [visualOpen, setVisualOpen] = useState(false);
+  const [fieldOpen, setFieldOpen] = useState(false);
   const [lab, setLab] = useState<LabResults>(emptyLabResults);
   const [facts, setFacts] = useState<InspectionFacts>(() => initialInspectionFacts(result, title));
   const assessment = useMemo(() => calculateTrustScore(result, checked, lab, facts), [result, checked, lab, facts]);
@@ -52,7 +54,7 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
   const device = result.matchedDevice;
   const comparison = compareDevicePrice(device, result.detectedPrice);
   const feedback = comparison?.status === 'PAHALI' || (assessment.available && (assessment.score < 65 || result.flags.hasChanges || (result.detectedBattery !== undefined && result.detectedBattery < 80)))
-    || facts.cosmeticDamage || LAB_IDS.some((id) => lab[id].status === 'fail') || [facts.trueTone, facts.biometrics, facts.cameras, facts.liquid].includes('fail')
+    || facts.cosmeticDamage || facts.fieldInspection?.results.some((step) => step.status === 'fail') || LAB_IDS.some((id) => lab[id].status === 'fail') || [facts.trueTone, facts.biometrics, facts.cameras, facts.liquid].includes('fail')
     ? 'warning' : assessment.available && assessment.score >= 85 ? 'success' : 'neutral';
   useEffect(() => {
     if (!active) return;
@@ -107,7 +109,7 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
         {device.releaseYear === 0 && <Text style={[styles.chip, styles.warningChip]}>Konsept kaydı</Text>}
       </View>
 
-      <TrustScoreGauge assessment={assessment} active={active && !shareSnapshot && !labOpen && !visualOpen} />
+      <TrustScoreGauge assessment={assessment} active={active && !shareSnapshot && !labOpen && !visualOpen && !fieldOpen} />
 
       <View style={styles.pricePanel}>
         <View style={styles.metrics}>
@@ -147,7 +149,22 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
         <Text style={styles.caption}>Bilgi yokluğu, kutunun veya garantinin kesin olarak bulunmadığı anlamına gelmez. İlan beyanlarını satıcıyla doğrulayın.</Text>
       </View>
 
-      {device.releaseYear > 0 && <DeviceTeardownView device={device} active={active && !shareSnapshot && !labOpen && !visualOpen} />}
+      {device.releaseYear > 0 && <DeviceTeardownView device={device} active={active && !shareSnapshot && !labOpen && !visualOpen && !fieldOpen} />}
+
+      {device.releaseYear > 0 && <View style={styles.section}>
+        <Pressable testID="listing-open-field-assistant" accessibilityRole="button" onPress={() => setFieldOpen(true)} style={styles.shareButton}>
+          <Mic size={22} color={colors.cyan} /><Text style={[styles.linkText, styles.grow]}>🎙️ Sesli Asistan ile Hızlı Test (Eller Serbest)</Text>
+        </Pressable>
+        {facts.fieldInspection && <View style={styles.report} testID="field-inspection-summary">
+          <Text accessibilityRole="header" style={styles.sectionTitle}>Sesli saha testi · 6/6 tamamlandı</Text>
+          <Text style={styles.body}>{facts.fieldInspection.results.filter((step) => step.status === 'pass').length} geçti · {facts.fieldInspection.results.filter((step) => step.status === 'fail').length} kusurlu</Text>
+          {facts.fieldInspection.results.map((step) => <Text key={step.id} style={[styles.body, { color: step.status === 'pass' ? colors.successText : colors.dangerText }]}>
+            {step.status === 'pass' ? '✓' : '✕'} {step.title}: {step.status === 'pass' ? 'Geçti' : 'Sorun var / kaldı'}
+          </Text>)}
+          <Text style={styles.caption}>Sonuçlar kullanıcının yerinde gözlemidir. Birden çok parçayı kapsayan adım, arızalı parçayı tek başına belirlemez.</Text>
+          <Pressable accessibilityRole="button" onPress={() => { setFacts((current) => ({ ...current, fieldInspection: undefined })); setReport(null); }} style={styles.reset}><Text style={styles.linkText}>Saha test kaydını kaldır</Text></Pressable>
+        </View>}
+      </View>}
 
       {device.releaseYear > 0 && <View style={styles.section}>
         <Pressable testID="listing-open-visual-scanner" accessibilityRole="button" onPress={() => setVisualOpen(true)} style={styles.shareButton}>
@@ -233,6 +250,9 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
       {labOpen && active && <DiagnosticsLabModal initialResults={lab} onClose={() => setLabOpen(false)} onComplete={(value) => { setLab(value); setLabOpen(false); setReport(null); setCopyState('idle'); }} />}
       {visualOpen && active && <Suspense fallback={<Text style={styles.caption}>Kamera modülü hazırlanıyor…</Text>}><VisualDefectScannerModal deviceName={catalogDeviceName(result)} onClose={() => setVisualOpen(false)} onComplete={(value) => {
         setFacts((current) => applyVisualInspection(current, value)); setVisualOpen(false); setReport(null); setCopyState('idle');
+      }} /></Suspense>}
+      {fieldOpen && active && <Suspense fallback={<Text style={styles.caption}>Sesli saha asistanı hazırlanıyor…</Text>}><VoiceFieldAssistantModal device={device} onClose={() => setFieldOpen(false)} onComplete={(value) => {
+        setFacts((current) => ({ ...current, fieldInspection: value })); setFieldOpen(false); setReport(null); setCopyState('idle');
       }} /></Suspense>}
       {report && (
         <View style={styles.report} testID="listing-analysis-report">

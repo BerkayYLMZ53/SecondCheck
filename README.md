@@ -359,3 +359,7 @@ Bu depoda henüz bir `LICENSE` dosyası tanımlanmamıştır. Yeniden kullanım 
 ### Fotoğraflı şasi ve kasa incelemesi
 
 Kamera ile Şasi & Kasa Analizi; ayarlanabilir neon hizalama kılavuzu, yerel fotoğraf yükleme, dört kondisyon puanı ve ekspertiz/rapor entegrasyonu sunar. Değerlendirme kullanıcı gözlemidir; otomatik AI kusur tespiti yapılmaz. [Akış, puanlama ve fotoğraf kuralları](docs/visual-inspection.md).
+
+### Sesli saha asistanı
+
+Altı cihaz kontrolünü Türkçe sesli yönerge ve büyük geçti/kaldı butonlarıyla tamamlayın. Ses desteği yoksa sessiz akış devam eder; biten turun sonuçları ekspertiz özetine ve raporlara aktarılır. [Kullanım ve ses desteği](docs/voice-field-mode.md).

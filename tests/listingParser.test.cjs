@@ -10,11 +10,13 @@ const ts = require('typescript');
 const cache = new Map();
 function loadTypeScript(file) {
   if (cache.has(file)) return cache.get(file);
+  if (file.endsWith('.json')) return JSON.parse(fs.readFileSync(file, 'utf8'));
   const module = { exports: {} };
   const compiled = ts.transpileModule(fs.readFileSync(file, 'utf8'), {
     compilerOptions: {
       module: ts.ModuleKind.CommonJS,
       target: ts.ScriptTarget.ES2020,
+      esModuleInterop: true,
     },
   }).outputText;
   vm.runInNewContext(
@@ -23,7 +25,7 @@ function loadTypeScript(file) {
       module,
       exports: module.exports,
       require: (name) =>
-        loadTypeScript(path.resolve(path.dirname(file), `${name}.ts`)),
+        loadTypeScript(path.resolve(path.dirname(file), name.endsWith('.json') ? name : `${name}.ts`)),
     },
     { filename: file },
   );

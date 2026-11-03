@@ -96,7 +96,7 @@ function Application() {
       <WebPageStyles />
       <View style={styles.root}>
         <StatusBar
-          style={showSplash || tab === 'profile' || theme === 'dark' ? 'light' : 'dark'}
+          style={showSplash || theme === 'dark' ? 'light' : 'dark'}
         />
         <View
           style={styles.screen}

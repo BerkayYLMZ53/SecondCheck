@@ -13,6 +13,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChevronRight, Globe, ShieldCheck, createLucideIcon } from 'lucide-react-native';
 import type { LucideIcon } from 'lucide-react-native';
 import profileImage from '../assets/profile.png';
+import { useTheme, useThemedStyles } from '../context/ThemeContext';
+import ThemeToggle from '../components/ThemeToggle';
+import type { ThemeColors } from '../context/ThemeContext';
 
 // Brand marks use Lucide's renderer; current Lucide releases omit brand exports.
 const GithubIcon = createLucideIcon('Github', [
@@ -42,6 +45,8 @@ interface Props {
 }
 
 export default function ProfileScreen({ navigation }: Props) {
+  const { colors } = useTheme();
+  const styles = useThemedStyles(createStyles);
   const [linkError, setLinkError] = useState<string | null>(null);
 
   const openLink = async (link: SocialLink): Promise<void> => {
@@ -64,7 +69,10 @@ export default function ProfileScreen({ navigation }: Props) {
       >
         <View style={styles.heading}>
           <Text style={styles.eyebrow}>SECONDCHECK</Text>
-          <Text accessibilityRole="header" style={styles.title}>Profil & Hakkında</Text>
+          <View style={styles.titleRow}>
+            <Text accessibilityRole="header" style={styles.title}>Profil & Hakkında</Text>
+            <ThemeToggle />
+          </View>
           <Text style={styles.subtitle}>Teknolojinin arkasındaki isim.</Text>
         </View>
 
@@ -80,7 +88,7 @@ export default function ProfileScreen({ navigation }: Props) {
           <Text accessibilityRole="header" style={styles.name}>Berkay Yılmaz</Text>
           <Text style={styles.role}>Kurucu & Geliştirici</Text>
           <View style={styles.badge}>
-            <ShieldCheck size={14} color="#38bdf8" />
+            <ShieldCheck size={14} color={colors.cyan} />
             <Text style={styles.badgeText}>Teknolojide güven, her adımda.</Text>
           </View>
         </View>
@@ -110,13 +118,13 @@ export default function ProfileScreen({ navigation }: Props) {
                 style={styles.linkButton}
               >
                 <View style={styles.iconBox}>
-                  <Icon size={22} color="#38bdf8" strokeWidth={1.8} />
+                  <Icon size={22} color={colors.cyan} strokeWidth={1.8} />
                 </View>
                 <View style={styles.linkCopy}>
                   <Text style={styles.linkTitle}>{link.title}</Text>
                   <Text style={styles.linkLabel}>{link.label}</Text>
                 </View>
-                <ChevronRight size={18} color="#94a3b8" />
+                <ChevronRight size={18} color={colors.textSecondary} />
               </TouchableOpacity>
             );
           })}
@@ -136,56 +144,59 @@ export default function ProfileScreen({ navigation }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: '#0b0f19' },
-  scroll: { flex: 1 },
-  content: {
-    width: '100%', maxWidth: 680, alignSelf: 'center',
-    paddingHorizontal: 20, paddingTop: 20, paddingBottom: 32, gap: 24,
-  },
-  heading: { gap: 8 },
-  eyebrow: { color: '#38bdf8', fontSize: 11, fontWeight: '800', letterSpacing: 2.5 },
-  title: { color: '#ffffff', fontSize: 28, fontWeight: '800', letterSpacing: -0.6 },
-  subtitle: { color: '#94a3b8', fontSize: 14, lineHeight: 21 },
-  card: {
-    padding: 24, borderRadius: 24, backgroundColor: '#131b2e',
-    borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.07)',
-  },
-  developerCard: { alignItems: 'center', paddingVertical: 32 },
-  avatarGlow: {
-    borderRadius: 55, backgroundColor: '#131b2e', marginBottom: 20,
-    boxShadow: '0px 0px 24px rgba(56, 189, 248, 0.22)',
-  },
-  avatar: { width: 110, height: 110, borderRadius: 55, borderWidth: 2, borderColor: '#38bdf8' },
-  name: { color: '#ffffff', fontSize: 22, fontWeight: '700', textAlign: 'center' },
-  role: { color: '#38bdf8', fontSize: 14, marginTop: 6, textAlign: 'center' },
-  badge: {
-    flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 20,
-    paddingHorizontal: 12, paddingVertical: 8, borderRadius: 12,
-    backgroundColor: 'rgba(37, 99, 235, 0.12)', maxWidth: '100%',
-  },
-  badgeText: { color: '#94a3b8', fontSize: 12, lineHeight: 18, flexShrink: 1 },
-  sectionHeading: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 },
-  accentBar: { width: 3, height: 20, borderRadius: 2, backgroundColor: '#2563eb' },
-  cardTitle: { color: '#ffffff', fontSize: 18, fontWeight: '700', flexShrink: 1 },
-  description: { color: '#94a3b8', fontSize: 15, lineHeight: 25 },
-  linksSection: { gap: 12 },
-  sectionTitle: { color: '#ffffff', fontSize: 18, fontWeight: '700', marginBottom: 2 },
-  linkButton: {
-    flexDirection: 'row', alignItems: 'center', gap: 14, padding: 16,
-    minHeight: 80, borderRadius: 18, backgroundColor: '#131b2e',
-    borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.07)',
-  },
-  iconBox: {
-    width: 44, height: 44, borderRadius: 14,
-    backgroundColor: 'rgba(37, 99, 235, 0.14)',
-    alignItems: 'center', justifyContent: 'center',
-  },
-  linkCopy: { flex: 1, minWidth: 0, gap: 4 },
-  linkTitle: { color: '#ffffff', fontSize: 15, fontWeight: '600' },
-  linkLabel: { color: '#94a3b8', fontSize: 13, lineHeight: 19 },
-  error: { color: '#fca5a5', fontSize: 13, lineHeight: 20 },
-  footer: { alignItems: 'center', gap: 6, paddingTop: 4 },
-  version: { color: '#94a3b8', fontSize: 13, fontWeight: '600' },
-  copyright: { color: '#94a3b8', fontSize: 12, textAlign: 'center' },
-});
+const createStyles = (colors: ThemeColors) => {
+  return StyleSheet.create({
+    safeArea: { flex: 1, backgroundColor: colors.bg },
+    scroll: { flex: 1 },
+    content: {
+      width: '100%', maxWidth: 680, alignSelf: 'center',
+      paddingHorizontal: 20, paddingTop: 20, paddingBottom: 32, gap: 24,
+    },
+    heading: { gap: 8 },
+    titleRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+    eyebrow: { color: colors.cyan, fontSize: 11, fontWeight: '800', letterSpacing: 2.5 },
+    title: { flex: 1, color: colors.textPrimary, fontSize: 28, fontWeight: '800', letterSpacing: -0.6 },
+    subtitle: { color: colors.textSecondary, fontSize: 14, lineHeight: 21 },
+    card: {
+      padding: 24, borderRadius: 24, backgroundColor: colors.cardBg,
+      borderWidth: 1, borderColor: colors.cardBorder,
+    },
+    developerCard: { alignItems: 'center', paddingVertical: 32 },
+    avatarGlow: {
+      borderRadius: 55, backgroundColor: colors.cardBg, marginBottom: 20,
+      boxShadow: `0px 0px 24px ${colors.cyan}26`,
+    },
+    avatar: { width: 110, height: 110, borderRadius: 55, borderWidth: 2, borderColor: colors.cyan },
+    name: { color: colors.textPrimary, fontSize: 22, fontWeight: '700', textAlign: 'center' },
+    role: { color: colors.cyan, fontSize: 14, marginTop: 6, textAlign: 'center' },
+    badge: {
+      flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 20,
+      paddingHorizontal: 12, paddingVertical: 8, borderRadius: 12,
+      backgroundColor: colors.accentSoft, maxWidth: '100%',
+    },
+    badgeText: { color: colors.cyan, fontSize: 12, lineHeight: 18, flexShrink: 1 },
+    sectionHeading: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 },
+    accentBar: { width: 3, height: 20, borderRadius: 2, backgroundColor: colors.accent },
+    cardTitle: { color: colors.textPrimary, fontSize: 18, fontWeight: '700', flexShrink: 1 },
+    description: { color: colors.textSecondary, fontSize: 15, lineHeight: 25 },
+    linksSection: { gap: 12 },
+    sectionTitle: { color: colors.textPrimary, fontSize: 18, fontWeight: '700', marginBottom: 2 },
+    linkButton: {
+      flexDirection: 'row', alignItems: 'center', gap: 14, padding: 16,
+      minHeight: 80, borderRadius: 18, backgroundColor: colors.cardBg,
+      borderWidth: 1, borderColor: colors.cardBorder,
+    },
+    iconBox: {
+      width: 44, height: 44, borderRadius: 14,
+      backgroundColor: colors.accentSelected,
+      alignItems: 'center', justifyContent: 'center',
+    },
+    linkCopy: { flex: 1, minWidth: 0, gap: 4 },
+    linkTitle: { color: colors.textPrimary, fontSize: 15, fontWeight: '600' },
+    linkLabel: { color: colors.textSecondary, fontSize: 13, lineHeight: 19 },
+    error: { color: colors.dangerText, fontSize: 13, lineHeight: 20 },
+    footer: { alignItems: 'center', gap: 6, paddingTop: 4 },
+    version: { color: colors.textSecondary, fontSize: 13, fontWeight: '600' },
+    copyright: { color: colors.textSecondary, fontSize: 12, textAlign: 'center' },
+  });
+};

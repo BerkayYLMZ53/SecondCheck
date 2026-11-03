@@ -37,7 +37,7 @@ import PriceTrendSection from '../components/PriceTrendSection';
 import InspectionChecklist from '../components/InspectionChecklist';
 import ExpertiseReportModal from '../components/ExpertiseReportModal';
 import HardwareDiagnosticsModal from '../components/HardwareDiagnosticsModal';
-import ListingParserCard from '../components/ListingParserCard';
+import ListingInputSection from '../components/ListingInputSection';
 import SavedListingsModal from '../components/SavedListingsModal';
 import SecurityGuideModal from '../components/SecurityGuideModal';
 import { useSavedListings } from '../context/SavedListingsContext';
@@ -635,12 +635,12 @@ export default function HomeScreen({
             )}
           </View>
 
-          <ListingParserCard
+          <ListingInputSection
             key={parserVersion}
             onParsed={applyParsedListing}
           />
+          <Text accessibilityRole="header" style={styles.sectionTitle}>Manuel Ürün &amp; Donanım Değerleme</Text>
           {valuation && saveAction('save-parsed-listing')}
-
           <View style={styles.searchBox}>
             <Search size={20} color={COLORS.muted} />
             <TextInput

@@ -1,0 +1,4238 @@
+[
+  {
+    "id": "apple-iphone-6",
+    "brand": "Apple",
+    "model": "iPhone 6",
+    "releaseYear": 2014,
+    "variants": {
+      "storage": [
+        "16GB",
+        "32GB",
+        "64GB",
+        "128GB"
+      ],
+      "colors": [
+        "Space Gray",
+        "Silver",
+        "Gold"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 2000,
+      "avgTry": 2500,
+      "maxTry": 3250
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "LCD panelde ışık sızması veya basınç lekesi kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni parmak izi kaydedip Touch ID ve Ana Ekran düğmesini deneyin.",
+      "Beyaz ve gri görüntüde LCD lekesi, tam yüzey dokunmatik ve parlaklık kontrolü yapın.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın.",
+      "Kasanın düzlüğünü, ekranın çerçeveden ayrılmasını ve pil şişmesi belirtisini kontrol edin; kasayı bükerek test etmeyin."
+    ]
+  },
+  {
+    "id": "apple-iphone-6-plus",
+    "brand": "Apple",
+    "model": "iPhone 6 Plus",
+    "releaseYear": 2014,
+    "variants": {
+      "storage": [
+        "16GB",
+        "64GB",
+        "128GB"
+      ],
+      "colors": [
+        "Space Gray",
+        "Silver",
+        "Gold"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 2250,
+      "avgTry": 3000,
+      "maxTry": 4000
+    },
+    "chronicIssues": [
+      "Apple tarihsel onarım programı: tekrarlayan düşme ve ek zorlanma sonrası bazı iPhone 6 Plus cihazlarda ekran titremesi/çoklu dokunmatik sorunu bildirilmiştir.",
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "LCD panelde ışık sızması veya basınç lekesi kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni parmak izi kaydedip Touch ID ve Ana Ekran düğmesini deneyin.",
+      "Beyaz ve gri görüntüde LCD lekesi, tam yüzey dokunmatik ve parlaklık kontrolü yapın.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın.",
+      "Kasanın düzlüğünü, ekranın çerçeveden ayrılmasını ve pil şişmesi belirtisini kontrol edin; kasayı bükerek test etmeyin.",
+      "Ekranın üst kısmında titreme ve çizgi arayın; çizim testinde dokunmatiğin bütün satır ve sütunları algıladığını doğrulayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-6s",
+    "brand": "Apple",
+    "model": "iPhone 6s",
+    "releaseYear": 2015,
+    "variants": {
+      "storage": [
+        "16GB",
+        "32GB",
+        "64GB",
+        "128GB"
+      ],
+      "colors": [
+        "Space Gray",
+        "Silver",
+        "Gold",
+        "Rose Gold"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 2500,
+      "avgTry": 3250,
+      "maxTry": 4250
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "LCD panelde ışık sızması veya basınç lekesi kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni parmak izi kaydedip Touch ID ve Ana Ekran düğmesini deneyin.",
+      "Beyaz ve gri görüntüde LCD lekesi, tam yüzey dokunmatik ve parlaklık kontrolü yapın.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın.",
+      "Kasanın düzlüğünü, ekranın çerçeveden ayrılmasını ve pil şişmesi belirtisini kontrol edin; kasayı bükerek test etmeyin."
+    ]
+  },
+  {
+    "id": "apple-iphone-6s-plus",
+    "brand": "Apple",
+    "model": "iPhone 6s Plus",
+    "releaseYear": 2015,
+    "variants": {
+      "storage": [
+        "16GB",
+        "32GB",
+        "64GB",
+        "128GB"
+      ],
+      "colors": [
+        "Space Gray",
+        "Silver",
+        "Gold",
+        "Rose Gold"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 2750,
+      "avgTry": 3750,
+      "maxTry": 5000
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "LCD panelde ışık sızması veya basınç lekesi kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni parmak izi kaydedip Touch ID ve Ana Ekran düğmesini deneyin.",
+      "Beyaz ve gri görüntüde LCD lekesi, tam yüzey dokunmatik ve parlaklık kontrolü yapın.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın.",
+      "Kasanın düzlüğünü, ekranın çerçeveden ayrılmasını ve pil şişmesi belirtisini kontrol edin; kasayı bükerek test etmeyin."
+    ]
+  },
+  {
+    "id": "apple-iphone-7",
+    "brand": "Apple",
+    "model": "iPhone 7",
+    "releaseYear": 2016,
+    "variants": {
+      "storage": [
+        "32GB",
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Black",
+        "Jet Black",
+        "Gold",
+        "Rose Gold",
+        "Silver",
+        "(PRODUCT)RED"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 3000,
+      "avgTry": 4000,
+      "maxTry": 5250
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "LCD panelde ışık sızması veya basınç lekesi kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni parmak izi kaydedip Touch ID ve Ana Ekran düğmesini deneyin.",
+      "Beyaz ve gri görüntüde LCD lekesi, tam yüzey dokunmatik ve parlaklık kontrolü yapın.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-7-plus",
+    "brand": "Apple",
+    "model": "iPhone 7 Plus",
+    "releaseYear": 2016,
+    "variants": {
+      "storage": [
+        "32GB",
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Black",
+        "Jet Black",
+        "Gold",
+        "Rose Gold",
+        "Silver",
+        "(PRODUCT)RED"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 3750,
+      "avgTry": 5000,
+      "maxTry": 6500
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "LCD panelde ışık sızması veya basınç lekesi kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni parmak izi kaydedip Touch ID ve Ana Ekran düğmesini deneyin.",
+      "Beyaz ve gri görüntüde LCD lekesi, tam yüzey dokunmatik ve parlaklık kontrolü yapın.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-se-1",
+    "brand": "Apple",
+    "model": "iPhone SE (1st generation)",
+    "releaseYear": 2016,
+    "variants": {
+      "storage": [
+        "16GB",
+        "32GB",
+        "64GB",
+        "128GB"
+      ],
+      "colors": [
+        "Space Gray",
+        "Silver",
+        "Gold",
+        "Rose Gold"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 2000,
+      "avgTry": 2500,
+      "maxTry": 3250
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "LCD panelde ışık sızması veya basınç lekesi kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni parmak izi kaydedip Touch ID ve Ana Ekran düğmesini deneyin.",
+      "Beyaz ve gri görüntüde LCD lekesi, tam yüzey dokunmatik ve parlaklık kontrolü yapın.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-8",
+    "brand": "Apple",
+    "model": "iPhone 8",
+    "releaseYear": 2017,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Gold",
+        "Silver",
+        "Space Gray",
+        "(PRODUCT)RED"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 4500,
+      "avgTry": 6000,
+      "maxTry": 7750
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "LCD panelde ışık sızması veya basınç lekesi kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni parmak izi kaydedip Touch ID ve Ana Ekran düğmesini deneyin.",
+      "Beyaz ve gri görüntüde LCD lekesi, tam yüzey dokunmatik ve parlaklık kontrolü yapın.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-8-plus",
+    "brand": "Apple",
+    "model": "iPhone 8 Plus",
+    "releaseYear": 2017,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Gold",
+        "Silver",
+        "Space Gray",
+        "(PRODUCT)RED"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 5500,
+      "avgTry": 7500,
+      "maxTry": 9750
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "LCD panelde ışık sızması veya basınç lekesi kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni parmak izi kaydedip Touch ID ve Ana Ekran düğmesini deneyin.",
+      "Beyaz ve gri görüntüde LCD lekesi, tam yüzey dokunmatik ve parlaklık kontrolü yapın.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-x",
+    "brand": "Apple",
+    "model": "iPhone X",
+    "releaseYear": 2017,
+    "variants": {
+      "storage": [
+        "64GB",
+        "256GB"
+      ],
+      "colors": [
+        "Silver",
+        "Space Gray"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 6500,
+      "avgTry": 8500,
+      "maxTry": 11000
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-xr",
+    "brand": "Apple",
+    "model": "iPhone XR",
+    "releaseYear": 2018,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Black",
+        "White",
+        "Blue",
+        "Yellow",
+        "Coral",
+        "(PRODUCT)RED"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 7000,
+      "avgTry": 9500,
+      "maxTry": 12250
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "LCD panelde ışık sızması veya basınç lekesi kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Beyaz ve gri görüntüde LCD lekesi, tam yüzey dokunmatik ve parlaklık kontrolü yapın.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-xs",
+    "brand": "Apple",
+    "model": "iPhone XS",
+    "releaseYear": 2018,
+    "variants": {
+      "storage": [
+        "64GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Silver",
+        "Space Gray",
+        "Gold"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 7500,
+      "avgTry": 10000,
+      "maxTry": 13000
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-xs-max",
+    "brand": "Apple",
+    "model": "iPhone XS Max",
+    "releaseYear": 2018,
+    "variants": {
+      "storage": [
+        "64GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Silver",
+        "Space Gray",
+        "Gold"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 9000,
+      "avgTry": 12000,
+      "maxTry": 15500
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-11",
+    "brand": "Apple",
+    "model": "iPhone 11",
+    "releaseYear": 2019,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Purple",
+        "Green",
+        "Yellow",
+        "Black",
+        "White",
+        "(PRODUCT)RED"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 10500,
+      "avgTry": 14000,
+      "maxTry": 18250
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "LCD panelde ışık sızması veya basınç lekesi kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Beyaz ve gri görüntüde LCD lekesi, tam yüzey dokunmatik ve parlaklık kontrolü yapın.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-11-pro",
+    "brand": "Apple",
+    "model": "iPhone 11 Pro",
+    "releaseYear": 2019,
+    "variants": {
+      "storage": [
+        "64GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Silver",
+        "Space Gray",
+        "Gold",
+        "Midnight Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 12750,
+      "avgTry": 17000,
+      "maxTry": 22000
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-11-pro-max",
+    "brand": "Apple",
+    "model": "iPhone 11 Pro Max",
+    "releaseYear": 2019,
+    "variants": {
+      "storage": [
+        "64GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Silver",
+        "Space Gray",
+        "Gold",
+        "Midnight Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 14250,
+      "avgTry": 19000,
+      "maxTry": 24750
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-12",
+    "brand": "Apple",
+    "model": "iPhone 12",
+    "releaseYear": 2020,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Black",
+        "White",
+        "(PRODUCT)RED",
+        "Green",
+        "Blue",
+        "Purple"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 13000,
+      "avgTry": 17500,
+      "maxTry": 22750
+    },
+    "chronicIssues": [
+      "Apple servis programı: Ekim 2020–Nisan 2021 üretimli bazı iPhone 12/12 Pro alıcılarda ses kesilmesi; tüm cihazları kapsamaz.",
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ahizeyi hoparlör modunu kapatarak gerçek aramada deneyin; geçmiş alıcı modülü onarımını ve seri numarası uygunluğunu Apple ile doğrulayın.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-12-pro",
+    "brand": "Apple",
+    "model": "iPhone 12 Pro",
+    "releaseYear": 2020,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Silver",
+        "Graphite",
+        "Gold",
+        "Pacific Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 16500,
+      "avgTry": 22000,
+      "maxTry": 28500
+    },
+    "chronicIssues": [
+      "Apple servis programı: Ekim 2020–Nisan 2021 üretimli bazı iPhone 12/12 Pro alıcılarda ses kesilmesi; tüm cihazları kapsamaz.",
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ahizeyi hoparlör modunu kapatarak gerçek aramada deneyin; geçmiş alıcı modülü onarımını ve seri numarası uygunluğunu Apple ile doğrulayın.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-12-pro-max",
+    "brand": "Apple",
+    "model": "iPhone 12 Pro Max",
+    "releaseYear": 2020,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Silver",
+        "Graphite",
+        "Gold",
+        "Pacific Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 19000,
+      "avgTry": 25500,
+      "maxTry": 33250
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-12-mini",
+    "brand": "Apple",
+    "model": "iPhone 12 mini",
+    "releaseYear": 2020,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Black",
+        "White",
+        "(PRODUCT)RED",
+        "Green",
+        "Blue",
+        "Purple"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 11250,
+      "avgTry": 15000,
+      "maxTry": 19500
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez.",
+      "Kompakt cihazda kullanım süresi kontrol riski: küçük pil kapasitesi ile yaşlanmış pili ayırmak için ekran açık kullanım testi yapın; tasarım kapasitesi arıza değildir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-se-2",
+    "brand": "Apple",
+    "model": "iPhone SE (2nd generation)",
+    "releaseYear": 2020,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "White",
+        "Black",
+        "(PRODUCT)RED"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 5250,
+      "avgTry": 7000,
+      "maxTry": 9000
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "LCD panelde ışık sızması veya basınç lekesi kontrol riski; her cihazda görülmez.",
+      "Kompakt cihazda kullanım süresi kontrol riski: küçük pil kapasitesi ile yaşlanmış pili ayırmak için ekran açık kullanım testi yapın; tasarım kapasitesi arıza değildir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni parmak izi kaydedip Touch ID ve Ana Ekran düğmesini deneyin.",
+      "Beyaz ve gri görüntüde LCD lekesi, tam yüzey dokunmatik ve parlaklık kontrolü yapın.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-13",
+    "brand": "Apple",
+    "model": "iPhone 13",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "(PRODUCT)RED",
+        "Starlight",
+        "Midnight",
+        "Blue",
+        "Pink",
+        "Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 18000,
+      "avgTry": 24000,
+      "maxTry": 31250
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-13-pro",
+    "brand": "Apple",
+    "model": "iPhone 13 Pro",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Graphite",
+        "Gold",
+        "Silver",
+        "Sierra Blue",
+        "Alpine Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 23250,
+      "avgTry": 31000,
+      "maxTry": 40250
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Düşük Güç Modu kapalıyken ProMotion akıcılığını; mevcut telefoto kamerada yakın/uzak netleme ve sabitlemeyi deneyin.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-13-pro-max",
+    "brand": "Apple",
+    "model": "iPhone 13 Pro Max",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Graphite",
+        "Gold",
+        "Silver",
+        "Sierra Blue",
+        "Alpine Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 26250,
+      "avgTry": 35000,
+      "maxTry": 45500
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Düşük Güç Modu kapalıyken ProMotion akıcılığını; mevcut telefoto kamerada yakın/uzak netleme ve sabitlemeyi deneyin.",
+      "Mevcut arka kameraların her birinde yakın/uzak netleme ve video sesini deneyin; sabitleyiciyi sallayarak test etmeyin.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-13-mini",
+    "brand": "Apple",
+    "model": "iPhone 13 mini",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "(PRODUCT)RED",
+        "Starlight",
+        "Midnight",
+        "Blue",
+        "Pink",
+        "Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 16000,
+      "avgTry": 21500,
+      "maxTry": 28000
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez.",
+      "Kompakt cihazda kullanım süresi kontrol riski: küçük pil kapasitesi ile yaşlanmış pili ayırmak için ekran açık kullanım testi yapın; tasarım kapasitesi arıza değildir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-14",
+    "brand": "Apple",
+    "model": "iPhone 14",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Midnight",
+        "Starlight",
+        "(PRODUCT)RED",
+        "Blue",
+        "Purple",
+        "Yellow"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 22500,
+      "avgTry": 30000,
+      "maxTry": 39000
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-14-plus",
+    "brand": "Apple",
+    "model": "iPhone 14 Plus",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Midnight",
+        "Starlight",
+        "(PRODUCT)RED",
+        "Blue",
+        "Purple",
+        "Yellow"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 24750,
+      "avgTry": 33000,
+      "maxTry": 43000
+    },
+    "chronicIssues": [
+      "Apple servis programı: bazı iPhone 14 Plus arka kameralarında önizleme gelmemesi; seri numarası bazında değerlendirilir.",
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Arka kamerada görüntü önizlemesini, fotoğraf/video geçişini ve seri numarasıyla servis geçmişini kontrol edin.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-14-pro",
+    "brand": "Apple",
+    "model": "iPhone 14 Pro",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Silver",
+        "Gold",
+        "Space Black",
+        "Deep Purple"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 29500,
+      "avgTry": 39500,
+      "maxTry": 51250
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Düşük Güç Modu kapalıyken ProMotion akıcılığını; mevcut telefoto kamerada yakın/uzak netleme ve sabitlemeyi deneyin.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-14-pro-max",
+    "brand": "Apple",
+    "model": "iPhone 14 Pro Max",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Silver",
+        "Gold",
+        "Space Black",
+        "Deep Purple"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 33000,
+      "avgTry": 44000,
+      "maxTry": 57250
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Düşük Güç Modu kapalıyken ProMotion akıcılığını; mevcut telefoto kamerada yakın/uzak netleme ve sabitlemeyi deneyin.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-se-3",
+    "brand": "Apple",
+    "model": "iPhone SE (3rd generation)",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "(PRODUCT)RED",
+        "Starlight",
+        "Midnight"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 8250,
+      "avgTry": 11000,
+      "maxTry": 14250
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "LCD panelde ışık sızması veya basınç lekesi kontrol riski; her cihazda görülmez.",
+      "Kompakt cihazda kullanım süresi kontrol riski: küçük pil kapasitesi ile yaşlanmış pili ayırmak için ekran açık kullanım testi yapın; tasarım kapasitesi arıza değildir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni parmak izi kaydedip Touch ID ve Ana Ekran düğmesini deneyin.",
+      "Beyaz ve gri görüntüde LCD lekesi, tam yüzey dokunmatik ve parlaklık kontrolü yapın.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "Lightning portunda şarj ve veri bağlantısını test edin; kablo hareketinde kesilme arayın."
+    ]
+  },
+  {
+    "id": "apple-iphone-15",
+    "brand": "Apple",
+    "model": "iPhone 15",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Black",
+        "Blue",
+        "Green",
+        "Yellow",
+        "Pink"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 29250,
+      "avgTry": 39000,
+      "maxTry": 50750
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "USB-C ile hem veri aktarımını hem şarjı deneyin; port gevşekliği ve kablo temasını kontrol edin."
+    ]
+  },
+  {
+    "id": "apple-iphone-15-plus",
+    "brand": "Apple",
+    "model": "iPhone 15 Plus",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Black",
+        "Blue",
+        "Green",
+        "Yellow",
+        "Pink"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 33000,
+      "avgTry": 44000,
+      "maxTry": 57250
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "USB-C ile hem veri aktarımını hem şarjı deneyin; port gevşekliği ve kablo temasını kontrol edin."
+    ]
+  },
+  {
+    "id": "apple-iphone-15-pro",
+    "brand": "Apple",
+    "model": "iPhone 15 Pro",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Black Titanium",
+        "White Titanium",
+        "Blue Titanium",
+        "Natural Titanium"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 38250,
+      "avgTry": 51000,
+      "maxTry": 66250
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Düşük Güç Modu kapalıyken ProMotion akıcılığını; mevcut telefoto kamerada yakın/uzak netleme ve sabitlemeyi deneyin.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "USB-C ile hem veri aktarımını hem şarjı deneyin; port gevşekliği ve kablo temasını kontrol edin."
+    ]
+  },
+  {
+    "id": "apple-iphone-15-pro-max",
+    "brand": "Apple",
+    "model": "iPhone 15 Pro Max",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Black Titanium",
+        "White Titanium",
+        "Blue Titanium",
+        "Natural Titanium"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 44250,
+      "avgTry": 59000,
+      "maxTry": 76750
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Düşük Güç Modu kapalıyken ProMotion akıcılığını; mevcut telefoto kamerada yakın/uzak netleme ve sabitlemeyi deneyin.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "USB-C ile hem veri aktarımını hem şarjı deneyin; port gevşekliği ve kablo temasını kontrol edin."
+    ]
+  },
+  {
+    "id": "apple-iphone-16",
+    "brand": "Apple",
+    "model": "iPhone 16",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Black",
+        "White",
+        "Pink",
+        "Teal",
+        "Ultramarine"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 39000,
+      "avgTry": 52000,
+      "maxTry": 67500
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "USB-C ile hem veri aktarımını hem şarjı deneyin; port gevşekliği ve kablo temasını kontrol edin.",
+      "Kamera Denetimi düğmesinde basma, hafif basma ve kaydırma tepkisini deneyin."
+    ]
+  },
+  {
+    "id": "apple-iphone-16-plus",
+    "brand": "Apple",
+    "model": "iPhone 16 Plus",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Black",
+        "White",
+        "Pink",
+        "Teal",
+        "Ultramarine"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 42750,
+      "avgTry": 57000,
+      "maxTry": 74000
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "USB-C ile hem veri aktarımını hem şarjı deneyin; port gevşekliği ve kablo temasını kontrol edin.",
+      "Kamera Denetimi düğmesinde basma, hafif basma ve kaydırma tepkisini deneyin."
+    ]
+  },
+  {
+    "id": "apple-iphone-16-pro",
+    "brand": "Apple",
+    "model": "iPhone 16 Pro",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Black Titanium",
+        "White Titanium",
+        "Natural Titanium",
+        "Desert Titanium"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 50250,
+      "avgTry": 67000,
+      "maxTry": 87000
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Düşük Güç Modu kapalıyken ProMotion akıcılığını; mevcut telefoto kamerada yakın/uzak netleme ve sabitlemeyi deneyin.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "USB-C ile hem veri aktarımını hem şarjı deneyin; port gevşekliği ve kablo temasını kontrol edin.",
+      "Kamera Denetimi düğmesinde basma, hafif basma ve kaydırma tepkisini deneyin."
+    ]
+  },
+  {
+    "id": "apple-iphone-16-pro-max",
+    "brand": "Apple",
+    "model": "iPhone 16 Pro Max",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Black Titanium",
+        "White Titanium",
+        "Natural Titanium",
+        "Desert Titanium"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 57750,
+      "avgTry": 77000,
+      "maxTry": 100000
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Düşük Güç Modu kapalıyken ProMotion akıcılığını; mevcut telefoto kamerada yakın/uzak netleme ve sabitlemeyi deneyin.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "USB-C ile hem veri aktarımını hem şarjı deneyin; port gevşekliği ve kablo temasını kontrol edin.",
+      "Kamera Denetimi düğmesinde basma, hafif basma ve kaydırma tepkisini deneyin."
+    ]
+  },
+  {
+    "id": "apple-iphone-16e",
+    "brand": "Apple",
+    "model": "iPhone 16e",
+    "releaseYear": 2025,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Black",
+        "White"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 28500,
+      "avgTry": 38000,
+      "maxTry": 49500
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "USB-C ile hem veri aktarımını hem şarjı deneyin; port gevşekliği ve kablo temasını kontrol edin."
+    ]
+  },
+  {
+    "id": "apple-iphone-17",
+    "brand": "Apple",
+    "model": "iPhone 17",
+    "releaseYear": 2025,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Black",
+        "White",
+        "Mist Blue",
+        "Sage",
+        "Lavender"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 48750,
+      "avgTry": 65000,
+      "maxTry": 84500
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "USB-C ile hem veri aktarımını hem şarjı deneyin; port gevşekliği ve kablo temasını kontrol edin.",
+      "Kamera Denetimi düğmesinde basma, hafif basma ve kaydırma tepkisini deneyin."
+    ]
+  },
+  {
+    "id": "apple-iphone-17-pro",
+    "brand": "Apple",
+    "model": "iPhone 17 Pro",
+    "releaseYear": 2025,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Silver",
+        "Cosmic Orange",
+        "Deep Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 66000,
+      "avgTry": 88000,
+      "maxTry": 114500
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Düşük Güç Modu kapalıyken ProMotion akıcılığını; mevcut telefoto kamerada yakın/uzak netleme ve sabitlemeyi deneyin.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "USB-C ile hem veri aktarımını hem şarjı deneyin; port gevşekliği ve kablo temasını kontrol edin.",
+      "Kamera Denetimi düğmesinde basma, hafif basma ve kaydırma tepkisini deneyin."
+    ]
+  },
+  {
+    "id": "apple-iphone-17-pro-max",
+    "brand": "Apple",
+    "model": "iPhone 17 Pro Max",
+    "releaseYear": 2025,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB",
+        "1TB",
+        "2TB"
+      ],
+      "colors": [
+        "Silver",
+        "Cosmic Orange",
+        "Deep Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 76500,
+      "avgTry": 102000,
+      "maxTry": 132500
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Düşük Güç Modu kapalıyken ProMotion akıcılığını; mevcut telefoto kamerada yakın/uzak netleme ve sabitlemeyi deneyin.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "USB-C ile hem veri aktarımını hem şarjı deneyin; port gevşekliği ve kablo temasını kontrol edin.",
+      "Kamera Denetimi düğmesinde basma, hafif basma ve kaydırma tepkisini deneyin."
+    ]
+  },
+  {
+    "id": "apple-iphone-air",
+    "brand": "Apple",
+    "model": "iPhone Air",
+    "releaseYear": 2025,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Space Black",
+        "Cloud White",
+        "Light Gold",
+        "Sky Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 52500,
+      "avgTry": 70000,
+      "maxTry": 91000
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "USB-C ile hem veri aktarımını hem şarjı deneyin; port gevşekliği ve kablo temasını kontrol edin.",
+      "eSIM aktivasyonunu operatörünüzle doğrulayın; ince kasada eğilme ve kablosuz şarj temasını kontrol edin."
+    ]
+  },
+  {
+    "id": "apple-iphone-17e",
+    "brand": "Apple",
+    "model": "iPhone 17e",
+    "releaseYear": 2026,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Black",
+        "White",
+        "Soft Pink"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 36000,
+      "avgTry": 48000,
+      "maxTry": 62500
+    },
+    "chronicIssues": [
+      "İkinci el kullanım riski: pil kapasitesi kaybı ve şarj soketi aşınması; model genelinde kronik kusur kanıtı değildir.",
+      "OLED panelde kalıcı görüntü izi ve düşük parlaklıkta renk düzensizliği kontrol riski; her cihazda görülmez."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Bul özelliğini kapatıp Apple hesabından çıkış yapsın; izinli sıfırlama sonrası Aktivasyon Kilidi olmadan kurulumu tamamlayın.",
+      "Yeni yüz kaydıyla Face ID, ön kamera ve yakınlık algılamasını deneyin.",
+      "Gri, beyaz ve ana renklerde OLED yanığı, ölü piksel ve tam yüzey dokunmatiği kontrol edin.",
+      "Pil sağlığı, servis uyarıları ve mevcutsa parça/servis geçmişini inceleyin; yük altında kapanma olup olmadığını gözleyin.",
+      "True Tone seçeneğini ve renk geçişini kontrol edin; seçeneğin varlığı tek başına ekranın orijinal olduğunu kanıtlamaz.",
+      "Ana kamerada yürüyerek video çekin; sensör kaydırmalı OIS sırasında atlama ve odak kaçırma arayın; telefonu sallamayın.",
+      "USB-C ile hem veri aktarımını hem şarjı deneyin; port gevşekliği ve kablo temasını kontrol edin."
+    ]
+  },
+  {
+    "id": "apple-iphone-18-pro-max",
+    "brand": "Apple",
+    "model": "iPhone 18 Pro Max (Konsept / Öngörü)",
+    "releaseYear": 0,
+    "variants": {
+      "storage": [],
+      "colors": []
+    },
+    "estimatedPriceBand": {
+      "minTry": 0,
+      "avgTry": 0,
+      "maxTry": 0
+    },
+    "chronicIssues": [
+      "KONSEPT KAYDI: Doğrulanmış arıza verisi veya ikinci el fiyat tahmini içermez."
+    ],
+    "criticalChecks": [
+      "Bu planlama kaydı için resmi model, depolama ve renk bilgilerini ayrı bir doğrulama sürecinden geçirin.",
+      "Piyasa değerlemesi yapmadan önce konsept durumunu kaldırıp doğrulanmış cihaz verilerini girin."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s20",
+    "brand": "Samsung",
+    "model": "Galaxy S20",
+    "releaseYear": 2020,
+    "variants": {
+      "storage": [
+        "128GB"
+      ],
+      "colors": [
+        "Cosmic Gray",
+        "Cloud Blue",
+        "Cloud Pink"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 7000,
+      "avgTry": 9500,
+      "maxTry": 12250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Yenileme hızı seçimini, ana/ultra geniş/telefoto kamera geçişlerini ve kablosuz şarjı deneyin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s20-plus",
+    "brand": "Samsung",
+    "model": "Galaxy S20 Plus",
+    "releaseYear": 2020,
+    "variants": {
+      "storage": [
+        "128GB",
+        "512GB"
+      ],
+      "colors": [
+        "Cosmic Black",
+        "Cosmic Gray",
+        "Cloud Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 8250,
+      "avgTry": 11000,
+      "maxTry": 14250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Yenileme hızı seçimini, ana/ultra geniş/telefoto kamera geçişlerini ve kablosuz şarjı deneyin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s20-ultra",
+    "brand": "Samsung",
+    "model": "Galaxy S20 Ultra",
+    "releaseYear": 2020,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Cosmic Black",
+        "Cosmic Gray"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 10500,
+      "avgTry": 14000,
+      "maxTry": 18250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Telefoto lenslerin her birini aydınlık ortamda gerçek optik odak uzaklıklarında deneyin; OIS ve odak atlamasını gözleyin.",
+      "108 MP ana kamerayı yakın ve uzak nesnelerde tekrar tekrar odaklayın; netlik tutarlılığını kontrol edin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s20-fe",
+    "brand": "Samsung",
+    "model": "Galaxy S20 FE",
+    "releaseYear": 2020,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Cloud Navy",
+        "Cloud White",
+        "Cloud Lavender",
+        "Cloud Mint",
+        "Cloud Red",
+        "Cloud Orange"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 6750,
+      "avgTry": 9000,
+      "maxTry": 11750
+    },
+    "chronicIssues": [
+      "Samsung desteğinde bazı S20 FE cihazları için yazılım kaynaklı hayalet dokunma belirtileri bildirilmiştir; güncelleme ve çoklu dokunmatik testi gerekir.",
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Çoklu dokunmatik çizim testinde hayalet dokunuş arayın; One UI güncelleme durumunu ve 3x kamerayı kontrol edin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s20-fe-5g",
+    "brand": "Samsung",
+    "model": "Galaxy S20 FE 5G",
+    "releaseYear": 2020,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Cloud Navy",
+        "Cloud White",
+        "Cloud Lavender",
+        "Cloud Mint",
+        "Cloud Red",
+        "Cloud Orange"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 7500,
+      "avgTry": 10000,
+      "maxTry": 13000
+    },
+    "chronicIssues": [
+      "Samsung desteğinde bazı S20 FE cihazları için yazılım kaynaklı hayalet dokunma belirtileri bildirilmiştir; güncelleme ve çoklu dokunmatik testi gerekir.",
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Çoklu dokunmatik çizim testinde hayalet dokunuş arayın; One UI güncelleme durumunu ve 3x kamerayı kontrol edin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s21",
+    "brand": "Samsung",
+    "model": "Galaxy S21",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Phantom Gray",
+        "Phantom White",
+        "Phantom Violet",
+        "Phantom Pink"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 9500,
+      "avgTry": 12500,
+      "maxTry": 16250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Yenileme hızı seçimini, ana/ultra geniş/telefoto kamera geçişlerini ve kablosuz şarjı deneyin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s21-plus",
+    "brand": "Samsung",
+    "model": "Galaxy S21 Plus",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Phantom Black",
+        "Phantom Silver",
+        "Phantom Violet"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 11000,
+      "avgTry": 14500,
+      "maxTry": 18750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Yenileme hızı seçimini, ana/ultra geniş/telefoto kamera geçişlerini ve kablosuz şarjı deneyin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s21-ultra",
+    "brand": "Samsung",
+    "model": "Galaxy S21 Ultra",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Phantom Black",
+        "Phantom Silver"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 14250,
+      "avgTry": 19000,
+      "maxTry": 24750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Telefoto lenslerin her birini aydınlık ortamda gerçek optik odak uzaklıklarında deneyin; OIS ve odak atlamasını gözleyin.",
+      "Uyumlu harici S Pen ile çizim testini yapın; bu modelde dahili S Pen yuvası yoktur.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s21-fe",
+    "brand": "Samsung",
+    "model": "Galaxy S21 FE",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Graphite",
+        "White",
+        "Lavender",
+        "Olive"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 9500,
+      "avgTry": 12500,
+      "maxTry": 16250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Çoklu dokunmatik çizim testinde hayalet dokunuş arayın; One UI güncelleme durumunu ve 3x kamerayı kontrol edin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s22",
+    "brand": "Samsung",
+    "model": "Galaxy S22",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Phantom Black",
+        "Phantom White",
+        "Green",
+        "Pink Gold"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 12000,
+      "avgTry": 16000,
+      "maxTry": 20750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Yenileme hızı seçimini, ana/ultra geniş/telefoto kamera geçişlerini ve kablosuz şarjı deneyin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s22-plus",
+    "brand": "Samsung",
+    "model": "Galaxy S22 Plus",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Phantom Black",
+        "Phantom White",
+        "Green",
+        "Pink Gold"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 14500,
+      "avgTry": 19500,
+      "maxTry": 25250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Yenileme hızı seçimini, ana/ultra geniş/telefoto kamera geçişlerini ve kablosuz şarjı deneyin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s22-ultra",
+    "brand": "Samsung",
+    "model": "Galaxy S22 Ultra",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Phantom Black",
+        "Phantom White",
+        "Green",
+        "Burgundy"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 20000,
+      "avgTry": 26500,
+      "maxTry": 34500
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Telefoto lenslerin her birini aydınlık ortamda gerçek optik odak uzaklıklarında deneyin; OIS ve odak atlamasını gözleyin.",
+      "Dahili S Pen çıkarma algısı, ekran boyunca çizim ve uzaktan kamera tetiklemesini deneyin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s23",
+    "brand": "Samsung",
+    "model": "Galaxy S23",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Phantom Black",
+        "Cream",
+        "Green",
+        "Lavender"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 18000,
+      "avgTry": 24000,
+      "maxTry": 31250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Yenileme hızı seçimini, ana/ultra geniş/telefoto kamera geçişlerini ve kablosuz şarjı deneyin."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s23-plus",
+    "brand": "Samsung",
+    "model": "Galaxy S23 Plus",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Phantom Black",
+        "Cream",
+        "Green",
+        "Lavender"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 21500,
+      "avgTry": 28500,
+      "maxTry": 37000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Yenileme hızı seçimini, ana/ultra geniş/telefoto kamera geçişlerini ve kablosuz şarjı deneyin."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s23-ultra",
+    "brand": "Samsung",
+    "model": "Galaxy S23 Ultra",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Phantom Black",
+        "Cream",
+        "Green",
+        "Lavender"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 29000,
+      "avgTry": 38500,
+      "maxTry": 50000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Telefoto lenslerin her birini aydınlık ortamda gerçek optik odak uzaklıklarında deneyin; OIS ve odak atlamasını gözleyin.",
+      "Dahili S Pen çıkarma algısı, ekran boyunca çizim ve uzaktan kamera tetiklemesini deneyin."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s23-fe",
+    "brand": "Samsung",
+    "model": "Galaxy S23 FE",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Mint",
+        "Cream",
+        "Graphite",
+        "Purple"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 13500,
+      "avgTry": 18000,
+      "maxTry": 23500
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Çoklu dokunmatik çizim testinde hayalet dokunuş arayın; One UI güncelleme durumunu ve 3x kamerayı kontrol edin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s24",
+    "brand": "Samsung",
+    "model": "Galaxy S24",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Onyx Black",
+        "Marble Gray",
+        "Cobalt Violet",
+        "Amber Yellow"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 23250,
+      "avgTry": 31000,
+      "maxTry": 40250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Yenileme hızı seçimini, ana/ultra geniş/telefoto kamera geçişlerini ve kablosuz şarjı deneyin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s24-plus",
+    "brand": "Samsung",
+    "model": "Galaxy S24 Plus",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Onyx Black",
+        "Marble Gray",
+        "Cobalt Violet",
+        "Amber Yellow"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 27750,
+      "avgTry": 37000,
+      "maxTry": 48000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Yenileme hızı seçimini, ana/ultra geniş/telefoto kamera geçişlerini ve kablosuz şarjı deneyin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s24-ultra",
+    "brand": "Samsung",
+    "model": "Galaxy S24 Ultra",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Titanium Gray",
+        "Titanium Black",
+        "Titanium Violet",
+        "Titanium Yellow"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 36750,
+      "avgTry": 49000,
+      "maxTry": 63750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Telefoto lenslerin her birini aydınlık ortamda gerçek optik odak uzaklıklarında deneyin; OIS ve odak atlamasını gözleyin.",
+      "Dahili S Pen çıkarma algısı, ekran boyunca çizim ve uzaktan kamera tetiklemesini deneyin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s24-fe",
+    "brand": "Samsung",
+    "model": "Galaxy S24 FE",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Blue",
+        "Graphite",
+        "Gray",
+        "Mint",
+        "Yellow"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 18500,
+      "avgTry": 24500,
+      "maxTry": 31750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Çoklu dokunmatik çizim testinde hayalet dokunuş arayın; One UI güncelleme durumunu ve 3x kamerayı kontrol edin.",
+      "İthal sürümlerde işlemci ve şebeke bantları değişebilir; model kodunu ve yazılım bölgesini doğrulayın."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-z-flip3",
+    "brand": "Samsung",
+    "model": "Galaxy Z Flip3",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Cream",
+        "Phantom Black",
+        "Green",
+        "Lavender"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 8000,
+      "avgTry": 10500,
+      "maxTry": 13750
+    },
+    "chronicIssues": [
+      "Katlanabilir ekran riski: koruyucu film ayrılması, darbe sonrası panel hasarı veya menteşe aşınması; her cihaz için kronik arıza anlamına gelmez.",
+      "Normal kat izi tek başına arıza değildir; kat yerindeki siyah çizgi, çatlak ve dokunmatik kaybı ayrıca incelenmelidir.",
+      "Menteşe boyunca esnek bağlantı kontrol riski: farklı açılarda ekran veya ses kesintisi olup olmadığını inceleyin; bu bir yaygınlık iddiası değildir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Menteşeyi zorlamadan açıp kapatın; açıklık, sürtünme sesi ve açıda görüntü kesilmesi arayın.",
+      "İç ekranın kat çizgisi boyunca dokunmatiğini deneyin; koruyucu filmi sökmeyin ve ekrana tırnakla bastırmayın.",
+      "İç ve kapak ekranları arasında geçişte kamera, ses ve uygulama devamlılığını deneyin."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-z-flip4",
+    "brand": "Samsung",
+    "model": "Galaxy Z Flip4",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Bora Purple",
+        "Graphite",
+        "Pink Gold",
+        "Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 10500,
+      "avgTry": 14000,
+      "maxTry": 18250
+    },
+    "chronicIssues": [
+      "Katlanabilir ekran riski: koruyucu film ayrılması, darbe sonrası panel hasarı veya menteşe aşınması; her cihaz için kronik arıza anlamına gelmez.",
+      "Normal kat izi tek başına arıza değildir; kat yerindeki siyah çizgi, çatlak ve dokunmatik kaybı ayrıca incelenmelidir.",
+      "Menteşe boyunca esnek bağlantı kontrol riski: farklı açılarda ekran veya ses kesintisi olup olmadığını inceleyin; bu bir yaygınlık iddiası değildir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Menteşeyi zorlamadan açıp kapatın; açıklık, sürtünme sesi ve açıda görüntü kesilmesi arayın.",
+      "İç ekranın kat çizgisi boyunca dokunmatiğini deneyin; koruyucu filmi sökmeyin ve ekrana tırnakla bastırmayın.",
+      "İç ve kapak ekranları arasında geçişte kamera, ses ve uygulama devamlılığını deneyin."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-z-flip5",
+    "brand": "Samsung",
+    "model": "Galaxy Z Flip5",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Mint",
+        "Graphite",
+        "Cream",
+        "Lavender"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 14250,
+      "avgTry": 19000,
+      "maxTry": 24750
+    },
+    "chronicIssues": [
+      "Katlanabilir ekran riski: koruyucu film ayrılması, darbe sonrası panel hasarı veya menteşe aşınması; her cihaz için kronik arıza anlamına gelmez.",
+      "Normal kat izi tek başına arıza değildir; kat yerindeki siyah çizgi, çatlak ve dokunmatik kaybı ayrıca incelenmelidir.",
+      "Menteşe boyunca esnek bağlantı kontrol riski: farklı açılarda ekran veya ses kesintisi olup olmadığını inceleyin; bu bir yaygınlık iddiası değildir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Menteşeyi zorlamadan açıp kapatın; açıklık, sürtünme sesi ve açıda görüntü kesilmesi arayın.",
+      "İç ekranın kat çizgisi boyunca dokunmatiğini deneyin; koruyucu filmi sökmeyin ve ekrana tırnakla bastırmayın.",
+      "İç ve kapak ekranları arasında geçişte kamera, ses ve uygulama devamlılığını deneyin.",
+      "Geniş kapak ekranında dokunmatik, widget ve kamera önizlemesini deneyin."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-z-flip6",
+    "brand": "Samsung",
+    "model": "Galaxy Z Flip6",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Silver Shadow",
+        "Yellow",
+        "Blue",
+        "Mint"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 20250,
+      "avgTry": 27000,
+      "maxTry": 35000
+    },
+    "chronicIssues": [
+      "Katlanabilir ekran riski: koruyucu film ayrılması, darbe sonrası panel hasarı veya menteşe aşınması; her cihaz için kronik arıza anlamına gelmez.",
+      "Normal kat izi tek başına arıza değildir; kat yerindeki siyah çizgi, çatlak ve dokunmatik kaybı ayrıca incelenmelidir.",
+      "Menteşe boyunca esnek bağlantı kontrol riski: farklı açılarda ekran veya ses kesintisi olup olmadığını inceleyin; bu bir yaygınlık iddiası değildir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Menteşeyi zorlamadan açıp kapatın; açıklık, sürtünme sesi ve açıda görüntü kesilmesi arayın.",
+      "İç ekranın kat çizgisi boyunca dokunmatiğini deneyin; koruyucu filmi sökmeyin ve ekrana tırnakla bastırmayın.",
+      "İç ve kapak ekranları arasında geçişte kamera, ses ve uygulama devamlılığını deneyin.",
+      "Geniş kapak ekranında dokunmatik, widget ve kamera önizlemesini deneyin."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-z-fold3",
+    "brand": "Samsung",
+    "model": "Galaxy Z Fold3",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Phantom Black",
+        "Phantom Green",
+        "Phantom Silver"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 14250,
+      "avgTry": 19000,
+      "maxTry": 24750
+    },
+    "chronicIssues": [
+      "Katlanabilir ekran riski: koruyucu film ayrılması, darbe sonrası panel hasarı veya menteşe aşınması; her cihaz için kronik arıza anlamına gelmez.",
+      "Normal kat izi tek başına arıza değildir; kat yerindeki siyah çizgi, çatlak ve dokunmatik kaybı ayrıca incelenmelidir.",
+      "Menteşe boyunca esnek bağlantı kontrol riski: farklı açılarda ekran veya ses kesintisi olup olmadığını inceleyin; bu bir yaygınlık iddiası değildir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Menteşeyi zorlamadan açıp kapatın; açıklık, sürtünme sesi ve açıda görüntü kesilmesi arayın.",
+      "İç ekranın kat çizgisi boyunca dokunmatiğini deneyin; koruyucu filmi sökmeyin ve ekrana tırnakla bastırmayın.",
+      "İç ve kapak ekranları arasında geçişte kamera, ses ve uygulama devamlılığını deneyin.",
+      "İç ekranda yalnızca uyumlu S Pen Fold Edition/Pro ile çizgi atlama testi yapın; kapak ekranı S Pen desteklemez."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-z-fold4",
+    "brand": "Samsung",
+    "model": "Galaxy Z Fold4",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Graygreen",
+        "Phantom Black",
+        "Beige"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 18500,
+      "avgTry": 24500,
+      "maxTry": 31750
+    },
+    "chronicIssues": [
+      "Katlanabilir ekran riski: koruyucu film ayrılması, darbe sonrası panel hasarı veya menteşe aşınması; her cihaz için kronik arıza anlamına gelmez.",
+      "Normal kat izi tek başına arıza değildir; kat yerindeki siyah çizgi, çatlak ve dokunmatik kaybı ayrıca incelenmelidir.",
+      "Menteşe boyunca esnek bağlantı kontrol riski: farklı açılarda ekran veya ses kesintisi olup olmadığını inceleyin; bu bir yaygınlık iddiası değildir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Menteşeyi zorlamadan açıp kapatın; açıklık, sürtünme sesi ve açıda görüntü kesilmesi arayın.",
+      "İç ekranın kat çizgisi boyunca dokunmatiğini deneyin; koruyucu filmi sökmeyin ve ekrana tırnakla bastırmayın.",
+      "İç ve kapak ekranları arasında geçişte kamera, ses ve uygulama devamlılığını deneyin.",
+      "İç ekranda yalnızca uyumlu S Pen Fold Edition/Pro ile çizgi atlama testi yapın; kapak ekranı S Pen desteklemez."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-z-fold5",
+    "brand": "Samsung",
+    "model": "Galaxy Z Fold5",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Icy Blue",
+        "Phantom Black",
+        "Cream"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 25500,
+      "avgTry": 34000,
+      "maxTry": 44250
+    },
+    "chronicIssues": [
+      "Katlanabilir ekran riski: koruyucu film ayrılması, darbe sonrası panel hasarı veya menteşe aşınması; her cihaz için kronik arıza anlamına gelmez.",
+      "Normal kat izi tek başına arıza değildir; kat yerindeki siyah çizgi, çatlak ve dokunmatik kaybı ayrıca incelenmelidir.",
+      "Menteşe boyunca esnek bağlantı kontrol riski: farklı açılarda ekran veya ses kesintisi olup olmadığını inceleyin; bu bir yaygınlık iddiası değildir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Menteşeyi zorlamadan açıp kapatın; açıklık, sürtünme sesi ve açıda görüntü kesilmesi arayın.",
+      "İç ekranın kat çizgisi boyunca dokunmatiğini deneyin; koruyucu filmi sökmeyin ve ekrana tırnakla bastırmayın.",
+      "İç ve kapak ekranları arasında geçişte kamera, ses ve uygulama devamlılığını deneyin.",
+      "İç ekranda yalnızca uyumlu S Pen Fold Edition/Pro ile çizgi atlama testi yapın; kapak ekranı S Pen desteklemez."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-z-fold6",
+    "brand": "Samsung",
+    "model": "Galaxy Z Fold6",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Silver Shadow",
+        "Pink",
+        "Navy"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 35250,
+      "avgTry": 47000,
+      "maxTry": 61000
+    },
+    "chronicIssues": [
+      "Katlanabilir ekran riski: koruyucu film ayrılması, darbe sonrası panel hasarı veya menteşe aşınması; her cihaz için kronik arıza anlamına gelmez.",
+      "Normal kat izi tek başına arıza değildir; kat yerindeki siyah çizgi, çatlak ve dokunmatik kaybı ayrıca incelenmelidir.",
+      "Menteşe boyunca esnek bağlantı kontrol riski: farklı açılarda ekran veya ses kesintisi olup olmadığını inceleyin; bu bir yaygınlık iddiası değildir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "Menteşeyi zorlamadan açıp kapatın; açıklık, sürtünme sesi ve açıda görüntü kesilmesi arayın.",
+      "İç ekranın kat çizgisi boyunca dokunmatiğini deneyin; koruyucu filmi sökmeyin ve ekrana tırnakla bastırmayın.",
+      "İç ve kapak ekranları arasında geçişte kamera, ses ve uygulama devamlılığını deneyin.",
+      "İç ekranda yalnızca uyumlu S Pen Fold Edition/Pro ile çizgi atlama testi yapın; kapak ekranı S Pen desteklemez."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-a52",
+    "brand": "Samsung",
+    "model": "Galaxy A52",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Awesome Black",
+        "Awesome White",
+        "Awesome Violet",
+        "Awesome Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 5000,
+      "avgTry": 6500,
+      "maxTry": 8500
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "A52 4G modelinde 90 Hz ekran seçimini ve ana kamerada OIS/netleme işlevini kontrol edin; ultra geniş kamerayla karıştırmayın.",
+      "SIM/microSD tepsisindeki temasları ve arka kapak yapışkanında açılma olup olmadığını inceleyin; suya daldırarak test etmeyin."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-a52-5g",
+    "brand": "Samsung",
+    "model": "Galaxy A52 5G",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Awesome Black",
+        "Awesome White",
+        "Awesome Violet",
+        "Awesome Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 5500,
+      "avgTry": 7500,
+      "maxTry": 9750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "120 Hz ekran seçimini ve ana kamerada OIS/netleme işlevini kontrol edin; ultra geniş kamerayla karıştırmayın.",
+      "SIM/microSD tepsisindeki temasları ve arka kapak yapışkanında açılma olup olmadığını inceleyin; suya daldırarak test etmeyin."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-a52s-5g",
+    "brand": "Samsung",
+    "model": "Galaxy A52s 5G",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Awesome Black",
+        "Awesome White",
+        "Awesome Violet",
+        "Awesome Mint"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 6500,
+      "avgTry": 8500,
+      "maxTry": 11000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "120 Hz ekran seçimini ve ana kamerada OIS/netleme işlevini kontrol edin; ultra geniş kamerayla karıştırmayın.",
+      "SIM/microSD tepsisindeki temasları ve arka kapak yapışkanında açılma olup olmadığını inceleyin; suya daldırarak test etmeyin."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-a53-5g",
+    "brand": "Samsung",
+    "model": "Galaxy A53 5G",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Awesome Black",
+        "Awesome White",
+        "Awesome Blue",
+        "Awesome Peach"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 6500,
+      "avgTry": 8500,
+      "maxTry": 11000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "120 Hz ekran seçimini ve ana kamerada OIS/netleme işlevini kontrol edin; ultra geniş kamerayla karıştırmayın.",
+      "SIM/microSD tepsisindeki temasları ve arka kapak yapışkanında açılma olup olmadığını inceleyin; suya daldırarak test etmeyin."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-a54-5g",
+    "brand": "Samsung",
+    "model": "Galaxy A54 5G",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Awesome Graphite",
+        "Awesome White",
+        "Awesome Violet",
+        "Awesome Lime"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 8500,
+      "avgTry": 11500,
+      "maxTry": 15000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "120 Hz ekran seçimini ve ana kamerada OIS/netleme işlevini kontrol edin; ultra geniş kamerayla karıştırmayın.",
+      "SIM/microSD tepsisindeki temasları ve arka kapak yapışkanında açılma olup olmadığını inceleyin; suya daldırarak test etmeyin."
+    ]
+  },
+  {
+    "id": "samsung-galaxy-a55-5g",
+    "brand": "Samsung",
+    "model": "Galaxy A55 5G",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Awesome Iceblue",
+        "Awesome Lilac",
+        "Awesome Navy",
+        "Awesome Lemon"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 11250,
+      "avgTry": 15000,
+      "maxTry": 19500
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: AMOLED panelde kalıcı görüntü izi/çizgi veya parmak izi okuma kaybı; model genelinde kanıtlanmış kronik kusur iddiası değildir.",
+      "Kullanıma bağlı pil kapasitesi ve USB-C temas kaybı; servis geçmişi ve yük testiyle değerlendirilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "Samsung Members tanılamasında dokunmatik, sensör, hoparlör ve mikrofon testlerini çalıştırın.",
+      "Gri ve beyaz zeminde AMOLED yanığı/çizgi arayın; yeni parmak izi kaydıyla biyometriyi deneyin.",
+      "USB-C şarj/veri bağlantısı, pil tanılaması ve birkaç dakikalık kamera kaydında sıcaklık ile kapanma davranışını kontrol edin.",
+      "120 Hz ekran seçimini ve ana kamerada OIS/netleme işlevini kontrol edin; ultra geniş kamerayla karıştırmayın.",
+      "SIM/microSD tepsisindeki temasları ve arka kapak yapışkanında açılma olup olmadığını inceleyin; suya daldırarak test etmeyin."
+    ]
+  },
+  {
+    "id": "redmi-note-10",
+    "brand": "Redmi",
+    "model": "Redmi Note 10",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB"
+      ],
+      "colors": [
+        "Onyx Gray",
+        "Pebble White",
+        "Lake Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 3500,
+      "avgTry": 4500,
+      "maxTry": 5750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana ve yardımcı kameralarda netleme, video ve mikrofonu deneyin; bu modelde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "redmi-note-10-5g",
+    "brand": "Redmi",
+    "model": "Redmi Note 10 5G",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB"
+      ],
+      "colors": [
+        "Chrome Silver",
+        "Graphite Gray",
+        "Nighttime Blue",
+        "Aurora Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 3500,
+      "avgTry": 4500,
+      "maxTry": 5750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "LCD panelde ışık sızması/ölü piksel ve 90 Hz seçimini kontrol edin; bu model AMOLED değildir.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana ve yardımcı kameralarda netleme, video ve mikrofonu deneyin; bu modelde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "redmi-note-10-pro",
+    "brand": "Redmi",
+    "model": "Redmi Note 10 Pro",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Onyx Gray",
+        "Glacier Blue",
+        "Gradient Bronze",
+        "Aurora Green",
+        "Nebula Purple"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 5000,
+      "avgTry": 6500,
+      "maxTry": 8500
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana ve yardımcı kameralarda netleme, video ve mikrofonu deneyin; bu modelde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "redmi-note-11",
+    "brand": "Redmi",
+    "model": "Redmi Note 11",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB"
+      ],
+      "colors": [
+        "Graphite Gray",
+        "Twilight Blue",
+        "Star Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 4000,
+      "avgTry": 5500,
+      "maxTry": 7250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana ve yardımcı kameralarda netleme, video ve mikrofonu deneyin; bu modelde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "redmi-note-11-pro",
+    "brand": "Redmi",
+    "model": "Redmi Note 11 Pro",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB"
+      ],
+      "colors": [
+        "Graphite Gray",
+        "Polar White",
+        "Star Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 5250,
+      "avgTry": 7000,
+      "maxTry": 9000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana ve yardımcı kameralarda netleme, video ve mikrofonu deneyin; bu modelde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "redmi-note-11-pro-5g",
+    "brand": "Redmi",
+    "model": "Redmi Note 11 Pro 5G",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB"
+      ],
+      "colors": [
+        "Graphite Gray",
+        "Polar White",
+        "Atlantic Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 5500,
+      "avgTry": 7500,
+      "maxTry": 9750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana ve yardımcı kameralarda netleme, video ve mikrofonu deneyin; bu modelde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "redmi-note-11-pro-plus-5g",
+    "brand": "Redmi",
+    "model": "Redmi Note 11 Pro+ 5G",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Graphite Gray",
+        "Star Blue",
+        "Forest Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 6750,
+      "avgTry": 9000,
+      "maxTry": 11750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana ve yardımcı kameralarda netleme, video ve mikrofonu deneyin; bu modelde OIS bulunduğunu varsaymayın.",
+      "120 W destekli sürümde uyumlu Xiaomi adaptörü/kabloyla hızlı şarj anlaşmasını kontrol edin; etiketteki güce tek başına güvenmeyin."
+    ]
+  },
+  {
+    "id": "redmi-note-12",
+    "brand": "Redmi",
+    "model": "Redmi Note 12",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "64GB",
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Onyx Gray",
+        "Mint Green",
+        "Ice Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 5000,
+      "avgTry": 6500,
+      "maxTry": 8500
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana ve yardımcı kameralarda netleme, video ve mikrofonu deneyin; bu modelde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "redmi-note-12-5g",
+    "brand": "Redmi",
+    "model": "Redmi Note 12 5G",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Onyx Gray",
+        "Forest Green",
+        "Ice Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 5500,
+      "avgTry": 7500,
+      "maxTry": 9750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana ve yardımcı kameralarda netleme, video ve mikrofonu deneyin; bu modelde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "redmi-note-12-pro",
+    "brand": "Redmi",
+    "model": "Redmi Note 12 Pro",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Graphite Gray",
+        "Glacier Blue",
+        "Polar White",
+        "Star Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 6500,
+      "avgTry": 8500,
+      "maxTry": 11000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana ve yardımcı kameralarda netleme, video ve mikrofonu deneyin; bu modelde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "redmi-note-12-pro-5g",
+    "brand": "Redmi",
+    "model": "Redmi Note 12 Pro 5G",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Midnight Black",
+        "Polar White",
+        "Sky Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 8000,
+      "avgTry": 10500,
+      "maxTry": 13750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana kamerada OIS ve odak geçişini yürüyerek video ile test edin; ultra geniş kameranın OIS desteklediğini varsaymayın."
+    ]
+  },
+  {
+    "id": "redmi-note-12-pro-plus-5g",
+    "brand": "Redmi",
+    "model": "Redmi Note 12 Pro+ 5G",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "256GB"
+      ],
+      "colors": [
+        "Midnight Black",
+        "Polar White",
+        "Sky Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 9500,
+      "avgTry": 12500,
+      "maxTry": 16250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana kamerada OIS ve odak geçişini yürüyerek video ile test edin; ultra geniş kameranın OIS desteklediğini varsaymayın.",
+      "120 W destekli sürümde uyumlu Xiaomi adaptörü/kabloyla hızlı şarj anlaşmasını kontrol edin; etiketteki güce tek başına güvenmeyin."
+    ]
+  },
+  {
+    "id": "redmi-note-13",
+    "brand": "Redmi",
+    "model": "Redmi Note 13",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Midnight Black",
+        "Mint Green",
+        "Ice Blue",
+        "Ocean Sunset"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 6500,
+      "avgTry": 8500,
+      "maxTry": 11000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana ve yardımcı kameralarda netleme, video ve mikrofonu deneyin; bu modelde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "redmi-note-13-5g",
+    "brand": "Redmi",
+    "model": "Redmi Note 13 5G",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Graphite Black",
+        "Arctic White",
+        "Ocean Teal"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 7500,
+      "avgTry": 10000,
+      "maxTry": 13000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana ve yardımcı kameralarda netleme, video ve mikrofonu deneyin; bu modelde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "redmi-note-13-pro",
+    "brand": "Redmi",
+    "model": "Redmi Note 13 Pro",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Midnight Black",
+        "Forest Green",
+        "Lavender Purple"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 8500,
+      "avgTry": 11500,
+      "maxTry": 15000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana kamerada OIS ve odak geçişini yürüyerek video ile test edin; ultra geniş kameranın OIS desteklediğini varsaymayın.",
+      "200 MP kamera modunda fotoğraf kaydını ve yakın/uzak odak tutarlılığını kontrol edin."
+    ]
+  },
+  {
+    "id": "redmi-note-13-pro-5g",
+    "brand": "Redmi",
+    "model": "Redmi Note 13 Pro 5G",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Midnight Black",
+        "Ocean Teal",
+        "Aurora Purple",
+        "Olive Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 10500,
+      "avgTry": 14000,
+      "maxTry": 18250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana kamerada OIS ve odak geçişini yürüyerek video ile test edin; ultra geniş kameranın OIS desteklediğini varsaymayın.",
+      "200 MP kamera modunda fotoğraf kaydını ve yakın/uzak odak tutarlılığını kontrol edin."
+    ]
+  },
+  {
+    "id": "redmi-note-13-pro-plus-5g",
+    "brand": "Redmi",
+    "model": "Redmi Note 13 Pro+ 5G",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Midnight Black",
+        "Moonlight White",
+        "Aurora Purple"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 12750,
+      "avgTry": 17000,
+      "maxTry": 22000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Model koduyla 4G/5G sürümünü doğrulayın; aynı Note adını taşıyan farklı işlemci/kamera sürümlerini karıştırmayın.",
+      "Ana kamerada OIS ve odak geçişini yürüyerek video ile test edin; ultra geniş kameranın OIS desteklediğini varsaymayın.",
+      "120 W destekli sürümde uyumlu Xiaomi adaptörü/kabloyla hızlı şarj anlaşmasını kontrol edin; etiketteki güce tek başına güvenmeyin.",
+      "200 MP kamera modunda fotoğraf kaydını ve yakın/uzak odak tutarlılığını kontrol edin."
+    ]
+  },
+  {
+    "id": "xiaomi-12",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 12",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Gray",
+        "Purple",
+        "Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 10500,
+      "avgTry": 14000,
+      "maxTry": 18250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir.",
+      "Yük altında ısı ve performans düşüşü kontrol riski: Snapdragon 8 Gen 1 sürümünü uzun kamera kaydında deneyin; tek başına ısınma donanım arızası kanıtı değildir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "xiaomi-12-pro",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 12 Pro",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Gray",
+        "Purple",
+        "Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 13500,
+      "avgTry": 18000,
+      "maxTry": 23500
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir.",
+      "Yük altında ısı ve performans düşüşü kontrol riski: Snapdragon 8 Gen 1 sürümünü uzun kamera kaydında deneyin; tek başına ısınma donanım arızası kanıtı değildir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın.",
+      "120 W destekli şarjı uyumlu adaptör ve kabloyla deneyin; ısınma/kesinti halinde servis değerlendirmesi isteyin."
+    ]
+  },
+  {
+    "id": "xiaomi-12x",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 12X",
+    "releaseYear": 2021,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Gray",
+        "Purple",
+        "Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 9000,
+      "avgTry": 12000,
+      "maxTry": 15500
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "xiaomi-12-lite",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 12 Lite",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Black",
+        "Lite Green",
+        "Lite Pink"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 7500,
+      "avgTry": 10000,
+      "maxTry": 13000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "xiaomi-12t",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 12T",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Black",
+        "Silver",
+        "Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 9750,
+      "avgTry": 13000,
+      "maxTry": 17000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "xiaomi-12t-pro",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 12T Pro",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Black",
+        "Silver",
+        "Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 12500,
+      "avgTry": 16500,
+      "maxTry": 21500
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın.",
+      "120 W destekli şarjı uyumlu adaptör ve kabloyla deneyin; ısınma/kesinti halinde servis değerlendirmesi isteyin."
+    ]
+  },
+  {
+    "id": "xiaomi-13",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 13",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Black",
+        "White",
+        "Flora Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 18000,
+      "avgTry": 24000,
+      "maxTry": 31250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın.",
+      "Leica kamera modlarında ana ve mevcut telefoto lensleri deneyin; lens içi leke/buğuyu normal kullanım sıcaklığında gözleyin."
+    ]
+  },
+  {
+    "id": "xiaomi-13-pro",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 13 Pro",
+    "releaseYear": 2022,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Ceramic Black",
+        "Ceramic White"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 23250,
+      "avgTry": 31000,
+      "maxTry": 40250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın.",
+      "Leica kamera modlarında ana ve mevcut telefoto lensleri deneyin; lens içi leke/buğuyu normal kullanım sıcaklığında gözleyin."
+    ]
+  },
+  {
+    "id": "xiaomi-13-ultra",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 13 Ultra",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "512GB"
+      ],
+      "colors": [
+        "Black",
+        "Olive Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 28500,
+      "avgTry": 38000,
+      "maxTry": 49500
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın.",
+      "Leica kamera modlarında ana ve mevcut telefoto lensleri deneyin; lens içi leke/buğuyu normal kullanım sıcaklığında gözleyin.",
+      "Tüm optik odak uzaklıklarını ve değişken diyafram geçişini test edin; lensi soğutarak veya suya sokarak denemeyin."
+    ]
+  },
+  {
+    "id": "xiaomi-13-lite",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 13 Lite",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "128GB",
+        "256GB"
+      ],
+      "colors": [
+        "Black",
+        "Lite Blue",
+        "Lite Pink"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 10500,
+      "avgTry": 14000,
+      "maxTry": 18250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "xiaomi-13t",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 13T",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "256GB"
+      ],
+      "colors": [
+        "Black",
+        "Meadow Green",
+        "Alpine Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 14250,
+      "avgTry": 19000,
+      "maxTry": 24750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın.",
+      "Leica kamera modlarında ana ve mevcut telefoto lensleri deneyin; lens içi leke/buğuyu normal kullanım sıcaklığında gözleyin."
+    ]
+  },
+  {
+    "id": "xiaomi-13t-pro",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 13T Pro",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Black",
+        "Meadow Green",
+        "Alpine Blue"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 18000,
+      "avgTry": 24000,
+      "maxTry": 31250
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın.",
+      "Leica kamera modlarında ana ve mevcut telefoto lensleri deneyin; lens içi leke/buğuyu normal kullanım sıcaklığında gözleyin.",
+      "120 W destekli şarjı uyumlu adaptör ve kabloyla deneyin; ısınma/kesinti halinde servis değerlendirmesi isteyin."
+    ]
+  },
+  {
+    "id": "xiaomi-14",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 14",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Black",
+        "White",
+        "Jade Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 24750,
+      "avgTry": 33000,
+      "maxTry": 43000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın.",
+      "Leica kamera modlarında ana ve mevcut telefoto lensleri deneyin; lens içi leke/buğuyu normal kullanım sıcaklığında gözleyin."
+    ]
+  },
+  {
+    "id": "xiaomi-14-pro",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 14 Pro",
+    "releaseYear": 2023,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Black",
+        "White",
+        "Rock Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 29250,
+      "avgTry": 39000,
+      "maxTry": 50750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın.",
+      "Leica kamera modlarında ana ve mevcut telefoto lensleri deneyin; lens içi leke/buğuyu normal kullanım sıcaklığında gözleyin.",
+      "Çin pazarı sürümünde ROM, Google servisleri ve operatör bant uyumunu doğrulayın; resmi global sürüm olduğunu varsaymayın."
+    ]
+  },
+  {
+    "id": "xiaomi-14-ultra",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 14 Ultra",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "512GB"
+      ],
+      "colors": [
+        "Black",
+        "White"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 37500,
+      "avgTry": 50000,
+      "maxTry": 65000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın.",
+      "Leica kamera modlarında ana ve mevcut telefoto lensleri deneyin; lens içi leke/buğuyu normal kullanım sıcaklığında gözleyin.",
+      "Tüm optik odak uzaklıklarını ve değişken diyafram geçişini test edin; lensi soğutarak veya suya sokarak denemeyin."
+    ]
+  },
+  {
+    "id": "xiaomi-14t",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 14T",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB"
+      ],
+      "colors": [
+        "Titan Gray",
+        "Titan Blue",
+        "Titan Black",
+        "Lemon Green"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 19500,
+      "avgTry": 26000,
+      "maxTry": 33750
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın.",
+      "Leica kamera modlarında ana ve mevcut telefoto lensleri deneyin; lens içi leke/buğuyu normal kullanım sıcaklığında gözleyin."
+    ]
+  },
+  {
+    "id": "xiaomi-14t-pro",
+    "brand": "Xiaomi",
+    "model": "Xiaomi 14T Pro",
+    "releaseYear": 2024,
+    "variants": {
+      "storage": [
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "colors": [
+        "Titan Gray",
+        "Titan Blue",
+        "Titan Black"
+      ]
+    },
+    "estimatedPriceBand": {
+      "minTry": 24750,
+      "avgTry": 33000,
+      "maxTry": 43000
+    },
+    "chronicIssues": [
+      "İkinci el kontrol riski: pil yıpranması, şarj soketi temassızlığı ve yazılım sürümüne bağlı kararlılık sorunları; model genelinde kronik kusur kanıtı değildir.",
+      "Yakınlık algılaması ve bildirim gecikmesi cihaz/yazılım ayarına göre değişebilir; arama ve arka plan uygulamasıyla kontrol edilmelidir."
+    ],
+    "criticalChecks": [
+      "IMEI, model kodu ve depolamayı ayarlardan doğrulayın; kendi SIM kartınızla arama ve veri bağlantısını deneyin.",
+      "Satıcı Google ve üretici hesabını kaldırsın; izinli sıfırlama sonrası kurulumu tamamlayıp FRP kilidi bulunmadığını doğrulayın.",
+      "MIUI/HyperOS sürümü, ROM bölgesi ve bootloader durumunu kontrol edin; resmi güncellemenin çalıştığını doğrulayın.",
+      "Gerçek aramada kulağa yaklaştırıp uzaklaştırınca ekranın kapanıp açıldığını; uygulama arka plandayken bildirim gelişini deneyin.",
+      "USB-C üzerinden veri ve uyumlu adaptörle şarjı deneyin; pilde hızlı düşüş veya yükte yeniden başlama arayın.",
+      "AMOLED panelde gri zemin yanığı, renk düzensizliği ve tam yüzey dokunmatik kontrolü yapın.",
+      "Ana kamerada fotoğraf/video netleme ve desteklenen lenslerde OIS işlevini deneyin; Lite serisinde OIS bulunduğunu varsaymayın.",
+      "Leica kamera modlarında ana ve mevcut telefoto lensleri deneyin; lens içi leke/buğuyu normal kullanım sıcaklığında gözleyin.",
+      "120 W destekli şarjı uyumlu adaptör ve kabloyla deneyin; ısınma/kesinti halinde servis değerlendirmesi isteyin."
+    ]
+  }
+]

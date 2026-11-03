@@ -283,6 +283,28 @@ Her iki platformda da kurulum için tek bir paket yöneticisi seçin. Mevcut pnp
 | Yayında eski görünüm var | Web çıktısını yeniden üretin ve güncel `dist/` dizininin yayınlandığını kontrol edin. |
 | Doğrudan adrese girişte 404 alınıyor | Hosting platformundaki SPA fallback kuralını ve çıktı dizinini kontrol edin. Ekran sekmeleri şu anda URL tabanlı yönlendirme yerine uygulama içi durumla yönetilir. |
 
+## Akıllı Cihaz Kataloğu
+
+`data/devicesCatalog.json` içinde 113 telefon modeli, depolama/renk seçenekleri,
+tahmini TL fiyat bantları, sorun/kontrol riskleri ve cihaz özelliklerine uygun
+satın alma testleri bulunur. Tipler `types/catalog.ts`, erişim ve arama işlevleri
+`utils/catalogHelper.ts` içindedir: `getAllDevices`, `getDeviceById`,
+`searchDevices`, `filterByBrand`.
+
+Kapsam, üretici kaynakları, fiyat varsayımları, konsept kayıtlarının işlenmesi ve
+kullanım örnekleri için [katalog belgesine](docs/devices-catalog.md) bakın.
+Katalog testleri: `npm run test:catalog`.
+
+İlan bağlantısı ve serbest metin ayrıştırma, katalog eşleştirme, pil/depolama/durum
+bayrakları ve ±%15 fiyat değerlendirmesi için [ilan motoru belgesine](docs/listing-parser.md)
+bakın. URL akışı `/api/parse-listing` Vercel işlevini kullanır; metin ayrıştırma
+yerel çalışır. İlgili testler: `npm run test:listing-parser`.
+
+Ana sayfanın üstündeki **İlan Analiz & Hızlı Ekspertiz** bölümü cihaz rozetlerini,
+fiyat/TL farkını, ilan beyanlarını ve modele özel kontrol listesini gösterir.
+İşaretlediğiniz testlerden tek bir seçilebilir/kopyalanabilir ekspertiz raporu
+oluşturabilirsiniz. Rapor kontrolleri: `npm run test:listing-analysis`.
+
 ## 🤝 Katkıda Bulunma
 
 Değişiklik öncesinde mevcut davranışı inceleyin; küçük ve anlaşılır değişikliklerle ilerleyin. Yeni ürün eklerken kontrol adımlarını uygulanabilir tutun, kronik sorunları kesin arıza iddiası olarak sunmayın ve örnek fiyatların kaynak/tarih varsayımlarını belirtin.

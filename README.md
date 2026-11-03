@@ -363,3 +363,7 @@ Kamera ile Şasi & Kasa Analizi; ayarlanabilir neon hizalama kılavuzu, yerel fo
 ### Sesli saha asistanı
 
 Altı cihaz kontrolünü Türkçe sesli yönerge ve büyük geçti/kaldı butonlarıyla tamamlayın. Ses desteği yoksa sessiz akış devam eder; biten turun sonuçları ekspertiz özetine ve raporlara aktarılır. [Kullanım ve ses desteği](docs/voice-field-mode.md).
+
+### Yaylanan ekspertiz çekmecesi
+
+İlan analizi, sürüklenebilir buzlu cam alt çekmecede açılır. Durum hapı yükleme ve hazır bilgisini gösterir; kapatıp açınca kontrol sonuçları korunur. [Yerleşim ve etkileşim kuralları](docs/sheet-presentation.md).

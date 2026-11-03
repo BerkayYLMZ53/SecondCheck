@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import { Animated, Keyboard, Platform, Pressable, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
+import { Keyboard, Pressable, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
 import { ClipboardPaste, SearchCheck } from 'lucide-react-native';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
 import { parseListingInput } from '../utils/listingInput';
 import type { ListingInputResult } from '../utils/listingInput';
 import type { ParsedListing } from '../utils/listingParser';
-import ListingAnalysisCard from './ListingAnalysisCard';
 import ListingSkeleton from './ListingSkeleton';
-import { useReducedMotion } from '../utils/useReducedMotion';
+import { useAnalysisPresentation } from '../context/AnalysisPresentationContext';
+import { catalogDeviceName } from '../utils/listingAnalysisReport';
 
 interface Props {
   onParsed?: (listing: ParsedListing, title: string) => void;
@@ -20,10 +20,10 @@ interface Props {
 export default function ListingInputSection({ onParsed, apiEndpoint, active = true }: Props) {
   const { colors } = useTheme();
   const styles = useThemedStyles(createStyles);
+  const presentation = useAnalysisPresentation();
   const { width } = useWindowDimensions();
   const [text, setText] = useState('');
   const [analysis, setAnalysis] = useState<ListingInputResult | null>(null);
-  const [version, setVersion] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const requestId = useRef(0);
@@ -40,6 +40,7 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
     setLoading(true);
     setError(null);
     setAnalysis(null);
+    presentation.begin();
     Keyboard.dismiss();
     try {
       const [result] = await Promise.all([
@@ -48,12 +49,15 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
       ]);
       if (id !== requestId.current) return;
       setAnalysis(result);
-      setVersion((previous) => previous + 1);
+      if (result.listing.matchedDevice) presentation.complete(result.listing, result.title, catalogDeviceName(result.listing));
+      else if (result.listing.product) presentation.complete(result.listing, result.title, result.listing.product.name);
+      else presentation.fail('Cihaz eşleştirilemedi');
       // The new card works independently of the legacy Product valuation flow.
       if (result.listing.product && !result.listing.matchedDevice) onParsed?.(result.listing, result.title);
     } catch (error) {
       if (id !== requestId.current || activeController.signal.aborted) return;
       setError(error instanceof Error ? error.message : 'İlan okunamadı. Başlığı ve açıklamayı yapıştırarak tekrar deneyin.');
+      presentation.fail();
     } finally {
       if (id === requestId.current) { setLoading(false); controller.current = null; }
     }
@@ -81,6 +85,7 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
               controller.current?.abort();
               controller.current = null;
               setText(value); setAnalysis(null); setError(null); setLoading(false);
+              presentation.reset();
             }}
             style={styles.input} />
           <Pressable testID="parse-listing" accessibilityRole="button" accessibilityLabel="İlanı analiz et ve doğrula"
@@ -98,7 +103,13 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
       {loading && <ListingSkeleton active={active} />}
       {analysis && listing && (
         listing.matchedDevice
-          ? <AnalysisReveal key={version}><ListingAnalysisCard result={listing} title={analysis.title} active={active} /></AnalysisReveal>
+          ? <View style={styles.inputCard} testID="listing-result-preview">
+              <Text style={styles.resultHeading}>{catalogDeviceName(listing)}</Text>
+              <Text style={styles.body}>Analiziniz hazır. Kontrollerinize, saha testlerine ve raporlarınıza alt çekmeceden devam edin.</Text>
+              <Pressable testID="open-analysis-details" accessibilityRole="button" accessibilityLabel="İlan ekspertiz detaylarını aç" onPress={presentation.reopen} style={styles.analyzeButton}>
+                <SearchCheck size={20} color={colors.onAccent} /><Text style={styles.buttonText}>Ekspertiz detaylarını aç</Text>
+              </Pressable>
+            </View>
           : <View style={styles.inputCard} testID="listing-unmatched-result" accessibilityLiveRegion="polite">
               <Text style={styles.resultHeading}>{listing.product ? listing.product.name : 'Cihaz eşleştirilemedi'}</Text>
               {listing.price !== null && <Text style={styles.body}>İlan fiyatı: {listing.price.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} TL</Text>}
@@ -109,17 +120,6 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
       )}
     </View>
   );
-}
-
-function AnalysisReveal({ children }: { children: React.ReactNode }) {
-  const reduced = useReducedMotion();
-  const [opacity] = useState(() => new Animated.Value(0));
-  useEffect(() => {
-    const animation = Animated.timing(opacity, { toValue: 1, duration: reduced ? 0 : 280, useNativeDriver: Platform.OS !== 'web' });
-    animation.start();
-    return () => animation.stop();
-  }, [opacity, reduced]);
-  return <Animated.View style={{ opacity, transform: [{ translateY: opacity.interpolate({ inputRange: [0, 1], outputRange: [8, 0] }) }] }}>{children}</Animated.View>;
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({

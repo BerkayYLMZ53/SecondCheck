@@ -27,6 +27,7 @@ import {
 import InAppSplash from './components/InAppSplash';
 import type { SavedComparisonPair, SavedItem } from './types/savedListing';
 import { getProductById } from './data/mockProducts';
+import { AnalysisPresentationProvider } from './context/AnalysisPresentationContext';
 
 export default function App() {
   return (
@@ -66,6 +67,7 @@ function Application() {
   }, []);
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+      <AnalysisPresentationProvider active={tab === 'home'} enabled={!showSplash}>
       <WebPageStyles />
       <View style={styles.root}>
         <StatusBar
@@ -127,6 +129,7 @@ function Application() {
         </View>
         {showSplash && <InAppSplash ready={isReady} onFinish={finishSplash} />}
       </View>
+      </AnalysisPresentationProvider>
     </SafeAreaProvider>
   );
 }

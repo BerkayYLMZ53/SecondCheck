@@ -15,6 +15,11 @@ import type { ShareableReportSnapshot } from '../utils/shareableReport';
 import TrustScoreGauge from './TrustScoreGauge';
 import DeviceTeardownView from './DeviceTeardownView';
 import ShareableReportModal from './ShareableReportModal';
+import DiagnosticsLabModal from './DiagnosticsLabModal';
+import BargainingAssistant from './BargainingAssistant';
+import ExportReportButton from './ExportReportButton';
+import { emptyLabResults, initialInspectionFacts, LAB_IDS, LAB_LABELS, STATUS_LABELS } from '../utils/inspection';
+import type { InspectionFacts, LabResults } from '../types/inspection';
 
 interface Props {
   result: ParsedListingResult;
@@ -34,11 +39,16 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
   const [report, setReport] = useState<ListingAnalysisReport | null>(null);
   const [copyState, setCopyState] = useState<'idle' | 'copying' | 'copied' | 'error'>('idle');
   const [shareSnapshot, setShareSnapshot] = useState<ShareableReportSnapshot | null>(null);
-  const assessment = useMemo(() => calculateTrustScore(result, checked), [result, checked]);
+  const [labOpen, setLabOpen] = useState(false);
+  const [bargainingOpen, setBargainingOpen] = useState(false);
+  const [lab, setLab] = useState<LabResults>(emptyLabResults);
+  const [facts, setFacts] = useState<InspectionFacts>(() => initialInspectionFacts(result, title));
+  const assessment = useMemo(() => calculateTrustScore(result, checked, lab, facts), [result, checked, lab, facts]);
   const lastFeedback = useRef('neutral');
   const device = result.matchedDevice;
   const comparison = compareDevicePrice(device, result.detectedPrice);
   const feedback = comparison?.status === 'PAHALI' || (assessment.available && (assessment.score < 65 || result.flags.hasChanges || (result.detectedBattery !== undefined && result.detectedBattery < 80)))
+    || LAB_IDS.some((id) => lab[id].status === 'fail') || [facts.trueTone, facts.biometrics, facts.cameras, facts.liquid].includes('fail')
     ? 'warning' : assessment.available && assessment.score >= 85 ? 'success' : 'neutral';
   useEffect(() => {
     if (!active) return;
@@ -93,7 +103,7 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
         {device.releaseYear === 0 && <Text style={[styles.chip, styles.warningChip]}>Konsept kaydı</Text>}
       </View>
 
-      <TrustScoreGauge assessment={assessment} active={active && !shareSnapshot} />
+      <TrustScoreGauge assessment={assessment} active={active && !shareSnapshot && !labOpen} />
 
       <View style={styles.pricePanel}>
         <View style={styles.metrics}>
@@ -133,7 +143,20 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
         <Text style={styles.caption}>Bilgi yokluğu, kutunun veya garantinin kesin olarak bulunmadığı anlamına gelmez. İlan beyanlarını satıcıyla doğrulayın.</Text>
       </View>
 
-      {device.releaseYear > 0 && <DeviceTeardownView device={device} active={active && !shareSnapshot} />}
+      {device.releaseYear > 0 && <DeviceTeardownView device={device} active={active && !shareSnapshot && !labOpen} />}
+
+      {device.releaseYear > 0 && <View style={styles.section}>
+        <Pressable testID="listing-start-lab" accessibilityRole="button" onPress={() => setLabOpen(true)} style={styles.reportButton}><Text style={styles.buttonText}>🛠️ Canlı Donanım Testi Başlat</Text></Pressable>
+        <Text accessibilityRole="header" style={styles.sectionTitle}>Laboratuvar kontrol listesi</Text>
+        {LAB_IDS.map((id) => <View key={id} style={styles.checkRow}>
+          <View style={styles.grow}><Text style={[styles.body, lab[id].status === 'fail' && { color: colors.dangerText }, lab[id].status === 'pass' && styles.checkedText]} testID={`analysis-lab-${id}`}>
+            {lab[id].status === 'pass' ? '✓' : lab[id].status === 'fail' ? '✕' : '—'} {LAB_LABELS[id]}: {STATUS_LABELS[lab[id].status]}</Text>
+            {!!lab[id].note && <Text style={styles.caption}>{lab[id].note}</Text>}
+          </View>
+        </View>)}
+        <Pressable testID="listing-open-bargain" accessibilityRole="button" accessibilityState={{ expanded: bargainingOpen }} onPress={() => setBargainingOpen(!bargainingOpen)} style={styles.shareButton}><Text style={styles.linkText}>🤝 Pazarlık Asistanı & Teklif Al</Text></Pressable>
+        {bargainingOpen && <BargainingAssistant result={result} facts={facts} onChange={(value) => { setFacts(value); setReport(null); }} />}
+      </View>}
 
       <View style={styles.section}>
         <Text accessibilityRole="header" style={styles.sectionTitle}>Modele özel kronik sorunlar</Text>
@@ -173,18 +196,21 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
         <Text style={styles.caption}>Yalnızca yerinde kontrol ettiğiniz maddeleri işaretleyin. İşaretsiz maddeler arıza olarak değerlendirilmez.</Text>
       </View>
 
-      <Pressable testID="listing-create-report" accessibilityRole="button" onPress={() => { setReport(buildListingAnalysisReport(result, checked, title)); setCopyState('idle'); }}
+      {device.releaseYear > 0 && <ExportReportButton result={result} checked={checked} lab={lab} facts={facts} onFactsChange={(value) => { setFacts(value); setReport(null); }} />}
+
+      <Pressable testID="listing-create-report" accessibilityRole="button" onPress={() => { setReport(buildListingAnalysisReport(result, checked, title, new Date(), lab, facts)); setCopyState('idle'); }}
         style={({ pressed }) => [styles.reportButton, pressed && styles.pressed]}>
         <FileCheck size={20} color={colors.onAccent} /><Text style={styles.buttonText}>Ekspertiz Raporu Oluştur</Text>
       </Pressable>
       <Pressable testID="listing-share-card" accessibilityRole="button" accessibilityState={{ disabled: completed !== total || total === 0 || !assessment.available }}
         disabled={completed !== total || total === 0 || !assessment.available}
-        onPress={() => setShareSnapshot(createShareableReport(result, checked, title))}
+        onPress={() => setShareSnapshot(createShareableReport(result, checked, title, new Date(), lab, facts))}
         style={({ pressed }) => [styles.shareButton, (completed !== total || total === 0 || !assessment.available) && styles.disabled, pressed && styles.pressed]}>
         <Share2 size={20} color={colors.cyan} /><Text style={styles.linkText}>Ekspertiz Kartı Paylaş</Text>
       </Pressable>
       {completed !== total && <Text style={styles.caption}>Story veya kare paylaşım kartı için {total - completed} kritik kontrol daha tamamlayın.</Text>}
       {shareSnapshot && <ShareableReportModal snapshot={shareSnapshot} onClose={() => setShareSnapshot(null)} />}
+      {labOpen && active && <DiagnosticsLabModal initialResults={lab} onClose={() => setLabOpen(false)} onComplete={(value) => { setLab(value); setLabOpen(false); setReport(null); setCopyState('idle'); }} />}
       {report && (
         <View style={styles.report} testID="listing-analysis-report">
           <View style={styles.sectionHeader}>

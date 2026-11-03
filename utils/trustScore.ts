@@ -1,5 +1,7 @@
 import type { ParsedListingResult } from '../types/listing';
 import type { TrustAdjustment, TrustAssessment } from '../types/trust';
+import type { InspectionFacts, LabResults } from '../types/inspection';
+import { LAB_IDS, LAB_LABELS } from './inspection';
 
 export function trustBand(score: number): Pick<TrustAssessment, 'grade' | 'color' | 'label'> {
   if (score >= 85) return { grade: 'A+', color: '#10b981', label: 'A+ Kusursuz Kondisyon / Tavsiye Edilir' };
@@ -8,7 +10,7 @@ export function trustBand(score: number): Pick<TrustAssessment, 'grade' | 'color
 }
 
 /** Explainable information/check-completion heuristic, never a measured failure probability. */
-export function calculateTrustScore(result: ParsedListingResult, checked: ReadonlySet<number>): TrustAssessment {
+export function calculateTrustScore(result: ParsedListingResult, checked: ReadonlySet<number>, lab?: LabResults, facts?: InspectionFacts): TrustAssessment {
   const device = result.matchedDevice;
   const total = device?.criticalChecks.length ?? 0;
   const completed = device?.criticalChecks.filter((_, index) => checked.has(index)).length ?? 0;
@@ -33,7 +35,18 @@ export function calculateTrustScore(result: ParsedListingResult, checked: Readon
   if (result.flags.hasBox && result.flags.hasInvoice) add('documents', 5, 'Kutulu & faturalı');
   if (result.flags.hasWarranty) add('warranty', 3, 'Garanti beyanı');
   if (completed > 0 && total > 0) add('checks', Math.round(completed / total * 20), `${completed}/${total} kritik kontrol`);
-  const readyForTopGrade = total > 0 && completed === total && !result.flags.hasChanges && batteryKnown && battery >= 80;
+  let observedFailure = false;
+  if (lab) for (const id of LAB_IDS) {
+    if (lab[id].status === 'fail') { observedFailure = true; add(`lab-${id}`, id === 'touch' ? -20 : id === 'pixels' ? -15 : id === 'audio' ? -10 : -5, `${LAB_LABELS[id]}: sorun bildirildi`); }
+  }
+  if (facts) {
+    for (const key of ['trueTone', 'biometrics', 'cameras', 'liquid'] as const) {
+      if (facts[key] === 'fail') { observedFailure = true; add(`physical-${key}`, key === 'liquid' ? -20 : -10, `${({ trueTone: 'True Tone', biometrics: 'Biyometri', cameras: 'Kameralar', liquid: 'Sıvı teması' })[key]}: sorun bildirildi`); }
+    }
+    if (facts.screenReplaced && !adjustments.some((entry) => entry.id === 'screen')) { observedFailure = true; add('observed-screen', -10, 'Ekran değişimi doğrulandı'); }
+    if (facts.cosmeticDamage) { observedFailure = true; add('cosmetic', -5, 'Kozmetik kusur bildirildi'); }
+  }
+  const readyForTopGrade = total > 0 && completed === total && !result.flags.hasChanges && !observedFailure && batteryKnown && battery >= 80;
   let score = 70 + adjustments.reduce((sum, item) => sum + item.points, 0);
   if (!readyForTopGrade && score >= 85) {
     add('verification-cap', 84 - score, completed < total ? 'Bekleyen kritik kontroller' : 'Parça / pil doğrulaması gerekli');

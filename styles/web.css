@@ -9,9 +9,11 @@ body,
 
 body {
   margin: 0;
+  overflow: hidden;
 }
 
-[data-testid='touch-grid-surface'] {
+[data-testid='touch-grid-surface'],
+[data-testid='lab-touch-grid'] {
   touch-action: none;
   user-select: none;
   -webkit-user-select: none;
@@ -21,6 +23,7 @@ body {
   display: flex;
   height: var(--app-height, 100dvh);
   min-height: 0;
+  overflow: hidden;
 }
 
 #root [dir='auto'],

@@ -29,7 +29,6 @@ import {
   Stethoscope,
   Bookmark,
   BookmarkPlus,
-  X,
 } from 'lucide-react-native';
 import { PRODUCTS_DATABASE, getProductById } from '../data/mockProducts';
 import ChronicIssuesSection from '../components/ChronicIssuesSection';
@@ -126,19 +125,7 @@ function useHomeStyles() {
 }
 const money = (value: number): string =>
   `${value.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} TL`;
-const searchKey = (value: string): string =>
-  value
-    .toLocaleLowerCase('tr-TR')
-    .replace(/ı/g, 'i')
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .trim();
 const PAGE_SIZE = 20;
-// Normalize once, rather than rebuilding searchable strings on every keystroke.
-const SEARCH_INDEX = PRODUCTS_DATABASE.map((product) => ({
-  product,
-  text: searchKey(`${product.name} ${product.brand}`),
-}));
 const CATEGORY_COUNT = new Set(
   PRODUCTS_DATABASE.map((product) => product.category),
 ).size;
@@ -299,7 +286,6 @@ export default function HomeScreen({
 
   const scrollRef = useRef<ComponentRef<typeof ScrollView>>(null);
   const carouselRef = useRef<ComponentRef<typeof ScrollView>>(null);
-  const [query, setQuery] = useState('');
   const [category, setCategory] = useState<Category | 'all'>('all');
   const [displayLimit, setDisplayLimit] = useState(PAGE_SIZE);
   const [selectedId, setSelectedId] = useState<string | null>(
@@ -334,16 +320,10 @@ export default function HomeScreen({
     [],
   );
 
-  const filteredProducts = useMemo(() => {
-    // All words must match, allowing "Ryzen 5600" to match "AMD Ryzen 5 5600"
-    // and "MacBook M1" to match "MacBook Air M1" without delaying input.
-    const tokens = searchKey(query).split(/\s+/).filter(Boolean);
-    return SEARCH_INDEX.filter(
-      (entry) =>
-        (category === 'all' || entry.product.category === category) &&
-        tokens.every((token) => entry.text.includes(token)),
-    ).map((entry) => entry.product);
-  }, [query, category]);
+  const filteredProducts = useMemo(
+    () => PRODUCTS_DATABASE.filter((product) => category === 'all' || product.category === category),
+    [category],
+  );
   const selectedProduct =
     filteredProducts.find((product) => product.id === selectedId) ??
     filteredProducts[0];
@@ -389,7 +369,6 @@ export default function HomeScreen({
 
   function inspectAlternative(product: Product) {
     setDisplayLimit(PAGE_SIZE);
-    setQuery('');
     setCategory('all');
     selectProduct(product);
     Keyboard.dismiss();
@@ -401,7 +380,6 @@ export default function HomeScreen({
     if (!listing.product) return;
     const matchedCondition =
       CONDITIONS.find((item) => item.id === listing.condition) ?? CONDITIONS[0];
-    setQuery('');
     setCategory(listing.product.category);
     setDisplayLimit(PAGE_SIZE);
     setSelectedId(listing.product.id);
@@ -487,7 +465,6 @@ export default function HomeScreen({
     const restored =
       CONDITIONS.find((entry) => entry.id === savedValuationCondition(item)) ??
       CONDITIONS[0];
-    setQuery('');
     setCategory(product.category);
     setDisplayLimit(PAGE_SIZE);
     setSelectedId(product.id);
@@ -586,7 +563,7 @@ export default function HomeScreen({
           ref={scrollRef}
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode={Platform.OS === 'web' ? 'none' : 'on-drag'}
-          contentContainerStyle={[styles.page, compact && styles.compactPage, { paddingBottom: 100 + insets.bottom }]}
+          contentContainerStyle={[styles.page, compact && styles.compactPage]}
         >
           <View style={styles.header}>
             <View
@@ -644,37 +621,6 @@ export default function HomeScreen({
           />
           <Text accessibilityRole="header" style={styles.sectionTitle}>Manuel Ürün &amp; Donanım Değerleme</Text>
           {valuation && saveAction('save-parsed-listing')}
-          <View style={styles.searchBox}>
-            <Search size={20} color={COLORS.muted} />
-            <TextInput
-              style={styles.searchInput}
-              value={query}
-              placeholder="Ürün veya marka ara…"
-              placeholderTextColor={COLORS.muted}
-              accessibilityLabel="Ürün veya marka ara"
-              autoCorrect={false}
-              returnKeyType="search"
-              onChangeText={(text) => {
-                setQuery(text);
-                resetSelection();
-              }}
-            />
-            {query.length > 0 && (
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Aramayı temizle"
-                hitSlop={8}
-                style={styles.clearButton}
-                onPress={() => {
-                  setQuery('');
-                  resetSelection();
-                }}
-              >
-                <X size={19} color={COLORS.muted} />
-              </Pressable>
-            )}
-          </View>
-
           <ScrollView
             testID="category-list"
             style={styles.horizontalList}
@@ -721,12 +667,11 @@ export default function HomeScreen({
               <Search size={28} color={COLORS.cyan} />
               <Text style={styles.sectionTitle}>Ürün bulunamadı</Text>
               <Text style={styles.body}>
-                Başka bir ürün veya marka arayın, ya da filtreleri sıfırlayın.
+                Başka bir kategori seçin veya filtreleri sıfırlayın.
               </Text>
               <Pressable
                 accessibilityRole="button"
                 onPress={() => {
-                  setQuery('');
                   setCategory('all');
                   resetSelection();
                 }}
@@ -1143,7 +1088,7 @@ const createStyles = (COLORS: ThemeColors) =>
     page: {
       flexGrow: 1,
       padding: 20,
-      paddingBottom: 100,
+      paddingBottom: 70,
       gap: 20,
       width: '100%',
       maxWidth: 680,
@@ -1187,30 +1132,6 @@ const createStyles = (COLORS: ThemeColors) =>
       letterSpacing: 0.6,
     },
     subtitle: { color: COLORS.muted, fontSize: 14, lineHeight: 21 },
-    searchBox: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      gap: 10,
-      backgroundColor: COLORS.surface,
-      borderWidth: 1,
-      borderColor: COLORS.border,
-      borderRadius: 14,
-      paddingLeft: 16,
-      paddingRight: 6,
-    },
-    searchInput: {
-      flex: 1,
-      minWidth: 0,
-      minHeight: 54,
-      color: COLORS.text,
-      fontSize: 16,
-    },
-    clearButton: {
-      minWidth: 44,
-      minHeight: 44,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
     horizontalList: { flexGrow: 0, flexShrink: 0, minWidth: 0, width: '100%' },
     chips: { gap: 8, paddingHorizontal: 16 },
     chip: {

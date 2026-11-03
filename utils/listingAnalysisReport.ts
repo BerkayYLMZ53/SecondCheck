@@ -1,6 +1,8 @@
 import type { ParsedListingResult } from '../types/listing';
 import { compareDevicePrice } from './deviceListingParser';
 import { calculateTrustScore } from './trustScore';
+import type { InspectionFacts, LabResults } from '../types/inspection';
+import { LAB_IDS, LAB_LABELS, STATUS_LABELS } from './inspection';
 
 export interface ListingAnalysisReport {
   createdAt: string;
@@ -28,6 +30,8 @@ export function buildListingAnalysisReport(
   checkedIndices: ReadonlySet<number>,
   title = '',
   createdAt = new Date(),
+  lab?: LabResults,
+  facts?: InspectionFacts,
 ): ListingAnalysisReport {
   const device = result.matchedDevice;
   if (!device) throw new Error('Rapor için önce bir cihaz eşleştirin.');
@@ -38,7 +42,7 @@ export function buildListingAnalysisReport(
   const dateLabel = createdAt.toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul' });
   const average = device.estimatedPriceBand.avgTry;
   const { flags } = result;
-  const trust = calculateTrustScore(result, checkedIndices);
+  const trust = calculateTrustScore(result, checkedIndices, lab, facts);
   const comparison = compareDevicePrice(device, result.detectedPrice);
   const status = comparison?.status;
   const verdict = status === 'FIRSAT' ? 'Fırsat Fiyat' : status === 'PAHALI' ? 'Piyasa Üstü'
@@ -64,6 +68,7 @@ export function buildListingAnalysisReport(
     ...flags.changeNotes.map((note) => `- ${note}`),
     '', `KRİTİK KONTROLLER • ${completed.length} / ${device.criticalChecks.length} işaretlendi`,
     ...device.criticalChecks.map((check, index) => `${checkedIndices.has(index) ? '[x] İşaretlendi' : '[ ] Henüz kontrol edilmedi'}: ${check}`),
+    ...(lab ? ['', 'CANLI LABORATUVAR', ...LAB_IDS.map((id) => `${LAB_LABELS[id]}: ${STATUS_LABELS[lab[id].status]} • ${lab[id].note}`)] : []),
     '', 'MODELE ÖZEL SORUNLAR VE KONTROL RİSKLERİ',
     ...device.chronicIssues.map((issue) => `- ${issue}`),
     '', 'İşaretler kullanıcı beyanıdır; teknik doğrulama veya arızasızlık belgesi değildir. İşaretlenmeyen testler arıza anlamına gelmez. İlan beyanları yerinde doğrulanmalıdır. Fiyatlar canlı piyasa ortalaması değil, tahmini katalog referansıdır.',

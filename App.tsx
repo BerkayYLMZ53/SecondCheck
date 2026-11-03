@@ -133,7 +133,7 @@ function Application() {
 
 const createStyles = (colors: ThemeColors) =>
   StyleSheet.create({
-    root: { flex: 1, backgroundColor: colors.bg },
-    screen: { flex: 1, minWidth: 0 },
+    root: { flex: 1, minHeight: 0, overflow: 'hidden', backgroundColor: colors.bg },
+    screen: { flex: 1, minWidth: 0, minHeight: 0, overflow: 'hidden' },
     hidden: { display: 'none' },
   });

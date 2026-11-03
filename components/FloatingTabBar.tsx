@@ -91,7 +91,7 @@ export default function FloatingTabBar({ activeTab, onTabPress }: Props) {
 
   return (
     <View pointerEvents="box-none" style={[styles.position, {
-      bottom: 20 + insets.bottom, left: 16 + insets.left, right: 16 + insets.right,
+      bottom: 10, left: 16 + insets.left, right: 16 + insets.right,
     }]}>
       <View testID="floating-tab-bar" accessibilityRole="tablist" accessibilityLabel="Ana navigasyon"
         onLayout={(event) => setWidth(event.nativeEvent.layout.width)}

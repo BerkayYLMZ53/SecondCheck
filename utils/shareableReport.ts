@@ -2,6 +2,7 @@ import type { ParsedListingResult } from '../types/listing';
 import type { TrustAssessment } from '../types/trust';
 import { calculateTrustScore } from './trustScore';
 import { buildListingAnalysisReport, catalogDeviceName } from './listingAnalysisReport';
+import type { InspectionFacts, LabResults } from '../types/inspection';
 
 export type ReportCardFormat = 'story' | 'square';
 export interface ShareableReportSnapshot {
@@ -34,11 +35,12 @@ function checkLabel(check: string): string {
 
 export function createShareableReport(
   result: ParsedListingResult, checked: ReadonlySet<number>, title = '', date = new Date(),
+  lab?: LabResults, facts?: InspectionFacts,
 ): ShareableReportSnapshot {
   const device = result.matchedDevice;
   if (!device || device.releaseYear === 0) throw new Error('Paylaşım için geçerli bir cihaz analizi gerekir.');
-  const report = buildListingAnalysisReport(result, checked, title, date);
-  const trust = calculateTrustScore(result, checked);
+  const report = buildListingAnalysisReport(result, checked, title, date, lab, facts);
+  const trust = calculateTrustScore(result, checked, lab, facts);
   if (!trust.total || trust.completed !== trust.total) throw new Error('Paylaşım kartı için bütün kritik kontrolleri tamamlayın.');
   return {
     deviceId: device.id, deviceName: catalogDeviceName(result),

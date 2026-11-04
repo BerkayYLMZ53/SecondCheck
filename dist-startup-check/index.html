@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="%LANG_ISO_CODE%">
+  <head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+    <title>%WEB_TITLE%</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon.png" />
+    <link rel="apple-touch-icon" href="/icon.png" />
+    <link rel="apple-touch-startup-image" href="/icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#0b0f19" />
+    <meta name="apple-mobile-web-app-title" content="SecondCheck" />
+    <link rel="preload" as="image" href="/icon.png" />
+    <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
+    <style id="expo-reset">
+      /* These styles make the body full-height */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background-color: #0b0f19;
+        color-scheme: dark;
+      }
+      /* These styles disable body scrolling if you are using <ScrollView> */
+      body {
+        overflow: hidden;
+      }
+      /* These styles make the root element full-height */
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+        background-color: #0b0f19;
+      }
+      /* Visible before the JS bundle loads; React replaces it on first render. */
+      #startup-splash {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background:
+          radial-gradient(ellipse at 50% 42%, #00f2fe18, transparent 65%),
+          linear-gradient(#00f2fe08 1px, transparent 1px),
+          linear-gradient(90deg, #00f2fe08 1px, transparent 1px), #0b0f19;
+        background-size: auto, 44px 44px, 44px 44px, auto;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+      .startup-brand {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transform: translateY(-24px);
+      }
+      .startup-brand img {
+        display: block;
+        width: 116px;
+        height: 116px;
+        object-fit: contain;
+        padding: 12px;
+        border: 1px solid #00f2fe60;
+        border-radius: 34px;
+        box-shadow: 0 0 40px #00f2fe2e;
+      }
+      .startup-brand h1 {
+        color: #f1ffff;
+        font-size: 38px;
+        letter-spacing: -1.5px;
+        margin: 30px 0 10px;
+        text-shadow: 0 0 18px #00f2fe45;
+      }
+      .startup-tagline {
+        margin: 0;
+        color: #91a8b7;
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: 0.65px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Use static rendering with Expo Router to support running without JavaScript. -->
+    <noscript> You need to enable JavaScript to run this app. </noscript>
+    <!-- The root element for your Expo app. -->
+    <div id="root">
+      <div id="startup-splash" role="status" aria-label="SecondCheck yükleniyor">
+        <div class="startup-brand">
+          <img src="/icon.png" width="116" height="116" alt="" />
+          <h1>SecondCheck</h1>
+          <p class="startup-tagline">AI-Powered Hardware Appraisal</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

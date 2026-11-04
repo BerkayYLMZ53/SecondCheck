@@ -27,14 +27,49 @@ import type { SavedComparisonPair, SavedItem } from './types/savedListing';
 import { getProductById } from './data/devices';
 import { AnalysisPresentationProvider } from './context/AnalysisPresentationContext';
 import { hideNativeSplash, STARTUP_TIMEOUT_MS } from './utils/startup';
+import ErrorBoundary from './components/ErrorBoundary';
 
 export default function App() {
+  const [resourcesReady, setResourcesReady] = useState(false);
+
+  useEffect(() => {
+    // Independent of asset loading, providers and animation callbacks.
+    const timer = setTimeout(() => {
+      setResourcesReady(true);
+      void hideNativeSplash();
+    }, STARTUP_TIMEOUT_MS);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+    async function prepare() {
+      try {
+        await Asset.loadAsync([require('./assets/icon.png')]);
+      } catch (error) {
+        console.warn('Startup assets could not be loaded; continuing without preloading.', error);
+      } finally {
+        // Do not let a stalled native promise block rendering the application.
+        if (active) setResourcesReady(true);
+        await hideNativeSplash();
+      }
+    }
+    void prepare();
+    return () => { active = false; };
+  }, []);
+
   return (
-    <ThemeProvider>
-      <SavedListingsProvider>
-        <Application />
-      </SavedListingsProvider>
-    </ThemeProvider>
+    <ErrorBoundary>
+      {resourcesReady ? (
+        <ThemeProvider>
+          <SavedListingsProvider>
+            <Application />
+          </SavedListingsProvider>
+        </ThemeProvider>
+      ) : (
+        <View style={{ flex: 1, backgroundColor: '#0b0f19' }} />
+      )}
+    </ErrorBoundary>
   );
 }
 
@@ -46,16 +81,6 @@ function Application() {
   useEffect(() => {
     // Independent of animation callbacks and accessibility/native promises.
     const timeout = setTimeout(finishSplash, STARTUP_TIMEOUT_MS);
-    async function prepare() {
-      try {
-        await Asset.loadAsync([require('./assets/icon.png')]);
-      } catch (error) {
-        console.warn('Startup assets could not be loaded.', error);
-      } finally {
-        await hideNativeSplash();
-      }
-    }
-    void prepare();
     return () => clearTimeout(timeout);
   }, [finishSplash]);
   const styles = useThemedStyles(createStyles);

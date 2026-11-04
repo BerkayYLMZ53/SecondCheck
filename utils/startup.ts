@@ -1,7 +1,7 @@
 import { Platform } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 
-export const STARTUP_TIMEOUT_MS = 3000;
+export const STARTUP_TIMEOUT_MS = 2500;
 
 /** Safe to call from initialization, layout, the watchdog and the error screen. */
 export async function hideNativeSplash(): Promise<void> {

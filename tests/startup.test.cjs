@@ -35,11 +35,11 @@ function startup(os = 'android', overrides = {}) {
   return { api, timers, warnings, hidden: () => hidden, held: () => held };
 }
 
-test('watchdog releases native splash after 3s even when the hold promise never settles', async () => {
+test('watchdog releases native splash after 2.5s even when the hold promise never settles', async () => {
   const app = startup('android', { preventAutoHideAsync: () => new Promise(() => {}) });
   app.api.beginStartup();
   assert.equal(app.timers.length, 1);
-  assert.equal(app.timers[0].delay, 3000);
+  assert.equal(app.timers[0].delay, 2500);
   app.timers[0].callback();
   await Promise.resolve();
   assert.equal(app.hidden(), 1);
@@ -83,7 +83,7 @@ test('error fallback is independent of providers and releases splash on catch an
   let hidden = 0;
   const errors = [];
   const { default: Boundary } = load('../components/ErrorBoundary.tsx', {
-    'react-native': { View: 'View', Text: 'Text', Pressable: 'Pressable', StyleSheet: { create: (styles) => styles } },
+    'react-native': { View: 'View', Text: 'Text', Pressable: 'Pressable', ScrollView: 'ScrollView', StyleSheet: { create: (styles) => styles } },
     '../utils/startup': { hideNativeSplash: async () => { hidden++; } },
   }, { console: { error: (...args) => errors.push(args) } });
   const boundary = new Boundary({ children: 'application' });
@@ -93,6 +93,7 @@ test('error fallback is independent of providers and releases splash on catch an
   const screen = boundary.render();
   assert.equal(screen.props.testID, 'app-error-screen');
   assert.equal(screen.props.children[0].props.children, 'Bir sorun oluştu');
+  assert.match(screen.props.children[3].props.children.props.children, /first render failed/);
   screen.props.onLayout();
   assert.equal(hidden, 2);
   assert.equal(errors.length, 1);
@@ -100,4 +101,5 @@ test('error fallback is independent of providers and releases splash on catch an
   boundary.setState = (state) => { nextState = state; };
   screen.props.children[2].props.onPress();
   assert.equal(nextState.hasError, false);
+  assert.equal(nextState.error, null);
 });

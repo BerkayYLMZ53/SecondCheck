@@ -17,15 +17,15 @@ const clean = () => parseDeviceListing('iphone 13 pro max 256GB pil 95 kutulu fa
 const all = (result) => new Set(result.matchedDevice?.criticalChecks.map((_, index) => index) ?? []);
 const input = (result = clean()) => ({ result, checked: all(result), lab: emptyLabResults(), facts: initialInspectionFacts(result), details: { color: 'Sierra Blue', imeiLast4: '1234' } });
 
-test('bargaining applies all four specified amounts and counts the screen only once', () => {
+test('bargaining uses model battery budget and counts the screen only once', () => {
   const data = input(parseDeviceListing('iphone 13 pro max pil 79 35000 TL'));
   Object.assign(data.facts, { missingDocuments: true, screenReplaced: true, trueTone: 'fail', cosmeticDamage: true });
   const bargain = calculateBargain(data.result, data.facts);
   assert.equal(bargain.deductions.length, 4);
-  assert.equal(bargain.requestedDeduction, 9000);
-  assert.equal(bargain.offer, 26000);
-  assert.equal(bargain.saving, 9000);
-  assert.match(bargain.message, /26\.000 TL/);
+  assert.equal(bargain.requestedDeduction, 10300);
+  assert.equal(bargain.offer, 24700);
+  assert.equal(bargain.saving, 10300);
+  assert.match(bargain.message, /24\.700 TL/);
 });
 
 test('unknown paperwork and cosmetic condition are not automatically defects', () => {
@@ -42,9 +42,11 @@ test('unknown paperwork and cosmetic condition are not automatically defects', (
 test('battery threshold is strict; missing or invalid prices do not create a message', () => {
   const result = clean();
   result.detectedBattery = 80;
+  assert.equal(calculateBargain(result, initialInspectionFacts(result)).requestedDeduction, 3800);
+  result.detectedBattery = 85;
   assert.equal(calculateBargain(result, initialInspectionFacts(result)).requestedDeduction, 0);
   result.detectedBattery = 79;
-  assert.equal(calculateBargain(result, initialInspectionFacts(result)).requestedDeduction, 2500);
+  assert.equal(calculateBargain(result, initialInspectionFacts(result)).requestedDeduction, 3800);
   for (const price of [undefined, NaN, Infinity, -100, 0]) {
     result.detectedPrice = price;
     assert.equal(calculateBargain(result, initialInspectionFacts(result)).offer, undefined);
@@ -136,6 +138,26 @@ test('native PDF export shares the PDF and removes temporary output even on reje
     'expo-file-system': { File: class { delete() { removed = true; } } }, './pdfReportHtml': { buildPdfReport },
   });
   await assert.rejects(mod.generatePdfReport(input()), /Sharing failed/);
+  assert.equal(shared, true); assert.equal(removed, true);
+});
+
+test('native export prints the current battery valuation, shares PDF and cleans cache on success', async () => {
+  const data = input(); data.result.detectedBattery = 82;
+  let shared = false; let removed = false;
+  const mod = moduleWithMocks('../utils/generatePdfReport.ts', {
+    'expo-print': { printToFileAsync: async ({html}) => {
+      assert.ok(html.includes('3.800 TL')); assert.ok(html.includes('31.200 TL'));
+      return {uri:'file:report.pdf'};
+    } },
+    'expo-sharing': { isAvailableAsync: async () => true, shareAsync: async (uri, options) => {
+      assert.equal(uri, 'file:report.pdf'); assert.equal(options.mimeType, 'application/pdf');
+      assert.equal(options.UTI, 'com.adobe.pdf'); shared = true;
+    } },
+    'expo-crypto': { randomUUID: () => '12345678-abcd' },
+    'expo-file-system': { File: class { delete() { removed = true; } } }, './pdfReportHtml': { buildPdfReport },
+  });
+  const code = await mod.generatePdfReport(data);
+  assert.match(code, /^SC-\d{4}-12345678-ABCD$/);
   assert.equal(shared, true); assert.equal(removed, true);
 });
 

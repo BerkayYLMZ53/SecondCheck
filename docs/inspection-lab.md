@@ -17,16 +17,48 @@ Aktarım düğmesi `pass`, `fail`, `unsupported`, `pending` sonuçlarını ana k
 
 ## Pazarlık
 
+### Pil sağlığı ve adil alım fiyatı
+
+`utils/batteryEstimator.ts`, model nesnesi veya tam model adı ve 0-100 pil yüzdesini
+alır. Sonuç ekranında **Genel Bakış > Pil Sağlığı & Değişim Maliyeti** alanından
+yüzde girilir. Değişiklik güven skoruna, pazarlığa ve yeni raporlara birlikte yansır;
+mevcut test işaretleri korunur. Geçersiz yüzdeyle PDF/metin/paylaşım raporu oluşturulamaz.
+Boş alan bilinmeyen pil demektir; otomatik kesinti yapılmaz.
+
+| Pil yüzdesi | Kondisyon | Kesinti |
+| --- | --- | --- |
+| 85-100 | İdeal / Değişim İhtiyacı Yok | 0 TL |
+| 80-84 | Orta / Tahmini 4-7 Ay İçinde Değişim Gerekebilir | Model batarya bütçesi |
+| 0-79 | Kritik / Servis Uyarısı - Acil Değişim Tavsiye Edilir | Model batarya bütçesi |
+
+Model bütçesi Apple'da 2.200-4.800 TL, Samsung'da 1.500-3.200 TL içinde kalır.
+Apple: `2200 + max(0, yıl-2014)*125 + Pro*450 + Max/Plus*250`.
+Samsung: `1500 + max(0, yıl-2019)*200 + Ultra/Fold*700 + Plus*200`.
+Sonuç en yakın 100 TL'ye yuvarlanır ve marka aralığına sınırlanır. Bunlar talebe
+dayalı tahmin varsayımlarıdır; güncel orijinal parça/yetkili servis tarifesi
+doğrulaması değildir. 4-7 ay ölçülmüş kalan ömür değildir. Bilinmeyen/konsept cihaz
+ve diğer markalar için ücret üretilmez.
+
+`utils/deviceValuation.ts` tek kesinti defterini oluşturur. **Adil alım fiyatı =
+ham katalog piyasa referansı - kusur ve batarya kesintileri**; alt sınır 0 TL'dir.
+İlan fiyatı bulunmasa da katalog referansıyla hesaplanır. İlan fiyatından oluşturulan
+karşı teklif ayrıca etiketlenir; iki farklı başlangıç tutarı birbirine karıştırılmaz.
+
 `calculateBargain` saf hesaplama fonksiyonudur:
 
 | Durum | İndirim |
 | --- | ---: |
-| Beyan edilen pil sağlığı < %80 | 2.500 TL |
+| Girilen/beyan edilen pil sağlığı < %85 | Model bazlı batarya bütçesi |
 | Kutu ve faturanın ikisi de yok | 1.000 TL |
 | Ekran değişmiş veya True Tone sorunu | 4.000 TL |
 | Kozmetik çizik / ezilme | 1.500 TL |
 
-Ekran ve True Tone aynı risk grubudur; indirim iki kez uygulanmaz. Kutu/fatura hakkında bilgi yokluğu eksiklik sayılmaz. Kullanıcı bu beyanları düzeltebilir. Tutarlar talep edilen sabit pazarlık varsayımlarıdır; güncel resmi servis ücretleri değildir. Teklif sıfırın altına inmez. İlan fiyatı yoksa teklif ve mesaj üretilmez. Mesaj yalnızca panoya kopyalanır, satıcıya gönderilmez.
+Ekran ve True Tone aynı risk grubudur; indirim iki kez uygulanmaz. Batarya da aynı
+kesinti defterinden bir kez düşülür. Kutu/fatura hakkında bilgi yokluğu eksiklik
+sayılmaz. Kullanıcı beyanları düzeltebilir. Tutarlar tahmin/sabit pazarlık varsayımlarıdır;
+güncel resmi servis ücretleri değildir. Teklif sıfırın altına inmez. İlan fiyatı yoksa
+ilan bazlı karşı teklif ve satıcı mesajı üretilmez; katalog bazlı adil fiyat görünür.
+Mesaj yalnızca panoya kopyalanır, satıcıya gönderilmez.
 
 ## Güven skoru ve raporlar
 
@@ -35,6 +67,14 @@ Temel skor kuralları `saas-ux.md` içindedir. Yeni testlerde bildirilen sorunla
 Ana kart, metin raporu, PNG paylaşım kartı ve PDF aynı laboratuvar/fiziksel kontrol girdileriyle aynı skoru hesaplar. Laboratuvarda hiç ölçülmeyen bileşenlerin durumu raporda ayrıca görünür.
 
 `ExportReportButton` renk ve yalnızca IMEI son 4 hanesini alır. Tam IMEI alınmaz; dört hane olmayan giriş rapora yazılmaz. `buildPdfReport` HTML'i kaçışlayarak A4 rapor üretir. Türkçe metin, tekrarlanan tablo başlıkları, satır bölünmesini önleyen kurallar ve yazdırmada gizlenen kontroller bulunur. Uzun raporlar birden fazla A4 sayfasına akabilir.
+
+Ortak giriş `services/pdfService.ts` dosyasıdır. **Ekspertiz Raporunu İndir / Paylaş
+(PDF)** düğmesi, mevcut platforma göre aşağıdaki yolu kullanır. Raporda istenen
+SECONDCHECK başlığı, marka/model/depolama, İstanbul tarih/saat bilgisi, rastgele
+rapor kodu, pil durum/bütçe kartı, yeşil/kırmızı/bekleyen donanım sonuçları, ham
+piyasa değeri, kesinti dökümü ve büyük nihai adil teklif alanı bulunur. Eksik
+kontroller sağlam gösterilmez. Alt bilgi SecondCheck AI Değerleme Motoru ibaresini
+taşır; raporun kullanıcı kontrolü ve tahminlerden oluştuğu ayrıca açıklanır.
 
 - Web: kullanıcı tıklamasıyla yerel bir rapor penceresi açılır. **Yazdır / PDF olarak kaydet** düğmesi `window.print()` açar; kullanıcı PDF hedefini seçer. Tarayıcı dosyayı sessizce kaydetmez. Açılır pencere engellenirse hata ana kartta gösterilir.
 - iOS/Android: `expo-print` gerçek PDF dosyası üretir, `expo-sharing` kaydet/paylaş ekranını açar; paylaşım yoksa sistem yazdırma kullanılır. Geçici dosya işlem sonunda temizlenir.

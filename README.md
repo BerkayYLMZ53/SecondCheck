@@ -126,7 +126,7 @@ m1 air 8GB 256GB 22000 kutu yok
 Ryzen 5600 3.800 TL
 ```
 
-Ayrıştırıcı yerel katalog üzerinde çalışır; ilan URL’sini ziyaret etmez. Eksik kapasite veya marka bilgileri nedeniyle en yakın varyant seçilebilir. Birden fazla farklı fiyat bulunduğunda tutarı tahmin etmek yerine manuel giriş ister. Pil ve parça değişimi uyarıları ayrıca gösterilir; bunlar otomatik bir onarım maliyetine dönüştürülmez.
+Ayrıştırıcı yerel katalog üzerinde çalışır; ilan URL’sini ziyaret etmez. Eksik kapasite veya marka bilgileri nedeniyle en yakın varyant seçilebilir. Birden fazla farklı fiyat bulunduğunda tutarı tahmin etmek yerine manuel giriş ister. Pil ve parça değişimi uyarıları ayrıca gösterilir. Pil tahmin modülünde %85 altındaki sağlık için model bazlı batarya bütçesi teklife uygulanır; parça değişimi beyanı tek başına servis fiyatı üretmez.
 
 ## 📊 Değerleme ve Veri Modeli
 
@@ -357,7 +357,7 @@ Bu depoda henüz bir `LICENSE` dosyası tanımlanmamıştır. Yeniden kullanım 
 
 ### Canlı laboratuvar, pazarlık ve PDF
 
-İlan analiz kartından ekran, dokunmatik, ses ve titreşim laboratuvarını açabilir; sonuçları kontrol listesine aktarabilir; kusur bazlı karşı teklif ve kopyalanabilir satıcı mesajı oluşturabilirsiniz. PDF raporu web üzerinde A4 yazdırma/PDF kaydetme, iOS ve Android üzerinde PDF üretimi ve sistem paylaşımı sağlar. Kurallar ve platform sınırları için [modül belgelerine](docs/inspection-lab.md) bakın.
+İlan analiz kartından ekran, dokunmatik, ses ve titreşim laboratuvarını açabilir; sonuçları kontrol listesine aktarabilir; kusur bazlı karşı teklif ve kopyalanabilir satıcı mesajı oluşturabilirsiniz. Pil sağlığı girişi %85/%80 eşiklerine göre kondisyonu ve Apple/Samsung modeline bağlı batarya bütçesini hesaplar; %85 altında bu bütçe nihai adil alım fiyatından bir kez düşülür. PDF raporu pil durumunu, kesinti dökümünü ve nihai teklifi içerir; web üzerinde A4 yazdırma/PDF kaydetme, iOS ve Android üzerinde PDF üretimi ve sistem paylaşımı sağlar. Kurallar ve platform sınırları için [modül belgelerine](docs/inspection-lab.md) bakın.
 
 ### Fotoğraflı şasi ve kasa incelemesi
 

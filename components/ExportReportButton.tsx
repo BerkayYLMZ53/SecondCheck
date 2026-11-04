@@ -4,11 +4,11 @@ import { useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
 import type { ParsedListingResult } from '../types/listing';
 import type { InspectionFacts, LabResults, ReportDetails, TestStatus } from '../types/inspection';
-import { generatePdfReport } from '../utils/generatePdfReport';
+import { generatePdfReport } from '../services/pdfService';
 import { STATUS_LABELS } from '../utils/inspection';
 
-export default function ExportReportButton({ result, checked, lab, facts, onFactsChange }: {
-  result: ParsedListingResult; checked: ReadonlySet<number>; lab: LabResults; facts: InspectionFacts; onFactsChange: (value: InspectionFacts) => void;
+export default function ExportReportButton({ result, checked, lab, facts, onFactsChange, disabled = false }: {
+  result: ParsedListingResult; checked: ReadonlySet<number>; lab: LabResults; facts: InspectionFacts; onFactsChange: (value: InspectionFacts) => void; disabled?: boolean;
 }) {
   const styles = useThemedStyles(createStyles);
   const [details, setDetails] = useState<ReportDetails>({ color: '', imeiLast4: '' });
@@ -17,7 +17,7 @@ export default function ExportReportButton({ result, checked, lab, facts, onFact
   const [error, setError] = useState(false);
   const checks = [{ key: 'trueTone', label: 'True Tone' }, { key: 'biometrics', label: 'Face ID / parmak izi' }, { key: 'cameras', label: 'Kameralar' }, { key: 'liquid', label: 'Sıvı teması' }, { key: 'caseCondition', label: 'Kasa durumu' }] as const;
   const exportReport = async () => {
-    if (busy) return;
+    if (busy || disabled) return;
     setBusy(true); setFeedback(''); setError(false);
     try {
       const code = await generatePdfReport({ result, checked, lab, facts, details });
@@ -38,8 +38,9 @@ export default function ExportReportButton({ result, checked, lab, facts, onFact
         {(['pending', 'pass', 'fail', 'unsupported'] as TestStatus[]).map((status) => <Pressable key={status} testID={`physical-${key}-${status}`} accessibilityRole="radio" accessibilityLabel={`${label}: ${STATUS_LABELS[status]}`} accessibilityState={{ checked: facts[key] === status }}
           onPress={() => onFactsChange({ ...facts, [key]: status, ...(key === 'caseCondition' ? { cosmeticDamage: status === 'fail', visualInspection: undefined } : {}) })} style={[styles.option, facts[key] === status && styles.selected]}><Text style={styles.text}>{status === 'unsupported' ? 'Uygulanamaz' : STATUS_LABELS[status]}</Text></Pressable>)}
       </View></View>)}
-    <Pressable testID="listing-export-pdf" accessibilityRole="button" disabled={busy || !result.matchedDevice || result.matchedDevice.releaseYear === 0} accessibilityState={{ disabled: busy || !result.matchedDevice || result.matchedDevice.releaseYear === 0, busy }}
-      onPress={() => { void exportReport(); }} style={[styles.button, busy && { opacity: 0.5 }]}><Text style={styles.buttonText}>{busy ? 'Rapor hazırlanıyor…' : '📄 PDF Ekspertiz Raporunu İndir'}</Text></Pressable>
+    <Pressable testID="listing-export-pdf" accessibilityRole="button" disabled={disabled || busy || !result.matchedDevice || result.matchedDevice.releaseYear === 0} accessibilityState={{ disabled: disabled || busy || !result.matchedDevice || result.matchedDevice.releaseYear === 0, busy }}
+      onPress={() => { void exportReport(); }} style={[styles.button, (busy || disabled) && { opacity: 0.5 }]}><Text style={styles.buttonText}>{busy ? 'Rapor hazırlanıyor…' : 'Ekspertiz Raporunu İndir / Paylaş (PDF)'}</Text></Pressable>
+    {disabled && <Text style={styles.error} accessibilityRole="alert">PDF için Genel Bakış bölümündeki pil yüzdesini düzeltin.</Text>}
     {!!feedback && <Text style={error ? styles.error : styles.caption} accessibilityRole={error ? 'alert' : undefined} accessibilityLiveRegion="polite">{feedback}</Text>}
     <Text style={styles.caption}>Eksik kontroller de açıkça raporlanır. Rapor kimliği yerel ve benzersizdir; çevrimiçi doğrulama veya resmi servis sertifikası değildir.</Text>
   </View>;

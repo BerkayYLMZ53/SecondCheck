@@ -21,7 +21,7 @@ export default function BargainingAssistant({ result, facts, onChange }: {
   ] as const;
   return <View style={styles.panel} testID="bargaining-assistant">
     <Text accessibilityRole="header" style={styles.heading}>Akıllı pazarlık & karşı teklif</Text>
-    <Text style={styles.caption}>Yalnızca doğruladığınız kusurları seçin. İlanda kutu/faturadan söz edilmemesi eksik olduklarını kanıtlamaz. Tutarlar sizin belirlediğiniz sabit pazarlık varsayımlarıdır; güncel yetkili servis tarifesi değildir.</Text>
+    <Text style={styles.caption}>Yalnızca doğruladığınız kusurları seçin. Batarya bütçesi modele göre hesaplanır; diğer tutarlar sabit pazarlık varsayımlarıdır. Güncel yetkili servis tarifesi değildir.</Text>
     {fields.map((field) => <Pressable key={field.key} testID={`bargain-${field.key}`} accessibilityRole="checkbox" accessibilityLabel={field.label} accessibilityState={{ checked: field.value }} aria-checked={field.value}
       onPress={() => { onChange({ ...facts, [field.key]: !field.value, ...(field.key === 'cosmeticDamage' ? { caseCondition: field.value ? 'pending' : 'fail', visualInspection: undefined } as const : {}) }); setCopied(''); }} style={styles.option}><Text style={styles.text}>{field.value ? '☑' : '☐'} {field.label}</Text></Pressable>)}
     <Text style={styles.caption}>True Tone eksikliğini aşağıdaki fiziksel kontrollerden “Sorun var” olarak kaydedebilirsiniz. Ekran değişimiyle birlikte seçilse de tek ekran indirimi uygulanır.</Text>
@@ -29,7 +29,8 @@ export default function BargainingAssistant({ result, facts, onChange }: {
     {!bargain.deductions.length && <Text style={styles.caption}>Henüz indirim gerektiren bir kusur kaydı yok.</Text>}
     <View style={styles.summary}>
       <Text style={styles.text}>İlan fiyatı: {result.detectedPrice === undefined ? 'Belirtilmedi' : listingMoney(result.detectedPrice)}</Text>
-      <Text style={styles.caption}>SecondCheck önerilen teklif</Text><Text style={styles.offer} testID="bargain-offer">{bargain.offer === undefined ? 'Fiyat gerekli' : listingMoney(bargain.offer)}</Text>
+      <Text style={styles.caption}>Katalog referansından adil alım fiyatı</Text><Text style={styles.offer} testID="valuation-fair-offer">{bargain.valuation.fairOffer === undefined ? 'Referans yok' : listingMoney(bargain.valuation.fairOffer)}</Text>
+      <Text style={styles.caption}>İlan fiyatından kesintili karşı teklif</Text><Text style={styles.offer} testID="bargain-offer">{bargain.offer === undefined ? 'İlan fiyatı gerekli' : listingMoney(bargain.offer)}</Text>
       <Text style={styles.text}>Gerekçelendirilmiş tasarruf: {bargain.saving === undefined ? '—' : listingMoney(bargain.saving)}</Text>
       {bargain.offer === 0 && <Text style={styles.caption}>İndirim toplamı ilan fiyatına ulaşıyor. Teklif alt sınırı 0 TL; cihazı ve hesabı yeniden değerlendirin.</Text>}
     </View>

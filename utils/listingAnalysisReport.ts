@@ -4,6 +4,7 @@ import { calculateTrustScore } from './trustScore';
 import type { InspectionFacts, LabResults } from '../types/inspection';
 import { LAB_IDS, LAB_LABELS, STATUS_LABELS } from './inspection';
 import { visualScoreLabel } from './visualInspection';
+import { calculateDeviceValuation } from './deviceValuation';
 
 export interface ListingAnalysisReport {
   createdAt: string;
@@ -42,6 +43,7 @@ export function buildListingAnalysisReport(
   const deviceName = catalogDeviceName(result);
   const dateLabel = createdAt.toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul' });
   const average = device.estimatedPriceBand.avgTry;
+  const valuation = calculateDeviceValuation(result, facts);
   const { flags } = result;
   const trust = calculateTrustScore(result, checkedIndices, lab, facts);
   const comparison = compareDevicePrice(device, result.detectedPrice);
@@ -54,6 +56,10 @@ export function buildListingAnalysisReport(
     `Cihaz: ${deviceName}`, `Katalog ID: ${device.id}`,
     `Depolama: ${result.detectedStorage?.replace(/(\d)(GB|TB)$/, '$1 $2') ?? 'Belirtilmedi'}`,
     `Pil sağlığı: ${result.detectedBattery === undefined ? 'Belirtilmedi' : `%${result.detectedBattery}`}`,
+    valuation.battery.label,
+    `Batarya kesintisi: ${listingMoney(valuation.battery.deduction)}`,
+    `Kusur & batarya kesintileri toplamı: ${valuation.totalDeduction === undefined ? 'Referans yok' : listingMoney(valuation.totalDeduction)}`,
+    `Tavsiye edilen adil alım/teklif fiyatı: ${valuation.fairOffer === undefined ? 'Referans yok' : listingMoney(valuation.fairOffer)}`,
     '', 'FİYAT DEĞERLENDİRMESİ',
     `İlan Fiyatı: ${result.detectedPrice === undefined ? 'Belirtilmedi' : listingMoney(result.detectedPrice)}`,
     `Piyasa Ortalaması (tahmini katalog referansı): ${average > 0 ? listingMoney(average) : 'Referans yok'}`,

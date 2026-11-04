@@ -16,7 +16,7 @@
     "test:listing-analysis": "node --test tests/listingAnalysisReport.test.cjs",
     "test:trust-share": "node --test tests/trustAndShare.test.cjs",
     "test:saved-listings": "node --test tests/savedListings.test.cjs",
-    "test:inspection": "node --test tests/inspectionModules.test.cjs",
+    "test:inspection": "node --test tests/inspectionModules.test.cjs tests/batteryEstimator.test.cjs",
     "test:visual-inspection": "node --test tests/visualInspection.test.cjs",
     "test:field-assistant": "node --test tests/fieldAssistant.test.cjs"
   },

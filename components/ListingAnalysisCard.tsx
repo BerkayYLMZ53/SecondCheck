@@ -18,6 +18,7 @@ import ShareableReportModal from './ShareableReportModal';
 import DiagnosticsLabModal from './DiagnosticsLabModal';
 import BargainingAssistant from './BargainingAssistant';
 import ExportReportButton from './ExportReportButton';
+import BatteryHealthCard from './BatteryHealthCard';
 import { emptyLabResults, initialInspectionFacts, LAB_IDS, LAB_LABELS, STATUS_LABELS } from '../utils/inspection';
 import type { InspectionFacts, LabResults } from '../types/inspection';
 import { applyVisualInspection, visualScoreLabel } from '../utils/visualInspection';
@@ -46,9 +47,12 @@ export default function ListingAnalysisCard(props: Props) {
   return <AnalysisDetails key={JSON.stringify([props.result, props.title])} {...props} />;
 }
 
-function AnalysisDetails({ result, title = '', active = true }: Props) {
+function AnalysisDetails({ result: initialResult, title = '', active = true }: Props) {
   const { colors } = useTheme();
   const styles = useThemedStyles(createStyles);
+  const [batteryText, setBatteryText] = useState(() => initialResult.detectedBattery?.toString() ?? '');
+  const batteryInputInvalid = batteryText !== '' && (!/^\d{1,3}$/.test(batteryText) || Number(batteryText) > 100);
+  const result = useMemo(() => ({ ...initialResult, detectedBattery: batteryText === '' || batteryInputInvalid ? undefined : Number(batteryText) }), [initialResult, batteryText, batteryInputInvalid]);
   const [checked, setChecked] = useState<ReadonlySet<number>>(() => new Set());
   const [report, setReport] = useState<ListingAnalysisReport | null>(null);
   const [copyState, setCopyState] = useState<'idle' | 'copying' | 'copied' | 'error'>('idle');
@@ -123,6 +127,12 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
       <LiquidSegmentedControl options={SECTIONS} value={section} onChange={setSection} active={active && !shareSnapshot && !labOpen && !visualOpen && !fieldOpen} testID="analysis-segments" />
 
       <View testID="analysis-panel-overview" style={[styles.panelContent, section !== 'overview' && styles.hiddenPanel]} aria-hidden={section !== 'overview'} accessibilityElementsHidden={section !== 'overview'} importantForAccessibility={section === 'overview' ? 'auto' : 'no-hide-descendants'}>
+      {device.releaseYear > 0 && <BatteryHealthCard result={result} facts={facts} value={batteryText} invalid={batteryInputInvalid} onChange={(value) => {
+        setBatteryText(value); setReport(null); setCopyState('idle'); setShareSnapshot(null);
+      }} />}
+      {device.releaseYear > 0 && <Pressable accessibilityRole="button" accessibilityLabel="PDF ekspertiz raporu bölümüne git" onPress={() => setSection('report')} style={styles.shareButton}>
+        <FileCheck size={20} color={colors.cyan} /><Text style={styles.linkText}>PDF Ekspertiz Raporunu İndir / Paylaş</Text>
+      </Pressable>}
       <TrustScoreGauge assessment={assessment} active={active && section === 'overview' && !shareSnapshot && !labOpen && !visualOpen && !fieldOpen} />
 
       <View style={styles.pricePanel}>
@@ -256,14 +266,14 @@ function AnalysisDetails({ result, title = '', active = true }: Props) {
       </View>
 
       <View testID="analysis-panel-report" style={[styles.panelContent, section !== 'report' && styles.hiddenPanel]} aria-hidden={section !== 'report'} accessibilityElementsHidden={section !== 'report'} importantForAccessibility={section === 'report' ? 'auto' : 'no-hide-descendants'}>
-      {device.releaseYear > 0 && <ExportReportButton result={result} checked={checked} lab={lab} facts={facts} onFactsChange={(value) => { setFacts(value); setReport(null); }} />}
+      {device.releaseYear > 0 && <ExportReportButton result={result} checked={checked} lab={lab} facts={facts} disabled={batteryInputInvalid} onFactsChange={(value) => { setFacts(value); setReport(null); }} />}
 
-      <Pressable testID="listing-create-report" accessibilityRole="button" onPress={() => { setReport(buildListingAnalysisReport(result, checked, title, new Date(), lab, facts)); setCopyState('idle'); }}
-        style={({ pressed }) => [styles.reportButton, pressed && styles.pressed]}>
+      <Pressable testID="listing-create-report" accessibilityRole="button" disabled={batteryInputInvalid} accessibilityState={{ disabled: batteryInputInvalid }} onPress={() => { setReport(buildListingAnalysisReport(result, checked, title, new Date(), lab, facts)); setCopyState('idle'); }}
+        style={({ pressed }) => [styles.reportButton, batteryInputInvalid && styles.disabled, pressed && styles.pressed]}>
         <FileCheck size={20} color={colors.onAccent} /><Text style={styles.buttonText}>Ekspertiz Raporu Oluştur</Text>
       </Pressable>
-      <Pressable testID="listing-share-card" accessibilityRole="button" accessibilityState={{ disabled: completed !== total || total === 0 || !assessment.available }}
-        disabled={completed !== total || total === 0 || !assessment.available}
+      <Pressable testID="listing-share-card" accessibilityRole="button" accessibilityState={{ disabled: batteryInputInvalid || completed !== total || total === 0 || !assessment.available }}
+        disabled={batteryInputInvalid || completed !== total || total === 0 || !assessment.available}
         onPress={() => setShareSnapshot(createShareableReport(result, checked, title, new Date(), lab, facts))}
         style={({ pressed }) => [styles.shareButton, (completed !== total || total === 0 || !assessment.available) && styles.disabled, pressed && styles.pressed]}>
         <Share2 size={20} color={colors.cyan} /><Text style={styles.linkText}>Ekspertiz Kartı Paylaş</Text>

@@ -138,7 +138,7 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
         {marketplace && !marketplace.canOpenValuation && <Text testID="marketplace-warning" accessibilityRole="alert" style={styles.errorText}>{MARKETPLACE_MODEL_NOT_FOUND}</Text>}
         {marketplaceInput && <Pressable testID="open-marketplace-expertise" accessibilityRole="button" accessibilityLabel="Ekspertiz ve piyasa değerlemesini aç"
           disabled={!marketplace?.canOpenValuation || loading} accessibilityState={{ disabled: !marketplace?.canOpenValuation || loading }}
-          onPress={presentation.reopen} style={[styles.analyzeButton, (!marketplace?.canOpenValuation || loading) && styles.disabled]}>
+          onPress={presentation.reopen} style={[styles.analyzeButton, marketplace?.canOpenValuation && styles.marketplaceReady, (!marketplace?.canOpenValuation || loading) && styles.disabled]}>
           <SearchCheck size={20} color={colors.onAccent} /><Text style={styles.buttonText}>Ekspertiz &amp; Piyasa Değerlemesine Geç</Text>
         </Pressable>}
         {analysis && listing?.matchedDevice && !listing.product && <Text style={styles.caption}>Model tanındı; kapasite veya değerleme kaydı bulunamadı. Lütfen manuel seçimle doğrulayın.</Text>}
@@ -189,6 +189,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   successText: { flex: 1, color: colors.textPrimary, fontSize: 13, lineHeight: 20, fontWeight: '600' },
   marketplaceSuccess: { backgroundColor: colors.successBg, borderWidth: 1, borderColor: colors.green },
   marketplaceSuccessText: { color: colors.successText },
+  marketplaceReady: { backgroundColor: colors.green },
   errorText: { color: colors.dangerText, fontSize: 13, lineHeight: 21 },
   disabled: { opacity: 0.5 },
   pressed: { backgroundColor: colors.accentPressed },

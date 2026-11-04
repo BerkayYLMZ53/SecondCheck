@@ -7,6 +7,58 @@ const { parseMarketplaceUrl, getMarketplacePlatform } = load(path.resolve(__dirn
 const { parseListingInput } = load(path.resolve(__dirname, '../utils/listingInput.ts'));
 const { getAllDevices } = load(path.resolve(__dirname, '../data/devices.ts'));
 
+test('Sahibinden phone category and brandless model populate the valuation fields offline', async () => {
+  const result = await parseListingInput('https://www.sahibinden.com/ilan/ikinci-el-ve-sifir-alisveris-cep-telefonu-aksesuar-cep-telefonu-tr-16-pro-max-256-gb-pil-91-12-ay-garantili-1348611203/detay');
+  assert.equal(result.marketplace.status, 'matched');
+  assert.equal(result.marketplace.canOpenValuation, true);
+  assert.equal(result.listing.matchedDevice.brand, 'Apple');
+  assert.equal(result.listing.matchedDevice.model, 'iPhone 16 Pro Max');
+  assert.equal(result.listing.detectedStorage, '256GB');
+  assert.equal(result.listing.detectedBattery, 91);
+  assert.match(result.listing.product.name, /iPhone 16 Pro Max.*256GB/);
+  assert.equal(result.listing.price, null);
+  assert.equal(result.listing.detectedPrice, undefined);
+});
+
+test('brandless iPhone generations and supported suffixes retain their exact catalog identity', () => {
+  for (const device of getAllDevices().filter((d) => d.brand === 'Apple' && /^iPhone 1[1-8] (?:Pro Max|Pro|Plus|Mini)\b/i.test(d.model))) {
+    for (const prefix of ['tr', 'sifir', 'temiz']) {
+      const slug = `${prefix}-${device.model.replace(/^iPhone /, '').replace(/ \(.*$/, '').replace(/\s+/g, '-')}-${device.variants.storage[0] ?? ''}-1234567890`;
+      const result = parseMarketplaceUrl(`https://sahibinden.com/ilan/${slug}/detay`);
+      assert.equal(result.listing.matchedDevice?.id, device.id, slug);
+      assert.equal(result.canOpenValuation, device.releaseYear > 0, slug);
+    }
+  }
+});
+
+test('storage supports bare capacities, GB and TB without treating battery or warranty as storage', () => {
+  for (const [capacity, storage] of [['128', '128GB'], ['256-gb', '256GB'], ['512', '512GB'], ['1024', '1TB'], ['1-tb', '1TB']]) {
+    const result = parseMarketplaceUrl(`https://sahibinden.com/ilan/tr-13-pro-max-${capacity}-pil_64-12-ay-garantili-1234567890`);
+    assert.equal(result.status, 'matched', capacity);
+    assert.equal(result.listing.detectedStorage, storage);
+    assert.equal(result.listing.detectedBattery, 64);
+  }
+  const noStorage = parseMarketplaceUrl('https://sahibinden.com/ilan/16-pro-max-pil-64-128-ay-garantili-1234567890');
+  assert.equal(noStorage.listing.detectedStorage, undefined);
+  for (const battery of ['pil-91', 'pil_91', 'pil:91', 'pil-sagligi-91', 'batarya-91']) {
+    assert.equal(parseMarketplaceUrl(`https://sahibinden.com/ilan/16-pro-max-256gb-${battery}-1234567890`).listing.detectedBattery, 91, battery);
+  }
+  for (const model of ['16pro', '16promax', '16 pro max', '16_pro_max']) {
+    assert.equal(parseMarketplaceUrl(`https://sahibinden.com/ilan/${encodeURIComponent(model)}-256gb-1234567890`).listing.matchedDevice?.model,
+      model === '16pro' ? 'iPhone 16 Pro' : 'iPhone 16 Pro Max');
+  }
+});
+
+test('brandless inference rejects competing brands, accessories, invalid suffixes and ambiguous capacities', () => {
+  for (const slug of ['redmi-16-pro', 'xiaomi-13-pro', 'samsung-16-pro', '16', '16-max', '11-plus', '16-pro-max-kilifi', '16-pro-max-aksesuar', '16-pro-max-128-256', '16-pro-15-pro']) {
+    assert.equal(parseMarketplaceUrl(`https://sahibinden.com/ilan/${slug}-1234567890`).canOpenValuation, false, slug);
+  }
+  for (const battery of ['pil-101', 'pil-999', 'pil-91-pil-85']) {
+    const result = parseMarketplaceUrl(`https://sahibinden.com/ilan/16-pro-max-256gb-${battery}-1234567890`);
+    assert.equal(result.listing.detectedBattery, undefined, battery);
+  }
+});
+
 for (const [url, platform, id, storage] of [
   ['https://www.sahibinden.com/ilan/ikinci-el-temiz-garantili-kutusunda-faturali-acil-orijinal-ciziksiz-iphone-13-pro-max-128-gb-1234567890/detay', 'Sahibinden', 'apple-iphone-13-pro-max', '128GB'],
   ['https://sahibinden.com/ilan/temiz-samsung-galaxy-s23-ultra-256gb-1234567890', 'Sahibinden', 'samsung-galaxy-s23-ultra', '256GB'],

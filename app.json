@@ -89,7 +89,16 @@
           "cameraPermission": "SecondCheck, şasi ve kasa incelemesinde fotoğraf çekmek için kameranıza erişir.",
           "microphonePermission": "SecondCheck, 3 saniyelik yerinde mikrofon testi için mikrofonunuza erişir."
         }
-      ]
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0b0f19",
+          "image": "./assets/icon.png",
+          "imageWidth": 160
+        }
+      ],
+      "expo-asset"
     ],
     "extra": {
       "eas": {

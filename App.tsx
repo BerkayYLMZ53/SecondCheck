@@ -5,7 +5,8 @@ import {
 } from './context/ThemeContext';
 import type { ThemeColors } from './context/ThemeContext';
 import { StatusBar } from 'expo-status-bar';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { Asset } from 'expo-asset';
 import { Keyboard, StyleSheet, View } from 'react-native';
 import {
   SafeAreaProvider,
@@ -25,6 +26,7 @@ import SplashScreen from './components/SplashScreen';
 import type { SavedComparisonPair, SavedItem } from './types/savedListing';
 import { getProductById } from './data/devices';
 import { AnalysisPresentationProvider } from './context/AnalysisPresentationContext';
+import { hideNativeSplash, STARTUP_TIMEOUT_MS } from './utils/startup';
 
 export default function App() {
   return (
@@ -41,6 +43,21 @@ function Application() {
   const [isReady, setIsReady] = useState(false);
   const showSplash = !isReady;
   const finishSplash = useCallback(() => setIsReady(true), []);
+  useEffect(() => {
+    // Independent of animation callbacks and accessibility/native promises.
+    const timeout = setTimeout(finishSplash, STARTUP_TIMEOUT_MS);
+    async function prepare() {
+      try {
+        await Asset.loadAsync([require('./assets/icon.png')]);
+      } catch (error) {
+        console.warn('Startup assets could not be loaded.', error);
+      } finally {
+        await hideNativeSplash();
+      }
+    }
+    void prepare();
+    return () => clearTimeout(timeout);
+  }, [finishSplash]);
   const styles = useThemedStyles(createStyles);
   const [tab, setTab] = useState<AppTab>('home');
   const [products, setProducts] = useState<ComparisonPair>([null, null]);

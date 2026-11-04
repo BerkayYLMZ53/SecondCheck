@@ -51,7 +51,7 @@ export default memo(function DeviceTeardownView({ device, active = true }: { dev
       <Text accessibilityRole="header" style={styles.heading}>İnteraktif donanım röntgeni</Text>
       <Text style={styles.caption}>Bir test noktasına dokunun; buluşmada uygulayabileceğiniz 30 saniyelik kontrolü görün.</Text>
       <View style={styles.phone}>
-        <Svg width={220} height={368} viewBox="0 0 220 368" accessible={false}>
+        <Svg width={220} height={368} viewBox="0 0 220 368" {...(Platform.OS === 'web' ? { 'aria-hidden': true } : { accessible: false })}>
           <Defs><LinearGradient id="phone-shell" x1="0" y1="0" x2="1" y2="1"><Stop offset="0" stopColor={colors.accentSoft} /><Stop offset="1" stopColor={colors.inset} /></LinearGradient></Defs>
           <Rect x={10} y={3} width={200} height={360} rx={34} fill="url(#phone-shell)" stroke={colors.cyan} strokeOpacity={0.5} strokeWidth={1.5} />
           <Rect x={18} y={11} width={184} height={344} rx={28} fill={colors.inset} stroke={colors.cardBorder} />

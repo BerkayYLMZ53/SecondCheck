@@ -16,6 +16,7 @@ export interface ListingAnalysisReport {
 }
 
 export function listingMoney(value: number): string {
+  if (!Number.isFinite(value)) return 'Belirtilmedi';
   return `${value.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} TL`;
 }
 

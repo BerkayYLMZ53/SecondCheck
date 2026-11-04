@@ -44,7 +44,7 @@ test('every Apple/Samsung model remains within the requested model budget band',
 });
 
 test('unknown, invalid, unsupported and concept data never invent a fee', () => {
-  for (const health of [undefined, NaN, Infinity, -1, 101]) {
+  for (const health of [undefined, NaN, Infinity, -1, 101, 82.5]) {
     const estimate = estimateBattery('iPhone 13 Pro Max', health);
     assert.equal(estimate.condition, 'unknown');
     assert.equal(estimate.deduction, 0);

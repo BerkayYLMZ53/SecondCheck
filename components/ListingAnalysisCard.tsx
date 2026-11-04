@@ -113,7 +113,7 @@ function AnalysisDetails({ result: initialResult, title = '', active = true }: P
         <View style={styles.headingIcon}><ShieldCheck size={25} color={colors.cyan} /></View>
         <View style={styles.grow}>
           <Text style={styles.eyebrow}>İLAN ANALİZİ TAMAMLANDI</Text>
-          <Text accessibilityRole="header" style={styles.deviceName} testID="listing-device-name">{catalogDeviceName(result)}</Text>
+          <Text accessibilityRole="header" style={styles.deviceName} testID="listing-device-name" numberOfLines={1} ellipsizeMode="tail">{catalogDeviceName(result)}</Text>
         </View>
       </View>
       <View style={styles.chips}>
@@ -139,11 +139,11 @@ function AnalysisDetails({ result: initialResult, title = '', active = true }: P
         <View style={styles.metrics}>
           <View style={styles.metric}>
             <Text style={styles.caption}>İlan Fiyatı</Text>
-            <Text style={styles.amount} testID="listing-asking-price">{result.detectedPrice === undefined ? 'Belirtilmedi' : listingMoney(result.detectedPrice)}</Text>
+            <Text style={styles.amount} testID="listing-asking-price" numberOfLines={1} ellipsizeMode="tail">{result.detectedPrice === undefined ? 'Belirtilmedi' : listingMoney(result.detectedPrice)}</Text>
           </View>
           <View style={styles.metric}>
             <Text style={styles.caption}>Piyasa Ortalaması</Text>
-            <Text style={styles.referenceAmount} testID="listing-market-price">{average > 0 ? listingMoney(average) : 'Referans yok'}</Text>
+            <Text style={styles.referenceAmount} testID="listing-market-price" numberOfLines={1} ellipsizeMode="tail">{average > 0 ? listingMoney(average) : 'Referans yok'}</Text>
           </View>
         </View>
         {verdict && (
@@ -292,7 +292,8 @@ function AnalysisDetails({ result: initialResult, title = '', active = true }: P
           <Text selectable style={styles.body}>{report.plainText}</Text>
           {copyState === 'error' && <Text style={styles.warningText} accessibilityRole="alert">Kopyalama tamamlanamadı. Rapor metnini seçerek kopyalayabilirsiniz.</Text>}
         </View>
-      )}      </View>
+      )}
+      </View>
 
       {shareSnapshot && <ShareableReportModal snapshot={shareSnapshot} onClose={() => setShareSnapshot(null)} />}
       {labOpen && active && <DiagnosticsLabModal initialResults={lab} onClose={() => setLabOpen(false)} onComplete={(value) => { setLab(value); setLabOpen(false); setReport(null); setCopyState('idle'); }} />}
@@ -341,7 +342,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   checkedText: { color: colors.successText },
   checkbox: { width: 23, paddingTop: 1, flexShrink: 0 },
   reset: { minHeight: 44, flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 4 },
-  linkText: { color: colors.cyan, fontSize: 12, lineHeight: 18, fontWeight: '700' },
+  linkText: { color: colors.cyan, fontSize: 12, lineHeight: 18, fontWeight: '700', flexShrink: 1, minWidth: 0 },
   reportButton: { flexDirection: 'row', flexWrap: 'wrap', minHeight: 50, justifyContent: 'center', alignItems: 'center', gap: 9, paddingHorizontal: 14, paddingVertical: 13, borderRadius: 13, backgroundColor: colors.accent },
   buttonText: { color: colors.onAccent, fontSize: 14, lineHeight: 21, fontWeight: '700', flexShrink: 1 },
   shareButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 9, padding: 14, minHeight: 50, borderRadius: 13, backgroundColor: colors.accentSoft },

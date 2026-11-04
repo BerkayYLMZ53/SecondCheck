@@ -1,13 +1,19 @@
-import { memo, useEffect, useState } from 'react';
-import { Animated, StyleSheet, Text, View } from 'react-native';
+import { forwardRef, memo, useEffect, useState } from 'react';
+import { Animated, Platform, StyleSheet, Text, View } from 'react-native';
 import Svg, { Circle } from 'react-native-svg';
+import type { CircleProps } from 'react-native-svg';
 import type { TrustAssessment } from '../types/trust';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
 import { useReducedMotion } from '../utils/useReducedMotion';
 import HolographicCard from './HolographicCard';
 
-const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+// Animated injects a native layout flag that SVG forwards to the web DOM.
+const WebCircle = forwardRef<Circle, CircleProps & { collapsable?: boolean }>(function WebCircle({ collapsable, ...props }, ref) {
+  void collapsable;
+  return <Circle ref={ref} {...props} />;
+});
+const AnimatedCircle = Animated.createAnimatedComponent(Platform.OS === 'web' ? WebCircle : Circle);
 const SIZE = 196;
 const RADIUS = 80;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
@@ -31,10 +37,10 @@ export default memo(function TrustScoreGauge({ assessment, active = true }: { as
       <Text style={styles.eyebrow}>GÜVENİLİRLİK & RİSK ÖZETİ</Text>
       <View style={styles.ring} accessibilityRole="progressbar" accessibilityLabel="İlan güven skoru"
         accessibilityValue={{ min: 0, max: 100, now: assessment.score, text: `${assessment.score} / 100, ${assessment.label}` }}>
-        <Svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`} accessible={false}>
+        <Svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`} {...(Platform.OS === 'web' ? { 'aria-hidden': true } : { accessible: false })}>
           <Circle cx={98} cy={98} r={RADIUS} stroke={colors.track} strokeWidth={12} fill="none" />
           <AnimatedCircle cx={98} cy={98} r={RADIUS} stroke={assessment.color} strokeWidth={12} fill="none"
-            strokeLinecap="round" rotation={-90} origin="98,98" strokeDasharray={`${CIRCUMFERENCE} ${CIRCUMFERENCE}`}
+            strokeLinecap="round" transform="rotate(-90 98 98)" strokeDasharray={`${CIRCUMFERENCE} ${CIRCUMFERENCE}`}
             strokeDashoffset={progress.interpolate({ inputRange: [0, 100], outputRange: [CIRCUMFERENCE, 0], extrapolate: 'clamp' })} />
         </Svg>
         <View style={styles.center} pointerEvents="none">

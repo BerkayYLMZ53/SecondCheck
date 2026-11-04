@@ -106,8 +106,7 @@ function PriceTrendSection({ product }: { product: Product }) {
           height={CHART_HEIGHT}
           viewBox={`0 0 ${width} ${CHART_HEIGHT}`}
           pointerEvents="none"
-          accessible={false}
-          accessibilityElementsHidden
+          {...(Platform.OS === 'web' ? { 'aria-hidden': true } : { accessible: false, accessibilityElementsHidden: true })}
         >
           <Defs>
             <LinearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">

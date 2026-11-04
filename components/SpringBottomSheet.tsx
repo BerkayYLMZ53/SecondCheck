@@ -74,7 +74,7 @@ export default function SpringBottomSheet({ open, onClose, title, children, blur
     style={[styles.overlay, !visible && styles.hidden]} testID={testID}>
     <Animated.View pointerEvents="none" style={[StyleSheet.absoluteFill, { opacity: motion, backgroundColor: theme === 'dark' ? '#00000080' : '#0f172a40' }]} />
     <Pressable pressScale={1} haptic={false} testID={`${testID}-backdrop`} accessible={false} focusable={false} accessibilityElementsHidden aria-hidden style={StyleSheet.absoluteFill} onPress={onClose} />
-    <View pointerEvents="box-none" style={[styles.bottom, { paddingBottom: keyboardInset }]}>
+    <View pointerEvents="box-none" style={[styles.bottom, { paddingBottom: keyboardInset, paddingLeft: insets.left, paddingRight: insets.right }]}>
       <Animated.View testID={`${testID}-panel`} accessibilityRole="dialog" accessibilityLabel={title} accessibilityViewIsModal={open} aria-modal={open}
         style={[styles.sheet, glass, { height, borderColor: colors.cardBorder, transform: [{ translateY: Animated.add(motion.interpolate({ inputRange: [0, 1], outputRange: [height + 30, 0] }), drag) }] }]}>
         {Platform.OS !== 'web' && visible && <BlurView pointerEvents="none" blurTarget={blurTarget} blurMethod="dimezisBlurViewSdk31Plus" tint={theme === 'dark' ? 'dark' : 'light'} intensity={48} style={StyleSheet.absoluteFill} />}
@@ -82,7 +82,7 @@ export default function SpringBottomSheet({ open, onClose, title, children, blur
         <View testID="spring-sheet-drag-region" {...gesture.panHandlers} style={styles.dragRegion}>
           <View style={[styles.handle, { backgroundColor: colors.textSecondary }]} />
         </View>
-        <View style={styles.header}><Text accessibilityRole="header" style={[styles.title, { color: colors.textPrimary }]} numberOfLines={1}>{title}</Text>
+        <View style={styles.header}><Text accessibilityRole="header" style={[styles.title, { color: colors.textPrimary }]} numberOfLines={1} ellipsizeMode="tail">{title}</Text>
             <Pressable testID={`${testID}-close`} accessibilityRole="button" accessibilityLabel={`${title} çekmecesini kapat`} onPress={onClose} style={[styles.close, { backgroundColor: colors.chipBg }]}><X size={20} color={colors.textPrimary} /></Pressable>
         </View>
         <ScrollView ref={scroll} testID={`${testID}-scroll`} style={styles.scroll} contentContainerStyle={[styles.content, { paddingBottom: Math.max(insets.bottom, 16) + 12 }]}
@@ -94,9 +94,9 @@ export default function SpringBottomSheet({ open, onClose, title, children, blur
   </View>;
 }
 const styles = StyleSheet.create({
-  overlay: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, zIndex: 1000 }, hidden: { display: 'none' }, bottom: { flex: 1, justifyContent: 'flex-end', alignItems: 'center' },
+  overlay: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, zIndex: 1000, overflow: 'hidden' }, hidden: { display: 'none' }, bottom: { flex: 1, justifyContent: 'flex-end', alignItems: 'center' },
   sheet: { width: '100%', maxWidth: 760, borderTopLeftRadius: 30, borderTopRightRadius: 30, overflow: 'hidden', borderWidth: 1, borderBottomWidth: 0 },
   dragRegion: { height: 30, alignItems: 'center', justifyContent: 'center' }, handle: { width: 40, height: 5, borderRadius: 3, opacity: 0.5 },
   header: { flexDirection: 'row', gap: 12, alignItems: 'center', paddingHorizontal: 18, paddingBottom: 8 }, title: { flex: 1, minWidth: 0, fontSize: 16, fontWeight: '800' }, close: { width: 44, height: 44, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
-  scroll: { flex: 1, minHeight: 0 }, content: { paddingHorizontal: 12, paddingTop: 6 },
+  scroll: { flex: 1, minHeight: 0, minWidth: 0, overflow: 'hidden' }, content: { paddingHorizontal: 12, paddingTop: 6, minWidth: 0 },
 });

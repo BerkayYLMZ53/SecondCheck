@@ -3,6 +3,6 @@ const expoConfig = require('eslint-config-expo/flat');
 
 module.exports = defineConfig([
   expoConfig,
-  { ignores: ['dist/**', 'dist-native/**', '.expo/**'] },
+  { ignores: ['dist/**', 'dist-*/**', 'web-build/**', '.expo/**'] },
   { files: ['**/*.ts', '**/*.tsx'], rules: { '@typescript-eslint/no-explicit-any': 'error' } },
 ]);

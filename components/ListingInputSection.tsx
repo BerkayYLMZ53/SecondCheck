@@ -38,6 +38,10 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
   const requestId = useRef(0);
   const controller = useRef<AbortController | null>(null);
   const lastAutoInput = useRef<string | null>(null);
+  // Parent callbacks can change while an analysis is pending. Keep the latest
+  // handler without restarting the automatic URL effect on every parent render.
+  const onParsedRef = useRef(onParsed);
+  useEffect(() => { onParsedRef.current = onParsed; }, [onParsed]);
   useEffect(() => () => { requestId.current++; controller.current?.abort(); }, []);
   const disabled = !text.trim() || loading;
 
@@ -54,18 +58,15 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
     presentation.begin();
     Keyboard.dismiss();
     try {
-      const [result] = await Promise.all([
-        parseListingInput(input, apiEndpoint ?? process.env.EXPO_PUBLIC_LISTING_API_URL, activeController.signal),
-        getMarketplacePlatform(input) ? Promise.resolve() : new Promise<void>((resolve) => setTimeout(resolve, 350)),
-      ]);
-      if (id !== requestId.current) return;
+      const result = await parseListingInput(input, apiEndpoint ?? process.env.EXPO_PUBLIC_LISTING_API_URL, activeController.signal);
+      if (id !== requestId.current || activeController.signal.aborted) return;
       setAnalysis({ ...result, input });
       if ((result.listing.matchedDevice || result.listing.product) && (!result.marketplace || result.marketplace.canOpenValuation)) void triggerSuccess();
       if (result.marketplace && !result.marketplace.canOpenValuation) presentation.fail(MARKETPLACE_MODEL_NOT_FOUND);
       else if (result.listing.matchedDevice) presentation.complete(result.listing, result.title, catalogDeviceName(result.listing), { open: !result.marketplace });
       else if (result.listing.product) presentation.complete(result.listing, result.title, result.listing.product.name);
       else presentation.fail(MODEL_NOT_FOUND);
-      if (result.listing.product && (!result.marketplace || result.marketplace.canOpenValuation)) onParsed?.(result.listing, result.title);
+      if (result.listing.product && (!result.marketplace || result.marketplace.canOpenValuation)) onParsedRef.current?.(result.listing, result.title);
     } catch (error) {
       if (id !== requestId.current || activeController.signal.aborted) return;
       setError(error instanceof Error ? error.message : 'İlan okunamadı. Başlığı ve açıklamayı yapıştırarak tekrar deneyin.');
@@ -73,12 +74,10 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
     } finally {
       if (id === requestId.current) { setLoading(false); controller.current = null; }
     }
-  }, [apiEndpoint, onParsed, presentation]);
+  }, [apiEndpoint, presentation]);
 
   useEffect(() => {
     if (!active || !isLinkInput(text) || lastAutoInput.current === text) return;
-    requestId.current++;
-    controller.current?.abort();
     const timer = setTimeout(() => {
       if (lastAutoInput.current !== text) void analyze(text);
     }, getMarketplacePlatform(text) ? 0 : 450);
@@ -87,10 +86,14 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
 
   useEffect(() => {
     if (!active && controller.current) {
+      requestId.current++;
       lastAutoInput.current = null;
       controller.current.abort();
+      controller.current = null;
+      setLoading(false);
+      presentation.reset();
     }
-  }, [active]);
+  }, [active, presentation]);
 
   const listing = analysis?.listing;
   const marketplace = analysis?.marketplace;
@@ -189,7 +192,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   successText: { flex: 1, color: colors.textPrimary, fontSize: 13, lineHeight: 20, fontWeight: '600' },
   marketplaceSuccess: { backgroundColor: colors.successBg, borderWidth: 1, borderColor: colors.green },
   marketplaceSuccessText: { color: colors.successText },
-  marketplaceReady: { backgroundColor: colors.green },
+  marketplaceReady: { backgroundColor: '#047857' },
   errorText: { color: colors.dangerText, fontSize: 13, lineHeight: 21 },
   disabled: { opacity: 0.5 },
   pressed: { backgroundColor: colors.accentPressed },

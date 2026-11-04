@@ -12,6 +12,24 @@ const metadata = {
   rawPrice: '25000.00',
 };
 
+test('an already cancelled analysis never publishes local text or URL results', async () => {
+  const { parseListingInput } = createLoader({ fetch: () => assert.fail('cancelled request must not fetch') })(inputPath);
+  const controller = new AbortController();
+  controller.abort();
+  for (const input of ['iphone 13 256GB', 'https://www.sahibinden.com/ilan/iphone-13-123456789/detay']) {
+    await assert.rejects(parseListingInput(input, undefined, controller.signal), /iptal/);
+  }
+});
+
+test('cancellation while response JSON is being read discards metadata', async () => {
+  const controller = new AbortController();
+  const { parseListingInput } = createLoader({ fetch: async () => ({
+    ok: true,
+    json: async () => { controller.abort(); return metadata; },
+  }) })(inputPath);
+  await assert.rejects(parseListingInput('https://letgo.com/item/test', undefined, controller.signal));
+});
+
 test('text parsing works offline and preserves the legacy product result', async () => {
   const { parseListingInput } = createLoader({ fetch: () => assert.fail('text must stay local') })(inputPath);
   const { listing, title, metadata } = await parseListingInput('ip 13 pm 256GB 25000 TL\npil 85');

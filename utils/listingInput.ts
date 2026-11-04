@@ -41,6 +41,7 @@ export async function parseListingInput(
   apiEndpoint = '/api/parse-listing',
   signal?: AbortSignal,
 ): Promise<ListingInputResult> {
+  if (signal?.aborted) throw new Error('İlan analizi iptal edildi.');
   const text = input.trim().slice(0, 12000);
   if (!isLinkInput(text)) {
     if (/^[a-z][a-z\d+.-]*:\/\//i.test(text)) throw new Error('Geçerli bir HTTP/HTTPS ilan bağlantısı girin veya ilan metnini yapıştırın.');
@@ -70,6 +71,7 @@ export async function parseListingInput(
       signal: controller.signal,
     });
     const metadata: unknown = await response.json();
+    if (controller.signal.aborted) throw new Error('İlan analizi iptal edildi.');
     if (!response.ok || !isMetadata(metadata)) {
       const message = typeof metadata === 'object' && metadata !== null &&
         'error' in metadata && typeof metadata.error === 'string' ? metadata.error

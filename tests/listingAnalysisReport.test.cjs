@@ -4,8 +4,14 @@ const path = require('node:path');
 const { test } = require('node:test');
 const load = require('./helpers/loadTypeScript.cjs')();
 const { parseDeviceListing } = load(path.resolve(__dirname, '../utils/deviceListingParser.ts'));
-const { buildListingAnalysisReport, catalogDeviceName } = load(path.resolve(__dirname, '../utils/listingAnalysisReport.ts'));
+const { buildListingAnalysisReport, catalogDeviceName, listingMoney } = load(path.resolve(__dirname, '../utils/listingAnalysisReport.ts'));
 const date = new Date('2026-11-03T10:00:00Z');
+
+test('invalid amounts never render NaN or Infinity currency labels', () => {
+  for (const amount of [NaN, Infinity, -Infinity]) assert.equal(listingMoney(amount), 'Belirtilmedi');
+  assert.equal(listingMoney(114999), '114.999 TL');
+  assert.equal(listingMoney(0), '0 TL');
+});
 
 test('report includes identity, prices, declarations and current-device checklist results', () => {
   const parsed = parseDeviceListing('ip 13 pm 256GB 25000 TL pil 85 kutulu faturalı garantili ekran değişti');

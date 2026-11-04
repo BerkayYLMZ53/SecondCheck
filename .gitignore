@@ -2,6 +2,7 @@ node_modules/
 .expo/
 dist/
 dist-native/
+dist-profile-check/
 web-build/
 npm-debug.*
 *.jks

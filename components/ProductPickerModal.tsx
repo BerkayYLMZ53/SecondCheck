@@ -64,8 +64,8 @@ const ProductRow = memo(function ProductRow({
       ]}
     >
       <View style={styles.resultContent}>
-        <Text style={styles.resultTitle}>{product.name}</Text>
-        <Text style={styles.resultMeta}>
+        <Text style={styles.resultTitle} numberOfLines={1} ellipsizeMode="tail">{product.name}</Text>
+        <Text style={styles.resultMeta} numberOfLines={1} ellipsizeMode="tail">
           {product.brand} · {product.fairPrice > 0 ? `${product.releaseYear} · ${money(product.fairPrice)}` : 'Konsept · Fiyat / depolama verisi yok'}
         </Text>
       </View>

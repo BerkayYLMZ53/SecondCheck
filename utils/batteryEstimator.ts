@@ -30,7 +30,7 @@ export function estimateBattery(device: BatteryDevice | string | null, health?: 
         (/plus|\+/.test(name) ? 200 : 0)) / 100) * 100));
     }
   }
-  if (health === undefined || !Number.isFinite(health) || health < 0 || health > 100) {
+  if (health === undefined || !Number.isInteger(health) || health < 0 || health > 100) {
     return { condition: 'unknown', label: 'Pil sağlığı belirtilmedi', replacementCost, deduction: 0 };
   }
   if (health >= 85) return { health, condition: 'ideal', label: 'Kondisyon: İdeal / Değişim İhtiyacı Yok', replacementCost, deduction: 0 };

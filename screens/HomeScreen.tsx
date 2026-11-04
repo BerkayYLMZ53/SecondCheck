@@ -161,9 +161,9 @@ const ProductCard = memo(function ProductCard({
         </Text>
         <Text style={styles.year}>{product.releaseYear || 'Konsept'}</Text>
       </View>
-      <Text style={styles.productName}>{product.name}</Text>
+      <Text style={styles.productName} numberOfLines={1} ellipsizeMode="tail">{product.name}</Text>
       <Text style={styles.caption}>{product.fairPrice > 0 ? 'Piyasa aralığı' : 'Planlama kaydı'}</Text>
-      <Text style={styles.marketPrice}>
+      <Text style={styles.marketPrice} numberOfLines={1} ellipsizeMode="tail">
         {product.fairPrice > 0 ? `${product.marketPriceMin.toLocaleString('tr-TR')} - ${money(product.marketPriceMax)}` : 'Fiyat / depolama verisi yok'}
       </Text>
       <View style={styles.cardTop}>
@@ -233,17 +233,17 @@ function PriceGauge({ valuation }: { valuation: Valuation }) {
       <View style={styles.rangeLabels}>
         <View style={styles.rangeColumn}>
           <Text style={styles.caption}>Minimum</Text>
-          <Text style={styles.rangeValue}>{money(min)}</Text>
+          <Text style={styles.rangeValue} numberOfLines={1} ellipsizeMode="tail">{money(min)}</Text>
         </View>
         <View style={styles.rangeColumn}>
           <Text style={[styles.caption, { color: COLORS.cyan }]}>
             Adil fiyat
           </Text>
-          <Text style={styles.rangeValue}>{money(fair)}</Text>
+          <Text style={styles.rangeValue} numberOfLines={1} ellipsizeMode="tail">{money(fair)}</Text>
         </View>
         <View style={styles.rangeColumn}>
           <Text style={styles.caption}>Maksimum</Text>
-          <Text style={styles.rangeValue}>{money(max)}</Text>
+          <Text style={styles.rangeValue} numberOfLines={1} ellipsizeMode="tail">{money(max)}</Text>
         </View>
       </View>
     </View>
@@ -571,7 +571,7 @@ export default function HomeScreen({
           ref={scrollRef}
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode={Platform.OS === 'web' ? 'none' : 'on-drag'}
-          contentContainerStyle={[styles.page, compact && styles.compactPage]}
+          contentContainerStyle={[styles.page, compact && styles.compactPage, { paddingBottom: 100 + insets.bottom }]}
         >
           <View style={styles.header}>
             <View
@@ -1265,10 +1265,10 @@ const createStyles = (COLORS: ThemeColors) =>
       fontSize: 16,
       lineHeight: 23,
       fontWeight: '700',
-      minHeight: 69,
+      minHeight: 23,
     },
-    marketPrice: { color: COLORS.text, fontSize: 16, fontWeight: '700' },
-    issueCount: { color: COLORS.amber, fontSize: 12, fontWeight: '600' },
+    marketPrice: { color: COLORS.text, fontSize: 16, fontWeight: '700', minWidth: 0, flexShrink: 1 },
+    issueCount: { color: COLORS.amber, fontSize: 12, fontWeight: '600', flexShrink: 1 },
     empty: {
       alignItems: 'center',
       gap: 14,

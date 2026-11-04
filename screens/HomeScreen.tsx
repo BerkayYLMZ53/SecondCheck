@@ -46,6 +46,7 @@ import {
   savedValuationCondition,
 } from '../utils/savedListings';
 import type { ParsedListing } from '../utils/listingParser';
+import { isLinkInput } from '../utils/linkParser';
 import AlternativesSection from '../components/AlternativesSection';
 import type { Category, PriceAssessment, Product } from '../types/product';
 import { evaluatePrice } from '../utils/evaluator';
@@ -288,6 +289,7 @@ export default function HomeScreen({
   const carouselRef = useRef<ComponentRef<typeof ScrollView>>(null);
   const [category, setCategory] = useState<Category | 'all'>('all');
   const [catalogQuery, setCatalogQuery] = useState('');
+  const [listingInput, setListingInput] = useState('');
   const [catalogBrand, setCatalogBrand] = useState('all');
   const [displayLimit, setDisplayLimit] = useState(PAGE_SIZE);
   const [selectedId, setSelectedId] = useState<string | null>(
@@ -489,6 +491,7 @@ export default function HomeScreen({
     );
     setError(null);
     setSaveFeedback('Kaydedilen ilan yüklendi.');
+    setListingInput('');
     setParserVersion((version) => version + 1);
     setSavedOpen(false);
     carouselRef.current?.scrollTo({ x: 0, animated: false });
@@ -624,6 +627,8 @@ export default function HomeScreen({
 
           <ListingInputSection
             active={active}
+            value={listingInput}
+            onInputChange={setListingInput}
             key={parserVersion}
             onParsed={applyParsedListing}
           />
@@ -633,7 +638,14 @@ export default function HomeScreen({
             placeholder="iPhone 6, iPhone 17 Pro Max, Galaxy S24…"
             placeholderTextColor={COLORS.muted}
             value={catalogQuery}
-            onChangeText={(value) => { setCatalogQuery(value); resetSelection(); }}
+            onChangeText={(value) => {
+              resetSelection();
+              if (isLinkInput(value)) {
+                setCatalogQuery('');
+                setListingInput(value);
+                scrollRef.current?.scrollTo({ y: 0, animated: true });
+              } else setCatalogQuery(value);
+            }}
             autoCorrect={false}
             style={styles.catalogSearch}
           />

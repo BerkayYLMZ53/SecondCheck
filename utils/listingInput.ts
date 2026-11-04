@@ -2,11 +2,14 @@ import { parseListing } from './listingParser';
 import { compareDevicePrice } from './deviceListingParser';
 import type { ParsedListing } from './listingParser';
 import type { ListingMetadata } from '../types/listing';
+import { isLinkInput, matchDeviceText, parseProductUrl } from './linkParser';
+import { getProductsForDevice } from '../data/devices';
 
 export interface ListingInputResult {
   listing: ParsedListing;
   title: string;
   metadata?: ListingMetadata;
+  source?: 'slug' | 'metadata';
 }
 
 function isMetadata(value: unknown): value is ListingMetadata {
@@ -36,9 +39,14 @@ export async function parseListingInput(
   signal?: AbortSignal,
 ): Promise<ListingInputResult> {
   const text = input.trim().slice(0, 12000);
-  if (!/^https?:\/\/\S+$/i.test(text)) {
+  if (!isLinkInput(text)) {
     if (/^[a-z][a-z\d+.-]*:\/\//i.test(text)) throw new Error('Geçerli bir HTTP/HTTPS ilan bağlantısı girin veya ilan metnini yapıştırın.');
     return { listing: parseListing(text), title: text.split(/\r?\n/)[0]?.slice(0, 300) ?? '' };
+  }
+  if (signal?.aborted) throw new Error('İlan analizi iptal edildi.');
+  const slug = parseProductUrl(text);
+  if (slug.listing.matchedDevice) {
+    return { listing: slug.listing, title: slug.text.slice(0, 300), source: 'slug' };
   }
   const controller = new AbortController();
   const abort = () => controller.abort();
@@ -49,7 +57,7 @@ export async function parseListingInput(
     const response = await fetch(apiEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url: text }),
+      body: JSON.stringify({ url: slug.url.href }),
       signal: controller.signal,
     });
     const metadata: unknown = await response.json();
@@ -59,7 +67,19 @@ export async function parseListingInput(
         : 'İlan bilgileri alınamadı. İlan metnini yapıştırarak devam edin.';
       throw new Error(message);
     }
-    const listing = parseListing(`${metadata.title}\n${metadata.description}`);
+    // Match the product title first; descriptions often list unrelated compatible models.
+    const titleListing = matchDeviceText(metadata.title);
+    const listing = matchDeviceText(`${metadata.title}\n${metadata.description}`);
+    if (titleListing.matchedDevice) {
+      if (listing.matchedDevice?.id !== titleListing.matchedDevice.id) delete listing.detectedStorage;
+      listing.matchedDevice = titleListing.matchedDevice;
+      if (titleListing.detectedStorage) listing.detectedStorage = titleListing.detectedStorage;
+      // Keep a description capacity only when it belongs to the selected title model.
+      else if (listing.detectedStorage && !titleListing.matchedDevice.variants.storage.includes(listing.detectedStorage)) {
+        delete listing.detectedStorage;
+      }
+      listing.product = getProductsForDevice(listing.matchedDevice.id, listing.detectedStorage)[0] ?? null;
+    }
     const price = metadataPrice(metadata.rawPrice);
     if (price !== undefined) {
       listing.price = price;
@@ -69,7 +89,10 @@ export async function parseListingInput(
       else delete listing.priceComparison;
       listing.notes = listing.notes.filter((note) => !note.startsWith('Fiyat bulunamadı') && !note.startsWith('Birden fazla fiyat'));
     }
-    return { listing, title: metadata.title.slice(0, 300), metadata };
+    const comparison = compareDevicePrice(listing.matchedDevice, listing.detectedPrice);
+    if (comparison) listing.priceComparison = comparison;
+    else delete listing.priceComparison;
+    return { listing, title: metadata.title.slice(0, 300), metadata, source: 'metadata' };
   } catch (error) {
     if (controller.signal.aborted) throw new Error('İlan sitesinden yanıt alınamadı. İlan metnini yapıştırarak devam edin.');
     if (error instanceof Error && !(error instanceof SyntaxError) && !(error instanceof TypeError)) throw error;

@@ -78,6 +78,16 @@ if (new Set(BROWSABLE_PRODUCTS.map((p) => p.id)).size !== BROWSABLE_PRODUCTS.len
 export function getProductById(id: string): Product | undefined { return byId.get(id); }
 
 const modelsByKey = new Map(models.map((d) => [modelKey(d.model), d]));
+/** Exact model/capacity bridge; never silently substitute a different SKU. */
+export function getProductsForDevice(deviceId: string, storage?: string): Product[] {
+  const device = models.find((d) => d.id === deviceId);
+  if (!device || device.releaseYear <= 0) return [];
+  if (storage && !device.variants.storage.includes(storage)) return [];
+  return PRODUCTS_DATABASE.filter((product) => product.category === 'phone' &&
+    product.brand === device.brand &&
+    modelKey(product.name.replace(/ \([^()]*\)$/, '')) === modelKey(device.model) &&
+    (!storage || product.name.match(/\((\d+(?:GB|TB))\s*(?:\/|\))/)?.[1] === storage));
+}
 const index = BROWSABLE_PRODUCTS.map((product) => {
   const device = product.category === 'phone'
     ? modelsByKey.get(modelKey(product.name.replace(/ \([^()]*\)$/, ''))) : undefined;

@@ -64,6 +64,34 @@ varsayımları [katalog belgesindedir](devices-catalog.md).
 
 ## URL'den bilgi alma
 
+`utils/linkParser.ts`, `data/devices.ts` ortak kataloğunu kullanan yerel URL
+motorudur. `parseProductUrl` HTTP/HTTPS veya `www.` bağlantılarını doğrular;
+pathname'i çözer, tire/alt çizgi/ayraçları temizler, uzun ilan numaralarını
+ayıklayıp model ve depolamayı eşleştirir. Sorgu parametreleri ve fragment model
+kanıtı değildir; URL sayıları ilan fiyatı olarak kullanılmaz. Pro/Pro Max/Ultra
+ayrımı, marka yazım varyasyonları ve kelime eşleştirmesi mevcut katalog motoruyla
+yapılır. Kılıf/aksesuar ve birden fazla farklı model içeren bağlantılardan telefon
+seçilmez. Modelde olmayan kapasite veya konsept cihaz farklı SKU'ya dönüştürülmez.
+
+`parseListingInput` önce bu yolu dener; model bulunursa ağ isteği olmadan
+`source: 'slug'` döner. Kısa veya yalnızca ID içeren bağlantılarda aşağıdaki
+sunucu endpoint'ini çağırır ve `source: 'metadata'` döner. Başlık, açıklamadaki
+başka model adlarına göre önceliklidir. Başlık yoksa description metni de
+kullanılabilir. Fiyat sadece ilan metni veya fiyat metadata'sından alınır.
+
+İlan alanına yapıştırılan bağlantı 450 ms bekleme sonrası otomatik analiz edilir.
+Ana katalog aramasına yapıştırılan URL de aynı alana aktarılır. Yükleme göstergesi,
+tespit rozeti ve manuel seçim mesajı gösterilir; fiyatlı ve geçerli kapasiteyle
+eşleşen telefon ana ekrandaki kartı seçer. Metin değişince eski istek iptal edilir;
+gecikmiş sonuç yeni seçimi değiştiremez. Düz metin için Analiz Et düğmesi korunur.
+
+Web aynı origin'deki `/api/parse-listing` adresini kullanır. Native iOS/Android
+metadata yedeği için `.env` içinde `EXPO_PUBLIC_LISTING_API_URL` değerini dağıtılmış
+HTTPS API'nin tam adresine ayarlayın; `.env.example` açıklama içerir. İstenirse
+`ListingInputSection` bileşeninin `apiEndpoint` prop'u kullanılabilir. Yerel slug
+analizi bu ayar ve internet olmadan çalışır. Expo'nun statik web export'u API'yi
+çalıştırmaz; metadata yedeği Vercel/uygun API sunucusunda çalışır.
+
 `api/parse-listing.ts`, [Vercel Node.js Web Standard işleyicisi](https://vercel.com/docs/functions/runtimes/node-js)
 olarak çalışır. Ek `@vercel/node` paketi gerekmez.
 
@@ -99,8 +127,9 @@ isteklerde kullanıcı ilan metnini yapıştırarak devam eder.
 
 Sunucu 8 saniyede zaman aşımına uğrar; en fazla 3 yönlendirme, 2 MiB açılmış HTML
 ve 4 KiB istek gövdesi kabul eder. Açık proxy/özel ağ erişimini engellemek için
-yalnızca `sahibinden.com`, `shbd.io`, `dolap.com`, `letgo.com`, `gardrops.com` ve
-alt alanları kabul edilir; yönlendirmelerin her biri yeniden doğrulanır.
+yalnızca `sahibinden.com`, `shbd.io`, `dolap.com`, `letgo.com`, `gardrops.com`,
+`trendyol.com`, `ty.gl`, `hepsiburada.com`, `apple.com`, `easycep.com`,
+`samsung.com` ve alt alanları kabul edilir; yönlendirmelerin her biri yeniden doğrulanır.
 Yeni pazar yerleri `server/listingMetadata.ts` izin listesine eklenebilir.
 
 Hatalar `{ "success": false, "code": "...", "error": "..." }` biçimindedir:

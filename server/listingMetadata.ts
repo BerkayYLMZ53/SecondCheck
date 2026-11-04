@@ -4,7 +4,10 @@ const MAX_PAGE_BYTES = 2 * 1024 * 1024;
 const TIMEOUT_MS = 8000;
 const MAX_REDIRECTS = 3;
 // Restrict this endpoint to marketplace hosts instead of exposing an open proxy.
-const MARKETPLACE_HOSTS = ['sahibinden.com', 'shbd.io', 'dolap.com', 'letgo.com', 'gardrops.com'];
+const MARKETPLACE_HOSTS = [
+  'sahibinden.com', 'shbd.io', 'dolap.com', 'letgo.com', 'gardrops.com',
+  'trendyol.com', 'ty.gl', 'hepsiburada.com', 'apple.com', 'easycep.com', 'samsung.com',
+];
 
 export class ListingFetchError extends Error {
   constructor(
@@ -95,8 +98,8 @@ export function extractListingMetadata(html: string, pageUrl: string): ListingMe
     const value = attributes.get('content');
     if (key && value?.trim() && !meta.has(key)) meta.set(key, value);
   }
-  const title = cleanText(meta.get('og:title') ?? content.match(/<title\b[^>]*>([\s\S]*?)<\/title\s*>/i)?.[1] ?? '').slice(0, 500);
   const description = cleanText(meta.get('og:description') ?? meta.get('description') ?? '').slice(0, 11000);
+  const title = cleanText(meta.get('og:title') ?? content.match(/<title\b[^>]*>([\s\S]*?)<\/title\s*>/i)?.[1] ?? description).slice(0, 500);
   if (!title || /just a moment|attention required|access denied|captcha|erişim engellendi|access to this page has been denied/i.test(title)) {
     throw new ListingFetchError('NO_METADATA', 'İlan bilgileri alınamadı. İlan başlığını ve açıklamasını yapıştırarak devam edin.', 422);
   }

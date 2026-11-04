@@ -84,6 +84,8 @@ function detectStorage(input: string): string | undefined {
   for (const match of input.matchAll(/(?<![a-z0-9.,])(16|32|64|128|256|512|1024|2048)(?:\s*(gb|gigabayt))?(?![a-z0-9.,])|\b([12])\s*(tb|terabayt)\b/g)) {
     const before = input.slice(Math.max(0, match.index - 25), match.index);
     const after = input.slice(match.index + match[0].length);
+    // iPhone 16 is a model generation, not a second 16GB capacity.
+    if (/\b(?:iphone|ip|iphon|ayfon)\s*$/.test(before)) continue;
     if (/(?:%|\bpil(?:\s+sagligi)?|\bbatarya(?:\s+sagligi)?)\s*[:=%]?\s*$/.test(before)) continue;
     if (/^\s*(?:%|tl\b|₺|lira\b|ram\b|ay\b|yil\b)/.test(after)) continue;
     if (/\bram\s*[:=]?\s*$/.test(before)) continue;

@@ -27,10 +27,10 @@ test('URL metadata is combined with the catalog parser and decimal OG prices', a
   const { parseListingInput } = createLoader({ fetch: async (url, options) => {
     assert.equal(url, 'https://api.secondcheck.example/api/parse-listing');
     assert.equal(options.method, 'POST');
-    assert.equal(JSON.parse(options.body).url, 'https://dolap.com/urun/test');
+    assert.equal(JSON.parse(options.body).url, 'https://letgo.com/item/test');
     return Response.json(metadata);
   } })(inputPath);
-  const result = await parseListingInput('https://dolap.com/urun/test', 'https://api.secondcheck.example/api/parse-listing');
+  const result = await parseListingInput('https://letgo.com/item/test', 'https://api.secondcheck.example/api/parse-listing');
   assert.equal(result.listing.matchedDevice.id, 'apple-iphone-13-pro-max');
   assert.equal(result.listing.detectedStorage, '256GB');
   assert.equal(result.listing.detectedBattery, 85);
@@ -57,7 +57,7 @@ test('absent or invalid metadata prices retain prices parsed from text', async (
     const { parseListingInput } = createLoader({ fetch: async () => Response.json({
       ...metadata, rawPrice, description: 'Fiyat: 28000 TL',
     }) })(inputPath);
-    assert.equal((await parseListingInput('https://dolap.com/urun/test')).listing.detectedPrice, 28000);
+    assert.equal((await parseListingInput('https://letgo.com/item/test')).listing.detectedPrice, 28000);
   }
 });
 
@@ -69,7 +69,7 @@ test('API failures, invalid responses and network failures produce useful fallba
     async () => { throw new TypeError('failed to fetch'); },
   ]) {
     const { parseListingInput } = createLoader({ fetch })(inputPath);
-    await assert.rejects(() => parseListingInput('https://dolap.com/urun/test'), /metnini yapıştır/);
+    await assert.rejects(() => parseListingInput('https://letgo.com/item/test'), /metnini yapıştır/);
   }
 });
 
@@ -81,7 +81,7 @@ test('client timeout is graceful and unsupported URL schemes stay off the networ
       signal.addEventListener('abort', () => reject(new Error('aborted')), { once: true });
     }),
   })(inputPath);
-  await assert.rejects(() => parseListingInput('https://dolap.com/urun/test'), /metnini yapıştır/);
+  await assert.rejects(() => parseListingInput('https://letgo.com/item/test'), /metnini yapıştır/);
   const offline = createLoader({ fetch: () => assert.fail('must not fetch') })(inputPath);
   await assert.rejects(() => offline.parseListingInput('file:///etc/passwd'), /HTTP\/HTTPS/);
 });
@@ -97,7 +97,7 @@ test('caller cancellation aborts an in-flight metadata request', async () => {
     }),
   })(inputPath);
   const controller = new AbortController();
-  const pending = parseListingInput('https://dolap.com/urun/test', undefined, controller.signal);
+  const pending = parseListingInput('https://letgo.com/item/test', undefined, controller.signal);
   controller.abort();
   await assert.rejects(() => pending, /metnini yapıştır/);
   assert.equal(upstreamAborted, true);

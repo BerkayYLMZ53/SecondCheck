@@ -10,7 +10,7 @@ function fold(text: string): string {
     .normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
 }
 
-function modelText(text: string): string {
+export function normalizeDeviceModel(text: string): string {
   return fold(text)
     .replace(/https?:\/\/\S+/g, ' ')
     .replace(/\b(?:ip|iphon|ayfon)(?=\s*\d|\b)/g, 'iphone')
@@ -32,6 +32,8 @@ function modelText(text: string): string {
     .replace(/\bse\s*([123])\b/g, 'se $1')
     .replace(/[^a-z0-9]+/g, ' ').trim();
 }
+
+const modelText = normalizeDeviceModel;
 
 function escapeRegex(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');

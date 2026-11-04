@@ -10,7 +10,7 @@ import type { DynamicStatus } from '../components/DynamicStatusPill';
 
 interface AnalysisPresentation {
   begin: () => void;
-  complete: (result: ParsedListingResult, title: string, name: string) => void;
+  complete: (result: ParsedListingResult, title: string, name: string, options?: { open?: boolean }) => void;
   fail: (message?: string) => void;
   reset: () => void;
   reopen: () => void;
@@ -23,9 +23,9 @@ export function AnalysisPresentationProvider({ children, active = true, enabled 
   const sequence = useRef(0);
   const blurTarget = useRef<ComponentRef<typeof View> | null>(null);
   const begin = useCallback(() => { setOpen(false); setStatus({ phase: 'loading', label: 'İlan Çözümleniyor…', sequence: ++sequence.current }); }, []);
-  const complete = useCallback((result: ParsedListingResult, title: string, name: string) => {
+  const complete = useCallback((result: ParsedListingResult, title: string, name: string, options?: { open?: boolean }) => {
     const id = ++sequence.current;
-    if (result.matchedDevice) { setSnapshot({ result, title, sequence: id }); setOpen(true); }
+    if (result.matchedDevice) { setSnapshot({ result, title, sequence: id }); setOpen(options?.open !== false); }
     setStatus({ phase: 'success', label: `${name} Hazır`, sequence: id });
   }, []);
   const fail = useCallback((message = 'İlan çözümlenemedi') => { setStatus({ phase: 'error', label: message, sequence: ++sequence.current }); }, []);

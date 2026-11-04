@@ -4,12 +4,15 @@ import type { ParsedListing } from './listingParser';
 import type { ListingMetadata } from '../types/listing';
 import { isLinkInput, matchDeviceText, parseProductUrl } from './linkParser';
 import { getProductsForDevice } from '../data/devices';
+import { parseMarketplaceUrl } from './marketplaceParser';
+import type { MarketplaceMatch } from './marketplaceParser';
 
 export interface ListingInputResult {
   listing: ParsedListing;
   title: string;
   metadata?: ListingMetadata;
   source?: 'slug' | 'metadata';
+  marketplace?: Pick<MarketplaceMatch, 'platform' | 'status' | 'score' | 'canOpenValuation'>;
 }
 
 function isMetadata(value: unknown): value is ListingMetadata {
@@ -44,6 +47,12 @@ export async function parseListingInput(
     return { listing: parseListing(text), title: text.split(/\r?\n/)[0]?.slice(0, 300) ?? '' };
   }
   if (signal?.aborted) throw new Error('İlan analizi iptal edildi.');
+  const marketplace = parseMarketplaceUrl(text);
+  if (marketplace) {
+    const { platform, status, score, canOpenValuation } = marketplace;
+    return { listing: marketplace.listing, title: marketplace.cleanedText.slice(0, 300),
+      source: 'slug', marketplace: { platform, status, score, canOpenValuation } };
+  }
   const slug = parseProductUrl(text);
   if (slug.listing.matchedDevice) {
     return { listing: slug.listing, title: slug.text.slice(0, 300), source: 'slug' };

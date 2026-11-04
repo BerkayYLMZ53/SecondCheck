@@ -64,6 +64,36 @@ varsayımları [katalog belgesindedir](devices-catalog.md).
 
 ## URL'den bilgi alma
 
+### Sahibinden ve Dolap için yerel çözücü
+
+`utils/marketplaceParser.ts`, bu iki platformun öncelikli yoludur. URL'nin gerçek
+hostname'i doğrulanır; Sahibinden'de `/ilan/<slug>` (isteğe bağlı `/detay`),
+Dolap'ta `/urun/<slug>` okunur. Sorgu/fragment veya benzer adlı başka domainler
+platform kanıtı sayılmaz. URL-encoded Türkçe karakterler çözülür; sondaki uzun
+ilan numaraları, `temiz`, `garantili`, `kutusunda`, `faturalı`, `acil`, `orijinal`,
+`çiziksiz`, `cep telefonu` ve `az kullanılmış` gibi etiketler ayıklanır.
+
+Apple/Samsung model indeksi `data/devices.ts` üzerinden oluşturulur. Sayısal model
+kelimeleri 60, Pro/Max/Ultra gibi ekler 25, diğer model kelimeleri 15 puan alır.
+Kelime sırası bağımsızdır; bütün gerekli model kelimeleri bulunmalı, ekler ve
+nesil uyuşmalıdır. Aynı en yüksek puanı alan farklı modeller seçilmez. `score`,
+kelime kapsama puanıdır; gerçek dünya doğruluk olasılığı değildir. GB/TB kapasite
+normalize edilip tam modelin varyasyonuyla eşleştirilir; desteklenmeyen kapasite
+yerine başka kapasite seçilmez. Konsept kayıtlar değerlemeyi açmaz.
+
+`parseListingInput` bu platformlarda başarılı/başarısız sonucu daima yerel döndürür;
+belirsiz veya ID tabanlı linklerde fetch/metadata yedeği kullanılmaz. Eksik URL
+metniyle yüzde 100 model doğruluğu garanti edilemez; netleşmeyen durumlarda
+`İlan modeli net anlaşılamadı, lütfen listeden manuel seçin` gösterilir.
+
+Yapıştırma sonrası ek debounce veya 350 ms sunum beklemesi uygulanmaz. Net sonuç
+yeşil `Sahibinden İlanı Algılandı: iPhone 13 Pro Max (128 GB)` / `Dolap İlanı
+Algılandı: ...` rozetini gösterir, tam kapasiteye ait kartı seçer ve **Ekspertiz &
+Piyasa Değerlemesine Geç** düğmesini etkinleştirir. Sonuç çekmecesi bu platformlarda
+otomatik açılmaz; bu düğmeyle açılır. Hatalı/belirsiz/konsept sonuçlarda düğme kapalıdır.
+
+### Diğer platformlar ve metadata yedeği
+
 `utils/linkParser.ts`, `data/devices.ts` ortak kataloğunu kullanan yerel URL
 motorudur. `parseProductUrl` HTTP/HTTPS veya `www.` bağlantılarını doğrular;
 pathname'i çözer, tire/alt çizgi/ayraçları temizler, uzun ilan numaralarını
@@ -73,13 +103,13 @@ ayrımı, marka yazım varyasyonları ve kelime eşleştirmesi mevcut katalog mo
 yapılır. Kılıf/aksesuar ve birden fazla farklı model içeren bağlantılardan telefon
 seçilmez. Modelde olmayan kapasite veya konsept cihaz farklı SKU'ya dönüştürülmez.
 
-`parseListingInput` önce bu yolu dener; model bulunursa ağ isteği olmadan
+Sahibinden/Dolap dışındaki adreslerde `parseListingInput` önce bu yolu dener; model bulunursa ağ isteği olmadan
 `source: 'slug'` döner. Kısa veya yalnızca ID içeren bağlantılarda aşağıdaki
 sunucu endpoint'ini çağırır ve `source: 'metadata'` döner. Başlık, açıklamadaki
 başka model adlarına göre önceliklidir. Başlık yoksa description metni de
 kullanılabilir. Fiyat sadece ilan metni veya fiyat metadata'sından alınır.
 
-İlan alanına yapıştırılan bağlantı 450 ms bekleme sonrası otomatik analiz edilir.
+İlan alanına yapıştırılan diğer platform bağlantıları 450 ms bekleme sonrası otomatik analiz edilir.
 Ana katalog aramasına yapıştırılan URL de aynı alana aktarılır. Yükleme göstergesi,
 tespit rozeti ve manuel seçim mesajı gösterilir; fiyatlı ve geçerli kapasiteyle
 eşleşen telefon ana ekrandaki kartı seçer. Metin değişince eski istek iptal edilir;

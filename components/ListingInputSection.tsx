@@ -10,6 +10,7 @@ import ListingSkeleton from './ListingSkeleton';
 import { useAnalysisPresentation } from '../context/AnalysisPresentationContext';
 import { catalogDeviceName } from '../utils/listingAnalysisReport';
 import { isLinkInput, MODEL_NOT_FOUND } from '../utils/linkParser';
+import { getMarketplacePlatform, MARKETPLACE_MODEL_NOT_FOUND } from '../utils/marketplaceParser';
 
 interface Props {
   onParsed?: (listing: ParsedListing, title: string) => void;
@@ -28,7 +29,8 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
   const [localText, setLocalText] = useState('');
   const text = value ?? localText;
   const setText = onInputChange ?? setLocalText;
-  const [analysis, setAnalysis] = useState<ListingInputResult | null>(null);
+  const [storedAnalysis, setAnalysis] = useState<(ListingInputResult & { input: string }) | null>(null);
+  const analysis = storedAnalysis?.input === text ? storedAnalysis : null;
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const requestId = useRef(0);
@@ -52,14 +54,15 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
     try {
       const [result] = await Promise.all([
         parseListingInput(input, apiEndpoint ?? process.env.EXPO_PUBLIC_LISTING_API_URL, activeController.signal),
-        new Promise<void>((resolve) => setTimeout(resolve, 350)),
+        getMarketplacePlatform(input) ? Promise.resolve() : new Promise<void>((resolve) => setTimeout(resolve, 350)),
       ]);
       if (id !== requestId.current) return;
-      setAnalysis(result);
-      if (result.listing.matchedDevice) presentation.complete(result.listing, result.title, catalogDeviceName(result.listing));
+      setAnalysis({ ...result, input });
+      if (result.marketplace && !result.marketplace.canOpenValuation) presentation.fail(MARKETPLACE_MODEL_NOT_FOUND);
+      else if (result.listing.matchedDevice) presentation.complete(result.listing, result.title, catalogDeviceName(result.listing), { open: !result.marketplace });
       else if (result.listing.product) presentation.complete(result.listing, result.title, result.listing.product.name);
       else presentation.fail(MODEL_NOT_FOUND);
-      if (result.listing.product) onParsed?.(result.listing, result.title);
+      if (result.listing.product && (!result.marketplace || result.marketplace.canOpenValuation)) onParsed?.(result.listing, result.title);
     } catch (error) {
       if (id !== requestId.current || activeController.signal.aborted) return;
       setError(error instanceof Error ? error.message : 'İlan okunamadı. Başlığı ve açıklamayı yapıştırarak tekrar deneyin.');
@@ -75,7 +78,7 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
     controller.current?.abort();
     const timer = setTimeout(() => {
       if (lastAutoInput.current !== text) void analyze(text);
-    }, 450);
+    }, getMarketplacePlatform(text) ? 0 : 450);
     return () => clearTimeout(timer);
   }, [active, analyze, text]);
 
@@ -87,6 +90,8 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
   }, [active]);
 
   const listing = analysis?.listing;
+  const marketplace = analysis?.marketplace;
+  const marketplaceInput = getMarketplacePlatform(text) !== null;
   return (
     <View style={styles.section} testID="listing-input-section">
       <View style={styles.inputCard}>
@@ -119,18 +124,26 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
             <Text style={styles.buttonText}>{loading ? (isLinkInput(text) ? 'Link Analiz Ediliyor...' : 'Analiz ediliyor…') : 'Analiz Et / Doğrula'}</Text>
           </Pressable>
         </View>
-        <Text style={styles.caption}>İlan metni cihazınızda analiz edilir. Linkler için yalnızca ilan sayfasındaki bilgiler alınır.</Text>
+        <Text style={styles.caption}>{marketplaceInput ? 'Sahibinden ve Dolap bağlantıları cihazınızda, internet isteği yapılmadan çözümlenir.' : 'İlan metni cihazınızda analiz edilir. Linkler için yalnızca ilan sayfasındaki bilgiler alınır.'}</Text>
         {loading && <Text accessibilityLiveRegion="polite" style={styles.caption}>İlan bilgileri hazırlanıyor…</Text>}
-        {analysis && listing?.matchedDevice && <View testID="link-detection-badge" style={styles.successBox} accessibilityLiveRegion="polite">
-          <SearchCheck size={18} color={colors.cyan} />
-          <Text style={styles.successText}>{listing.matchedDevice.model}{listing.detectedStorage ? ` ${listing.detectedStorage.replace(/(GB|TB)/, ' $1')}` : ''} tespit edildi</Text>
+        {analysis && listing?.matchedDevice && (!marketplace || marketplace.canOpenValuation) && <View testID="link-detection-badge" style={[styles.successBox, marketplace && styles.marketplaceSuccess]} accessibilityLiveRegion="polite">
+          <SearchCheck size={18} color={marketplace ? colors.successText : colors.cyan} />
+          <Text style={[styles.successText, marketplace && styles.marketplaceSuccessText]}>{marketplace
+            ? `${marketplace.platform} İlanı Algılandı: ${listing.matchedDevice.model}${listing.detectedStorage ? ` (${listing.detectedStorage.replace(/(GB|TB)/, ' $1')})` : ''}`
+            : `${listing.matchedDevice.model}${listing.detectedStorage ? ` ${listing.detectedStorage.replace(/(GB|TB)/, ' $1')}` : ''} tespit edildi`}</Text>
         </View>}
+        {marketplace && !marketplace.canOpenValuation && <Text testID="marketplace-warning" accessibilityRole="alert" style={styles.errorText}>{MARKETPLACE_MODEL_NOT_FOUND}</Text>}
+        {marketplaceInput && <Pressable testID="open-marketplace-expertise" accessibilityRole="button" accessibilityLabel="Ekspertiz ve piyasa değerlemesini aç"
+          disabled={!marketplace?.canOpenValuation || loading} accessibilityState={{ disabled: !marketplace?.canOpenValuation || loading }}
+          onPress={presentation.reopen} style={[styles.analyzeButton, (!marketplace?.canOpenValuation || loading) && styles.disabled]}>
+          <SearchCheck size={20} color={colors.onAccent} /><Text style={styles.buttonText}>Ekspertiz &amp; Piyasa Değerlemesine Geç</Text>
+        </Pressable>}
         {analysis && listing?.matchedDevice && !listing.product && <Text style={styles.caption}>Model tanındı; kapasite veya değerleme kaydı bulunamadı. Lütfen manuel seçimle doğrulayın.</Text>}
-        {error && <View style={styles.errorBox}><Text accessibilityRole="alert" style={styles.errorText}>{isLinkInput(text) ? `${MODEL_NOT_FOUND}. ${error}` : error}</Text></View>}
+        {error && <View style={styles.errorBox}><Text accessibilityRole="alert" style={styles.errorText}>{marketplaceInput ? MARKETPLACE_MODEL_NOT_FOUND : isLinkInput(text) ? `${MODEL_NOT_FOUND}. ${error}` : error}</Text></View>}
       </View>
 
       {loading && <ListingSkeleton active={active} />}
-      {analysis && listing && (
+      {analysis && listing && !marketplace && (
         listing.matchedDevice
           ? <View style={styles.inputCard} testID="listing-result-preview">
               <Text style={styles.resultHeading}>{catalogDeviceName(listing)}</Text>
@@ -171,6 +184,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   errorBox: { borderRadius: 12, padding: 12, backgroundColor: colors.dangerBg },
   successBox: { flexDirection: 'row', alignItems: 'center', gap: 8, padding: 12, borderRadius: 12, backgroundColor: colors.accentSoft },
   successText: { flex: 1, color: colors.textPrimary, fontSize: 13, lineHeight: 20, fontWeight: '600' },
+  marketplaceSuccess: { backgroundColor: colors.successBg, borderWidth: 1, borderColor: colors.green },
+  marketplaceSuccessText: { color: colors.successText },
   errorText: { color: colors.dangerText, fontSize: 13, lineHeight: 21 },
   disabled: { opacity: 0.5 },
   pressed: { backgroundColor: colors.accentPressed },

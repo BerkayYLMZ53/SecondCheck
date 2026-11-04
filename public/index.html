@@ -41,48 +41,45 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #0b0f19;
+        background:
+          radial-gradient(ellipse at 50% 42%, #00f2fe18, transparent 65%),
+          linear-gradient(#00f2fe08 1px, transparent 1px),
+          linear-gradient(90deg, #00f2fe08 1px, transparent 1px), #0b0f19;
+        background-size: auto, 44px 44px, 44px 44px, auto;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       }
       .startup-brand {
         position: relative;
-        width: 90px;
-        height: 90px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transform: translateY(-24px);
       }
       .startup-brand img {
         display: block;
-        width: 90px;
-        height: 90px;
+        width: 116px;
+        height: 116px;
         object-fit: contain;
+        padding: 12px;
+        border: 1px solid #00f2fe60;
+        border-radius: 34px;
+        box-shadow: 0 0 40px #00f2fe2e;
       }
-      .startup-spinner {
-        position: absolute;
-        top: 114px;
-        left: 35px;
-        width: 20px;
-        height: 20px;
-        box-sizing: border-box;
-        border: 2px solid #64748b40;
-        border-top-color: #64748b;
-        border-radius: 50%;
-        animation: startup-spin 0.9s linear infinite;
+      .startup-brand h1 {
+        color: #f1ffff;
+        font-size: 38px;
+        letter-spacing: -1.5px;
+        margin: 30px 0 10px;
+        text-shadow: 0 0 18px #00f2fe45;
       }
       .startup-tagline {
-        position: absolute;
-        bottom: calc(max(env(safe-area-inset-bottom, 0px), 16px) + 16px);
-        left: 16px;
-        right: 16px;
         margin: 0;
-        color: #64748b;
+        color: #91a8b7;
         font-size: 12px;
         line-height: 18px;
+        letter-spacing: 0.65px;
         text-align: center;
-      }
-      @keyframes startup-spin {
-        to { transform: rotate(360deg); }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .startup-spinner { animation: none; }
       }
     </style>
   </head>
@@ -94,10 +91,10 @@
     <div id="root">
       <div id="startup-splash" role="status" aria-label="SecondCheck yükleniyor">
         <div class="startup-brand">
-          <img src="/icon.png" width="90" height="90" alt="SecondCheck" />
-          <div class="startup-spinner" aria-hidden="true"></div>
+          <img src="/icon.png" width="116" height="116" alt="" />
+          <h1>SecondCheck</h1>
+          <p class="startup-tagline">AI-Powered Hardware Appraisal</p>
         </div>
-        <p class="startup-tagline">SecondCheck • Donanım Doğrulama</p>
       </div>
     </div>
   </body>

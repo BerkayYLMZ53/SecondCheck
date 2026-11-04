@@ -26,6 +26,28 @@
       ]
     },
     "android": {
+      "package": "com.secondcheck.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#0b0f19"
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.VIBRATE",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_VISUAL_USER_SELECTED",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.CAMERA",
+        "android.permission.VIBRATE",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_VISUAL_USER_SELECTED",
+        "android.permission.READ_MEDIA_IMAGES"
+      ],
       "softwareKeyboardLayoutMode": "resize"
     },
     "plugins": [
@@ -67,6 +89,18 @@
           "microphonePermission": "SecondCheck, 3 saniyelik yerinde mikrofon testi için mikrofonunuza erişir."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "024b1764-6370-4d9b-8b8a-35a980f78101"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/024b1764-6370-4d9b-8b8a-35a980f78101"
+    },
+    "ios": {}
   }
 }

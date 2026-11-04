@@ -3,3 +3,5 @@ allowBuilds:
 minimumReleaseAgeExclude:
   - '@expo/config-plugins@58.0.12'
   - expo-sharing@58.0.22
+  - '@expo/env@2.5.4'
+  - expo-updates@58.0.21

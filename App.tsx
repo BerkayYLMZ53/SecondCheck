@@ -20,11 +20,8 @@ import type { AppTab } from './components/FloatingTabBar';
 import type { Product } from './types/product';
 import type { ComparisonPair } from './utils/comparison';
 import WebPageStyles from './components/WebPageStyles';
-import {
-  SavedListingsProvider,
-  useSavedListings,
-} from './context/SavedListingsContext';
-import InAppSplash from './components/InAppSplash';
+import { SavedListingsProvider } from './context/SavedListingsContext';
+import SplashScreen from './components/SplashScreen';
 import type { SavedComparisonPair, SavedItem } from './types/savedListing';
 import { getProductById } from './data/mockProducts';
 import { AnalysisPresentationProvider } from './context/AnalysisPresentationContext';
@@ -41,9 +38,9 @@ export default function App() {
 
 function Application() {
   const { theme } = useTheme();
-  const { isReady } = useSavedListings();
-  const [showSplash, setShowSplash] = useState(true);
-  const finishSplash = useCallback(() => setShowSplash(false), []);
+  const [isReady, setIsReady] = useState(false);
+  const showSplash = !isReady;
+  const finishSplash = useCallback(() => setIsReady(true), []);
   const styles = useThemedStyles(createStyles);
   const [tab, setTab] = useState<AppTab>('home');
   const [products, setProducts] = useState<ComparisonPair>([null, null]);
@@ -127,7 +124,7 @@ function Application() {
           )}
           {!showSplash && <FloatingTabBar activeTab={tab} onTabPress={(next) => { Keyboard.dismiss(); setTab(next); }} />}
         </View>
-        {showSplash && <InAppSplash ready={isReady} onFinish={finishSplash} />}
+        {showSplash && <SplashScreen onFinish={finishSplash} />}
       </View>
       </AnalysisPresentationProvider>
     </SafeAreaProvider>

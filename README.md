@@ -146,14 +146,14 @@ Değerlendirme, kondisyonla uyarlanmış adil değeri temel alır:
 
 Ana ekrandaki kronik sorun skoru `0–100`, VS modundaki donanım risk endeksi ise `0–10` aralığındadır. Bunlar farklı ölçeklerdeki tarama puanlarıdır; ölçülmüş arıza olasılığı veya performans testi sonucu değildir.
 
-Katalog erişimi `data/mockProducts.ts` üzerinden sağlanır:
+Katalog erişimi `data/devices.ts` üzerinden sağlanır:
 
 ```typescript
 import {
   PRODUCTS_DATABASE,
   getProductById,
   searchProducts,
-} from './data/mockProducts';
+} from './data/devices';
 
 const matches = searchProducts('RTX 3060', 'gpu', 20);
 const product = matches[0] ? getProductById(matches[0].id) : undefined;
@@ -288,8 +288,11 @@ Her iki platformda da kurulum için tek bir paket yöneticisi seçin. Mevcut pnp
 `data/devicesCatalog.json` içinde 113 telefon modeli, depolama/renk seçenekleri,
 tahmini TL fiyat bantları, sorun/kontrol riskleri ve cihaz özelliklerine uygun
 satın alma testleri bulunur. Tipler `types/catalog.ts`, erişim ve arama işlevleri
-`utils/catalogHelper.ts` içindedir: `getAllDevices`, `getDeviceById`,
-`searchDevices`, `filterByBrand`.
+`data/devices.ts` üzerinden sunulur: `getAllDevices`, `getDeviceById`,
+`searchDevices`, `filterByBrand`. Ana ekran ve ürün seçicileri aynı kaynağın
+`searchCatalogProducts` fonksiyonuyla model, depolama, marka ve kategori arar.
+Eski ürün kimlikleri korunarak 1.714 değerlenebilir varyant ve bir konsept kayıt
+arayüze bağlanır. Ayrıntılar: [katalog veri akışı](docs/devices-catalog.md).
 
 Kapsam, üretici kaynakları, fiyat varsayımları, konsept kayıtlarının işlenmesi ve
 kullanım örnekleri için [katalog belgesine](docs/devices-catalog.md) bakın.

@@ -1,7 +1,7 @@
 import { explicitPrices, selectPrice, barePrice } from './listingPrice';
 import { parseDeviceListing } from './deviceListingParser';
 import type { ParsedListingResult } from '../types/listing';
-import { PRODUCTS_DATABASE } from '../data/mockProducts';
+import { PRODUCTS_DATABASE } from '../data/devices';
 import type { Category, Product } from '../types/product';
 
 export type { ParsedListingResult } from '../types/listing';

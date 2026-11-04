@@ -15,7 +15,7 @@ import {
   View,
 } from 'react-native';
 import { Check, Search, X } from 'lucide-react-native';
-import { PRODUCTS_DATABASE } from '../data/mockProducts';
+import { BROWSABLE_PRODUCTS, searchCatalogProducts } from '../data/devices';
 import type { Category, Product } from '../types/product';
 
 export const COMPARISON_CATEGORIES: readonly {
@@ -33,17 +33,6 @@ export const COMPARISON_CATEGORIES: readonly {
   { id: 'motherboard', label: 'Anakart' },
   { id: 'monitor', label: 'Monitör' },
 ];
-const normalize = (text: string): string =>
-  text
-    .toLocaleLowerCase('tr-TR')
-    .replace(/ı/g, 'i')
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .trim();
-const INDEX = PRODUCTS_DATABASE.map((product) => ({
-  product,
-  text: normalize(`${product.name} ${product.brand}`),
-}));
 const ROW_HEIGHT = 108;
 const money = (amount: number): string =>
   `${amount.toLocaleString('tr-TR')} TL`;
@@ -73,7 +62,8 @@ const ProductRow = memo(function ProductRow({
       accessibilityRole="button"
       accessibilityLabel={`Seç: ${product.name}`}
       aria-selected={selected}
-      accessibilityState={{ selected }}
+      accessibilityState={{ selected, disabled: product.fairPrice <= 0 }}
+      disabled={product.fairPrice <= 0}
       onPress={() => onSelect(product)}
       style={({ pressed }) => [
         styles.result,
@@ -84,7 +74,7 @@ const ProductRow = memo(function ProductRow({
       <View style={styles.resultContent}>
         <Text style={styles.resultTitle}>{product.name}</Text>
         <Text style={styles.resultMeta}>
-          {product.brand} · {product.releaseYear} · {money(product.fairPrice)}
+          {product.brand} · {product.fairPrice > 0 ? `${product.releaseYear} · ${money(product.fairPrice)}` : 'Konsept · Fiyat / depolama verisi yok'}
         </Text>
       </View>
       {selected && <Check size={20} color={colors.cyan} />}
@@ -104,21 +94,15 @@ export default function ProductPickerModal({
   const styles = useThemedStyles(createStyles);
 
   const [query, setQuery] = useState('');
+  const [brand, setBrand] = useState('all');
   const [category, setCategory] = useState<Category | 'all'>(
     selectedProduct?.category ?? 'all',
   );
   const listRef = useRef<FlatList<Product>>(null);
-  const results = useMemo(() => {
-    const tokens = normalize(query).split(/\s+/).filter(Boolean);
-    return INDEX.filter(
-      (entry) =>
-        (category === 'all' || entry.product.category === category) &&
-        tokens.every((token) => entry.text.includes(token)),
-    ).map((entry) => entry.product);
-  }, [query, category]);
+  const results = useMemo(() => searchCatalogProducts(query, category, brand), [query, category, brand]);
   useEffect(() => {
     listRef.current?.scrollToOffset({ offset: 0, animated: false });
-  }, [query, category]);
+  }, [query, category, brand]);
 
   return (
     <Modal
@@ -208,8 +192,17 @@ export default function ProductPickerModal({
               </Pressable>
             ))}
           </ScrollView>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categories} contentContainerStyle={styles.categoryContent} keyboardShouldPersistTaps="handled">
+            {['all', 'Apple', 'Samsung', 'Xiaomi', 'Redmi'].map((item) => (
+              <Pressable key={item} accessibilityRole="button" accessibilityLabel={`Marka: ${item === 'all' ? 'Tümü' : item}`}
+                accessibilityState={{ selected: brand === item }} aria-pressed={brand === item}
+                onPress={() => setBrand(item)} style={[styles.chip, brand === item && styles.activeChip]}>
+                <Text style={[styles.chipText, brand === item && styles.activeChipText]}>{item === 'all' ? 'Tüm markalar' : item}</Text>
+              </Pressable>
+            ))}
+          </ScrollView>
           <Text accessibilityLiveRegion="polite" style={styles.caption}>
-            {results.length} eşleşme · {PRODUCTS_DATABASE.length} ürün
+            {results.length} eşleşme · {BROWSABLE_PRODUCTS.length} ürün
           </Text>
           <FlatList
             ref={listRef}

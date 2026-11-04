@@ -30,7 +30,7 @@ import {
   Bookmark,
   BookmarkPlus,
 } from 'lucide-react-native';
-import { PRODUCTS_DATABASE, getProductById } from '../data/mockProducts';
+import { PRODUCTS_DATABASE, getProductById, searchCatalogProducts } from '../data/devices';
 import ChronicIssuesSection from '../components/ChronicIssuesSection';
 import PriceTrendSection from '../components/PriceTrendSection';
 import InspectionChecklist from '../components/InspectionChecklist';
@@ -150,8 +150,9 @@ const ProductCard = memo(function ProductCard({
     <Pressable
       testID="product-card"
       accessibilityRole="button"
-      accessibilityLabel={`${product.name}, ${money(product.marketPriceMin)} ile ${money(product.marketPriceMax)}, ${product.chronicIssues.length} kronik sorun`}
-      accessibilityState={{ selected: active }}
+      accessibilityLabel={product.fairPrice > 0 ? `${product.name}, ${money(product.marketPriceMin)} ile ${money(product.marketPriceMax)}, ${product.chronicIssues.length} kronik sorun` : `${product.name}, konsept, fiyat ve depolama bilgisi yok`}
+      accessibilityState={{ selected: active, disabled: product.fairPrice <= 0 }}
+      disabled={product.fairPrice <= 0}
       aria-selected={active}
       onPress={() => onSelect(product)}
       style={({ pressed }) => [
@@ -165,13 +166,12 @@ const ProductCard = memo(function ProductCard({
         <Text style={styles.brand}>
           {product.brand.toLocaleUpperCase('tr-TR')}
         </Text>
-        <Text style={styles.year}>{product.releaseYear}</Text>
+        <Text style={styles.year}>{product.releaseYear || 'Konsept'}</Text>
       </View>
       <Text style={styles.productName}>{product.name}</Text>
-      <Text style={styles.caption}>Piyasa aralığı</Text>
+      <Text style={styles.caption}>{product.fairPrice > 0 ? 'Piyasa aralığı' : 'Planlama kaydı'}</Text>
       <Text style={styles.marketPrice}>
-        {product.marketPriceMin.toLocaleString('tr-TR')} -{' '}
-        {money(product.marketPriceMax)}
+        {product.fairPrice > 0 ? `${product.marketPriceMin.toLocaleString('tr-TR')} - ${money(product.marketPriceMax)}` : 'Fiyat / depolama verisi yok'}
       </Text>
       <View style={styles.cardTop}>
         <Text style={styles.issueCount}>
@@ -287,6 +287,8 @@ export default function HomeScreen({
   const scrollRef = useRef<ComponentRef<typeof ScrollView>>(null);
   const carouselRef = useRef<ComponentRef<typeof ScrollView>>(null);
   const [category, setCategory] = useState<Category | 'all'>('all');
+  const [catalogQuery, setCatalogQuery] = useState('');
+  const [catalogBrand, setCatalogBrand] = useState('all');
   const [displayLimit, setDisplayLimit] = useState(PAGE_SIZE);
   const [selectedId, setSelectedId] = useState<string | null>(
     PRODUCTS_DATABASE[0]?.id ?? null,
@@ -321,12 +323,12 @@ export default function HomeScreen({
   );
 
   const filteredProducts = useMemo(
-    () => PRODUCTS_DATABASE.filter((product) => category === 'all' || product.category === category),
-    [category],
+    () => searchCatalogProducts(catalogQuery, category, catalogBrand),
+    [catalogQuery, category, catalogBrand],
   );
   const selectedProduct =
-    filteredProducts.find((product) => product.id === selectedId) ??
-    filteredProducts[0];
+    filteredProducts.find((product) => product.id === selectedId && product.fairPrice > 0) ??
+    filteredProducts.find((product) => product.fairPrice > 0);
   const visibleProducts = useMemo(() => {
     const page = filteredProducts.slice(0, displayLimit);
     // An alternative can be anywhere in the full catalog. Pin it into the small
@@ -368,6 +370,8 @@ export default function HomeScreen({
   }
 
   function inspectAlternative(product: Product) {
+    setCatalogQuery('');
+    setCatalogBrand('all');
     setDisplayLimit(PAGE_SIZE);
     setCategory('all');
     selectProduct(product);
@@ -378,6 +382,8 @@ export default function HomeScreen({
 
   function applyParsedListing(listing: ParsedListing, title: string) {
     if (!listing.product) return;
+    setCatalogQuery('');
+    setCatalogBrand('all');
     const matchedCondition =
       CONDITIONS.find((item) => item.id === listing.condition) ?? CONDITIONS[0];
     setCategory(listing.product.category);
@@ -465,6 +471,8 @@ export default function HomeScreen({
     const restored =
       CONDITIONS.find((entry) => entry.id === savedValuationCondition(item)) ??
       CONDITIONS[0];
+    setCatalogQuery('');
+    setCatalogBrand('all');
     setCategory(product.category);
     setDisplayLimit(PAGE_SIZE);
     setSelectedId(product.id);
@@ -620,6 +628,26 @@ export default function HomeScreen({
             onParsed={applyParsedListing}
           />
           <Text accessibilityRole="header" style={styles.sectionTitle}>Manuel Ürün &amp; Donanım Değerleme</Text>
+          <TextInput
+            accessibilityLabel="Katalogda model veya marka ara"
+            placeholder="iPhone 6, iPhone 17 Pro Max, Galaxy S24…"
+            placeholderTextColor={COLORS.muted}
+            value={catalogQuery}
+            onChangeText={(value) => { setCatalogQuery(value); resetSelection(); }}
+            autoCorrect={false}
+            style={styles.catalogSearch}
+          />
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.horizontalList} contentContainerStyle={styles.chips} keyboardShouldPersistTaps="handled">
+            {(['all', 'Apple', 'Samsung', 'Xiaomi', 'Redmi'] as const).map((brand) => (
+              <Pressable key={brand} accessibilityRole="button"
+                accessibilityLabel={`Marka: ${brand === 'all' ? 'Tümü' : brand}`}
+                accessibilityState={{ selected: catalogBrand === brand }} aria-pressed={catalogBrand === brand}
+                onPress={() => { setCatalogBrand(brand); resetSelection(); }}
+                style={[styles.chip, catalogBrand === brand && styles.activeChip]}>
+                <Text style={[styles.chipText, catalogBrand === brand && styles.activeText]}>{brand === 'all' ? 'Tüm markalar' : brand}</Text>
+              </Pressable>
+            ))}
+          </ScrollView>
           {valuation && saveAction('save-parsed-listing')}
           <ScrollView
             testID="category-list"
@@ -667,12 +695,14 @@ export default function HomeScreen({
               <Search size={28} color={COLORS.cyan} />
               <Text style={styles.sectionTitle}>Ürün bulunamadı</Text>
               <Text style={styles.body}>
-                Başka bir kategori seçin veya filtreleri sıfırlayın.
+                Başka bir model, marka veya kategori seçin.
               </Text>
               <Pressable
                 accessibilityRole="button"
                 onPress={() => {
                   setCategory('all');
+                  setCatalogQuery('');
+                  setCatalogBrand('all');
                   resetSelection();
                 }}
                 style={[styles.chip, styles.activeChip]}
@@ -1133,6 +1163,7 @@ const createStyles = (COLORS: ThemeColors) =>
     },
     subtitle: { color: COLORS.muted, fontSize: 14, lineHeight: 21 },
     horizontalList: { flexGrow: 0, flexShrink: 0, minWidth: 0, width: '100%' },
+    catalogSearch: { minHeight: 48, color: COLORS.text, fontSize: 14, borderWidth: 1, borderColor: COLORS.border, borderRadius: 14, paddingHorizontal: 16, backgroundColor: COLORS.surface },
     chips: { gap: 8, paddingHorizontal: 16 },
     chip: {
       minWidth: 44,

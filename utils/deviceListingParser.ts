@@ -1,4 +1,4 @@
-import { getAllDevices, getDeviceById } from './catalogHelper';
+import { getAllDevices, getDeviceById } from '../data/devices';
 import { barePrice, explicitPrices, selectPrice } from './listingPrice';
 import type { DeviceItem } from '../types/catalog';
 import type { ParsedListingResult } from '../types/listing';

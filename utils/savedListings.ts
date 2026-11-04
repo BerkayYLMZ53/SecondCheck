@@ -1,4 +1,4 @@
-import { getProductById } from '../data/mockProducts';
+import { getProductById } from '../data/devices';
 import type { Product } from '../types/product';
 import type {
   SavedItem,

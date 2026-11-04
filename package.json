@@ -12,7 +12,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --max-warnings 0",
     "test:listing-parser": "node --test tests/listingParser.test.cjs tests/deviceListingParser.test.cjs tests/parseListingApi.test.cjs tests/listingInput.test.cjs",
-    "test:catalog": "node --test tests/catalog.test.cjs",
+    "test:catalog": "node --test tests/catalog.test.cjs tests/unifiedCatalog.test.cjs",
     "test:listing-analysis": "node --test tests/listingAnalysisReport.test.cjs",
     "test:trust-share": "node --test tests/trustAndShare.test.cjs",
     "test:saved-listings": "node --test tests/savedListings.test.cjs",

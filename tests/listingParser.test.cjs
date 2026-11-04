@@ -36,7 +36,7 @@ const { parseListing } = loadTypeScript(
   path.resolve(__dirname, '../utils/listingParser.ts'),
 );
 const { PRODUCTS_DATABASE } = loadTypeScript(
-  path.resolve(__dirname, '../data/mockProducts.ts'),
+  path.resolve(__dirname, '../data/devices.ts'),
 );
 
 for (const amount of [

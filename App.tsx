@@ -23,7 +23,7 @@ import WebPageStyles from './components/WebPageStyles';
 import { SavedListingsProvider } from './context/SavedListingsContext';
 import SplashScreen from './components/SplashScreen';
 import type { SavedComparisonPair, SavedItem } from './types/savedListing';
-import { getProductById } from './data/mockProducts';
+import { getProductById } from './data/devices';
 import { AnalysisPresentationProvider } from './context/AnalysisPresentationContext';
 
 export default function App() {

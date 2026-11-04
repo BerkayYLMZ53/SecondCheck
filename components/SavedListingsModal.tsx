@@ -13,7 +13,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSavedListings } from '../context/SavedListingsContext';
 import { useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
-import { getProductById } from '../data/mockProducts';
+import { getProductById } from '../data/devices';
 import type { SavedItem } from '../types/savedListing';
 import { useDetailStyles } from './detailStyles';
 import SavedListingSummary from './SavedListingSummary';

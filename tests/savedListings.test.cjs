@@ -1,30 +1,10 @@
 /* global __dirname */
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
 const path = require('node:path');
-const vm = require('node:vm');
 const { test } = require('node:test');
-const ts = require('typescript');
-const cache = new Map();
-function load(file) {
-  if (cache.has(file)) return cache.get(file);
-  const module = { exports: {} };
-  const source = ts.transpileModule(fs.readFileSync(file, 'utf8'), {
-    compilerOptions: {
-      module: ts.ModuleKind.CommonJS,
-      target: ts.ScriptTarget.ES2020,
-    },
-  }).outputText;
-  vm.runInNewContext(source, {
-    module,
-    exports: module.exports,
-    require: (name) => load(path.resolve(path.dirname(file), `${name}.ts`)),
-  });
-  cache.set(file, module.exports);
-  return module.exports;
-}
+const load = require('./helpers/loadTypeScript.cjs')();
 const { PRODUCTS_DATABASE } = load(
-  path.resolve(__dirname, '../data/mockProducts.ts'),
+  path.resolve(__dirname, '../data/devices.ts'),
 );
 const {
   createSavedListing,

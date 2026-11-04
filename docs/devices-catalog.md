@@ -1,8 +1,11 @@
 # Akıllı cihaz kataloğu
 
-`data/devicesCatalog.json`, `DeviceItem[]` biçiminde çevrimdışı ve deterministik
-model kataloğudur. `types/catalog.ts` sözleşmesi ve `utils/catalogHelper.ts`
-fonksiyonları üzerinden kullanılır. Ağ isteği, ek paket veya tarih bağımlılığı yoktur.
+Uygulamanın ortak giriş noktası **`data/devices.ts`** dosyasıdır (projenin
+TypeScript yapısına uygun `.ts` uzantısıyla). Ana ekran, karşılaştırma/teşhis
+ürün seçicisi, ilan ayrıştırıcıları ve kayıtlı ilanlar bu kaynağı kullanır.
+`data/devicesCatalog.json` model/depolama/renk verisini, `data/mockProducts.ts`
+eski ürün kimlikleri ve donanım değerleme verisini sağlar; ekranlar bu iç
+kaynakları doğrudan okumaz. Ağ isteği, ek paket veya tarih bağımlılığı yoktur.
 
 ## Kapsam ve kimlik
 
@@ -34,7 +37,9 @@ teklifi değildir. `avgTry` istatistiksel örneklem ortalaması değil modelin r
 değeridir. Alt/üst bantlar bu referansın yaklaşık %75/%130'u olup 250 TL'ye
 yuvarlanmıştır. Depolama, renk, onarım, garanti ve kayıt durumu için otomatik fiyat
 düzeltmesi yapılmaz. Piyasaya dönük değerleme öncesi güncel ilanlarla kalibrasyon
-gerekir; katalog bu tahminleri mevcut değerleme motoruna otomatik olarak taşımaz.
+gerekir. Ortak kaynak, eski ürünlerin fiyatlarını korur; eksik model/depolama
+ürünlerinde buradaki model referans bandını kullanır. Bu yeni kayıtlarda kapasite
+veya renk için doğrulanmamış fiyat farkı üretilmez.
 
 `chronicIssues` içindeki **servis programı** kayıtları üretici tarafından belirtilen
 sorunlardır. Diğer maddeler açıkça ikinci el **kontrol riski** olarak etiketlenir;
@@ -49,8 +54,9 @@ Talebe uygun **planlama/konsept kaydı** `apple-iphone-18-pro-max` ID'sinde koru
 Bu, modelin güncel ticari durumuna ilişkin bir beyan değildir. Şemaya uyarak
 `releaseYear: 0`, boş `storage`/`colors` ve sıfır fiyat üçlüsü **veri yok** anlamına
 gelir; ücretsiz cihaz veya doğrulanmış tahmini özellikler anlamına gelmez. Model
-adında da konsept ibaresi bulunur. Liste ve arama bu kaydı içerir; değerleme/satın
-alma ekranları `releaseYear > 0 && estimatedPriceBand.avgTry > 0` ile elemelidir.
+adında da konsept ibaresi bulunur. `BROWSABLE_PRODUCTS` ve ekran aramaları bu kaydı
+bilgi olarak içerir; seçimi devre dışıdır. Değerleme için kullanılan
+`PRODUCTS_DATABASE`, `searchProducts` ve `getProductById` bu kaydı içermez.
 
 ## Kullanım
 
@@ -60,7 +66,7 @@ import {
   getDeviceById,
   searchDevices,
   filterByBrand,
-} from '../utils/catalogHelper';
+} from '../data/devices';
 
 const devices = getAllDevices();
 const selected = getDeviceById('apple-iphone-13-pro-max'); // DeviceItem | undefined
@@ -76,10 +82,20 @@ Bilinmeyen ID `undefined`; bilinmeyen veya boş marka `[]` döndürür. Marka
 filtrelemesi tam eşleşmedir, `sam` Samsung ile eşleşmez. Fonksiyonlar her çağrıda
 bağımsız dizi ve iç nesneler döndürür; sonuç üzerinde değişiklik ana veriyi bozmaz.
 
-Bu katalog mevcut `Product`/`PRODUCTS_DATABASE` yapısından ayrı bir veri katmanıdır.
-Mevcut ekranlar, kaydedilmiş ilanların ürün ID'leri ve değerleme akışı korunur.
-Yeni katalog ekranı gerektiğinde bu yardımcıları doğrudan kullanabilir. Veri
-güncellemesinde ID'leri sabit tutun ve `npm run test:catalog` çalıştırın.
+`data/devices.ts`, model kayıtlarından eksik depolama varyantlarını `Product`
+biçimine dönüştürür. Eski 1.594 kayda 120 fiyatlı varyant ve bir konsept görünümü
+eklenir: 1.714 değerlenebilir ürün, 1.715 aranabilir kayıt. Model sayısı hâlâ
+113'tür. Eski kayıtlı ilan kimlikleri korunur; Redmi marka etiketi düzeltilir.
+Ana ekran ve tüm ürün seçicilerinde `searchCatalogProducts(query, category, brand)`
+kullanılır. Türkçe karakterler, bitişik model adları, `+`/`Plus`, depolama ve
+birlikte uygulanan marka/kategori filtreleri desteklenir. Sayfalama filtrelerden
+sonra uygulanır; ilk 20 kayıt katalog sınırı değildir.
+
+Katalog AsyncStorage, SQLite veya Supabase üzerinden seed edilmez. AsyncStorage
+sadece kayıtlı ilanları saklar; yeni cihazlar uygulama paketiyle gelir ve önbellek
+temizleme gerektirmez. Veri güncellemesinde ID'leri sabit tutun ve
+`npm run test:catalog` çalıştırın. Bu komut model şeması yanında gerçek UI aramasını,
+tüm depolamaların erişilebilirliğini ve yeni cihazların ilan/kayıt akışını da sınar.
 
 ## Kaynaklar ve doğrulama
 

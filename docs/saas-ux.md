@@ -96,10 +96,13 @@ kullanır. Skor hesaplaması kontrol sayısıyla sınırlıdır; SVG/PNG hazırl
 paylaşım modalında ve format değişiminde yapılır. Desteksiz veya hata veren
 haptikler sessizce atlanır; analiz ve checkbox işlemi bundan etkilenmez.
 
-Checkbox işaretlemede `ImpactFeedbackStyle.Light`, 85+ sınıfına girişte başarı,
+Checkbox işaretlemede `ImpactFeedbackStyle.Medium`, 85+ sınıfına girişte başarı,
 bilinen risk/onarım/düşük pil veya piyasa üstü fiyat durumuna girişte uyarı
 verilir. Aynı sınıfın her render'ında titreşim tekrarlanmaz. İşletim sistemi
 tercihleri, düşük güç modu veya donanım/browser desteği titreşimi engelleyebilir.
+
+Ortak 0.96 buton animasyonu, beş haptic yardımcısı ve cam gradient shimmer
+entegrasyonları için [mikro etkileşim belgesine](micro-interactions.md) bakın.
 
 ## Doğrulama ve kaynaklar
 

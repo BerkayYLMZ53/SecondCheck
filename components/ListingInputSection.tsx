@@ -1,5 +1,6 @@
+import Pressable from './AnimatedPressable';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Keyboard, Pressable, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
+import { Keyboard, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
 import { ClipboardPaste, SearchCheck } from 'lucide-react-native';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
@@ -11,6 +12,7 @@ import { useAnalysisPresentation } from '../context/AnalysisPresentationContext'
 import { catalogDeviceName } from '../utils/listingAnalysisReport';
 import { isLinkInput, MODEL_NOT_FOUND } from '../utils/linkParser';
 import { getMarketplacePlatform, MARKETPLACE_MODEL_NOT_FOUND } from '../utils/marketplaceParser';
+import { triggerSuccess } from '../utils/haptics';
 
 interface Props {
   onParsed?: (listing: ParsedListing, title: string) => void;
@@ -58,6 +60,7 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
       ]);
       if (id !== requestId.current) return;
       setAnalysis({ ...result, input });
+      if ((result.listing.matchedDevice || result.listing.product) && (!result.marketplace || result.marketplace.canOpenValuation)) void triggerSuccess();
       if (result.marketplace && !result.marketplace.canOpenValuation) presentation.fail(MARKETPLACE_MODEL_NOT_FOUND);
       else if (result.listing.matchedDevice) presentation.complete(result.listing, result.title, catalogDeviceName(result.listing), { open: !result.marketplace });
       else if (result.listing.product) presentation.complete(result.listing, result.title, result.listing.product.name);
@@ -117,10 +120,10 @@ export default function ListingInputSection({ onParsed, apiEndpoint, active = tr
               presentation.reset();
             }}
             style={styles.input} />
-          <Pressable testID="parse-listing" accessibilityRole="button" accessibilityLabel="İlanı analiz et ve doğrula"
+          <Pressable haptic="medium" testID="parse-listing" accessibilityRole="button" accessibilityLabel="İlanı analiz et ve doğrula"
             accessibilityState={{ disabled, busy: loading }} disabled={disabled} onPress={() => { void analyze(text); }}
             style={({ pressed }) => [styles.analyzeButton, width < 560 && styles.fullButton, disabled && styles.disabled, pressed && styles.pressed]}>
-            {loading ? <ActivityIndicator size="small" color={colors.onAccent} /> : <SearchCheck size={20} color={colors.onAccent} />}
+            <SearchCheck size={20} color={colors.onAccent} />
             <Text style={styles.buttonText}>{loading ? (isLinkInput(text) ? 'Link Analiz Ediliyor...' : 'Analiz ediliyor…') : 'Analiz Et / Doğrula'}</Text>
           </Pressable>
         </View>

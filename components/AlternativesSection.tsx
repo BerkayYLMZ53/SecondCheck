@@ -1,6 +1,7 @@
+import Pressable from './AnimatedPressable';
 import { useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { ArrowUpRight } from 'lucide-react-native';
 import { getProductById } from '../data/devices';
 import type { Product } from '../types/product';

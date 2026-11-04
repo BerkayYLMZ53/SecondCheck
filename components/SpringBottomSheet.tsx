@@ -1,6 +1,7 @@
+import Pressable from './AnimatedPressable';
 import { useEffect, useRef, useState } from 'react';
 import type { ComponentRef, ReactNode, RefObject } from 'react';
-import { Animated, Easing, Keyboard, PanResponder, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Animated, Easing, Keyboard, PanResponder, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import type { ViewStyle } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { X } from 'lucide-react-native';
@@ -72,7 +73,7 @@ export default function SpringBottomSheet({ open, onClose, title, children, blur
   return <View pointerEvents={visible ? 'box-none' : 'none'} accessibilityElementsHidden={!open} importantForAccessibility={open ? 'auto' : 'no-hide-descendants'} aria-hidden={!open}
     style={[styles.overlay, !visible && styles.hidden]} testID={testID}>
     <Animated.View pointerEvents="none" style={[StyleSheet.absoluteFill, { opacity: motion, backgroundColor: theme === 'dark' ? '#00000080' : '#0f172a40' }]} />
-    <Pressable testID={`${testID}-backdrop`} accessible={false} focusable={false} accessibilityElementsHidden aria-hidden style={StyleSheet.absoluteFill} onPress={onClose} />
+    <Pressable pressScale={1} haptic={false} testID={`${testID}-backdrop`} accessible={false} focusable={false} accessibilityElementsHidden aria-hidden style={StyleSheet.absoluteFill} onPress={onClose} />
     <View pointerEvents="box-none" style={[styles.bottom, { paddingBottom: keyboardInset }]}>
       <Animated.View testID={`${testID}-panel`} accessibilityRole="dialog" accessibilityLabel={title} accessibilityViewIsModal={open} aria-modal={open}
         style={[styles.sheet, glass, { height, borderColor: colors.cardBorder, transform: [{ translateY: Animated.add(motion.interpolate({ inputRange: [0, 1], outputRange: [height + 30, 0] }), drag) }] }]}>

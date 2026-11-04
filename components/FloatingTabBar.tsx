@@ -1,10 +1,12 @@
+import Pressable from './AnimatedPressable';
 import { useEffect, useState } from 'react';
-import { AccessibilityInfo, Animated, Easing, Keyboard, Platform, Pressable, StyleSheet, View } from 'react-native';
+import { AccessibilityInfo, Animated, Easing, Keyboard, Platform, StyleSheet, View } from 'react-native';
 import type { ViewStyle } from 'react-native';
 import { ArrowLeftRight, ClipboardCheck, House, UserRound } from 'lucide-react-native';
 import type { LucideIcon } from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from '../context/ThemeContext';
+import { triggerLight } from '../utils/haptics';
 
 export type AppTab = 'home' | 'diagnostics' | 'compare' | 'profile';
 
@@ -21,32 +23,25 @@ interface Props {
   onTabPress: (tab: AppTab) => void;
 }
 
-function DockButton({ tab, active, reducedMotion, onPress }: {
+function DockButton({ tab, active, onPress }: {
   tab: (typeof TABS)[number];
   active: boolean;
-  reducedMotion: boolean;
   onPress: () => void;
 }) {
   const { theme, colors } = useTheme();
-  const [scale] = useState(() => new Animated.Value(1));
   const Icon = tab.icon;
-  const animatePress = (value: number) => {
-    scale.stopAnimation();
-    if (reducedMotion) { scale.setValue(1); return; }
-    Animated.spring(scale, { toValue: value, useNativeDriver: NATIVE_DRIVER, speed: 28, bounciness: 5 }).start();
-  };
   return (
-    <Animated.View style={[styles.tabContainer, { transform: [{ scale }] }]}>
-      <Pressable testID={`dock-tab-${tab.id}`} accessibilityRole="tab" accessibilityLabel={tab.label}
+    <View style={styles.tabContainer}>
+      <Pressable haptic={false} testID={`dock-tab-${tab.id}`} accessibilityRole="tab" accessibilityLabel={tab.label}
         accessibilityState={{ selected: active }} aria-selected={active}
-        onPressIn={() => animatePress(0.89)} onPressOut={() => animatePress(1)} onPress={onPress}
+        onPress={() => { if (!active) { void triggerLight(); onPress(); } }}
         style={styles.tab}>
         <View style={styles.iconPosition} pointerEvents="none">
           <Icon size={25} strokeWidth={active ? 2.2 : 1.7}
             color={active ? (theme === 'dark' ? colors.cyan : colors.accent) : colors.textSecondary} />
         </View>
       </Pressable>
-    </Animated.View>
+    </View>
   );
 }
 
@@ -110,7 +105,7 @@ export default function FloatingTabBar({ activeTab, onTabPress }: Props) {
           </Animated.View>
         )}
         {TABS.map((tab) => <DockButton key={tab.id} tab={tab} active={tab.id === activeTab}
-          reducedMotion={reducedMotion} onPress={() => onTabPress(tab.id)} />)}
+          onPress={() => onTabPress(tab.id)} />)}
       </View>
     </View>
   );

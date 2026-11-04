@@ -1,7 +1,8 @@
+import Pressable from './AnimatedPressable';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
 import { memo, useMemo, useState } from 'react';
-import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 import Svg, {
   Circle,
   Defs,

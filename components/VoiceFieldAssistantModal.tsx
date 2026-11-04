@@ -1,5 +1,6 @@
+import Pressable from './AnimatedPressable';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Modal, Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { Modal, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { RotateCcw, Volume2, VolumeX, X } from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';
@@ -77,7 +78,7 @@ export default function VoiceFieldAssistantModal({ device, onComplete, onClose }
         <Text style={styles.caption}>Kontrol sonucunu dokunarak seçin. Bu mod sesli komut dinlemez ve mikrofon izni istemez.</Text>
       </ScrollView>
       <View style={styles.actions}>
-        <Pressable testID="field-fail" accessibilityRole="button" accessibilityLabel="Sorun Var / Kaldı" disabled={locked} accessibilityState={{ disabled: locked }} onPress={() => answer('fail')}
+        <Pressable haptic="warning" testID="field-fail" accessibilityRole="button" accessibilityLabel="Sorun Var / Kaldı" disabled={locked} accessibilityState={{ disabled: locked }} onPress={() => answer('fail')}
           style={({ pressed }) => [styles.answer, styles.fail, { minHeight: compact ? 100 : Math.max(120, Math.min(210, height * 0.24)) }, pressed && styles.pressed]}>
           <Text style={styles.answerIcon}>✕</Text><Text style={styles.answerText}>Sorun Var</Text><Text style={styles.answerSub}>Kaldı</Text>
         </Pressable>

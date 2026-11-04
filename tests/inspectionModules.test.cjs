@@ -134,6 +134,7 @@ test('native PDF export shares the PDF and removes temporary output even on reje
   const mod = moduleWithMocks('../utils/generatePdfReport.ts', {
     'expo-print': { printToFileAsync: async (options) => { assert.equal(options.width, 595); return { uri: 'file:report.pdf' }; } },
     'expo-sharing': { isAvailableAsync: async () => true, shareAsync: async (_, options) => { shared = options.mimeType === 'application/pdf'; throw new Error('Sharing failed'); } },
+    './haptics': { triggerSuccess: async () => {} },
     'expo-crypto': { randomUUID: () => '12345678-abcd' },
     'expo-file-system': { File: class { delete() { removed = true; } } }, './pdfReportHtml': { buildPdfReport },
   });
@@ -143,7 +144,7 @@ test('native PDF export shares the PDF and removes temporary output even on reje
 
 test('native export prints the current battery valuation, shares PDF and cleans cache on success', async () => {
   const data = input(); data.result.detectedBattery = 82;
-  let shared = false; let removed = false;
+  let shared = false; let removed = false; let successHaptics = 0;
   const mod = moduleWithMocks('../utils/generatePdfReport.ts', {
     'expo-print': { printToFileAsync: async ({html}) => {
       assert.ok(html.includes('3.800 TL')); assert.ok(html.includes('31.200 TL'));
@@ -153,12 +154,14 @@ test('native export prints the current battery valuation, shares PDF and cleans 
       assert.equal(uri, 'file:report.pdf'); assert.equal(options.mimeType, 'application/pdf');
       assert.equal(options.UTI, 'com.adobe.pdf'); shared = true;
     } },
+    './haptics': { triggerSuccess: async () => { successHaptics++; } },
     'expo-crypto': { randomUUID: () => '12345678-abcd' },
     'expo-file-system': { File: class { delete() { removed = true; } } }, './pdfReportHtml': { buildPdfReport },
   });
   const code = await mod.generatePdfReport(data);
   assert.match(code, /^SC-\d{4}-12345678-ABCD$/);
   assert.equal(shared, true); assert.equal(removed, true);
+  assert.equal(successHaptics, 1);
 });
 
 function webSignalsHarness({ unsupported = false, vibration = false } = {}) {

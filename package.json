@@ -15,6 +15,7 @@
     "test:catalog": "node --test tests/catalog.test.cjs tests/unifiedCatalog.test.cjs",
     "test:listing-analysis": "node --test tests/listingAnalysisReport.test.cjs",
     "test:trust-share": "node --test tests/trustAndShare.test.cjs",
+    "test:micro-interactions": "node --test tests/microInteractions.test.cjs tests/trustAndShare.test.cjs tests/inspectionModules.test.cjs",
     "test:saved-listings": "node --test tests/savedListings.test.cjs",
     "test:inspection": "node --test tests/inspectionModules.test.cjs tests/batteryEstimator.test.cjs",
     "test:visual-inspection": "node --test tests/visualInspection.test.cjs",

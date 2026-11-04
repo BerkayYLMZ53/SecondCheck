@@ -1,14 +1,7 @@
+import Pressable from './AnimatedPressable';
 import { useRef, useState } from 'react';
 import type { ComponentRef } from 'react';
-import {
-  Modal,
-  PanResponder,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Modal, PanResponder, ScrollView, StyleSheet, Text, View } from 'react-native';
 import type { GestureResponderEvent } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';

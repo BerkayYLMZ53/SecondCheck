@@ -1,24 +1,14 @@
+import Pressable from '../components/AnimatedPressable';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
 import ThemeToggle from '../components/ThemeToggle';
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState, useTransition } from 'react';
 import type { ComponentRef, ReactNode } from 'react';
 import {
   SafeAreaView,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
-import {
-  Keyboard,
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import { Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
 import {
   ArrowRight,
   Check,
@@ -47,6 +37,8 @@ import {
 } from '../utils/savedListings';
 import type { ParsedListing } from '../utils/listingParser';
 import { isLinkInput } from '../utils/linkParser';
+import SkeletonCard from '../components/SkeletonCard';
+import { triggerLight } from '../utils/haptics';
 import AlternativesSection from '../components/AlternativesSection';
 import type { Category, PriceAssessment, Product } from '../types/product';
 import { evaluatePrice } from '../utils/evaluator';
@@ -291,6 +283,11 @@ export default function HomeScreen({
   const [catalogQuery, setCatalogQuery] = useState('');
   const [listingInput, setListingInput] = useState('');
   const [catalogBrand, setCatalogBrand] = useState('all');
+  const catalogFilters = useMemo(() => ({ query: catalogQuery, category, brand: catalogBrand }), [catalogQuery, category, catalogBrand]);
+  const deferredCatalog = useDeferredValue(catalogFilters);
+  const catalogUpdating = deferredCatalog !== catalogFilters;
+  const [valuationPending, startValuation] = useTransition();
+  const carouselStep = useRef(0);
   const [displayLimit, setDisplayLimit] = useState(PAGE_SIZE);
   const [selectedId, setSelectedId] = useState<string | null>(
     PRODUCTS_DATABASE[0]?.id ?? null,
@@ -325,8 +322,8 @@ export default function HomeScreen({
   );
 
   const filteredProducts = useMemo(
-    () => searchCatalogProducts(catalogQuery, category, catalogBrand),
-    [catalogQuery, category, catalogBrand],
+    () => searchCatalogProducts(deferredCatalog.query, deferredCatalog.category, deferredCatalog.brand),
+    [deferredCatalog],
   );
   const selectedProduct =
     filteredProducts.find((product) => product.id === selectedId && product.fairPrice > 0) ??
@@ -437,7 +434,7 @@ export default function HomeScreen({
       setValuation(null);
       return;
     }
-    setValuation(buildValuation(selectedProduct, askingPrice, condition));
+    startValuation(() => setValuation(buildValuation(selectedProduct, askingPrice, condition)));
     setError(null);
     Keyboard.dismiss();
   }
@@ -702,7 +699,7 @@ export default function HomeScreen({
               {filteredProducts.length} ürün
             </Text>
           </View>
-          {filteredProducts.length === 0 ? (
+          {catalogUpdating ? <SkeletonCard compact active={active} label="Cihaz listesi hazırlanıyor…" testID="catalog-skeleton" /> : filteredProducts.length === 0 ? (
             <View style={styles.empty}>
               <Search size={28} color={COLORS.cyan} />
               <Text style={styles.sectionTitle}>Ürün bulunamadı</Text>
@@ -728,6 +725,10 @@ export default function HomeScreen({
               testID="product-carousel"
               style={styles.horizontalList}
               horizontal
+              onMomentumScrollEnd={(event) => {
+                const next = Math.round(event.nativeEvent.contentOffset.x / (cardWidth + 12));
+                if (next !== carouselStep.current) { carouselStep.current = next; void triggerLight(); }
+              }}
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.carousel}
               keyboardShouldPersistTaps="handled"
@@ -872,8 +873,9 @@ export default function HomeScreen({
                 <Pressable
                   accessibilityRole="button"
                   accessibilityLabel="Analiz Et & Değerlendir"
-                  disabled={faultyLoaded}
-                  accessibilityState={{ disabled: faultyLoaded }}
+                  haptic="medium"
+                  disabled={faultyLoaded || valuationPending}
+                  accessibilityState={{ disabled: faultyLoaded || valuationPending, busy: valuationPending }}
                   onPress={analyze}
                   style={({ pressed }) => [
                     styles.analyzeButton,
@@ -885,6 +887,7 @@ export default function HomeScreen({
                 </Pressable>
               </View>
 
+              {valuationPending && <SkeletonCard compact active={active} label="Değerleme hesaplanıyor…" />}
               {valuation && (
                 <View
                   style={[

@@ -1,14 +1,6 @@
+import Pressable from './AnimatedPressable';
 import { useState } from 'react';
-import {
-  Linking,
-  Modal,
-  Platform,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Linking, Modal, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import {
   CheckSquare,
   ExternalLink,

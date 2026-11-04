@@ -1,6 +1,7 @@
+import Pressable from './AnimatedPressable';
 import { useEffect, useRef, useState } from 'react';
 import type { ComponentRef } from 'react';
-import { Modal, PanResponder, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Modal, PanResponder, ScrollView, StyleSheet, Text, View } from 'react-native';
 import type { GestureResponderEvent } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -79,7 +80,7 @@ export default function DiagnosticsLabModal({ initialResults, onComplete, onClos
   const commit = () => { signals.stop(); onComplete(results); };
   const confirmation = (id: LabTestId, ready: boolean, note: string) => <View style={styles.row}>
     <Pressable testID={`lab-pass-${id}`} accessibilityRole="button" disabled={!ready} accessibilityState={{ disabled: !ready }} onPress={() => setResult(id, 'pass', note)} style={[styles.button, !ready && styles.disabled]}><Text style={styles.buttonText}>Sağlam</Text></Pressable>
-    <Pressable testID={`lab-fail-${id}`} accessibilityRole="button" disabled={!ready} accessibilityState={{ disabled: !ready }} onPress={() => setResult(id, 'fail', note)} style={[styles.outline, !ready && styles.disabled]}><Text style={styles.text}> {id === 'audio' ? 'Cızırtılı / kesiliyor' : 'Sorun var'}</Text></Pressable>
+    <Pressable haptic="warning" testID={`lab-fail-${id}`} accessibilityRole="button" disabled={!ready} accessibilityState={{ disabled: !ready }} onPress={() => setResult(id, 'fail', note)} style={[styles.outline, !ready && styles.disabled]}><Text style={styles.text}> {id === 'audio' ? 'Cızırtılı / kesiliyor' : 'Sorun var'}</Text></Pressable>
     <Pressable testID={`lab-skip-${id}`} accessibilityRole="button" onPress={() => setResult(id, 'unsupported', 'Kullanıcı testi tamamlayamadı / bu cihazda desteklenmiyor.')} style={styles.outline}><Text style={styles.text}>Test edilemiyor</Text></Pressable>
   </View>;
   const fullscreen = mode !== 'menu';
@@ -87,7 +88,7 @@ export default function DiagnosticsLabModal({ initialResults, onComplete, onClos
   return <Modal visible animationType="fade" presentationStyle="fullScreen" onRequestClose={close}>
     <StatusBar hidden={fullscreen} />
     {mode === 'pixels' ? <View style={{ flex: 1, backgroundColor: currentPixel.color }}>
-      <Pressable testID="lab-pixel-surface" accessibilityRole="button" accessibilityLabel={`${currentPixel.name} ekran. Sonraki renge geç.`} style={StyleSheet.absoluteFill}
+      <Pressable pressScale={1} testID="lab-pixel-surface" accessibilityRole="button" accessibilityLabel={`${currentPixel.name} ekran. Sonraki renge geç.`} style={StyleSheet.absoluteFill}
         onLongPress={() => setPixelControls((value) => !value)}
         onPress={() => { if (pixel < PIXELS.length - 1) setPixel(pixel + 1); else { setPixelReady(true); setMode('menu'); } }} />
       {pixelControls && <View pointerEvents="box-none" style={[base.pixelControls, { top: Math.max(insets.top, 8) }]}>

@@ -1,5 +1,6 @@
+import Pressable from './AnimatedPressable';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { AppState, Image, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { AppState, Image, Modal, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Camera, ScanLine, Upload, X } from 'lucide-react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';

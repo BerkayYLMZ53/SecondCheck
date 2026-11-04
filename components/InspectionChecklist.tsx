@@ -1,7 +1,8 @@
+import Pressable from './AnimatedPressable';
 import { useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
 import { useEffect, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { CheckSquare, RotateCcw, Square } from 'lucide-react-native';
 import type { Product } from '../types/product';
 import { useDetailStyles } from './detailStyles';

@@ -1,13 +1,6 @@
+import Pressable from './AnimatedPressable';
 import { useState } from 'react';
-import {
-  FlatList,
-  Modal,
-  Platform,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { FlatList, Modal, Platform, StyleSheet, Text, View } from 'react-native';
 import { Bookmark, CheckSquare, Square, Trash2, X } from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSavedListings } from '../context/SavedListingsContext';

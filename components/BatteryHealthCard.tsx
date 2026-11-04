@@ -6,6 +6,7 @@ import type { ParsedListingResult } from '../types/listing';
 import type { InspectionFacts } from '../types/inspection';
 import { calculateDeviceValuation } from '../utils/deviceValuation';
 import { listingMoney } from '../utils/listingAnalysisReport';
+import { triggerSelection, triggerWarning } from '../utils/haptics';
 
 export default function BatteryHealthCard({ result, facts, value, invalid, onChange }: {
   result: ParsedListingResult; facts: InspectionFacts; value: string; invalid: boolean; onChange: (value: string) => void;
@@ -20,7 +21,13 @@ export default function BatteryHealthCard({ result, facts, value, invalid, onCha
     <View style={styles.row}><BatteryCharging size={23} color={colors.cyan} /><Text accessibilityRole="header" style={styles.heading}>Pil Sağlığı & Değişim Maliyeti</Text></View>
     <Text style={styles.label}>Pil sağlığı (%)</Text>
     <TextInput testID="battery-health-input" accessibilityLabel="Pil sağlığı yüzdesi" inputMode="numeric" keyboardType="number-pad" maxLength={3}
-      value={value} onChangeText={onChange} placeholder="Örn. 82" placeholderTextColor={colors.textSecondary} style={styles.input} />
+      value={value} onChangeText={(next) => {
+        if (/^\d{1,3}$/.test(next) && Number(next) <= 100 && (value === '' || Number(next) !== Number(value))) {
+          void triggerSelection();
+          if (Number(next) < 80 && (value === '' || Number(value) >= 80)) void triggerWarning();
+        }
+        onChange(next);
+      }} placeholder="Örn. 82" placeholderTextColor={colors.textSecondary} style={styles.input} />
     {invalid ? <Text accessibilityRole="alert" style={styles.error}>0 ile 100 arasında bir tam sayı girin.</Text>
       : <Text testID="battery-condition" style={[styles.label, { color }]} accessibilityLiveRegion="polite">{battery.label}</Text>}
     <Text style={styles.caption}>Tahmini orijinal batarya değişim bütçesi: {battery.replacementCost === undefined ? 'Bu model için tahmin yok' : listingMoney(battery.replacementCost)}</Text>

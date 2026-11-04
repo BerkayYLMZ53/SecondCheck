@@ -1,21 +1,13 @@
+import Pressable from './AnimatedPressable';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { ThemeColors } from '../context/ThemeContext';
-import { memo, useEffect, useMemo, useRef, useState } from 'react';
-import {
-  FlatList,
-  KeyboardAvoidingView,
-  Modal,
-  Platform,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import { memo, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
+import { FlatList, KeyboardAvoidingView, Modal, Platform, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Check, Search, X } from 'lucide-react-native';
 import { BROWSABLE_PRODUCTS, searchCatalogProducts } from '../data/devices';
+import SkeletonCard from './SkeletonCard';
+import { triggerLight } from '../utils/haptics';
 import type { Category, Product } from '../types/product';
 
 export const COMPARISON_CATEGORIES: readonly {
@@ -99,7 +91,11 @@ export default function ProductPickerModal({
     selectedProduct?.category ?? 'all',
   );
   const listRef = useRef<FlatList<Product>>(null);
-  const results = useMemo(() => searchCatalogProducts(query, category, brand), [query, category, brand]);
+  const scrollStep = useRef(0);
+  const filters = useMemo(() => ({ query, category, brand }), [query, category, brand]);
+  const deferredFilters = useDeferredValue(filters);
+  const updating = deferredFilters !== filters;
+  const results = useMemo(() => searchCatalogProducts(deferredFilters.query, deferredFilters.category, deferredFilters.brand), [deferredFilters]);
   useEffect(() => {
     listRef.current?.scrollToOffset({ offset: 0, animated: false });
   }, [query, category, brand]);
@@ -207,7 +203,11 @@ export default function ProductPickerModal({
           <FlatList
             ref={listRef}
             testID="comparison-picker-list"
-            data={results}
+            data={updating ? [] : results}
+            onMomentumScrollEnd={(event) => {
+              const next = Math.floor(event.nativeEvent.contentOffset.y / ROW_HEIGHT);
+              if (next !== scrollStep.current) { scrollStep.current = next; void triggerLight(); }
+            }}
             keyExtractor={(product) => product.id}
             style={styles.list}
             contentContainerStyle={styles.listContent}
@@ -223,7 +223,7 @@ export default function ProductPickerModal({
             windowSize={5}
             keyboardShouldPersistTaps="handled"
             keyboardDismissMode={Platform.OS === 'web' ? 'none' : 'on-drag'}
-            ListEmptyComponent={
+            ListEmptyComponent={updating ? <SkeletonCard compact label="Cihaz listesi hazırlanıyor…" /> :
               <View style={styles.empty}>
                 <Text style={styles.resultTitle}>Ürün bulunamadı</Text>
                 <Text style={styles.caption}>

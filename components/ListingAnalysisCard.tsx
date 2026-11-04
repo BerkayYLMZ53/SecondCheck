@@ -1,5 +1,6 @@
+import Pressable from './AnimatedPressable';
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { CheckSquare, ClipboardCheck, Copy, FileCheck, Mic, RotateCcw, ScanLine, Share2, ShieldCheck, Square, TriangleAlert } from 'lucide-react-native';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
@@ -68,7 +69,7 @@ function AnalysisDetails({ result: initialResult, title = '', active = true }: P
   const lastFeedback = useRef('neutral');
   const device = result.matchedDevice;
   const comparison = compareDevicePrice(device, result.detectedPrice);
-  const feedback = comparison?.status === 'PAHALI' || (assessment.available && (assessment.score < 65 || result.flags.hasChanges || (result.detectedBattery !== undefined && result.detectedBattery < 80)))
+  const feedback = comparison?.status === 'PAHALI' || (assessment.available && (assessment.score < 65 || result.flags.hasChanges))
     || facts.cosmeticDamage || facts.fieldInspection?.results.some((step) => step.status === 'fail') || LAB_IDS.some((id) => lab[id].status === 'fail') || [facts.trueTone, facts.biometrics, facts.cameras, facts.liquid].includes('fail')
     ? 'warning' : assessment.available && assessment.score >= 85 ? 'success' : 'neutral';
   useEffect(() => {
@@ -89,7 +90,6 @@ function AnalysisDetails({ result: initialResult, title = '', active = true }: P
   const batteryWarning = result.detectedBattery !== undefined && result.detectedBattery < 80;
 
   function toggle(index: number) {
-    if (!checked.has(index)) void playHaptic('light');
     setChecked((previous) => {
       const next = new Set(previous);
       if (next.has(index)) next.delete(index); else next.add(index);
@@ -266,7 +266,7 @@ function AnalysisDetails({ result: initialResult, title = '', active = true }: P
       </View>
 
       <View testID="analysis-panel-report" style={[styles.panelContent, section !== 'report' && styles.hiddenPanel]} aria-hidden={section !== 'report'} accessibilityElementsHidden={section !== 'report'} importantForAccessibility={section === 'report' ? 'auto' : 'no-hide-descendants'}>
-      {device.releaseYear > 0 && <ExportReportButton result={result} checked={checked} lab={lab} facts={facts} disabled={batteryInputInvalid} onFactsChange={(value) => { setFacts(value); setReport(null); }} />}
+      {device.releaseYear > 0 && <ExportReportButton active={active && section === 'report'} result={result} checked={checked} lab={lab} facts={facts} disabled={batteryInputInvalid} onFactsChange={(value) => { setFacts(value); setReport(null); }} />}
 
       <Pressable testID="listing-create-report" accessibilityRole="button" disabled={batteryInputInvalid} accessibilityState={{ disabled: batteryInputInvalid }} onPress={() => { setReport(buildListingAnalysisReport(result, checked, title, new Date(), lab, facts)); setCopyState('idle'); }}
         style={({ pressed }) => [styles.reportButton, batteryInputInvalid && styles.disabled, pressed && styles.pressed]}>

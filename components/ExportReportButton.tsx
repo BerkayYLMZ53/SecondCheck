@@ -1,14 +1,16 @@
+import Pressable from './AnimatedPressable';
 import { useState } from 'react';
-import { Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
 import type { ParsedListingResult } from '../types/listing';
 import type { InspectionFacts, LabResults, ReportDetails, TestStatus } from '../types/inspection';
 import { generatePdfReport } from '../services/pdfService';
 import { STATUS_LABELS } from '../utils/inspection';
+import SkeletonCard from './SkeletonCard';
 
-export default function ExportReportButton({ result, checked, lab, facts, onFactsChange, disabled = false }: {
-  result: ParsedListingResult; checked: ReadonlySet<number>; lab: LabResults; facts: InspectionFacts; onFactsChange: (value: InspectionFacts) => void; disabled?: boolean;
+export default function ExportReportButton({ result, checked, lab, facts, onFactsChange, disabled = false, active = true }: {
+  result: ParsedListingResult; checked: ReadonlySet<number>; lab: LabResults; facts: InspectionFacts; onFactsChange: (value: InspectionFacts) => void; disabled?: boolean; active?: boolean;
 }) {
   const styles = useThemedStyles(createStyles);
   const [details, setDetails] = useState<ReportDetails>({ color: '', imeiLast4: '' });
@@ -35,12 +37,13 @@ export default function ExportReportButton({ result, checked, lab, facts, onFact
     {details.imeiLast4.length > 0 && details.imeiLast4.length !== 4 && <Text style={styles.caption}>Rapor için tam 4 hane girin; eksik giriş rapora alınmaz.</Text>}
     {checks.map(({ key, label }) => <View key={key} style={styles.check}>
       <Text style={styles.text}>{label}</Text><View accessibilityRole="radiogroup" accessibilityLabel={label} style={styles.row}>
-        {(['pending', 'pass', 'fail', 'unsupported'] as TestStatus[]).map((status) => <Pressable key={status} testID={`physical-${key}-${status}`} accessibilityRole="radio" accessibilityLabel={`${label}: ${STATUS_LABELS[status]}`} accessibilityState={{ checked: facts[key] === status }}
+        {(['pending', 'pass', 'fail', 'unsupported'] as TestStatus[]).map((status) => <Pressable haptic={status === 'fail' ? 'warning' : 'medium'} key={status} testID={`physical-${key}-${status}`} accessibilityRole="radio" accessibilityLabel={`${label}: ${STATUS_LABELS[status]}`} accessibilityState={{ checked: facts[key] === status }}
           onPress={() => onFactsChange({ ...facts, [key]: status, ...(key === 'caseCondition' ? { cosmeticDamage: status === 'fail', visualInspection: undefined } : {}) })} style={[styles.option, facts[key] === status && styles.selected]}><Text style={styles.text}>{status === 'unsupported' ? 'Uygulanamaz' : STATUS_LABELS[status]}</Text></Pressable>)}
       </View></View>)}
     <Pressable testID="listing-export-pdf" accessibilityRole="button" disabled={disabled || busy || !result.matchedDevice || result.matchedDevice.releaseYear === 0} accessibilityState={{ disabled: disabled || busy || !result.matchedDevice || result.matchedDevice.releaseYear === 0, busy }}
       onPress={() => { void exportReport(); }} style={[styles.button, (busy || disabled) && { opacity: 0.5 }]}><Text style={styles.buttonText}>{busy ? 'Rapor hazırlanıyor…' : 'Ekspertiz Raporunu İndir / Paylaş (PDF)'}</Text></Pressable>
     {disabled && <Text style={styles.error} accessibilityRole="alert">PDF için Genel Bakış bölümündeki pil yüzdesini düzeltin.</Text>}
+    {busy && <SkeletonCard compact active={active} testID="pdf-skeleton" label="PDF raporu hazırlanıyor…" />}
     {!!feedback && <Text style={error ? styles.error : styles.caption} accessibilityRole={error ? 'alert' : undefined} accessibilityLiveRegion="polite">{feedback}</Text>}
     <Text style={styles.caption}>Eksik kontroller de açıkça raporlanır. Rapor kimliği yerel ve benzersizdir; çevrimiçi doğrulama veya resmi servis sertifikası değildir.</Text>
   </View>;

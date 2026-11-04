@@ -1,5 +1,6 @@
+import Pressable from '../components/AnimatedPressable';
 import { useMemo, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ChevronDown, ClipboardCheck, Stethoscope } from 'lucide-react-native';
 import { useTheme, useThemedStyles } from '../context/ThemeContext';

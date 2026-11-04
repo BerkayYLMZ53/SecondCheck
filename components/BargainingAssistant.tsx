@@ -1,5 +1,6 @@
+import Pressable from './AnimatedPressable';
 import { useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
 import type { ParsedListingResult } from '../types/listing';
@@ -22,7 +23,7 @@ export default function BargainingAssistant({ result, facts, onChange }: {
   return <View style={styles.panel} testID="bargaining-assistant">
     <Text accessibilityRole="header" style={styles.heading}>Akıllı pazarlık & karşı teklif</Text>
     <Text style={styles.caption}>Yalnızca doğruladığınız kusurları seçin. Batarya bütçesi modele göre hesaplanır; diğer tutarlar sabit pazarlık varsayımlarıdır. Güncel yetkili servis tarifesi değildir.</Text>
-    {fields.map((field) => <Pressable key={field.key} testID={`bargain-${field.key}`} accessibilityRole="checkbox" accessibilityLabel={field.label} accessibilityState={{ checked: field.value }} aria-checked={field.value}
+    {fields.map((field) => <Pressable haptic={field.key === 'screenReplaced' && !field.value ? 'warning' : 'medium'} key={field.key} testID={`bargain-${field.key}`} accessibilityRole="checkbox" accessibilityLabel={field.label} accessibilityState={{ checked: field.value }} aria-checked={field.value}
       onPress={() => { onChange({ ...facts, [field.key]: !field.value, ...(field.key === 'cosmeticDamage' ? { caseCondition: field.value ? 'pending' : 'fail', visualInspection: undefined } as const : {}) }); setCopied(''); }} style={styles.option}><Text style={styles.text}>{field.value ? '☑' : '☐'} {field.label}</Text></Pressable>)}
     <Text style={styles.caption}>True Tone eksikliğini aşağıdaki fiziksel kontrollerden “Sorun var” olarak kaydedebilirsiniz. Ekran değişimiyle birlikte seçilse de tek ekran indirimi uygulanır.</Text>
     {bargain.deductions.map((entry) => <View key={entry.id} style={styles.row}><Text style={[styles.text, styles.grow]}>{entry.label}</Text><Text style={styles.text}>−{listingMoney(entry.amount)}</Text></View>)}

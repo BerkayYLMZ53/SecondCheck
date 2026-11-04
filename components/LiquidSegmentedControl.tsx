@@ -1,9 +1,11 @@
+import Pressable from './AnimatedPressable';
 import { memo, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
-import { Animated, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Animated, Platform, StyleSheet, Text, View } from 'react-native';
 import type { LucideIcon } from 'lucide-react-native';
 import { useTheme } from '../context/ThemeContext';
 import { useReducedMotion } from '../utils/useReducedMotion';
 import { useSegmentKeyboard } from '../utils/useSegmentKeyboard';
+import { triggerLight } from '../utils/haptics';
 
 export interface LiquidSegment<T extends string> { value: T; label: string; icon: LucideIcon }
 interface Props<T extends string> { options: readonly LiquidSegment<T>[]; value: T; onChange: (value: T) => void; active?: boolean; testID?: string; label?: string }
@@ -26,7 +28,7 @@ const SegmentButton = memo(function SegmentButton({ option, selected, active, re
     animation.start(); return () => animation.stop();
   }, [selected, active, reduced, scale]);
   const Icon = option.icon;
-  return <Pressable testID={`${testID}-${option.value}`} accessibilityRole="tab" accessibilityLabel={option.label} accessibilityState={{ selected }} aria-selected={selected}
+  return <Pressable haptic={false} testID={`${testID}-${option.value}`} accessibilityRole="tab" accessibilityLabel={option.label} accessibilityState={{ selected }} aria-selected={selected}
     tabIndex={selected ? 0 : -1} onPress={() => onSelect(option.value)} style={styles.tab}>
     <Animated.View pointerEvents="none" style={{ transform: [{ scale }] }}><Icon size={17} strokeWidth={selected ? 2.2 : 1.7} color={selected ? colors.cyan : colors.textSecondary} /></Animated.View>
     <Text numberOfLines={2} style={[styles.label, { color: selected ? colors.textPrimary : colors.textSecondary, fontWeight: selected ? '800' : '500' }]}>{option.label}</Text>
@@ -43,7 +45,9 @@ export default function LiquidSegmentedControl<T extends string>({ options, valu
   const index = Math.max(0, options.findIndex((option) => option.value === value));
   const segmentWidth = Math.max(0, width - 8) / Math.max(1, options.length);
   const values = useMemo(() => options.map((option) => option.value), [options]);
-  const select = useCallback((next: string) => { if (values.includes(next as T)) onChange(next as T); }, [onChange, values]);
+  const select = useCallback((next: string) => {
+    if (active && next !== value && values.includes(next as T)) { void triggerLight(); onChange(next as T); }
+  }, [active, value, onChange, values]);
   useSegmentKeyboard(id, values, select, active);
   useEffect(() => {
     position.stopAnimation();

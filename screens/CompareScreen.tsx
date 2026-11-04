@@ -1,3 +1,4 @@
+import Pressable from '../components/AnimatedPressable';
 import { useThemedStyles } from '../context/ThemeContext';
 import type { ThemeColors } from '../context/ThemeContext';
 import ThemeToggle from '../components/ThemeToggle';
@@ -7,17 +8,7 @@ import {
   SafeAreaView,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
-import {
-  Platform,
-  Keyboard,
-  KeyboardAvoidingView,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import { Platform, Keyboard, KeyboardAvoidingView, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { ArrowLeftRight, ChevronDown, ShieldCheck } from 'lucide-react-native';
 import ProductPickerModal from '../components/ProductPickerModal';
 import SavedListingSummary, {

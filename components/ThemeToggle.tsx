@@ -1,4 +1,5 @@
-import { Pressable, StyleSheet } from 'react-native';
+import Pressable from './AnimatedPressable';
+import { StyleSheet } from 'react-native';
 import { Moon, Sun } from 'lucide-react-native';
 import { useTheme } from '../context/ThemeContext';
 

@@ -374,3 +374,11 @@ Altı cihaz kontrolünü Türkçe sesli yönerge ve büyük geçti/kaldı butonl
 ### Holografik skor ve sıvı bölüm seçimi
 
 Güven paneli dokunmayla hafifçe eğilir ve çapraz ışık yansıması gösterir. Ekspertiz bölümleri yaylanan aktif kapsülle seçilir; kontrol ve rapor bilgileri geçişlerde korunur. [Etkileşim ve performans yaklaşımı](docs/visual-microinteractions.md).
+
+### Mikro etkileşimler ve cam yükleme kartları
+
+Sekme/pill seçimlerinde Light, kusur seçimlerinde Medium, kritik durumlarda Warning,
+link eşleşmesi ve native PDF üretiminde Success; pil adımlarında Selection geri bildirimi
+kullanılır. Ortak buton yüzeyi basıldığında 0.96 ölçeğine iner. Link, katalog, değerleme
+ve PDF beklemeleri gradient shimmer kartını kullanır. Hareketi azalt tercihi ve
+arka plan durumu gözetilir. Ayrıntılar: [mikro etkileşimler](docs/micro-interactions.md).

@@ -129,17 +129,20 @@ function mockedModule(relative, mocks, globals = {}) {
   return module.exports;
 }
 
-test('haptics use Light/Success/Warning, ignore unsupported web and swallow hardware errors', async () => {
+test('all five haptic helpers use the requested Expo feedback and preserve legacy calls', async () => {
   const calls = [];
   const native = mockedModule('../utils/haptics.ts', {
     'react-native': { Platform: { OS:'ios' } },
-    'expo-haptics': { ImpactFeedbackStyle:{Light:'light'}, NotificationFeedbackType:{Success:'success',Warning:'warning'},
-      impactAsync:async (value)=>calls.push(value), notificationAsync:async(value)=>calls.push(value) },
+    'expo-haptics': { ImpactFeedbackStyle:{Light:'light',Medium:'medium'}, NotificationFeedbackType:{Success:'success',Warning:'warning'},
+      impactAsync:async (value)=>calls.push(value), notificationAsync:async(value)=>calls.push(value), selectionAsync:async()=>calls.push('selection') },
   });
   for (const kind of ['light','success','warning']) await native.playHaptic(kind);
   assert.deepEqual(calls, ['light','success','warning']);
+  calls.length = 0;
+  for (const helper of ['triggerLight','triggerMedium','triggerSuccess','triggerWarning','triggerSelection']) await native[helper]();
+  assert.deepEqual(calls, ['light','medium','success','warning','selection']);
   const web = mockedModule('../utils/haptics.ts', { 'react-native':{Platform:{OS:'web'}}, 'expo-haptics':{} }, { navigator:{} });
-  await web.playHaptic('light');
+  for (const helper of ['triggerLight','triggerMedium','triggerSuccess','triggerWarning','triggerSelection']) await web[helper]();
   const unavailable = mockedModule('../utils/haptics.ts', {
     'react-native':{Platform:{OS:'android'}},
     'expo-haptics':{ ImpactFeedbackStyle:{Light:'light'}, impactAsync:async()=>{throw new Error('unsupported');} },

@@ -1,5 +1,6 @@
+import Pressable from './AnimatedPressable';
 import { memo, useEffect, useMemo, useState } from 'react';
-import { Animated, Easing, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Animated, Easing, Platform, StyleSheet, Text, View } from 'react-native';
 import type { ViewStyle } from 'react-native';
 import Svg, { Circle, Defs, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
 import { Camera, ScanFace, BatteryCharging, Usb, X } from 'lucide-react-native';

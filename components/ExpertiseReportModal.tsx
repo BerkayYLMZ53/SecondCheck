@@ -1,14 +1,7 @@
+import Pressable from './AnimatedPressable';
 import { useState } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import {
-  Modal,
-  Platform,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Modal, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Check, Copy, FileCheck, X } from 'lucide-react-native';
 import { copyReportText } from '../utils/clipboard';
 import { useThemedStyles } from '../context/ThemeContext';

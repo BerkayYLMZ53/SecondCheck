@@ -1,5 +1,6 @@
+import Pressable from './AnimatedPressable';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Image, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { Image, Modal, Platform, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import Svg, { SvgXml } from 'react-native-svg';
 import { Download, Share2, X } from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';

@@ -1,3 +1,6 @@
+// Copyright © 2026 Berkay Yılmaz
+// SPDX-License-Identifier: AGPL-3.0-only
+
 import { explicitPrices, selectPrice, barePrice } from './listingPrice';
 import { parseDeviceListing } from './deviceListingParser';
 import type { ParsedListingResult } from '../types/listing';

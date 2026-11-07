@@ -8,6 +8,12 @@
         "buildType": "apk"
       }
     },
-    "production": {}
+    "production": {},
+    "android-stable": {
+      "extends": "preview",
+      "android": {
+        "buildType": "apk"
+      }
+    }
   }
 }

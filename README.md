@@ -349,11 +349,17 @@ Fiyatlar, kronik sorun kayıtları, risk puanları ve üretilen raporlar karar d
 
 **Veriler topluluk bildirimleri ve pazar ortalamaları baz alınarak modellenmiştir. Kesin ekspertiz yerine geçmez.**
 
-## 📄 Lisans
-
-Bu depoda henüz bir `LICENSE` dosyası tanımlanmamıştır. Yeniden kullanım ve dağıtım koşulları için proje sahibinden bilgi alın. Bağımlılıkların lisansları kendi paketlerinde ayrıca yer alır.
-
 </details>
+
+## License
+
+Copyright © 2026 Berkay Yılmaz. Unless a file states otherwise, SecondCheck is licensed under the [GNU Affero General Public License v3.0 only (AGPL-3.0-only)](LICENSE).
+
+You may use, study, modify, and distribute this software, including for commercial purposes, provided that you comply with the AGPLv3. When you distribute a copy or a modified version, you must preserve the applicable license and copyright notices and provide the corresponding source code under the AGPLv3.
+
+If you modify SecondCheck and make that modified version available for use over a network, AGPLv3 requires you to offer the users of that version the corresponding source code. The public source repository is [github.com/BerkayYLMZ53/SecondCheck](https://github.com/BerkayYLMZ53/SecondCheck); deployments should provide an equally visible link to the source for the exact version in use.
+
+This license does not grant permission to use the **SecondCheck** name, logo, or other trademarks. See [LICENSE](LICENSE) for the complete license text and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for third-party notices.
 
 ### Canlı laboratuvar, pazarlık ve PDF
 

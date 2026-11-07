@@ -1,3 +1,6 @@
+// Copyright © 2026 Berkay Yılmaz
+// SPDX-License-Identifier: AGPL-3.0-only
+
 import { useState } from 'react';
 import type { ReactNode } from 'react';
 import {
@@ -39,6 +42,9 @@ const SOCIAL_LINKS: readonly SocialLink[] = [
   { title: 'LinkedIn', label: 'Berkay Yılmaz', url: 'https://www.linkedin.com/in/berkay-yilmaz-253ab0292/', icon: LinkedinIcon },
   { title: 'Kişisel Web Sitesi', label: 'berkayylmz.com.tr', url: 'https://berkayylmz.com.tr', icon: Globe },
 ];
+
+const SOURCE_CODE_URL = 'https://github.com/BerkayYLMZ53/SecondCheck';
+const LICENSE_URL = `${SOURCE_CODE_URL}/blob/main/LICENSE`;
 
 interface Props {
   navigation?: ReactNode;
@@ -138,7 +144,27 @@ export default function ProfileScreen({ navigation }: Props) {
 
         <View style={styles.footer}>
           <Text style={styles.version}>SecondCheck v1.0.0</Text>
-          <Text style={styles.copyright}>Tüm Hakları Saklıdır © 2026</Text>
+          <Text style={styles.copyright}>© 2026 Berkay Yılmaz</Text>
+          <Text style={styles.license}>Licensed under AGPLv3</Text>
+          <View style={styles.licenseLinks}>
+            <TouchableOpacity
+              accessibilityRole="link"
+              accessibilityLabel="Source Code"
+              accessibilityHint="SecondCheck kaynak kodunu tarayıcıda açar"
+              onPress={() => { void openLink({ title: 'Source Code', label: 'GitHub', url: SOURCE_CODE_URL, icon: GithubIcon }); }}
+            >
+              <Text style={styles.licenseLink}>Source Code</Text>
+            </TouchableOpacity>
+            <Text accessibilityElementsHidden style={styles.linkDivider}>·</Text>
+            <TouchableOpacity
+              accessibilityRole="link"
+              accessibilityLabel="License"
+              accessibilityHint="AGPLv3 lisans metnini tarayıcıda açar"
+              onPress={() => { void openLink({ title: 'License', label: 'AGPLv3', url: LICENSE_URL, icon: ShieldCheck }); }}
+            >
+              <Text style={styles.licenseLink}>License</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -199,5 +225,9 @@ const createStyles = (colors: ThemeColors) => {
     footer: { alignItems: 'center', gap: 6, paddingTop: 4 },
     version: { color: colors.textSecondary, fontSize: 13, fontWeight: '600' },
     copyright: { color: colors.textSecondary, fontSize: 12, textAlign: 'center' },
+    license: { color: colors.textSecondary, fontSize: 12, textAlign: 'center' },
+    licenseLinks: { flexDirection: 'row', alignItems: 'center', gap: 8, minHeight: 30 },
+    licenseLink: { color: colors.cyan, fontSize: 12, fontWeight: '700', paddingVertical: 6 },
+    linkDivider: { color: colors.textSecondary, fontSize: 12 },
   });
 };
